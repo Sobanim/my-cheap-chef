@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "data:parse": "tsx scripts/ingest.ts"
+    "data:parse": "tsx scripts/ingest.ts",
+    "catalog:ingest": "tsx scripts/ingest-catalog.ts",
+    "recipe:generate": "tsx scripts/generate-recipe.ts"
   },
   "dependencies": {
     "axios": "1.15.0",
