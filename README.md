@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🍳 My Cheap Chef — Cook from Discounts
 
-## Getting Started
+> **Status: 🚧 Work in Progress (MVP)**
 
-First, run the development server:
+An AI-powered app that suggests recipes based on products currently on sale in supermarkets (Lidl, Kaufland — Slovakia). Save money and never wonder "What should I cook?" again.
+
+## 🎯 Problem
+
+- People don't know what to cook.
+- They want to save money by buying discounted products.
+- Nobody analyzes promotional catalogs from the cooking perspective.
+
+## 💡 Solution
+
+The app connects **supermarket discount catalogs** with **AI-generated recipes** — so every dish you cook is made from products that are currently on sale.
+
+## 🧱 Architecture
+
+```
+my-cheap-chef/
+├── src/
+│   ├── app/              ← Next.js App Router (pages & UI)
+│   │   └── api/          ← API Routes (Route Handlers)
+│   ├── lib/              ← Shared types, utilities, constants
+│   └── components/       ← (planned) React components
+├── scripts/              ← Cron scripts (catalog parsing, recipe generation)
+├── data/                 ← JSON data files (products, recipes, catalog images)
+└── public/               ← Static assets
+```
+
+## 🛠 Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Frontend | Next.js 16, React 19, CSS Modules |
+| Backend | Next.js API Routes (Route Handlers) |
+| Scripts | TypeScript (tsx), cron-based |
+| AI | Vision AI (catalog parsing) + Text AI (recipe generation) — provider TBD |
+| Data | JSON files (MVP), PostgreSQL/SQLite planned |
+| Deployment | Vercel (planned) |
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- npm
+
+### Installation
+
+```bash
+git clone <repo-url>
+cd my-cheap-chef
+npm install
+```
+
+### Development
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server |
+| `npm run build` | Production build |
+| `npm run start` | Start production server |
+| `npm run lint` | Run ESLint |
+| `npm run data:parse` | Parse products via Lidl API |
+| `npm run catalog:ingest` | *(planned)* Parse catalog images via Vision AI |
+| `npm run recipe:generate` | *(planned)* Generate recipes via AI |
 
-## Learn More
+## 📊 Data Flow
 
-To learn more about Next.js, take a look at the following resources:
+1. **Weekly (Saturday night):** Script parses supermarket catalog images → `data/products.json`
+2. **After parsing:** Script generates recipes → `data/recipe.json`
+3. **Client:** Reads JSON → displays discounted products + recipe of the week
+4. **Paid feature (future):** On-demand recipe generation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ✅ Roadmap
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- [x] Prototype: fetching data via Lidl API (limited)
+- [ ] Catalog parsing via Vision AI
+- [ ] Recipe generation via Text AI
+- [ ] UI: product list + recipe of the week
+- [ ] PWA support
+- [ ] Deployment to Vercel
+- [ ] Multi-store support (Kaufland, etc.)
+- [ ] Filters (vegetarian, quick meals, no oven, etc.)
+- [ ] Shopping list generation
+- [ ] Geo expansion (Slovakia → Czechia → Poland → Germany)
 
-## Deploy on Vercel
+## 📄 License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is private and not yet licensed for public distribution.
