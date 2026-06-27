@@ -1,0 +1,317 @@
+[
+  {
+    "id": "10031389",
+    "name": "Zlatý Bažant Radler",
+    "price": 0,
+    "oldPrice": null,
+    "packInfo": "0,5 l",
+    "imageUrl": "https://imgproxy-retcat.assets.schwarz/usmgdDp-qWCu-LS-uhnoXScinX1dUCEZ0Qqs6QEm7j4/sm:1/exar:1:ce/w:427/h:320/cz/M6Ly9wcm9kLWNhd/GFsb2ctbWVkaWEvc2svMS9FNDdBMUEzMkMyQTM3QjdDRDk5OEUyQzA/xRDAwRjY0QjA5RTdCQTBGNUFFQ0JEM0Y4OUMxODM2RTQ2M0VCQzQ3LnBuZw.png",
+    "category": "Food"
+  },
+  {
+    "id": "10031688",
+    "name": "Staropramen Smíchov",
+    "price": 0,
+    "oldPrice": null,
+    "packInfo": "0,55 l",
+    "imageUrl": "https://imgproxy-retcat.assets.schwarz/_wJndQt2yHu3MibA3ppXjzzMHcypn3foCvSoaJS-CRk/sm:1/exar:1:ce/w:427/h:320/cz/M6Ly9wcm9kLWNhd/GFsb2ctbWVkaWEvc2svMS8wNjI1RjQ1MDc5M0JBRkE1RDJFMkI2MzE/xNjY5NTBBQjZEMUE1MTc1RjZBRkM1RkJFNjNDMDlEOTNCNkIyOUI5LnBuZw.png",
+    "category": "Food"
+  },
+  {
+    "id": "10031679",
+    "name": "Mleté bravčové mäso XXL",
+    "price": 3.79,
+    "oldPrice": null,
+    "packInfo": "1 kg balenie",
+    "imageUrl": "https://imgproxy-retcat.assets.schwarz/rkX6bNLiveG7S0QjEN1D9dpQq5T9bnx3-9erREsh5FI/sm:1/exar:1:ce/w:427/h:320/cz/M6Ly9wcm9kLWNhd/GFsb2ctbWVkaWEvc2svMS80RTFBQjEwNzVDMTdCN0UyOEM3QzQ2QTJ/CQTcyRTAyQjk4REU2OEI5MDRBNTMxQjI4NDg2QkMyOEJDRjY0NDRGLnBuZw.png",
+    "category": "Food"
+  },
+  {
+    "id": "10031612",
+    "name": "Minerálna voda s príchuťou",
+    "price": 0,
+    "oldPrice": null,
+    "packInfo": "1,5 l",
+    "imageUrl": "https://imgproxy-retcat.assets.schwarz/WTQzBAQ0uzm7pUOCByBZDrid2LjlkxT2qMjDnHepQlw/sm:1/exar:1:ce/w:427/h:320/cz/M6Ly9wcm9kLWNhd/GFsb2ctbWVkaWEvaW50L0ZGQ0JCQTdGNEUxOTAzNTBDOUQwM0UzRj/c4OTMzQjk4MDMyMDQxQjM1MENFNkZBQTZDODNENTI1RjRFQzhFMjIucG5n.png",
+    "category": "Food"
+  },
+  {
+    "id": "10031477",
+    "name": "Zmrzlina v kornútku",
+    "price": 0,
+    "oldPrice": null,
+    "packInfo": "120 ml",
+    "imageUrl": "https://imgproxy-retcat.assets.schwarz/dMAetzm5iyqzgc_fr6rymb6Ss6_Tdsb37qIpw0M1a3A/sm:1/exar:1:ce/w:427/h:320/cz/M6Ly9wcm9kLWNhd/GFsb2ctbWVkaWEvc2svMS8xQkVGMDM2MzhBMjBENTkxREUyQkJBRjh/BNDMwN0U3MDI0RURFRTE0NEFDNEJEMTc4Nzk1RTM0RjczMjY2MzZGLnBuZw.png",
+    "category": "Food"
+  },
+  {
+    "id": "10031686",
+    "name": "Vodová zmrzlina",
+    "price": 0,
+    "oldPrice": null,
+    "packInfo": "110 ml",
+    "imageUrl": "https://imgproxy-retcat.assets.schwarz/SMuj3ukylZBthVluwKxTQuOmrodr8tmP3dcXF_of8XU/sm:1/exar:1:ce/w:427/h:320/cz/M6Ly9wcm9kLWNhd/GFsb2ctbWVkaWEvaW50L0Y5QjMwNzA4N0E4Mzc1QTBCQ0ZCMkU3MT/Y4NUFCQjJDNzEyNDM0NDc5MTU2NUE5MDAwMkE0NDM5REQzOUIwOTEucG5n.png",
+    "category": "Food"
+  },
+  {
+    "id": "10031672",
+    "name": "Maslo",
+    "price": 0,
+    "oldPrice": null,
+    "packInfo": "200 g",
+    "imageUrl": "https://imgproxy-retcat.assets.schwarz/lF-qdI8cmDXDtO0qTEKYQy3Kx_Il8x6bgx5492j_54c/sm:1/exar:1:ce/w:427/h:320/cz/M6Ly9wcm9kLWNhd/GFsb2ctbWVkaWEvc2svMS9DNDlCODE1RjE1NDE1NDI3ODYxMzUyODU/1NjZDREExMjJGN0NGQjRCRkUwREQyQTU1Mjc1MjcxMjY2MUU1RTkwLnBuZw.png",
+    "category": "Food"
+  },
+  {
+    "id": "10031674",
+    "name": "Zvolenský jogurt",
+    "price": 0.45,
+    "oldPrice": null,
+    "packInfo": "200 g",
+    "imageUrl": "https://imgproxy-retcat.assets.schwarz/jf2o71oQte-uN_UT6FaWS9kJoEn2yQIzcPosbpZSzXo/sm:1/exar:1:ce/w:427/h:320/cz/M6Ly9wcm9kLWNhd/GFsb2ctbWVkaWEvc2svMS9GRDAyQzlCNzRDMjk0Q0YxMEJGOEMzRUN/CRkYxOEQxMEEwMUY3M0QwMjc1NkQzQjE1OTM2RDgyOUUxQkZCRkM2LnBuZw.png",
+    "category": "Food"
+  },
+  {
+    "id": "10031676",
+    "name": "Červená dyňa",
+    "price": 0,
+    "oldPrice": null,
+    "packInfo": "cena za 1 kg",
+    "imageUrl": "https://imgproxy-retcat.assets.schwarz/mmuAWQaMEJOHjLSnNSXE4zUywpd6-n0zsz5PDjKzttI/sm:1/exar:1:ce/w:427/h:320/cz/M6Ly9wcm9kLWNhd/GFsb2ctbWVkaWEvc2svMS8zNUYxRjJBNTgxNjA4RjVDNDZCNzYzM0U/4MEYyMDgyMjE5NkZFMTI2N0I3QjY1ODk1QTkzRTk3Mjk5RkZBN0JBLnBuZw.png",
+    "category": "OG"
+  },
+  {
+    "id": "10030710",
+    "name": "Šalátová uhorka",
+    "price": 0.49,
+    "oldPrice": 0.89,
+    "packInfo": "kus",
+    "imageUrl": "https://imgproxy-retcat.assets.schwarz/WMSWxgGiKex8x0ameK_dz06TZBRY4dSyHSgkph9vn7E/sm:1/exar:1:ce/w:427/h:320/cz/M6Ly9wcm9kLWNhd/GFsb2ctbWVkaWEvaW50L0M1RTg3RjQ0NTkyOERFQUFENzFFODIxRE/FFNkVBQjUwRjkwNjAxRkNENzIxNzdBODRDMzRDNDIzNDZFNUZBNTUucG5n.png",
+    "category": "OG"
+  },
+  {
+    "id": "10031683",
+    "name": "Reďkovky",
+    "price": 0.49,
+    "oldPrice": 0.89,
+    "packInfo": "zväzok",
+    "imageUrl": "https://imgproxy-retcat.assets.schwarz/BSKXZ12jsMyoocQjsn1srZUm8rrtoevxnt6d-WF2Ouc/sm:1/exar:1:ce/w:427/h:320/cz/M6Ly9wcm9kLWNhd/GFsb2ctbWVkaWEvaW50LzRDMjk5NzBFNUE1NTREQzE1RjU4NDIzMj/AxOUIyQkNBODU4RjA3QTFBMEJFNDI5RjNEQ0VDQUZFRTU0OTVGN0YucG5n.png",
+    "category": "OG"
+  },
+  {
+    "id": "10031700",
+    "name": "Rajec Materina dúška",
+    "price": 0.79,
+    "oldPrice": 1.35,
+    "packInfo": "1,5 l",
+    "imageUrl": "https://imgproxy-retcat.assets.schwarz/m9cTj4EjG-14L3t-58qh9PCmvBeyLJP7dPlDouAfPAs/sm:1/exar:1:ce/w:427/h:320/cz/M6Ly9wcm9kLWNhd/GFsb2ctbWVkaWEvc2svMS8xRjdBRDMwNTU3NkI4N0Q1RTBENzU5RDc/0MjIzNTBENUE5QjE1OTZBMjVDMDg0NDE1M0VDQjlCNEUzMkRBQTNELnBuZw.png",
+    "category": "Food"
+  },
+  {
+    "id": "10031702",
+    "name": "Talianske šunky a salámy",
+    "price": 1.79,
+    "oldPrice": null,
+    "packInfo": "",
+    "imageUrl": "https://imgproxy-retcat.assets.schwarz/36ntY4xNtx3DM4DWCgs8dOAzLjyJxkjDCQoF1fYdqf8/sm:1/exar:1:ce/w:427/h:320/cz/M6Ly9wcm9kLWNhd/GFsb2ctbWVkaWEvaW50L0VBQjg4Mzk2QkM1QUVBMDg2MkUyRkRCNz/VCOUU1QkQ4QjgzNDI2RDA1MjBCODcxMUM1MkU5MEIwQTQ5RUFDN0MucG5n.png",
+    "category": "Food"
+  },
+  {
+    "id": "10031703",
+    "name": "Mascarpone",
+    "price": 0,
+    "oldPrice": null,
+    "packInfo": "500 g",
+    "imageUrl": "https://imgproxy-retcat.assets.schwarz/WaxN8_vAP6pMcGkjRiz08TGY6sBEgwIV-JZgtnvSD2Y/sm:1/exar:1:ce/w:427/h:320/cz/M6Ly9wcm9kLWNhd/GFsb2ctbWVkaWEvaW50L0M3OUU4MzMzM0ZFQzgwMTVCQ0VENjMwMz/Y1NTk2MUQ4MTIwRjU1RDVDMEZGQ0Q4QzZGQzZENUE5MTZDNDlFRTUucG5n.png",
+    "category": "Food"
+  },
+  {
+    "id": "10031704",
+    "name": "Croissanty s náplňou",
+    "price": 2.99,
+    "oldPrice": 3.85,
+    "packInfo": "500 g",
+    "imageUrl": "https://imgproxy-retcat.assets.schwarz/jw7Yj9DBWX62IpFUVLjBiIracttjyT6d4Sya3dpiKGQ/sm:1/exar:1:ce/w:427/h:320/cz/M6Ly9wcm9kLWNhd/GFsb2ctbWVkaWEvaW50L0UwQjQ1ODlERjkwMDNCRjY2M0E0RUU4RE/MxRkYyOEFGNjc4MjM1Mjc2QzUwNkFCMUY5RTc5RkZFMTE2M0FFMTUucG5n.png",
+    "category": "Food"
+  },
+  {
+    "id": "10031706",
+    "name": "Čučoriedky",
+    "price": 3.69,
+    "oldPrice": 5.99,
+    "packInfo": "400 g balenie",
+    "imageUrl": "https://imgproxy-retcat.assets.schwarz/mwlB0V4BuD5v-uO00TyaMkt-DdECeDMSDafCHgE3Djw/sm:1/exar:1:ce/w:427/h:320/cz/M6Ly9wcm9kLWNhd/GFsb2ctbWVkaWEvaW50LzE3NTU4MDk3NTA1NkMxMDgyREJFQzkxRT/REN0Q2RTBDRjdEQUM5NTZDNThEM0Y3NzE5MzNEN0U1RjA2RTQ0NjcucG5n.png",
+    "category": "OG"
+  },
+  {
+    "id": "10031708",
+    "name": "Kuracie štvrte XXL",
+    "price": 1.99,
+    "oldPrice": 3.49,
+    "packInfo": "cena za 1 kg",
+    "imageUrl": "https://imgproxy-retcat.assets.schwarz/vyCo3fsToVm9hHL9Xs3pypF-lxlSFu9-RFQQYOcB8hU/sm:1/exar:1:ce/w:427/h:320/cz/M6Ly9wcm9kLWNhd/GFsb2ctbWVkaWEvc2svMS8wODExQkQ5RkJEN0ZFMURCRTUyNzYyMDc/3Qzk3QTEzNDdGNDREMTRGQzQ2QzUwM0NERjhBNzQ3MTY4ODZDQzU3LnBuZw.png",
+    "category": "Food"
+  },
+  {
+    "id": "10031709",
+    "name": "Mleté mäso MIX XXL",
+    "price": 5.99,
+    "oldPrice": 7.98,
+    "packInfo": "1 kg balenie",
+    "imageUrl": "https://imgproxy-retcat.assets.schwarz/CblHJln9ihvPRnfpTj50dO7UsQy_5sKTdBd9H45rD_g/sm:1/exar:1:ce/w:427/h:320/cz/M6Ly9wcm9kLWNhd/GFsb2ctbWVkaWEvc2svMS9GRTExNDU1QThCQTk3RTY1MzA3Nzk0QUQ/2NzAwNzM4MkQ5NEU4QUVDMEU5MUY5RURENDRGQjAzNjY0RTA2QUU5LnBuZw.png",
+    "category": "Food"
+  },
+  {
+    "id": "10031713",
+    "name": "Cherry paradajky strapcové",
+    "price": 1.59,
+    "oldPrice": null,
+    "packInfo": "450 g balenie",
+    "imageUrl": "https://imgproxy-retcat.assets.schwarz/ZxstkrqFfgNP8SyuYby5QD3dfYnjP2IPJJnLIq4YZNM/sm:1/exar:1:ce/w:427/h:320/cz/M6Ly9wcm9kLWNhd/GFsb2ctbWVkaWEvaW50L0I4Njk5RjJGMDJDRTFCRTZBMzJGNjE3N0/U4NUNENUJCODM3MDg4Qzg0NEI1NEFFOERFN0IyMTJBMTY2MEMzMTYucG5n.png",
+    "category": "OG"
+  },
+  {
+    "id": "10031714",
+    "name": "Kuracie prsné rezne",
+    "price": 3.99,
+    "oldPrice": null,
+    "packInfo": "cena za 1 kg",
+    "imageUrl": "https://imgproxy-retcat.assets.schwarz/n-d07Ij3e-0XQFWZfBDO-FrGBGQLQh1SGSsghs99VSg/sm:1/exar:1:ce/w:427/h:320/cz/M6Ly9wcm9kLWNhd/GFsb2ctbWVkaWEvaW50LzFCNzMzMjQxMDg4Q0ZGQ0NGRDhBMEJCQT/ZCQjU0MEYwRTM1MENDN0NFMEIzNjI0QzY0OUIxMEZBNjU0MUVFRTEucG5n.png",
+    "category": "Food"
+  },
+  {
+    "id": "10031715",
+    "name": "Bravčová panenka",
+    "price": 5.99,
+    "oldPrice": 8.89,
+    "packInfo": "cena za 1 kg",
+    "imageUrl": "https://imgproxy-retcat.assets.schwarz/R_YFIINWdX4y18Mvk4_ZwrcJfJKEZNOnwDPM-DsTKNE/sm:1/exar:1:ce/w:427/h:320/cz/M6Ly9wcm9kLWNhd/GFsb2ctbWVkaWEvc2svMS80MTg2MDBCQkVBMjU5QjU2NkEzOTcxODQ/4NjZCMDI1QUVEMjgxM0RDNTBFNzg5RUUxMDRERDlBOUZCMTI1NEFDLnBuZw.png",
+    "category": "Food"
+  },
+  {
+    "id": "10031716",
+    "name": "Mini špekáčiky",
+    "price": 3.19,
+    "oldPrice": 3.99,
+    "packInfo": "2 x 360 g = 720 g",
+    "imageUrl": "https://imgproxy-retcat.assets.schwarz/IVAJ2XujqEUhGaqejiJ6hV0CfV1XEs8wfrRA2LSqs1g/sm:1/exar:1:ce/w:427/h:320/cz/M6Ly9wcm9kLWNhd/GFsb2ctbWVkaWEvc2svMS8yQzhFQTgwNjUzODAyOTJDOEM5MTFGMkF/CQzhCNkNDREEwQjMxODNCNzU3MzQyQjkyMTRCN0E2RDM5NEY0OTg5LnBuZw.png",
+    "category": "Food"
+  },
+  {
+    "id": "10031717",
+    "name": "Hellmann’s kečup",
+    "price": 2.49,
+    "oldPrice": null,
+    "packInfo": "825/833 g",
+    "imageUrl": "https://imgproxy-retcat.assets.schwarz/jmyqrDWL6qTcHiYrpc3g0C1t5cYUUUHA2sI6ocXhmBw/sm:1/exar:1:ce/w:427/h:320/cz/M6Ly9wcm9kLWNhd/GFsb2ctbWVkaWEvc2svMS9FQkNBMUNGODc1QUY0ODg4NkFFM0UxRUU/5MkE2NTYyMDE1QzFFNThGMzg1MkQwMDlFRTQ5REJGRkI1MUMxODYxLnBuZw.png",
+    "category": "Food"
+  },
+  {
+    "id": "10031718",
+    "name": "Pilsner Urquell",
+    "price": 7.59,
+    "oldPrice": null,
+    "packInfo": "8 x 0,5 l = 4 l",
+    "imageUrl": "https://imgproxy-retcat.assets.schwarz/zYVvzPoCnv_4_ozv8lBDe-T95rb8Temcy5nsgA55p7M/sm:1/exar:1:ce/w:427/h:320/cz/M6Ly9wcm9kLWNhd/GFsb2ctbWVkaWEvc2svMS81NTExQjMyQkYyRTJDQUE5QkY3RTQ3Mjd/FQzc0ODhFMURCN0UyQ0Y1QjhEMEJERjIzODY4NjkwMjAyQzRDMzQ4LnBuZw.png",
+    "category": "Food"
+  },
+  {
+    "id": "10031722",
+    "name": "Maliny",
+    "price": 2.49,
+    "oldPrice": null,
+    "packInfo": "200 g balenie",
+    "imageUrl": "https://imgproxy-retcat.assets.schwarz/qiAs7hhyWWrBjru4hkwxTnCyQMnAr76bf_DpO9I2cuw/sm:1/exar:1:ce/w:427/h:320/cz/M6Ly9wcm9kLWNhd/GFsb2ctbWVkaWEvaW50L0M0MjA5NUYwMkNBQUU1OEJDMEUzOTA3MT/I1NUYwQzc4NDVBRUU5OEU5ODBBQ0NFRDAyQzg5NjFENTA0RjhDOTcucG5n.png",
+    "category": "OG"
+  },
+  {
+    "id": "10031723",
+    "name": "Mleté hovädzie mäso",
+    "price": 3.33,
+    "oldPrice": 4.99,
+    "packInfo": "500 g balenie",
+    "imageUrl": "https://imgproxy-retcat.assets.schwarz/DPUseyridc0iW-KQbxq1qf-N_txCB6qpnXqsZfx3HAA/sm:1/exar:1:ce/w:427/h:320/cz/M6Ly9wcm9kLWNhd/GFsb2ctbWVkaWEvc2svMS8yMTQxRjlCMzFDNDEwQjEzODI2QTcyQTE/xRkJDNUY3QjVFOTQ5QzYzODhCMzgzQ0NGRkFFMjc3RjM0QTYwM0IyLnBuZw.png",
+    "category": "Food"
+  },
+  {
+    "id": "10031724",
+    "name": "Liliput syr",
+    "price": 2.19,
+    "oldPrice": 2.99,
+    "packInfo": "350 g",
+    "imageUrl": "https://imgproxy-retcat.assets.schwarz/v-oxmyF2XG4MhuCHJVTpyGz0xaGikb9y-kxm2ZxTmvc/sm:1/exar:1:ce/w:427/h:320/cz/M6Ly9wcm9kLWNhd/GFsb2ctbWVkaWEvaW50LzE0QjFCRDAxOTFCRkIyNzdEMkY0MDhFRj/Y0QkNGMjlDMjc0MkYxRDk1MTM2QTA2RUU0RDNEMDRBQjFBMjJBOUMucG5n.png",
+    "category": "Food"
+  },
+  {
+    "id": "10031725",
+    "name": "Merci Finest Selection",
+    "price": 0,
+    "oldPrice": null,
+    "packInfo": "250 g",
+    "imageUrl": "https://imgproxy-retcat.assets.schwarz/YoCU_tAu7CCp4dF1Uz2L-hhotgwhtWP8tWfdNLLWOjQ/sm:1/exar:1:ce/w:427/h:320/cz/M6Ly9wcm9kLWNhd/GFsb2ctbWVkaWEvc2svMS8zQjY0NjRBMzQ4MDFERjcwNzU5N0QyM0U/zODhDQjA4QzNGMTNDODIzRENGQzUwQUVBMzFENjBEODc0MkJCOTNDLnBuZw.png",
+    "category": "Food"
+  },
+  {
+    "id": "10031613",
+    "name": "Mascarpone",
+    "price": 1.79,
+    "oldPrice": 2.59,
+    "packInfo": "250 g",
+    "imageUrl": "https://imgproxy-retcat.assets.schwarz/HS1U55n_0agpOEQSmgKpXBJx63JTuHwXe7LZxvbWuxE/sm:1/exar:1:ce/w:427/h:320/cz/M6Ly9wcm9kLWNhd/GFsb2ctbWVkaWEvc2svMS9GN0E3M0U0RUMzRkVGRTM3MzFDQjk0M0Y/wMjU5OUYyMEY3RDcxQzQ1NzJGNTA0Qzc0RjE2RDkwQ0YwQzIxQkY4LnBuZw.png",
+    "category": "Food"
+  },
+  {
+    "id": "10031698",
+    "name": "Vanilková zmrzlina",
+    "price": 0,
+    "oldPrice": null,
+    "packInfo": "2500 ml",
+    "imageUrl": "https://imgproxy-retcat.assets.schwarz/FG2SWjvqvS5eb5CPmHmcyKhJIsQx5zLAvXYo1tQNQyQ/sm:1/exar:1:ce/w:427/h:320/cz/M6Ly9wcm9kLWNhd/GFsb2ctbWVkaWEvc2svMS8yOTVCNkE2MDg5N0U4MTg5NTUxNzM2QUJ/BRUYwMEE4OTY2NDU0M0UzNjREMzYzQTZFODJFREQ2MjAzMDU5NTc3LnBuZw.png",
+    "category": "Food"
+  },
+  {
+    "id": "10031697",
+    "name": "Trubičky s krémom",
+    "price": 0,
+    "oldPrice": null,
+    "packInfo": "280 g",
+    "imageUrl": "https://imgproxy-retcat.assets.schwarz/QkhsLE60VPLInoXqFQbvwXaYrkEZXHaxZy0D_gxpYHA/sm:1/exar:1:ce/w:427/h:320/cz/M6Ly9wcm9kLWNhd/GFsb2ctbWVkaWEvc2svMS9FQjU1Q0UyNjA2Q0JFQjBGNjYwNkU2N0Z/BRjM0MUQ1N0I2OUIyM0IxN0IyODExMjg2OEJFNTAwRThEOTE3RDQ2LnBuZw.png",
+    "category": "Food"
+  },
+  {
+    "id": "10031678",
+    "name": "Kuracie prsné rezne XXL",
+    "price": 4.99,
+    "oldPrice": 7.49,
+    "packInfo": "cena za 1 kg",
+    "imageUrl": "https://imgproxy-retcat.assets.schwarz/wxQHz-THWe2OjOszeLdd6gZzdojj9FEKNOcmGH2m7uI/sm:1/exar:1:ce/w:427/h:320/cz/M6Ly9wcm9kLWNhd/GFsb2ctbWVkaWEvc2svMS80QkNBOUY3NjFBRkQ0MUJDMzhEMTUwRjl/GODU0NDU2ODJGQzM1QjIxMDZCN0IzMzJDOUI1QzNFNjYwNDQ2NzkzLnBuZw.png",
+    "category": "Food"
+  },
+  {
+    "id": "10031673",
+    "name": "Mozzarella Classic",
+    "price": 1.19,
+    "oldPrice": null,
+    "packInfo": "250 g",
+    "imageUrl": "https://imgproxy-retcat.assets.schwarz/qxneGYNgooqafVYa6hlS8cL0fhZAY9TlGkUYJm-7uhY/sm:1/exar:1:ce/w:427/h:320/cz/M6Ly9wcm9kLWNhd/GFsb2ctbWVkaWEvaW50L0Y5NEMyNEE0QTcyRTg2RDEzODY4OTU5QT/M5Mzg2Nzg3RkM5ODY2OTE2N0RBOURFNEYxQUI0QUZBMEY5MTEwNkEucG5n.png",
+    "category": "Food"
+  },
+  {
+    "id": "10031695",
+    "name": "Mleté morčacie mäso",
+    "price": 2.33,
+    "oldPrice": 3.49,
+    "packInfo": "400 g balenie",
+    "imageUrl": "https://imgproxy-retcat.assets.schwarz/_nkMiMI5v1oSNoljY1T5Azo-pWyDUDwaXocIYzr88to/sm:1/exar:1:ce/w:427/h:320/cz/M6Ly9wcm9kLWNhd/GFsb2ctbWVkaWEvaW50L0EyQ0U0MTBGQjhCMTFBQkY1MUM2NEJFQz/AyQ0EzREU3RTgyODJEQTEzQTAyMDQ5NkFEQjMwOUZEOTUwMDg4RUMucG5n.png",
+    "category": "Food"
+  },
+  {
+    "id": "10031611",
+    "name": "Špekáčiky",
+    "price": 0,
+    "oldPrice": null,
+    "packInfo": "600 g",
+    "imageUrl": "https://imgproxy-retcat.assets.schwarz/dnrRV5RwhLs36PgjgEfui4QvxlA0Y1A0lobNpy3NcDg/sm:1/exar:1:ce/w:427/h:320/cz/M6Ly9wcm9kLWNhd/GFsb2ctbWVkaWEvc2svMS9CMEY5RTUwQTA3NzRDMkZCMzI5NEMzNTM/5NjQwN0I0NERBQzg1RENGQjJCOEJFRUVFN0FGQzYyQUJBMDQyRjAzLnBuZw.png",
+    "category": "Food"
+  }
+]

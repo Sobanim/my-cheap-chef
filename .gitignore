@@ -45,5 +45,3 @@ next-env.d.ts
 # catalog images (heavy, not for git)
 /data/catalog-images/**
 !/data/catalog-images/README.md
-
-/data
