@@ -32,7 +32,7 @@ npm run recipe:generate  # (WIP) Generate recipes via LLM
 - **Types**: defined in `src/lib/types/` with barrel re-export from `src/lib/types.ts`. Import as `@/lib/types`.
 - **Props**: wrapped in `Readonly<>` (see `ProductCard`).
 - **Styling**: CSS Modules only, no utility CSS frameworks.
-- **Language**: UI text is in **Slovak**, code comments in **Russian**, type/variable names in **English**.
+- **Language**: UI text is in **Slovak**, code comments in **English**, type/variable names in **English**.
 - **API routes**: read from `data/` directory using `path.join(process.cwd(), 'data', '...')`.
 - **Scripts**: use `path.join(__dirname, '..', 'data', '...')` for output paths.
 
