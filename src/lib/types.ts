@@ -1,11 +1,11 @@
 /**
- * Общие типы данных приложения "Готовь из скидок"
- * Реэкспорт из src/lib/types/ для обратной совместимости.
+ * Common data types for the "Cook from Discounts" (Varím zo zliav) application
+ * Re-export from src/lib/types/ for backward compatibility.
  */
 export type { Product } from './types/product';
 export type { Recipe, RecipeData } from './types/recipe';
 
-/** Базовые продукты, которые предполагаются у пользователя дома */
+/** Basic pantry items assumed to be available at the user's home */
 export const BASE_PANTRY_ITEMS = [
   'soľ',
   'čierny korenie',

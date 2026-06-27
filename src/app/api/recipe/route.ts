@@ -5,7 +5,7 @@ import type { RecipeData } from '@/lib/types';
 
 /**
  * GET /api/recipe
- * Возвращает предгенерированный рецепт недели из data/recipe.json
+ * Returns the pre-generated recipe of the week from data/recipe.json
  */
 export async function GET() {
   try {
@@ -14,9 +14,9 @@ export async function GET() {
     const data: RecipeData = JSON.parse(raw);
 
     return NextResponse.json(data);
-  } catch (error) {
+  } catch (err) {
     return NextResponse.json(
-      { error: 'Рецепт ещё не сгенерирован' },
+      { error: 'Recipe is not generated yet', err },
       { status: 404 }
     );
   }

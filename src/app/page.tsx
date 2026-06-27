@@ -12,7 +12,7 @@ export default async function Home() {
     const raw = await fs.readFile(filePath, "utf-8");
     products = JSON.parse(raw);
   } catch {
-    // Файл не найден — покажем EmptyState
+    // File not found — show EmptyState
   }
 
   return (

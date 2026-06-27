@@ -2,7 +2,7 @@
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
-  padding-bottom: 80px; /* место под fixed кнопку */
+  padding-bottom: 80px; /* space for the fixed button */
 }
 
 .header {

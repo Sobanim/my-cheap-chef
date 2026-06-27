@@ -5,7 +5,7 @@ import type { Product } from '@/lib/types';
 
 /**
  * GET /api/products
- * Возвращает текущий список продуктов по скидке из data/products.json
+ * Returns the current list of discounted products from data/products.json
  */
 export async function GET() {
   try {
@@ -14,9 +14,9 @@ export async function GET() {
     const products: Product[] = JSON.parse(raw);
 
     return NextResponse.json(products);
-  } catch (error) {
+  } catch (err) {
     return NextResponse.json(
-      { error: 'Продукты пока не загружены' },
+      { error: 'Products are not loaded yet', err },
       { status: 404 }
     );
   }

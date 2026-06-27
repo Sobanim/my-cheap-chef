@@ -1,4 +1,4 @@
-/** Продукт со скидкой */
+/** Discounted product */
 export interface Product {
   id: string;
   name: string;

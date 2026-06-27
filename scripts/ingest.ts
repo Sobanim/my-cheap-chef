@@ -10,7 +10,7 @@ const OUTPUT_FILE_PATH = path.join(__dirname, '..', 'data', 'products.json');
 
 async function processLidlData() {
     try {
-        // 1. Читаем data
+        // 1. Fetch data
         // const rawData = fs.readFileSync(RAW_FILE_PATH, 'utf-8');
         // const json = JSON.parse(rawData);
 
@@ -20,25 +20,25 @@ async function processLidlData() {
         const items = data.items || [];
         const cleanedProducts = [];
 
-        // 2. Итерируемся и фильтруем
+        // 2. Iterate and filter
         for (const item of items) {
-            const gridData = item.gridbox?.data; // Тот самый путь, о котором ты говорил
+            const gridData = item.gridbox?.data; // The data path we need
             const priceInfo = item.gridbox.data.price;
 
-            // Фильтр: только Еда и Овощи/Фрукты
+            // Filter: Food and Fruits/Vegetables only
             const category = gridData?.category;
             if (category !== 'Food' && category !== 'OG') {
                 continue;
             }
 
-            // Формируем чистый объект
+            // Form clean object
             const product = {
                 id: item.code,
-                // Берем название из gridbox.data
+                // Get the name from gridbox.data
                 name: gridData?.fullTitle || item.label || 'Neznámy produkt',
                 price: priceInfo?.price || 0,
                 oldPrice: priceInfo?.oldPrice || null,
-                // Вес/упаковка тоже лежит в gridData
+                // Weight/pack info is also in gridData
                 packInfo: gridData?.keyfacts.supplementalDescription || '',
                 imageUrl: gridData?.image || '',
                 category: category
@@ -47,18 +47,18 @@ async function processLidlData() {
             cleanedProducts.push(product);
         }
 
-        // 3. Сохраняем результат
-        // Создаем папку data, если её нет
+        // 3. Save the result
+        // Create data directory if it doesn't exist
         const dir = path.dirname(OUTPUT_FILE_PATH);
         if (!fs.existsSync(dir)) fs.mkdirSync(dir);
 
         fs.writeFileSync(OUTPUT_FILE_PATH, JSON.stringify(cleanedProducts, null, 2));
 
-        console.log(`✅ Успех! Обработано продуктов: ${cleanedProducts.length}`);
-        console.log(`📂 Результат сохранен в: data/products.json`);
+        console.log(`✅ Success! Processed products: ${cleanedProducts.length}`);
+        console.log(`📂 Result saved to: data/products.json`);
 
     } catch (error) {
-        console.error('❌ Ошибка при обработке файла:', error);
+        console.error('❌ Error processing file:', error);
     }
 }
 
