@@ -359,10 +359,18 @@ export interface Seal {
 export interface StockAvailability {
     availabilityIndicator: number;
     badgeInfo: BadgeInfo;
+    badgeInfoV2?: BadgeInfoV2[];
     onlineAvailable: boolean;
     orderableQuantities: OrderableQuantity[];
     minOrderableQuantity: number;
 }
+
+export interface BadgeInfoV2 {
+    badges: Badge[];
+    validFrom?: number;
+    validUntil?: number;
+}
+
 
 export interface BadgeInfo {
     badges: Badge[];

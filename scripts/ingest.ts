@@ -1,9 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 import axios from 'axios';
-import {LidlSearchResponse} from "./types";
+import { LidlSearchResponse } from "./types";
 
-const LIDL_DATA_URL = 'https://www.lidl.sk/q/api/search?locale=sk_SK&assortment=SK&version=2.1.0&category.id=10068374';
+const LIDL_DATA_URL = 'https://www.lidl.sk/q/api/search?fetchsize=50&locale=sk_SK&assortment=SK&version=2.1.0&category.id=10068374';
 
 // const RAW_FILE_PATH = path.join(__dirname, 'raw', 'lidl.txt');
 const OUTPUT_FILE_PATH = path.join(__dirname, '..', 'data', 'products.json');
@@ -15,7 +15,7 @@ async function processLidlData() {
         // const json = JSON.parse(rawData);
 
         const response = await axios.get(LIDL_DATA_URL);
-        const data:LidlSearchResponse = response.data;
+        const data: LidlSearchResponse = response.data;
 
         const items = data.items || [];
         const cleanedProducts = [];
@@ -31,17 +31,62 @@ async function processLidlData() {
                 continue;
             }
 
+            // Determine price source: main price or Lidl Plus fallback
+            const lidlPlusOffer = gridData?.lidlPlus?.[0];
+            const hasMainPrice = typeof priceInfo?.price === 'number' && priceInfo.price > 0;
+            const hasLidlPlusPrice = !hasMainPrice && lidlPlusOffer && typeof lidlPlusOffer.price?.price === 'number';
+
+            let price: number;
+            let oldPrice: number | null;
+            let isLidlPlus = false;
+            let lidlPlusLabel: string | undefined;
+
+            if (hasMainPrice) {
+                // Regular priced product (may also have a regular discount)
+                price = priceInfo.price!;
+                oldPrice = priceInfo.oldPrice ?? null;
+            } else if (hasLidlPlusPrice) {
+                // Lidl Plus-only discount — use loyalty card pricing
+                price = lidlPlusOffer.price.price;
+                oldPrice = lidlPlusOffer.price.oldPrice ?? null;
+                isLidlPlus = true;
+                lidlPlusLabel = lidlPlusOffer.highlightText || lidlPlusOffer.lidlPlusText || undefined;
+            } else {
+                // No price at all — skip or set to 0
+                price = 0;
+                oldPrice = null;
+            }
+
+            // Extract validity dates
+            const stockAvail = gridData?.stockAvailability;
+            const badgeV2 = stockAvail?.badgeInfoV2?.[0];
+            const badgeText = stockAvail?.badgeInfo?.badges?.[0]?.text || '';
+
+            const validFrom = badgeV2?.validFrom || null;
+            const validUntil = badgeV2?.validUntil || null;
+
+            // Clean up label: extract "DD.MM. - DD.MM." or "od DD.MM. - DD.MM." from the badge text
+            let dateLabel: string | null = null;
+            if (badgeText) {
+                // Matches patterns like "25.06. - 28.06." or "od 01.06. - 30.06."
+                const dateMatch = badgeText.match(/(?:od\s+)?\d{2}\.\d{2}\.\s*-\s*\d{2}\.\d{2}\./);
+                dateLabel = dateMatch ? dateMatch[0] : badgeText;
+            }
+
             // Form clean object
             const product = {
                 id: item.code,
-                // Get the name from gridbox.data
                 name: gridData?.fullTitle || item.label || 'Neznámy produkt',
-                price: priceInfo?.price || 0,
-                oldPrice: priceInfo?.oldPrice || null,
-                // Weight/pack info is also in gridData
+                price,
+                oldPrice,
                 packInfo: gridData?.keyfacts.supplementalDescription || '',
                 imageUrl: gridData?.image || '',
-                category: category
+                category: category,
+                isLidlPlus,
+                ...(lidlPlusLabel && { lidlPlusLabel }),
+                validFrom,
+                validUntil,
+                dateLabel,
             };
 
             cleanedProducts.push(product);
