@@ -28,8 +28,8 @@ npm run recipe:generate  # (WIP) Generate recipes via LLM
 
 ## Conventions & Patterns
 
-- **Components**: each in its own folder `ComponentName/ComponentName.tsx` + `.module.css`. Exported via barrel `src/components/index.ts`. Import as `@/components`.
-- **Types**: defined in `src/lib/types/` with barrel re-export from `src/lib/types.ts`. Import as `@/lib/types`.
+- **Components**: each in its own folder `ComponentName/ComponentName.tsx` + `.module.css`. Exported via barrel `src/components/index.ts`. Import as `@/components`. Component functions should be declared as arrow functions: `export const ComponentName = ({ props }: Readonly<Props>) => { ... }`.
+- **Types**: defined in `src/lib/types/` with barrel re-export from `src/lib/types.ts`. Import as `@/lib/types`. Use `type` aliases instead of `interface` declarations for props and other TypeScript definitions.
 - **Props**: wrapped in `Readonly<>` (see `ProductCard`).
 - **Styling**: CSS Modules only, no utility CSS frameworks.
 - **Language**: UI text is in **Slovak**, code comments in **English**, type/variable names in **English**.
