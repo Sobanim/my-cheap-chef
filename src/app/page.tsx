@@ -1,6 +1,5 @@
-import { promises as fs } from "fs";
-import path from "path";
 import { ProductCatalog, EmptyState } from "@/components";
+import { fetchActiveProducts } from "@/lib/services/lidlService";
 import type { Product } from "@/lib/types";
 import styles from "./page.module.css";
 
@@ -10,12 +9,11 @@ export default async function Home() {
   const serverTime = Math.floor(Date.now() / 1000);
 
   try {
-    const filePath = path.join(process.cwd(), "data", "products.json");
-    const raw = await fs.readFile(filePath, "utf-8");
-    products = JSON.parse(raw);
-  } catch {
-    // File not found — show EmptyState
+    products = await fetchActiveProducts();
+  } catch (error) {
+    console.error("Failed to fetch products dynamically:", error);
   }
+
 
   return (
     <div className={styles.page}>

@@ -4,6 +4,7 @@
  */
 export type { Product } from './types/product';
 export type { Recipe, RecipeData } from './types/recipe';
+export type { LidlSearchResponse, ProductItem } from './types/lidl';
 
 /** Basic pantry items assumed to be available at the user's home */
 export const BASE_PANTRY_ITEMS = [
@@ -13,3 +14,4 @@ export const BASE_PANTRY_ITEMS = [
   'rastlinný olej',
   'voda',
 ] as const;
+
