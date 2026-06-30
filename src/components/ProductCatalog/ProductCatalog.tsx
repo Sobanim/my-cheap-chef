@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { ProductGrid } from '../ProductGrid/ProductGrid';
+import { ProductGrid } from '@/components';
 import { isProductActive, isProductUpcoming } from '@/lib/dateUtils';
 import type { Product } from '@/lib/types';
 import styles from './ProductCatalog.module.css';

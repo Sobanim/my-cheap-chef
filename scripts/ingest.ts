@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { fetchActiveProducts } from '../src/lib/services/lidlService';
+import { fetchActiveProducts } from '@/lib/services/lidlService';
 
 const OUTPUT_FILE_PATH = path.join(__dirname, '..', 'data', 'products.json');
 
