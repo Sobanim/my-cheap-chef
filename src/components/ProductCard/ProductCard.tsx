@@ -1,12 +1,13 @@
 import styles from './ProductCard.module.css';
 import type { Product } from '@/lib/types';
-import { ProductBadge } from './ProductBadge';
 import { ProductImage } from './ProductImage';
 import { ProductDate } from './ProductDate';
 import { ProductPrice } from './ProductPrice';
+import { getSlovakPrepPhrase } from '@/lib/dateUtils';
 
 type ProductCardProps = {
   product: Product;
+  isUpcoming?: boolean;
 };
 
 type DiscountInfo = {
@@ -22,15 +23,28 @@ const getDiscountInfo = (price: number, oldPrice: number | null): DiscountInfo =
   return { hasDiscount, discountPercent };
 };
 
-export const ProductCard = ({ product }: Readonly<ProductCardProps>) => {
+export const ProductCard = ({ product, isUpcoming }: Readonly<ProductCardProps>) => {
   const { hasDiscount, discountPercent } = getDiscountInfo(product.price, product.oldPrice);
 
+  const dayOfWeek = product.validFrom ? new Date(product.validFrom * 1000).getDay() : null;
+  const upcomingLabel = dayOfWeek !== null ? getSlovakPrepPhrase(dayOfWeek) : '';
+
   return (
-    <article className={styles.card}>
-      <ProductBadge
-        isLidlPlus={product.isLidlPlus}
-        discountPercent={discountPercent}
-      />
+    <article className={`${styles.card} ${isUpcoming ? styles.cardUpcoming : ''}`}>
+      {product.isLidlPlus && (
+        <span className={styles.lidlPlusBadge}>Lidl Plus</span>
+      )}
+
+      <div className={styles.badgeContainer}>
+        {isUpcoming && upcomingLabel && (
+          <span className={styles.upcomingBadge}>
+            Pripravované {upcomingLabel}
+          </span>
+        )}
+        {!product.isLidlPlus && discountPercent && (
+          <span className={styles.badge}>-{discountPercent}%</span>
+        )}
+      </div>
 
       <ProductImage imageUrl={product.imageUrl} name={product.name} />
 

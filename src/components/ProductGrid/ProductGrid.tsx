@@ -1,17 +1,26 @@
 import styles from './ProductGrid.module.css';
 import { ProductCard } from '@/components/ProductCard/ProductCard';
 import type { Product } from '@/lib/types';
+import { isProductUpcoming } from '@/lib/dateUtils';
 
-interface ProductGridProps {
+type ProductGridProps = {
   products: Product[];
-}
+  serverTime: number;
+};
 
-export function ProductGrid({ products }: Readonly<ProductGridProps>) {
+export const ProductGrid = ({ products, serverTime }: Readonly<ProductGridProps>) => {
   return (
     <section className={styles.grid}>
-      {products.map((product) => (
-        <ProductCard key={product.id} product={product} />
-      ))}
+      {products.map((product) => {
+        const isUpcoming = isProductUpcoming(product.validFrom, serverTime);
+        return (
+          <ProductCard
+            key={product.id}
+            product={product}
+            isUpcoming={isUpcoming}
+          />
+        );
+      })}
     </section>
   );
-}
+};

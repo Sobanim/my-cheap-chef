@@ -1,11 +1,13 @@
 import { promises as fs } from "fs";
 import path from "path";
-import { ProductGrid, EmptyState } from "@/components";
+import { ProductCatalog, EmptyState } from "@/components";
 import type { Product } from "@/lib/types";
 import styles from "./page.module.css";
 
 export default async function Home() {
+  "use no memo";
   let products: Product[] = [];
+  const serverTime = Math.floor(Date.now() / 1000);
 
   try {
     const filePath = path.join(process.cwd(), "data", "products.json");
@@ -26,7 +28,7 @@ export default async function Home() {
 
       <main>
         {products.length > 0 ? (
-          <ProductGrid products={products} />
+          <ProductCatalog products={products} serverTime={serverTime} />
         ) : (
           <EmptyState />
         )}

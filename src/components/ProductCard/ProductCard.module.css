@@ -13,17 +13,47 @@
   transform: scale(0.97);
 }
 
-.badge {
+.badgeContainer {
   position: absolute;
   top: var(--spacing-sm);
   left: var(--spacing-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  z-index: 10;
+}
+
+.badge {
   background: var(--color-badge-bg);
   color: var(--color-badge-text);
   font-size: 0.75rem;
   font-weight: 700;
   padding: var(--spacing-xs) var(--spacing-sm);
   border-radius: var(--radius-badge);
-  z-index: 1;
+  width: fit-content;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+.upcomingBadge {
+  background: linear-gradient(135deg, #ff9500, #ff5e00);
+  color: #ffffff;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-badge);
+  width: fit-content;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+.cardUpcoming {
+  opacity: 0.85;
+  transition: opacity 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.cardUpcoming:hover {
+  opacity: 1;
 }
 
 .imageWrapper {
