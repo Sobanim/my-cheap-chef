@@ -1,4 +1,4 @@
-import styles from './ProductCard.module.css';
+import styles from './ProductCard.module.scss';
 
 type ProductPriceProps = {
   price: number;

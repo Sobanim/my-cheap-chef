@@ -1,4 +1,4 @@
-import styles from './ProductCard.module.css';
+import styles from './ProductCard.module.scss';
 import type { Product } from '@/lib/types';
 import { ProductImage } from './ProductImage';
 import { ProductDate } from './ProductDate';
@@ -38,7 +38,7 @@ export const ProductCard = ({ product, isUpcoming }: Readonly<ProductCardProps>)
       <div className={styles.badgeContainer}>
         {isUpcoming && upcomingLabel && (
           <span className={styles.upcomingBadge}>
-            Pripravované {upcomingLabel}
+            {upcomingLabel}
           </span>
         )}
         {!product.isLidlPlus && discountPercent && (

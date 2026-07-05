@@ -1,4 +1,4 @@
-import styles from './ProductGrid.module.css';
+import styles from './ProductGrid.module.scss';
 import { ProductCard } from '@/components/ProductCard/ProductCard';
 import type { Product } from '@/lib/types';
 import { isProductUpcoming } from '@/lib/dateUtils';

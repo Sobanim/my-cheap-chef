@@ -1,7 +1,7 @@
 import { ProductCatalog, EmptyState } from "@/components";
 import { fetchActiveProducts } from "@/lib/services/lidlService";
 import type { Product } from "@/lib/types";
-import styles from "./page.module.css";
+import styles from "./page.module.scss";
 
 export default async function Home() {
   "use no memo";

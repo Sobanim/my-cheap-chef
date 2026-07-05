@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { ProductGrid } from '@/components';
 import { isProductActive, isProductUpcoming } from '@/lib/dateUtils';
 import type { Product } from '@/lib/types';
-import styles from './ProductCatalog.module.css';
+import styles from './ProductCatalog.module.scss';
 
 type ProductCatalogProps = {
   products: Product[];
