@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { PostHogProvider } from "@/components";
 import "./globals.scss";
 
 export const metadata: Metadata = {
@@ -23,7 +24,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="sk" suppressHydrationWarning>
-      <body>{children}</body>
+      <body>
+        <PostHogProvider>{children}</PostHogProvider>
+      </body>
     </html>
   );
 }
+

@@ -15,6 +15,7 @@ export const ProductImage = ({ imageUrl, name }: Readonly<ProductImageProps>) =>
         width={427}
         height={320}
         className={styles.image}
+        loading="eager"
       />
     </div>
   );
