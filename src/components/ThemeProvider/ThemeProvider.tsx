@@ -11,43 +11,46 @@ import {
 
 type Theme = "light" | "dark";
 
-const STORAGE_KEY = "mcc-theme";
+const COOKIE_KEY = "mcc-theme";
+const COOKIE_MAX_AGE = 60 * 60 * 24 * 365; // 1 year
 
-interface ThemeContextValue {
+type ThemeContextValue = {
   theme: Theme;
   toggleTheme: () => void;
   setTheme: (theme: Theme) => void;
-}
+};
+
+type ThemeProviderProps = {
+  initialTheme?: Theme;
+  children: React.ReactNode;
+};
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
-const getInitialTheme = (): Theme => {
-  if (typeof window === "undefined") return "dark";
-
-  const stored = window.localStorage.getItem(STORAGE_KEY);
-  if (stored === "light" || stored === "dark") return stored;
-
-  return window.matchMedia("(prefers-color-scheme: light)").matches
-    ? "light"
-    : "dark";
+// Persist theme choice as a cookie so the server can read it on next request.
+const persistTheme = (theme: Theme) => {
+  document.cookie = `${COOKIE_KEY}=${theme}; path=/; max-age=${COOKIE_MAX_AGE}; SameSite=Lax`;
 };
 
-export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const [theme, setThemeState] = useState<Theme>("dark");
-  const [mounted, setMounted] = useState(false);
+// Determine the effective theme on the client (for first render when no cookie exists).
+const resolveClientTheme = (): Theme =>
+  window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
 
-  // Sync state with what the no-flash script already applied.
-  useEffect(() => {
-    setThemeState(getInitialTheme());
-    setMounted(true);
-  }, []);
+export const ThemeProvider = ({ initialTheme, children }: Readonly<ThemeProviderProps>) => {
+  // If the server passed a theme from the cookie, use it; otherwise fall back to system preference.
+  const [theme, setThemeState] = useState<Theme>(() => {
+    if (initialTheme) return initialTheme;
+
+    if (typeof window === "undefined") return "dark";
+
+    return resolveClientTheme();
+  });
 
   // Reflect the current theme on <html> and persist the choice.
   useEffect(() => {
-    if (!mounted) return;
     document.documentElement.setAttribute("data-theme", theme);
-    window.localStorage.setItem(STORAGE_KEY, theme);
-  }, [theme, mounted]);
+    persistTheme(theme);
+  }, [theme]);
 
   const setTheme = useCallback((next: Theme) => setThemeState(next), []);
   const toggleTheme = useCallback(

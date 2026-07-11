@@ -1,20 +1,8 @@
 import type { Metadata, Viewport } from "next";
+import { cookies } from "next/headers";
 import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import { PostHogProvider, ThemeProvider } from "@/components";
 import "./globals.scss";
-
-// Applies the saved (or system) theme before paint to avoid a flash of the wrong theme.
-const themeInitScript = `
-(function() {
-  try {
-    var stored = localStorage.getItem('mcc-theme');
-    var theme = (stored === 'light' || stored === 'dark')
-      ? stored
-      : (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-    document.documentElement.setAttribute('data-theme', theme);
-  } catch (e) {}
-})();
-`;
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -53,25 +41,34 @@ export const viewport: Viewport = {
   ],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const themeCookie = cookieStore.get("mcc-theme")?.value;
+
+  // Only set data-theme when the user has explicitly chosen a theme (via cookie).
+  // When absent, CSS @media (prefers-color-scheme) handles it automatically.
+  const theme =
+    themeCookie === "light" || themeCookie === "dark"
+      ? themeCookie
+      : undefined;
+
   return (
     <html
       lang="sk"
       className={`${plusJakarta.variable} ${inter.variable}`}
       suppressHydrationWarning
+      {...(theme ? { "data-theme": theme } : {})}
     >
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
-      </head>
       <body>
-        <ThemeProvider>
+        <ThemeProvider initialTheme={theme}>
           <PostHogProvider>{children}</PostHogProvider>
         </ThemeProvider>
       </body>
     </html>
   );
 }
+

@@ -94,8 +94,7 @@
   --spacing-xl: 24px;
   --spacing-2xl: 32px;
 
-  --font-display: var(--font-display), "Plus Jakarta Sans", system-ui, sans-serif;
-  --font-body: var(--font-body), "Inter", system-ui, sans-serif;
+  /* Font variables --font-display and --font-body are set by next/font classes on <html>. */
 }
 
 /* Auto: follow system preference only when the user hasn't chosen a theme. */
@@ -130,7 +129,7 @@ body {
 }
 
 html {
-  font-family: var(--font-body);
+  font-family: var(--font-body), "Inter", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

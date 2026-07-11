@@ -23,7 +23,7 @@
 }
 
 .eyebrow {
-  font-family: var(--font-display);
+  font-family: var(--font-display), "Plus Jakarta Sans", system-ui, sans-serif;
   font-weight: 600;
   font-size: 0.72rem;
   text-transform: uppercase;
@@ -33,7 +33,7 @@
 }
 
 .heading {
-  font-family: var(--font-display);
+  font-family: var(--font-display), "Plus Jakarta Sans", system-ui, sans-serif;
   font-weight: 800;
   font-size: 1.6rem;
   letter-spacing: -0.02em;
@@ -68,7 +68,7 @@
 }
 
 .statValue {
-  font-family: var(--font-display);
+  font-family: var(--font-display), "Plus Jakarta Sans", system-ui, sans-serif;
   font-weight: 800;
   font-size: 1.25rem;
   color: var(--color-text-primary);
