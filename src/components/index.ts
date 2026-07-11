@@ -3,6 +3,7 @@ export { ProductGrid } from './ProductGrid/ProductGrid';
 export { EmptyState } from './EmptyState/EmptyState';
 export { ProductCatalog } from './ProductCatalog/ProductCatalog';
 export { PostHogProvider } from './PostHogProvider/PostHogProvider';
+export { ThemeProvider, useTheme } from './ThemeProvider/ThemeProvider';
 export { Header } from './Header/Header';
 export { GreetingCard } from './GreetingCard/GreetingCard';
 export { RecipeFeed } from './RecipeFeed/RecipeFeed';

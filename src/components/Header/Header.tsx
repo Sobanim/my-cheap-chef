@@ -1,5 +1,6 @@
 import styles from "./Header.module.scss";
 import { ChefHatLogo } from "./ChefHatLogo";
+import { ThemeToggle } from "./ThemeToggle";
 
 const NAV_LINKS = [
   { label: "Domov", href: "#", active: true },
@@ -34,8 +35,9 @@ export const Header = () => {
           ))}
         </nav>
 
-        {/* Right section intentionally left empty per design spec */}
-        <div className={styles.rightSpacer} aria-hidden="true" />
+        <div className={styles.rightSection}>
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   );

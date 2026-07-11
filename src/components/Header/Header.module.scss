@@ -103,9 +103,11 @@
   background-color: var(--color-accent-hover);
 }
 
-/* === Right: empty spacer to balance flexbox === */
-.rightSpacer {
-  width: 38px;
+/* === Right: theme toggle === */
+.rightSection {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
   flex-shrink: 0;
 }
 
@@ -121,10 +123,6 @@
   .navLink {
     font-size: 0.82rem;
     padding: var(--spacing-xs) var(--spacing-sm);
-  }
-
-  .rightSpacer {
-    display: none;
   }
 }
 

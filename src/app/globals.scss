@@ -1,6 +1,11 @@
 /* === CSS Custom Properties (Theming) === */
-/* Dark Mode is the default theme. Light mode is applied via prefers-color-scheme. */
-:root {
+/*
+ * Dark Mode is the default theme.
+ * - Auto: follows prefers-color-scheme unless the user picks a theme.
+ * - Manual: [data-theme="light"] / [data-theme="dark"] on <html> override the system.
+ */
+
+@mixin dark-tokens {
   /* Surfaces */
   --color-bg: #121316;
   --color-surface: #1c1d21;
@@ -37,6 +42,47 @@
   );
   --gradient-card-header: linear-gradient(120deg, #24262b 0%, #1c1d21 100%);
 
+  color-scheme: dark;
+}
+
+@mixin light-tokens {
+  --color-bg: #f8f9fa;
+  --color-surface: #ffffff;
+  --color-surface-2: #f1f3f5;
+
+  --color-text-primary: #111827;
+  --color-text-secondary: #4b5563;
+  --color-text-muted: #9ca3af;
+
+  --color-accent: #059669;
+  --color-accent-hover: #047857;
+  --color-accent-contrast: #ffffff;
+  --color-accent-glow: rgba(5, 150, 105, 0.35);
+  --color-accent-soft: rgba(5, 150, 105, 0.12);
+
+  --color-vibrant: #e65100;
+  --color-vibrant-soft: rgba(230, 81, 0, 0.12);
+
+  --color-price-old: #9ca3af;
+  --color-border: #e5e7eb;
+  --color-border-strong: #d1d5db;
+  --color-shadow: rgba(17, 24, 39, 0.08);
+  --color-shadow-hover: rgba(17, 24, 39, 0.14);
+
+  --gradient-greeting: radial-gradient(
+    130% 120% at 15% 0%,
+    #ffffff 0%,
+    #f4f6f8 50%,
+    #f8f9fa 100%
+  );
+  --gradient-card-header: linear-gradient(120deg, #ffffff 0%, #f1f3f5 100%);
+
+  color-scheme: light;
+}
+
+:root {
+  @include dark-tokens;
+
   --radius-card: 20px;
   --radius-md: 14px;
   --radius-badge: 999px;
@@ -50,45 +96,22 @@
 
   --font-display: var(--font-display), "Plus Jakarta Sans", system-ui, sans-serif;
   --font-body: var(--font-body), "Inter", system-ui, sans-serif;
-
-  color-scheme: dark;
 }
 
+/* Auto: follow system preference only when the user hasn't chosen a theme. */
 @media (prefers-color-scheme: light) {
-  :root {
-    --color-bg: #f8f9fa;
-    --color-surface: #ffffff;
-    --color-surface-2: #f1f3f5;
-
-    --color-text-primary: #111827;
-    --color-text-secondary: #4b5563;
-    --color-text-muted: #9ca3af;
-
-    --color-accent: #059669;
-    --color-accent-hover: #047857;
-    --color-accent-contrast: #ffffff;
-    --color-accent-glow: rgba(5, 150, 105, 0.35);
-    --color-accent-soft: rgba(5, 150, 105, 0.12);
-
-    --color-vibrant: #e65100;
-    --color-vibrant-soft: rgba(230, 81, 0, 0.12);
-
-    --color-price-old: #9ca3af;
-    --color-border: #e5e7eb;
-    --color-border-strong: #d1d5db;
-    --color-shadow: rgba(17, 24, 39, 0.08);
-    --color-shadow-hover: rgba(17, 24, 39, 0.14);
-
-    --gradient-greeting: radial-gradient(
-      130% 120% at 15% 0%,
-      #ffffff 0%,
-      #f4f6f8 50%,
-      #f8f9fa 100%
-    );
-    --gradient-card-header: linear-gradient(120deg, #ffffff 0%, #f1f3f5 100%);
-
-    color-scheme: light;
+  :root:not([data-theme]) {
+    @include light-tokens;
   }
+}
+
+/* Manual overrides */
+:root[data-theme="dark"] {
+  @include dark-tokens;
+}
+
+:root[data-theme="light"] {
+  @include light-tokens;
 }
 
 /* === Reset & Base === */

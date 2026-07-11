@@ -1,7 +1,20 @@
 import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans, Inter } from "next/font/google";
-import { PostHogProvider } from "@/components";
+import { PostHogProvider, ThemeProvider } from "@/components";
 import "./globals.scss";
+
+// Applies the saved (or system) theme before paint to avoid a flash of the wrong theme.
+const themeInitScript = `
+(function() {
+  try {
+    var stored = localStorage.getItem('mcc-theme');
+    var theme = (stored === 'light' || stored === 'dark')
+      ? stored
+      : (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+`;
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -51,8 +64,13 @@ export default function RootLayout({
       className={`${plusJakarta.variable} ${inter.variable}`}
       suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body>
-        <PostHogProvider>{children}</PostHogProvider>
+        <ThemeProvider>
+          <PostHogProvider>{children}</PostHogProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
