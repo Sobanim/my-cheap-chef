@@ -100,6 +100,10 @@
 }
 
 @media (max-width: 560px) {
+  .brandTitle {
+    font-size: 0.85rem;
+  }
+
   .brandSubtitle {
     font-size: 0.68rem;
   }
@@ -109,7 +113,7 @@
   }
 
   .navLink {
-    font-size: 0.82rem;
+    font-size: 0.78rem;
     padding: var(--spacing-xs) var(--spacing-sm);
   }
 }
