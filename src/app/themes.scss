@@ -1,0 +1,80 @@
+/* === 1. GREEN (Standard) === */
+:root[data-theme="dark"][data-scheme="green"] {
+  --color-accent: #00e676;
+  --color-accent-hover: #00c853;
+  --color-accent-contrast: #08130c;
+  --color-accent-glow: rgba(0, 230, 118, 0.45);
+  --color-accent-soft: rgba(0, 230, 118, 0.14);
+  --color-vibrant: #ff9100;
+}
+:root[data-theme="light"][data-scheme="green"] {
+  --color-accent: #059669;
+  --color-accent-hover: #047857;
+  --color-accent-contrast: #ffffff;
+  --color-accent-glow: rgba(5, 150, 105, 0.35);
+  --color-accent-soft: rgba(5, 150, 105, 0.12);
+  --color-vibrant: #e65100;
+  --color-bg: #f8f9fa;
+  --color-surface-2: #f1f3f5;
+}
+
+/* === 2. ORANGE (Concept A) === */
+:root[data-theme="dark"][data-scheme="orange"] {
+  --color-accent: #ff6d00;
+  --color-accent-hover: #e65100;
+  --color-accent-contrast: #ffffff;
+  --color-accent-glow: rgba(255, 109, 0, 0.45);
+  --color-accent-soft: rgba(255, 109, 0, 0.14);
+  --color-vibrant: #ffd600;
+}
+:root[data-theme="light"][data-scheme="orange"] {
+  --color-accent: #e65100;
+  --color-accent-hover: #bf360c;
+  --color-accent-contrast: #ffffff;
+  --color-accent-glow: rgba(230, 81, 0, 0.35);
+  --color-accent-soft: rgba(230, 81, 0, 0.12);
+  --color-vibrant: #f57f17;
+  --color-bg: #faf7f2;
+  --color-surface-2: #f4ece1;
+}
+
+/* === 3. BERRY (Smart Gourmet) === */
+:root[data-theme="dark"][data-scheme="berry"] {
+  --color-accent: #d81b60;
+  --color-accent-hover: #c2185b;
+  --color-accent-contrast: #ffffff;
+  --color-accent-glow: rgba(216, 27, 96, 0.45);
+  --color-accent-soft: rgba(216, 27, 96, 0.14);
+  --color-vibrant: #ffd600;
+}
+:root[data-theme="light"][data-scheme="berry"] {
+  --color-accent: #ad1457;
+  --color-accent-hover: #880e4f;
+  --color-accent-contrast: #ffffff;
+  --color-accent-glow: rgba(173, 20, 87, 0.35);
+  --color-accent-soft: rgba(173, 20, 87, 0.12);
+  --color-vibrant: #f57f17;
+}
+
+/* === 4. RED (Fiery Contrast) === */
+:root[data-theme="dark"][data-scheme="red"] {
+  --color-accent: #ff1744;
+  --color-accent-hover: #d50000;
+  --color-accent-contrast: #ffffff;
+  --color-accent-glow: rgba(255, 23, 68, 0.45);
+  --color-accent-soft: rgba(255, 23, 68, 0.14);
+  --color-vibrant: #ffd600;
+  --color-bg: #0c0d0f;
+  --color-surface: #15161a;
+  --color-surface-2: #1e2024;
+}
+:root[data-theme="light"][data-scheme="red"] {
+  --color-accent: #d50000;
+  --color-accent-hover: #9b0000;
+  --color-accent-contrast: #ffffff;
+  --color-accent-glow: rgba(213, 0, 0, 0.35);
+  --color-accent-soft: rgba(213, 0, 0, 0.12);
+  --color-vibrant: #e65100;
+  --color-bg: #f1f3f5;
+  --color-surface-2: #e9ecef;
+}

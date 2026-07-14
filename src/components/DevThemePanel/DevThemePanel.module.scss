@@ -1,0 +1,47 @@
+.panel {
+  background-color: var(--color-surface);
+  border-bottom: 1px dashed var(--color-border-strong);
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.label {
+  font-family: var(--font-display), "Plus Jakarta Sans", system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.selector {
+  display: flex;
+  gap: 8px;
+}
+
+.btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  outline: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+  transform: scale(1.1);
+}
+
+.active {
+  border-color: var(--color-text-primary);
+  transform: scale(1.15);
+}
+
+.active:hover {
+  transform: scale(1.15);
+}

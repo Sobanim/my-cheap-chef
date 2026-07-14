@@ -1,50 +1,118 @@
 /* === CSS Custom Properties (Theming) === */
-:root {
-  --color-bg: #f5f5f7;
-  --color-surface: #ffffff;
-  --color-text-primary: #1d1d1f;
-  --color-text-secondary: #6e6e73;
-  --color-text-muted: #8e8e93;
-  --color-accent: #34c759;
-  --color-accent-hover: #2da44e;
-  --color-price-old: #ff3b30;
-  --color-badge-bg: #ff3b30;
-  --color-badge-text: #ffffff;
-  --color-border: #e5e5ea;
-  --color-shadow: rgba(0, 0, 0, 0.06);
-  --color-shadow-hover: rgba(0, 0, 0, 0.12);
+/*
+ * Dark Mode is the default theme.
+ * - Auto: follows prefers-color-scheme unless the user picks a theme.
+ * - Manual: [data-theme="light"] / [data-theme="dark"] on <html> override the system.
+ */
 
-  --radius-card: 16px;
-  --radius-badge: 8px;
+@mixin dark-tokens {
+  /* Surfaces */
+  --color-bg: #121316;
+  --color-surface: #1c1d21;
+  --color-surface-2: #24262b;
+
+  /* Text */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #9ca3af;
+  --color-text-muted: #6b7280;
+
+  /* Accent (savings & actions) - ORANGE CONCEPT */
+  --color-accent: #ff6d00;
+  --color-accent-hover: #e65100;
+  --color-accent-contrast: #ffffff;
+  --color-accent-glow: rgba(255, 109, 0, 0.45);
+  --color-accent-soft: rgba(255, 109, 0, 0.14);
+
+  /* Vibrant (discounts & sale labels) */
+  --color-vibrant: #ffd600;
+  --color-vibrant-soft: rgba(255, 214, 0, 0.16);
+
+  --color-price-old: #6b7280;
+  --color-border: #2c2e34;
+  --color-border-strong: #383b42;
+  --color-shadow: rgba(0, 0, 0, 0.45);
+  --color-shadow-hover: rgba(0, 0, 0, 0.65);
+
+  /* Gradients (subtle, accent only) */
+  --gradient-greeting: radial-gradient(
+    130% 120% at 15% 0%,
+    #24262b 0%,
+    #1c1d21 45%,
+    #121316 100%
+  );
+  --gradient-card-header: linear-gradient(120deg, #24262b 0%, #1c1d21 100%);
+
+  color-scheme: dark;
+}
+
+@mixin light-tokens {
+  /* Warm Cream BG for Orange Concept */
+  --color-bg: #faf7f2;
+  --color-surface: #ffffff;
+  --color-surface-2: #f4ece1;
+
+  --color-text-primary: #111827;
+  --color-text-secondary: #4b5563;
+  --color-text-muted: #9ca3af;
+
+  /* Accent (savings & actions) - ORANGE CONCEPT */
+  --color-accent: #e65100;
+  --color-accent-hover: #bf360c;
+  --color-accent-contrast: #ffffff;
+  --color-accent-glow: rgba(230, 81, 0, 0.35);
+  --color-accent-soft: rgba(230, 81, 0, 0.12);
+
+  --color-vibrant: #f57f17;
+  --color-vibrant-soft: rgba(245, 127, 23, 0.12);
+
+  --color-price-old: #9ca3af;
+  --color-border: #e5e7eb;
+  --color-border-strong: #d1d5db;
+  --color-shadow: rgba(17, 24, 39, 0.08);
+  --color-shadow-hover: rgba(17, 24, 39, 0.14);
+
+  --gradient-greeting: radial-gradient(
+    130% 120% at 15% 0%,
+    #ffffff 0%,
+    #f4f6f8 50%,
+    #f8f9fa 100%
+  );
+  --gradient-card-header: linear-gradient(120deg, #ffffff 0%, #f1f3f5 100%);
+
+  color-scheme: light;
+}
+
+:root {
+  @include dark-tokens;
+
+  --radius-card: 20px;
+  --radius-md: 14px;
+  --radius-badge: 999px;
+
   --spacing-xs: 4px;
   --spacing-sm: 8px;
   --spacing-md: 12px;
   --spacing-lg: 16px;
   --spacing-xl: 24px;
+  --spacing-2xl: 32px;
 
-  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  /* Font variables --font-display and --font-body are set by next/font classes on <html>. */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg: #1c1c1e;
-    --color-surface: #2c2c2e;
-    --color-text-primary: #f5f5f7;
-    --color-text-secondary: #a1a1a6;
-    --color-text-muted: #636366;
-    --color-accent: #30d158;
-    --color-accent-hover: #28a745;
-    --color-price-old: #ff453a;
-    --color-badge-bg: #ff453a;
-    --color-badge-text: #ffffff;
-    --color-border: #38383a;
-    --color-shadow: rgba(0, 0, 0, 0.3);
-    --color-shadow-hover: rgba(0, 0, 0, 0.5);
+/* Auto: follow system preference only when the user hasn't chosen a theme. */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    @include light-tokens;
   }
+}
 
-  html {
-    color-scheme: dark;
-  }
+/* Manual overrides */
+:root[data-theme="dark"] {
+  @include dark-tokens;
+}
+
+:root[data-theme="light"] {
+  @include light-tokens;
 }
 
 /* === Reset & Base === */
@@ -63,7 +131,7 @@ body {
 }
 
 html {
-  font-family: var(--font-sans);
+  font-family: var(--font-body), "Inter", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -72,6 +140,7 @@ body {
   background-color: var(--color-bg);
   color: var(--color-text-primary);
   min-height: 100dvh;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 img {
@@ -84,3 +153,18 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+button {
+  font-family: inherit;
+}
+
+/* Thin, unobtrusive scrollbars for horizontal carousels */
+.hideScrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.hideScrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@import './themes';
