@@ -1,4 +1,4 @@
-import { Header, GreetingCard, RecipeFeed, UpcomingTeaser, Footer, DevThemePanel } from "@/components";
+import { GreetingCard, RecipeFeed, UpcomingTeaser } from "@/components";
 import { fetchActiveProducts } from "@/lib/services/lidlService";
 import { isProductActive } from "@/lib/dateUtils";
 import { buildGreeting, buildMenu } from "@/lib/menuLogic";
@@ -30,19 +30,12 @@ export default async function Home() {
   const fromPhrase = isFirstHalf ? "Od štvrtka" : "Od pondelka";
 
   return (
-    <div className={styles.page}>
-      <DevThemePanel />
-      <Header />
-
-      <main className={styles.main}>
+      <>
         <GreetingCard greeting={greeting} activeCount={activeProducts.length} />
 
         <RecipeFeed recipes={recipes} />
 
         <UpcomingTeaser fromPhrase={fromPhrase} recipeCount={2} />
-      </main>
-      
-      <Footer />
-    </div>
+      </>
   );
 }

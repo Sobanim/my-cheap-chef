@@ -1,8 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { cookies } from "next/headers";
 import { Plus_Jakarta_Sans, Inter } from "next/font/google";
-import { PostHogProvider, ThemeProvider } from "@/components";
+import {PostHogProvider, ThemeProvider, Header, Footer, DevThemePanel} from "@/components";
 import "./globals.scss";
+import styles from "./page.module.scss";
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -65,7 +66,16 @@ export default async function RootLayout({
     >
       <body>
         <ThemeProvider initialTheme={theme}>
-          <PostHogProvider>{children}</PostHogProvider>
+          <PostHogProvider>
+            <DevThemePanel />
+            <div style={{ display: "flex", flexDirection: "column", minHeight: "100dvh" }}>
+              <Header />
+              <main className={styles.main}>
+                {children}
+              </main>
+              <Footer />
+            </div>
+          </PostHogProvider>
         </ThemeProvider>
       </body>
     </html>
