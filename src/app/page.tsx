@@ -3,7 +3,6 @@ import { fetchActiveProducts } from "@/lib/services/lidlService";
 import { isProductActive } from "@/lib/dateUtils";
 import { buildGreeting, buildMenu } from "@/lib/menuLogic";
 import type { Product } from "@/lib/types";
-import styles from "./page.module.scss";
 
 export default async function Home() {
   "use no memo";
