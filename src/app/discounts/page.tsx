@@ -1,10 +1,25 @@
-import React from 'react';
+import { ProductCatalog } from '@/components';
+import { fetchActiveProducts } from '@/lib/services/lidlService';
+import type { Product } from '@/lib/types';
+import styles from './page.module.scss';
 
-export default function DiscountsPage() {
+export default async function DiscountsPage() {
+    let products: Product[] = [];
+    const serverTime = Math.floor(Date.now() / 1000);
+
+    try {
+        products = await fetchActiveProducts();
+    } catch (error) {
+        console.error("Failed to fetch products for discounts page:", error);
+    }
+
     return (
-        <div>
-            <h1>Discounts Page</h1>
-            <p>This is the discounts page content.</p>
-        </div>
+        <>
+            <header className={styles.pageHeader}>
+                <h1 className={styles.pageTitle}>Všetky zľavy</h1>
+                <p className={styles.pageDescription}>Prezrite si všetky aktuálne aj pripravované akcie a zľavy.</p>
+            </header>
+            <ProductCatalog products={products} serverTime={serverTime} />
+        </>
     );
 }
