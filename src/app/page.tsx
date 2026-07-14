@@ -1,4 +1,4 @@
-import { Header, GreetingCard, RecipeFeed, UpcomingTeaser, Footer } from "@/components";
+import { Header, GreetingCard, RecipeFeed, UpcomingTeaser, Footer, DevThemePanel } from "@/components";
 import { fetchActiveProducts } from "@/lib/services/lidlService";
 import { isProductActive } from "@/lib/dateUtils";
 import { buildGreeting, buildMenu } from "@/lib/menuLogic";
@@ -31,6 +31,7 @@ export default async function Home() {
 
   return (
     <div className={styles.page}>
+      <DevThemePanel />
       <Header />
 
       <main className={styles.main}>
