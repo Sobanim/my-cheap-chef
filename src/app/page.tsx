@@ -1,4 +1,4 @@
-import { Header, GreetingCard, RecipeFeed, UpcomingTeaser } from "@/components";
+import { Header, GreetingCard, RecipeFeed, UpcomingTeaser, Footer } from "@/components";
 import { fetchActiveProducts } from "@/lib/services/lidlService";
 import { isProductActive } from "@/lib/dateUtils";
 import { buildGreeting, buildMenu } from "@/lib/menuLogic";
@@ -40,6 +40,8 @@ export default async function Home() {
 
         <UpcomingTeaser fromPhrase={fromPhrase} recipeCount={2} />
       </main>
+      
+      <Footer />
     </div>
   );
 }

@@ -8,4 +8,4 @@ export { Header } from './Header/Header';
 export { GreetingCard } from './GreetingCard/GreetingCard';
 export { RecipeFeed } from './RecipeFeed/RecipeFeed';
 export { UpcomingTeaser } from './UpcomingTeaser/UpcomingTeaser';
-
+export { Footer } from './Footer/Footer';

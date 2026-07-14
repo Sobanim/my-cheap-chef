@@ -16,16 +16,16 @@
   --color-text-secondary: #9ca3af;
   --color-text-muted: #6b7280;
 
-  /* Accent (savings & actions) */
-  --color-accent: #00e676;
-  --color-accent-hover: #00c853;
-  --color-accent-contrast: #08130c;
-  --color-accent-glow: rgba(0, 230, 118, 0.45);
-  --color-accent-soft: rgba(0, 230, 118, 0.14);
+  /* Accent (savings & actions) - ORANGE CONCEPT */
+  --color-accent: #ff6d00;
+  --color-accent-hover: #e65100;
+  --color-accent-contrast: #ffffff;
+  --color-accent-glow: rgba(255, 109, 0, 0.45);
+  --color-accent-soft: rgba(255, 109, 0, 0.14);
 
   /* Vibrant (discounts & sale labels) */
-  --color-vibrant: #ff9100;
-  --color-vibrant-soft: rgba(255, 145, 0, 0.16);
+  --color-vibrant: #ffd600;
+  --color-vibrant-soft: rgba(255, 214, 0, 0.16);
 
   --color-price-old: #6b7280;
   --color-border: #2c2e34;
@@ -46,22 +46,24 @@
 }
 
 @mixin light-tokens {
-  --color-bg: #f8f9fa;
+  /* Warm Cream BG for Orange Concept */
+  --color-bg: #faf7f2;
   --color-surface: #ffffff;
-  --color-surface-2: #f1f3f5;
+  --color-surface-2: #f4ece1;
 
   --color-text-primary: #111827;
   --color-text-secondary: #4b5563;
   --color-text-muted: #9ca3af;
 
-  --color-accent: #059669;
-  --color-accent-hover: #047857;
+  /* Accent (savings & actions) - ORANGE CONCEPT */
+  --color-accent: #e65100;
+  --color-accent-hover: #bf360c;
   --color-accent-contrast: #ffffff;
-  --color-accent-glow: rgba(5, 150, 105, 0.35);
-  --color-accent-soft: rgba(5, 150, 105, 0.12);
+  --color-accent-glow: rgba(230, 81, 0, 0.35);
+  --color-accent-soft: rgba(230, 81, 0, 0.12);
 
-  --color-vibrant: #e65100;
-  --color-vibrant-soft: rgba(230, 81, 0, 0.12);
+  --color-vibrant: #f57f17;
+  --color-vibrant-soft: rgba(245, 127, 23, 0.12);
 
   --color-price-old: #9ca3af;
   --color-border: #e5e7eb;
