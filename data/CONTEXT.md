@@ -1,61 +1,46 @@
 # data/
 
-## Назначение
+## Purpose
 
-Хранилище сгенерированных данных (JSON-файлы). Это "база данных" для MVP — обновляется раз в неделю скриптами из `scripts/`.
+Storage for **generated recipes** (JSON files) — the "database" for the MVP. Updated once a week by cron scripts from `scripts/`.
 
-## Структура
+> ⚠️ **Products are no longer stored here.** The list of discounted products is fetched **live from the Lidl API** (`src/lib/services/lidlService.ts`) on every render (with a 1-hour Next.js cache). `data/` is meant for things that are expensive to generate — primarily the weekly recipes (`recipe.json`) created via AI by cron.
+
+## Structure
 
 ```
 data/
-├── products.json         ← список продуктов по скидке (результат парсинга каталога)
-├── recipe.json           ← предгенерированный рецепт недели (1-2 блюда)
-├── catalog-images/       ← картинки каталогов для обработки Vision AI
+├── recipe.json           ← pre-generated recipe of the week (1-2 dishes, AI)
+├── catalog-images/       ← (future) catalog images for Vision AI processing
 │   └── lidl/
-│       └── 2026-05-05/   ← папка по дате начала действия каталога
+│       └── 2026-05-05/   ← folder by the catalog's start date
 │           ├── page-01.jpg
-│           ├── page-02.jpg
 │           └── ...
-└── archive/              ← (будущее) архив прошлых недель
+└── archive/              ← (future) archive of past weeks
 ```
 
-## Формат products.json
+> `products.json` — a legacy artifact (may remain from the old `ingest.ts` script), not used in rendering.
 
-```json
-[
-  {
-    "id": "string",
-    "name": "Название продукта",
-    "price": 3.49,
-    "oldPrice": 6.99,
-    "packInfo": "500 g",
-    "imageUrl": "https://...",
-    "category": "Food"
-  }
-]
-```
-
-## Формат recipe.json
+## recipe.json Format
 
 ```json
 {
   "generatedAt": "2026-05-04T02:00:00Z",
   "recipes": [
     {
-      "title": "Название блюда",
-      "ingredients": ["ингредиент 1", "ингредиент 2"],
-      "ingredientsFromSale": ["продукт со скидки 1", "продукт со скидки 2"],
-      "steps": ["шаг 1", "шаг 2"],
-      "estimatedTime": "30 мин",
+      "title": "Dish name",
+      "ingredients": ["ingredient 1", "ingredient 2"],
+      "ingredientsFromSale": ["sale product 1", "sale product 2"],
+      "steps": ["step 1", "step 2"],
+      "estimatedTime": "30 min",
       "totalSavings": "5.20€"
     }
   ]
 }
 ```
 
-## Заметки
+## Notes
 
-- JSON-файлы коммитятся в git (они маленькие, обновляются раз в неделю)
-- `catalog-images/` добавлена в .gitignore (картинки тяжёлые)
-- В будущем при масштабировании → миграция на БД (PostgreSQL/SQLite)
-
+- JSON files are committed to git (they are small, updated once a week)
+- `catalog-images/` is added to .gitignore (images are heavy)
+- In the future, when scaling → migrate to a database (PostgreSQL/SQLite)
