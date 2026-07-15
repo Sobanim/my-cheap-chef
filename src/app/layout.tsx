@@ -29,6 +29,17 @@ export const metadata: Metadata = {
     title: "My Cheap Chef",
     statusBarStyle: "black-translucent",
   },
+  icons: {
+    icon: "/icon.svg",
+    apple: "/apple-icon.png",
+    other: [
+      {
+        rel: "mask-icon",
+        url: "/safari-pinned-tab.svg",
+        color: "#ff6d00",
+      },
+    ],
+  },
 };
 
 export const viewport: Viewport = {

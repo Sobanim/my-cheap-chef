@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+  <!-- Chef's hat silhouette (branded orange accent) -->
+  <path
+    d="M6 20.5v-6.2a4.7 4.7 0 0 1-1.3-8.9A4.6 4.6 0 0 1 12 3.2a4.6 4.6 0 0 1 7.3 2.2 4.7 4.7 0 0 1-1.3 8.9v6.2A1.5 1.5 0 0 1 16.5 22h-9A1.5 1.5 0 0 1 6 20.5Z"
+    stroke="#ff6d00"
+    stroke-width="1.3"
+    stroke-linejoin="round"
+    fill="none"
+  />
+
+  <!-- Bottom band line -->
+  <line
+    x1="6"
+    y1="20.5"
+    x2="18"
+    y2="20.5"
+    stroke="#ff6d00"
+    stroke-width="1.3"
+  />
+
+  <!-- Elegant 3-Prong Fork -->
+  <g stroke="#ff6d00" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- Outer prongs & base U-curve -->
+    <path d="M10 7.5v3.5a2 2 0 0 0 4 0V7.5" />
+    <!-- Center prong -->
+    <line x1="12" y1="7.5" x2="12" y2="10.5" />
+    <!-- Handle -->
+    <line x1="12" y1="13" x2="12" y2="17.2" />
+  </g>
+
+  <!-- Discount Badge (branded yellow vibrant) -->
+  <g transform="translate(10.5, 10.5) scale(0.62)">
+    <path
+      d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"
+      fill="#ffd600"
+    />
+    <text
+      x="12"
+      y="12"
+      font-family="system-ui, -apple-system, sans-serif"
+      font-size="11"
+      font-weight="bold"
+      fill="#121316"
+      text-anchor="middle"
+      dominant-baseline="central"
+    >%</text>
+  </g>
+</svg>
