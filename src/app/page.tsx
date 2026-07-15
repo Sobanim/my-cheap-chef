@@ -1,10 +1,12 @@
 import { GreetingCard, RecipeFeed, UpcomingTeaser } from "@/components";
 import { fetchActiveProducts } from "@/lib/services/lidlService";
-import { isProductActive } from "@/lib/dateUtils";
+import { isProductActive, getDiscountCycle } from "@/lib/dateUtils";
 import { buildGreeting, buildMenu } from "@/lib/menuLogic";
 import type { Product } from "@/lib/types";
 
 export default async function Home() {
+  // TODO: opt-out from React Compiler memoization. Revisit why it was needed
+  // for this async Server Component and remove this directive if no longer required.
   "use no memo";
   let products: Product[] = [];
   const serverTime = Math.floor(Date.now() / 1000);
@@ -23,10 +25,8 @@ export default async function Home() {
   const recipes = buildMenu(activeProducts, 2);
   const greeting = buildGreeting(now, activeProducts.length);
 
-  // Next discount drop: Mon–Wed → Thursday, otherwise → Monday.
-  const day = now.getDay();
-  const isFirstHalf = day >= 1 && day <= 3;
-  const fromPhrase = isFirstHalf ? "Od štvrtka" : "Od pondelka";
+  // Next discount drop phrase (single source of truth in dateUtils).
+  const { fromPhrase } = getDiscountCycle(now);
 
   return (
       <>

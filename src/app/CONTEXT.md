@@ -1,27 +1,20 @@
 # src/app/
 
-## Назначение
+## Purpose
 
-Клиентская часть приложения — Next.js App Router pages.
+The client-facing part of the app — Next.js App Router pages.
 
-## Что здесь находится
+## What's here
 
-- `layout.tsx` — корневой layout (шрифты, метаданные, общая обёртка)
-- `page.tsx` — главная страница приложения
-- `globals.css` — глобальные стили
-- `page.module.css` — стили главной страницы
-- `favicon.ico` — иконка приложения
+- `layout.tsx` — root layout (fonts, metadata, shared wrapper)
+- `page.tsx` — the app's home page
+- `globals.scss` — global styles
+- `page.module.scss` — home page styles
+- `favicon.ico` — app icon
+- `discounts/` — page with all current and upcoming discounts
 
-## Будущее содержимое
-
-- Страницы с продуктами по скидке
-- Страница с рецептом недели
-- UI-компоненты (вынесены в `src/components/`)
-- PWA manifest и service worker
-
-## Технологии
+## Technologies
 
 - Next.js 16 (App Router, React Server Components)
 - React 19
 - CSS Modules
-

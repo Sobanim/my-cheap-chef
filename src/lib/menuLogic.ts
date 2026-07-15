@@ -1,26 +1,27 @@
 import type { Product } from "@/lib/types";
+import { getDiscountCycle } from "@/lib/dateUtils";
 
 export type DishCategory = "soup" | "pan" | "bake" | "salad" | "grill";
 
-export interface MenuIngredient {
+export type MenuIngredient = {
   id: string;
   name: string;
   price: number;
   oldPrice: number | null;
   imageUrl: string;
   packInfo: string;
-}
+};
 
-export interface MenuRecipe {
+export type MenuRecipe = {
   id: string;
   title: string;
   category: DishCategory;
   time: string;
   savings: number;
   ingredients: MenuIngredient[];
-}
+};
 
-export interface GreetingInfo {
+export type GreetingInfo = {
   /** e.g. "Dobré ráno!" */
   greeting: string;
   /** Small emoji accent used in the greeting line */
@@ -29,7 +30,7 @@ export interface GreetingInfo {
   dayName: string;
   /** Full descriptive body text about current availability */
   body: string;
-}
+};
 
 const DAY_NAMES_SK = [
   "nedeľa",
@@ -63,7 +64,7 @@ export const buildGreeting = (
   const { greeting, emoji } = getTimeGreeting(now.getHours());
   const dayName = DAY_NAMES_SK[day];
 
-  const isFirstHalf = day >= 1 && day <= 3; // Mon–Wed
+  const { isFirstHalf } = getDiscountCycle(now);
   const recipeCount = Math.max(1, Math.min(2, Math.ceil(activeCount / 3) || 2));
 
   let body: string;
@@ -84,13 +85,13 @@ export const getSlovakDayName = (day: number): string =>
 
 /* === Recipe generation from real discounted products === */
 
-interface RecipeTemplate {
+type RecipeTemplate = {
   title: string;
   category: DishCategory;
   time: string;
   /** Keywords used to match real discounted products. */
   match: string[];
-}
+};
 
 const RECIPE_TEMPLATES: RecipeTemplate[] = [
   {

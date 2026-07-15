@@ -1,35 +1,32 @@
 # scripts/
 
-## Назначение
+## Purpose
 
-Cron-скрипты для обработки данных. Запускаются по расписанию (раз в неделю, суббота ночью) или вручную.
+Cron scripts for data processing. Run on a schedule (once a week) or manually.
 
-## Что здесь находится
+## What's here
 
-- `ingest.ts` — текущий скрипт получения продуктов через Lidl API (ограниченный, ~46 позиций)
-- `types.ts` — типы для ответа Lidl API
+- `ingest.ts` — legacy script: fetched products via the Lidl API and wrote `data/products.json`. **No longer needed for rendering** — products are fetched live in `src/lib/services/lidlService.ts`. Kept for reference/debugging.
+- `types.ts` — types for the Lidl API response (duplicate `src/lib/types/lidl.ts` — candidate for consolidation)
+- `generate-recipe.ts` — (WIP) takes products → sends to Text AI → generates 1-2 recipes → saves to `data/recipe.json`
+- `ingest-catalog.ts` — (WIP) sends catalog images to Vision AI → JSON with a list of products
 
-## Что будет добавлено
+## Execution Order (cron, weekly)
 
-- `ingest-catalog.ts` — основной скрипт: отправляет картинки каталогов в Vision AI → получает JSON со списком продуктов → сохраняет в `data/products.json`
-- `generate-recipe.ts` — берёт products.json → отправляет в GPT → генерирует 1-2 рецепта → сохраняет в `data/recipe.json`
+The main cron job is now **recipe generation**:
 
-## Порядок выполнения (cron, суббота ночью)
+1. `generate-recipe.ts` — takes current products → generates recipes → `data/recipe.json`
 
-1. `ingest-catalog.ts` — парсинг каталога → products.json
-2. `generate-recipe.ts` — генерация рецептов → recipe.json
-
-## Запуск
+## Running
 
 ```bash
-npm run data:parse          # текущий Lidl API скрипт
-npm run catalog:ingest      # (будущее) парсинг картинок каталога
-npm run recipe:generate     # (будущее) генерация рецептов
+npm run data:parse          # current Lidl API script
+npm run catalog:ingest      # (future) parse catalog images
+npm run recipe:generate     # (future) generate recipes
 ```
 
-## Заметки
+## Notes
 
-- Картинки каталогов пока загружаются вручную в `data/catalog-images/`
-- В перспективе: автоматическое скачивание PDF → конвертация в изображения
-- Vision AI провайдер пока не выбран (OpenAI GPT-4o, Apify, или другой — нужно сравнить цены)
-
+- Catalog images are currently uploaded manually to `data/catalog-images/`
+- In the future: automatic PDF download → conversion to images
+- Vision AI provider not yet chosen (OpenAI GPT-4o, Apify, or another — need to compare pricing)

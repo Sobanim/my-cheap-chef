@@ -21,6 +21,26 @@ export const isProductUpcoming = (
   return referenceTimeSeconds < validFrom;
 };
 
+export type DiscountCycle = {
+  /** true on Mon–Wed (first half-week Lidl discounts) */
+  isFirstHalf: boolean;
+  /** Slovak phrase for the next discount drop, e.g. "Od štvrtka" */
+  fromPhrase: string;
+};
+
+/**
+ * Single source of truth for Lidl's half-week discount calendar.
+ * Mon–Wed → next drop on Thursday, otherwise → next drop on Monday.
+ */
+export const getDiscountCycle = (now: Date): DiscountCycle => {
+  const day = now.getDay();
+  const isFirstHalf = day >= 1 && day <= 3; // Mon–Wed
+  return {
+    isFirstHalf,
+    fromPhrase: isFirstHalf ? 'Od štvrtka' : 'Od pondelka',
+  };
+};
+
 /**
  * Formats a Slovak prepositional day phrase based on the day of the week.
  * @param dayOfWeek 0 = Sunday, 1 = Monday, ..., 6 = Saturday

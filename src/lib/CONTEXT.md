@@ -1,20 +1,18 @@
 # src/lib/
 
-## Назначение
+## Purpose
 
-Общие утилиты, типы и хелперы, используемые как клиентом (`src/app/`), так и серверной частью (`src/app/api/`, `scripts/`).
+Shared utilities, types, and helpers used by both the client (`src/app/`) and the server side (`src/app/api/`, `scripts/`).
 
-## Что здесь будет
+## What's here
 
-- `types.ts` — общие типы данных (Product, Recipe и т.д.)
-- `constants.ts` — константы (базовая корзина продуктов, конфигурация)
-- `dateUtils.ts` — функции для работы с датами и фильтрации акций (активные/предстоящие)
-- `utils.ts` — утилитарные функции
-- `ai/` — обёртки для работы с AI-провайдерами (в будущем)
+- `types/` + `types.ts` — shared data types (Product, Recipe, Lidl API, etc.), re-exported via the `@/lib/types` barrel
+- `services/lidlService.ts` — live Lidl API fetch + parsing into the `Product` shape
+- `dateUtils.ts` — date helpers and discount filtering (active/upcoming) + the discount cycle helper
+- `menuLogic.ts` — greeting builder and placeholder recipe generation (`buildMenu`)
 
-## Принципы
+## Principles
 
-- Код здесь не зависит от React/Next.js — чистый TypeScript
-- Может использоваться и в scripts/, и в src/app/
-- Типы определяются один раз здесь и импортируются везде
-
+- Code here does not depend on React/Next.js — plain TypeScript
+- Can be used both in `scripts/` and in `src/app/`
+- Types are defined once here and imported everywhere

@@ -1,5 +1,5 @@
 /** Discounted product */
-export interface Product {
+export type Product = {
   id: string;
   name: string;
   price: number;
@@ -17,5 +17,5 @@ export interface Product {
   validUntil: number | null;
   /** Cleaned date label (e.g. "25.06. - 28.06.") */
   dateLabel: string | null;
-}
+};
 

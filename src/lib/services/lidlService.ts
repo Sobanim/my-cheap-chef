@@ -120,6 +120,10 @@ const parseProduct = (item: ProductItem): Product | null => {
  */
 export const fetchActiveProducts = async (): Promise<Product[]> => {
     try {
+        // TODO: harden the live Lidl API request:
+        //  - AbortController with ~8s timeout (a Lidl hang must not freeze the page)
+        //  - explicit User-Agent header (avoid being blocked as a bot)
+        //  - 1 retry on 5xx / network errors
         const response = await fetch(LIDL_DATA_URL, {
             next: { revalidate: 3600 },
         } as RequestInit & { next?: { revalidate?: number | false } });
