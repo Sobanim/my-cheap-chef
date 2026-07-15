@@ -1,4 +1,4 @@
-name: Weekly Product Ingestion
+name: Weekly Recipe Generation
 
 on:
   schedule:
@@ -6,10 +6,10 @@ on:
   workflow_dispatch: # Allows manual triggering from the Actions tab on GitHub
 
 permissions:
-  contents: write # Grants the right to push changes to the repository
+  contents: write # Grants the right to push the generated recipe.json
 
 jobs:
-  ingest:
+  generate-recipes:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -24,18 +24,20 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run parser
-        run: npm run data:parse
+      - name: Generate recipes from live Lidl discounts
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: npm run recipe:generate
 
-      - name: Commit and push changes
+      - name: Commit and push recipe.json
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/products.json
-          # Checking if the file has changed to avoid creating empty commits
+          git add data/recipe.json
+          # Skip empty commits when nothing changed
           if git diff --cached --quiet; then
-            echo "No changes detected."
+            echo "No recipe changes detected."
           else
-            git commit -m "chore(data): auto-update products.json [skip ci]"
+            git commit -m "chore(data): auto-update recipe.json [skip ci]"
             git push
           fi

@@ -1,90 +1,165 @@
 /**
  * generate-recipe.ts
  *
- * Скрипт для генерации рецептов из текущих продуктов по скидке.
+ * Generates the weekly recipes from the current Lidl discounts.
  *
- * Поток:
- * 1. Читает data/products.json
- * 2. Фильтрует: убирает алкоголь, non-food, товары с price=0
- * 3. Формирует промпт с базовой корзиной (соль, перец и т.д.)
- * 4. Отправляет в Text AI (GPT)
- * 5. Получает 1-2 рецепта в формате JSON
- * 6. Сохраняет в data/recipe.json
+ * Flow:
+ * 1. Fetches the live product list via fetchActiveProducts() (same source as the web app).
+ * 2. Splits products into promo baskets A/B/C (see docs/RECIPE_SYSTEM.md).
+ * 3. For each phase (A / A+B / A+B+C) asks Gemini for 2 recipes (Slovak).
+ * 4. Validates the AI response with zod (fail-fast on garbage).
+ * 5. Computes savings / cost in code from productId + packFraction.
+ * 6. Saves everything to data/recipe.json.
  *
- * Запуск: npm run recipe:generate
+ * Run: npm run recipe:generate  (requires GEMINI_API_KEY in .env)
  *
- * TODO:
- * - [ ] Выбрать AI-провайдера
- * - [ ] Добавить API-ключ в .env
- * - [ ] Реализовать генерацию промпта
- * - [ ] Реализовать парсинг ответа
+ * See docs/RECIPE_GENERATION.md for the design decisions behind this script.
  */
 
+import 'dotenv/config';
 import fs from 'fs';
 import path from 'path';
-import type { Product, RecipeData } from '../src/lib/types';
+import { fetchActiveProducts } from '@/lib/services/lidlService';
+import { getBasketForProduct, type BasketType } from '@/lib/baskets';
+import type { Product, Recipe, RecipeData, RecipeIngredient } from '@/lib/types';
+import { generateJson } from './lib/gemini-client';
+import { buildRecipePrompt } from './lib/recipe-prompt';
+import { geminiRecipeResponseSchema, modelResponseSchema, type ModelRecipe } from './lib/recipe-schema';
 
-const PRODUCTS_FILE = path.join(__dirname, '..', 'data', 'products.json');
 const OUTPUT_FILE = path.join(__dirname, '..', 'data', 'recipe.json');
 
-// Базовые продукты, которые есть у каждого
-const BASE_PANTRY = ['soľ', 'čierny korenie', 'cukor', 'rastlinný olej', 'voda'];
+// We always cook for two portions — matches typical Lidl pack sizes.
+const SERVINGS = 2;
 
-// Слова-маркеры алкоголя (для фильтрации)
-const ALCOHOL_KEYWORDS = ['vodka', 'víno', 'pivo', 'prosecco', 'whisky', 'rum', 'gin', 'likér'];
+// Each phase can only use products from the baskets active at that point in the week.
+type Phase = {
+  basket: BasketType;
+  label: string;
+  baskets: BasketType[];
+};
 
-async function generateRecipe() {
-  console.log('🍳 Генерация рецепта из продуктов по скидке...');
+const PHASES: Phase[] = [
+  { basket: 'A', label: 'Celý týždeň (od pondelka)', baskets: ['A'] },
+  { basket: 'B', label: 'Od štvrtka', baskets: ['A', 'B'] },
+  { basket: 'C', label: 'Víkendový špeciál (od soboty)', baskets: ['A', 'B', 'C'] },
+];
 
-  if (!fs.existsSync(PRODUCTS_FILE)) {
-    console.error('❌ Файл products.json не найден. Сначала запусти парсинг каталога.');
-    process.exit(1);
+/** Rounds a euro amount to 2 decimal places. */
+const round2 = (value: number): number => Math.round(value * 100) / 100;
+
+type IngredientMoney = { cost: number; savings: number };
+
+/** Computes cost and savings contributed by a single sale ingredient. */
+const priceIngredient = (ingredient: ModelRecipe['ingredients'][number], productMap: Map<string, Product>): IngredientMoney => {
+  if (ingredient.source !== 'sale' || !ingredient.productId) return { cost: 0, savings: 0 };
+
+  const product = productMap.get(ingredient.productId);
+  if (!product || product.price <= 0) return { cost: 0, savings: 0 };
+
+  const fraction = ingredient.packFraction ?? 1;
+  const cost = product.price * fraction;
+  const hasDiscount = product.oldPrice != null && product.oldPrice > product.price;
+  const savings = hasDiscount ? (product.oldPrice! - product.price) * fraction : 0;
+
+  return { cost, savings };
+};
+
+/** Converts a raw model recipe into a final Recipe, computing money fields in code. */
+const buildRecipe = (modelRecipe: ModelRecipe, phase: Phase, index: number, productMap: Map<string, Product>): Recipe => {
+  let totalCost = 0;
+  let totalSavings = 0;
+
+  const ingredients: RecipeIngredient[] = modelRecipe.ingredients.map((ingredient) => {
+    const { cost, savings } = priceIngredient(ingredient, productMap);
+    totalCost += cost;
+    totalSavings += savings;
+
+    return {
+      name: ingredient.name,
+      amount: ingredient.amount,
+      source: ingredient.source,
+      ...(ingredient.source === 'sale' && ingredient.productId ? { productId: ingredient.productId } : {}),
+      ...(ingredient.source === 'sale' ? { savings: round2(savings) } : {}),
+    };
+  });
+
+  return {
+    id: `recipe-${phase.basket.toLowerCase()}${index + 1}`,
+    basket: phase.basket,
+    basketLabel: phase.label,
+    title: modelRecipe.title,
+    description: modelRecipe.description,
+    category: modelRecipe.category,
+    servings: SERVINGS,
+    estimatedTime: modelRecipe.estimatedTime,
+    difficulty: modelRecipe.difficulty,
+    ingredients,
+    steps: modelRecipe.steps,
+    approxCost: round2(totalCost),
+    totalSavings: round2(totalSavings),
+  };
+};
+
+/** Generates the 2 recipes for a single phase. */
+const generatePhaseRecipes = async (
+  phase: Phase,
+  newProducts: Product[],
+  carriedProducts: Product[],
+  productMap: Map<string, Product>,
+  previousDishes: string[],
+): Promise<Recipe[]> => {
+  console.log(`   Requesting 2 recipes from Gemini...`);
+  const prompt = buildRecipePrompt({ phaseLabel: phase.label, newProducts, carriedProducts, previousDishes });
+  const raw = await generateJson(prompt, geminiRecipeResponseSchema);
+
+  const parsed = modelResponseSchema.parse(raw);
+  console.log(`   ✅ Received & validated ${parsed.recipes.length} recipes.`);
+
+  return parsed.recipes.map((recipe, index) => buildRecipe(recipe, phase, index, productMap));
+};
+
+const generateRecipes = async (): Promise<void> => {
+  console.log('🍳 Generating weekly recipes from Lidl discounts...');
+
+  const products = await fetchActiveProducts();
+  const cookable = products.filter((product) => product.price > 0);
+  console.log(`📦 Fetched ${products.length} products (${cookable.length} with a valid price).`);
+
+  const productMap = new Map(cookable.map((product) => [product.id, product]));
+  const basketOf = (product: Product): BasketType => getBasketForProduct(product.validFrom, product.validUntil);
+
+  const allRecipes: Recipe[] = [];
+  // Concepts already generated, passed to later phases so they don't repeat the same dish.
+  const generatedDishes: string[] = [];
+
+  for (const phase of PHASES) {
+    const newProducts = cookable.filter((product) => basketOf(product) === phase.basket);
+    const carriedProducts = cookable.filter((product) => {
+      const basket = basketOf(product);
+      return basket !== phase.basket && phase.baskets.includes(basket);
+    });
+    console.log(`\n🧺 Phase ${phase.basket} (${phase.label}): ${newProducts.length} new + ${carriedProducts.length} carried products.`);
+
+    if (newProducts.length + carriedProducts.length === 0) {
+      console.warn(`⚠️  No products for phase ${phase.basket}, skipping.`);
+      continue;
+    }
+
+    const recipes = await generatePhaseRecipes(phase, newProducts, carriedProducts, productMap, generatedDishes);
+    allRecipes.push(...recipes);
+    recipes.forEach((recipe) => generatedDishes.push(`${recipe.title} — ${recipe.description}`));
   }
 
-  const raw = fs.readFileSync(PRODUCTS_FILE, 'utf-8');
-  const allProducts: Product[] = JSON.parse(raw);
-
-  // Фильтруем: убираем алкоголь, товары без цены
-  const cookingProducts = allProducts.filter(p => {
-    if (p.price <= 0) return false;
-    const nameLower = p.name.toLowerCase();
-    return !ALCOHOL_KEYWORDS.some(kw => nameLower.includes(kw));
-  });
-
-  console.log(`📦 Всего продуктов: ${allProducts.length}`);
-  console.log(`🥕 Подходят для готовки: ${cookingProducts.length}`);
-  console.log('');
-  console.log('Продукты для рецепта:');
-  cookingProducts.forEach(p => {
-    const discount = p.oldPrice ? ` (было ${p.oldPrice}€)` : '';
-    console.log(`  - ${p.name}: ${p.price}€${discount} [${p.packInfo}]`);
-  });
-
-  // TODO: Реализовать отправку в AI
-  console.log('');
-  console.log('⚠️  AI провайдер ещё не настроен.');
-  console.log('   Нужно:');
-  console.log('   1. Выбрать провайдера (OpenAI / другой)');
-  console.log('   2. Добавить API-ключ в .env');
-  console.log('   3. Реализовать генерацию промпта и парсинг ответа');
-
-  // Пример структуры, которая будет генерироваться:
-  const placeholder: RecipeData = {
+  const output: RecipeData = {
     generatedAt: new Date().toISOString(),
-    recipes: [
-      {
-        title: '[Placeholder] Рецепт будет сгенерирован после подключения AI',
-        ingredients: cookingProducts.map(p => p.name),
-        ingredientsFromSale: cookingProducts.map(p => p.name),
-        steps: ['Подключить AI провайдера', 'Запустить скрипт заново'],
-        estimatedTime: '~30 мин',
-      }
-    ]
+    recipes: allRecipes,
   };
 
-  fs.writeFileSync(OUTPUT_FILE, JSON.stringify(placeholder, null, 2));
-  console.log(`\n📂 Placeholder сохранён: data/recipe.json`);
-}
+  fs.writeFileSync(OUTPUT_FILE, JSON.stringify(output, null, 2));
+  console.log(`\n📂 Wrote ${allRecipes.length} recipes to ${path.relative(process.cwd(), OUTPUT_FILE)}`);
+};
 
-generateRecipe();
-
+generateRecipes().catch((error) => {
+  console.error('❌ Recipe generation failed:', error);
+  process.exit(1);
+});
