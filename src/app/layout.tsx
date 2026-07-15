@@ -68,6 +68,7 @@ export default async function RootLayout({
         <ThemeProvider initialTheme={theme}>
           <PostHogProvider>
             <DevThemePanel />
+            {/* TODO: replace inline styles with a CSS Module (project convention: no inline styles). */}
             <div style={{ display: "flex", flexDirection: "column", minHeight: "100dvh" }}>
               <Header />
               <main className={styles.main}>

@@ -1,6 +1,6 @@
 import styles from './EmptyState.module.scss';
 
-export function EmptyState() {
+export const EmptyState = () => {
   return (
     <div className={styles.container}>
       <div className={styles.emoji}>🛒</div>
