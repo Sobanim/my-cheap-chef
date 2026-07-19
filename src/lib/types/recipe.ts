@@ -31,7 +31,10 @@ export type Recipe = {
   description: string;
   category: RecipeCategory;
   servings: number;
+  /** Total time from start to serving, including oven preheating */
   estimatedTime: string;
+  /** Hands-on time only — excludes passive waiting (oven, simmering) */
+  activeTime: string;
   difficulty: RecipeDifficulty;
   ingredients: RecipeIngredient[];
   steps: string[];

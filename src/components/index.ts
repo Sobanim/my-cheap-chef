@@ -7,6 +7,8 @@ export { ThemeProvider, useTheme } from './ThemeProvider/ThemeProvider';
 export { Header } from './Header/Header';
 export { GreetingCard } from './GreetingCard/GreetingCard';
 export { RecipeFeed } from './RecipeFeed/RecipeFeed';
+export { DishScene } from './DishScene/DishScene';
+export { RecipeDetail } from './RecipeDetail/RecipeDetail';
 export { UpcomingTeaser } from './UpcomingTeaser/UpcomingTeaser';
 export { Footer } from './Footer/Footer';
 export { DevThemePanel } from './DevThemePanel/DevThemePanel';

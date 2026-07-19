@@ -21,10 +21,11 @@ import fs from 'fs';
 import path from 'path';
 import { fetchActiveProducts } from '@/lib/services/lidlService';
 import { getBasketForProduct, type BasketType } from '@/lib/baskets';
-import type { Product, Recipe, RecipeData, RecipeIngredient } from '@/lib/types';
+import { BASE_PANTRY_ITEMS, type Product, type Recipe, type RecipeData, type RecipeIngredient } from '@/lib/types';
 import { generateJson } from './lib/gemini-client';
 import { buildRecipePrompt } from './lib/recipe-prompt';
-import { geminiRecipeResponseSchema, modelResponseSchema, type ModelRecipe } from './lib/recipe-schema';
+import { buildEditorPrompt } from './lib/editor-prompt';
+import { geminiRecipeResponseSchema, modelResponseSchema, type ModelRecipe, type ModelResponse } from './lib/recipe-schema';
 
 const OUTPUT_FILE = path.join(__dirname, '..', 'data', 'recipe.json');
 
@@ -46,6 +47,70 @@ const PHASES: Phase[] = [
 
 /** Rounds a euro amount to 2 decimal places. */
 const round2 = (value: number): number => Math.round(value * 100) / 100;
+
+// Vague quantities the prompt forbids but the model may still slip in.
+// Note: no \b around words with Slovak diacritics — JS word boundaries are ASCII-only,
+// so \bštipk would never match (š is not a \w character).
+const VAGUE_AMOUNT_PATTERNS = [/trochou/i, /podľa potreby/i, /podľa chuti/i, /štipk/i, /hrs[ťt]/i, /kúsok/i];
+
+/**
+ * Flags steps that still contain vague, number-free amounts (e.g. "trochou vody").
+ * Logs a warning only — the prompt rule catches most cases, this is a safety net.
+ */
+const warnAboutVagueSteps = (recipe: Recipe): void => {
+  const vagueSteps = recipe.steps.filter((step) => VAGUE_AMOUNT_PATTERNS.some((pattern) => pattern.test(step)));
+  if (vagueSteps.length > 0) {
+    console.warn(`   ⚠️  "${recipe.title}" has vague amounts in steps: ${vagueSteps.join(' | ')}`);
+  }
+};
+
+/**
+ * Flags the oven-preheat step when it's missing a °C value, or any step with a
+ * duration ("minút") without a leading digit — signs of a missing number.
+ * Only the preheat step itself is checked for temperature: later steps that merely
+ * reference the (already preheated) oven don't need to restate it.
+ */
+const warnAboutMissingTimings = (recipe: Recipe): void => {
+  const flagged = recipe.steps.filter((step) => {
+    const mentionsPreheatWithoutTemp = /predhrej/i.test(step) && !/°c/i.test(step);
+    const mentionsMinutesWithoutDigit = /minút/i.test(step) && !/\d/.test(step);
+    return mentionsPreheatWithoutTemp || mentionsMinutesWithoutDigit;
+  });
+  if (flagged.length > 0) {
+    console.warn(`   ⚠️  "${recipe.title}" has steps missing a temperature/duration number: ${flagged.join(' | ')}`);
+  }
+};
+
+/**
+ * Flags ingredients marked as `pantry` that aren't in BASE_PANTRY_ITEMS —
+ * they belong in the shopping list as `buy` (e.g. onion, garlic, pasta).
+ */
+const warnAboutFakePantryItems = (recipe: Recipe): void => {
+  const fake = recipe.ingredients.filter((ingredient) => {
+    if (ingredient.source !== 'pantry') return false;
+    const name = ingredient.name.toLowerCase();
+    return !BASE_PANTRY_ITEMS.some((item) => name.includes(item) || item.includes(name));
+  });
+  if (fake.length > 0) {
+    console.warn(`   ⚠️  "${recipe.title}" marks non-pantry items as pantry (should be "buy"): ${fake.map((i) => i.name).join(', ')}`);
+  }
+};
+
+/** Flags sale ingredients whose productId doesn't exist in the phase's product pool. */
+const warnAboutUnknownProductIds = (recipe: Recipe, productMap: Map<string, Product>): void => {
+  const unknown = recipe.ingredients.filter((ingredient) => ingredient.source === 'sale' && ingredient.productId && !productMap.has(ingredient.productId));
+  if (unknown.length > 0) {
+    console.warn(`   ⚠️  "${recipe.title}" references unknown productId(s): ${unknown.map((i) => i.productId).join(', ')}`);
+  }
+};
+
+/** Runs all cheap sanity checks on a generated recipe and logs any issues found. */
+const runSanityChecks = (recipe: Recipe, productMap: Map<string, Product>): void => {
+  warnAboutVagueSteps(recipe);
+  warnAboutMissingTimings(recipe);
+  warnAboutFakePantryItems(recipe);
+  warnAboutUnknownProductIds(recipe, productMap);
+};
 
 type IngredientMoney = { cost: number; savings: number };
 
@@ -92,12 +157,30 @@ const buildRecipe = (modelRecipe: ModelRecipe, phase: Phase, index: number, prod
     category: modelRecipe.category,
     servings: SERVINGS,
     estimatedTime: modelRecipe.estimatedTime,
+    activeTime: modelRecipe.activeTime,
     difficulty: modelRecipe.difficulty,
     ingredients,
     steps: modelRecipe.steps,
     approxCost: round2(totalCost),
     totalSavings: round2(totalSavings),
   };
+};
+
+/**
+ * Second AI pass: reviews draft recipes for culinary logic (cooking order,
+ * realistic times, name honesty). Falls back to the draft if the pass fails.
+ */
+const runEditorPass = async (draft: ModelResponse): Promise<ModelResponse> => {
+  console.log('   Running culinary editor pass...');
+  try {
+    const editedRaw = await generateJson(buildEditorPrompt(JSON.stringify(draft, null, 2)), geminiRecipeResponseSchema);
+    const edited = modelResponseSchema.parse(editedRaw);
+    console.log('   ✅ Editor pass applied.');
+    return edited;
+  } catch (error) {
+    console.warn('   ⚠️  Editor pass failed, keeping the draft version:', error);
+    return draft;
+  }
 };
 
 /** Generates the 2 recipes for a single phase. */
@@ -112,10 +195,12 @@ const generatePhaseRecipes = async (
   const prompt = buildRecipePrompt({ phaseLabel: phase.label, newProducts, carriedProducts, previousDishes });
   const raw = await generateJson(prompt, geminiRecipeResponseSchema);
 
-  const parsed = modelResponseSchema.parse(raw);
-  console.log(`   ✅ Received & validated ${parsed.recipes.length} recipes.`);
+  const draft = modelResponseSchema.parse(raw);
+  console.log(`   ✅ Received & validated ${draft.recipes.length} draft recipes.`);
 
-  return parsed.recipes.map((recipe, index) => buildRecipe(recipe, phase, index, productMap));
+  const reviewed = await runEditorPass(draft);
+
+  return reviewed.recipes.map((recipe, index) => buildRecipe(recipe, phase, index, productMap));
 };
 
 const generateRecipes = async (): Promise<void> => {
@@ -146,6 +231,8 @@ const generateRecipes = async (): Promise<void> => {
     }
 
     const recipes = await generatePhaseRecipes(phase, newProducts, carriedProducts, productMap, generatedDishes);
+    recipes.forEach((recipe) => runSanityChecks(recipe, productMap));
+
     allRecipes.push(...recipes);
     recipes.forEach((recipe) => generatedDishes.push(`${recipe.title} — ${recipe.description}`));
   }

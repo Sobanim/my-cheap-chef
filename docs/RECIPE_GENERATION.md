@@ -62,6 +62,18 @@ type RecipeIngredient = {
 
 Obrázok/plnú kartu produktu neduplikujeme v `recipe.json` — ťahá sa cez `productId` z `products.json`.
 
+## 4b. Čas a náročnosť
+
+Dve samostatné polia, aby dlhé pasívne pečenie nerobilo z jednoduchého jedla „ťažké":
+
+- **`estimatedTime`** — celkový čas od začiatku po servírovanie, **vrátane predhriatia rúry**.
+- **`activeTime`** — iba čas, keď človek reálne pracuje (krájanie, opekanie). Pasívne čakanie sa nepočíta.
+  Napr. bôčik: `estimatedTime` 90 minút, `activeTime` 15 minút.
+- **`difficulty`** hodnotí **výhradne náročnosť techniky**, nikdy nie dĺžku prípravy. Jedlo, ktoré sa 90 minút
+  samo pečie, je `easy`.
+
+V UI zobrazovať oboje (napr. „90 min celkovo · 15 min pri sporáku"), aby používateľ videl reálnu investíciu času.
+
 ## 5. Porcie a balenia
 
 - **`servings: 2`** — balenia Lidla (400 g mäso, 250 g mozzarella…) sa delia na 2 porcie prirodzene; jedna osoba to zje 2× (obed + večera).
@@ -69,7 +81,7 @@ Obrázok/plnú kartu produktu neduplikujeme v `recipe.json` — ťahá sa cez `p
 
 ## 6. Výpočet úspor (totalSavings)
 
-Peniaze **nepočíta LLM** (nespoľahlivá aritmetika). Model vráti pre každú `sale` ingredienciu `productId` + použitý podiel balenia (napr. `0.5`). Skript počíta deterministicky:
+Peniaze **nepočíta LLM** (nespoľahlivá aritmetika). Model vráti pre každú `sale` ingredienciu `productId` + `packFraction` = počet použitých balení/kusov (`0.5` = pol balenia, `2` = dve balenia — napr. dve kukurice predávané na kus; max 10). Skript počíta deterministicky:
 
 ```
 savings = (oldPrice − price) × podiel_balenia   // len ak oldPrice > price
@@ -102,6 +114,17 @@ Model **musí** vybrať z enumu (vynútené cez `responseSchema` + zod). Fallbac
 ## 9. Kroky prípravy
 
 `steps: string[]` — **pole reťazcov, jeden krok = jeden prvok**. Vynútené schémou, žiadne parsovanie textu. UI renderuje ako `<ol>`.
+
+## 9b. Kvalita krokov (recept ako návod, nie inšpirácia)
+
+Prvé reálne behy ukázali, že model píše ingrediencie a kroky ako dva nezávislé texty — množstvá sa v krokoch neopakujú („pridáme marhule" namiesto „300 g marhúľ"), chýbajú časy/teploty, jednotky sa menia recept od receptu (`PL` vs `polievková lyžica`), a niekedy si názov/popis/kroky odporujú (napr. názov „brandy", surovina „vodka").
+
+Riešime na dvoch úrovniach:
+
+- **Vrstva 1 — pravidlá v prompte** ([scripts/lib/recipe-prompt.ts](../scripts/lib/recipe-prompt.ts), sekcie `PRAVIDLÁ PRE KROKY` a `REALISTICKOSŤ`): každá surovina sa musí objaviť v kroku s presným množstvom, zakázané vágne výrazy bez čísla, povinný čas/teplota pri tepelnej úprave, jednotná terminológia (`g/ml/ks/PL/ČL`, 1. osoba množného čísla), zákaz vyžadovať kúpu celej drahej fľaše alkoholu kvôli pár ml.
+- **Vrstva 2 — lacné kontroly v kóde** ([scripts/generate-recipe.ts](../scripts/generate-recipe.ts), `runSanityChecks`): po vygenerovaní receptu skript len **loguje warningy** (nepadá) pri vágnych výrazoch (`trochou`, `podľa potreby`), chýbajúcej teplote/čase pri zmienke rúry/minút, a neznámom `productId`. Slúži ako signál v logoch cronu, nie ako blokujúca validácia — slovenské pády neumožňujú spoľahlivo strojovo overiť, či sa surovina reálne použila v kroku.
+
+**Vrstva 3 — kulinársky editor (implementované):** druhý AI request na fázu ([scripts/lib/editor-prompt.ts](../scripts/lib/editor-prompt.ts), `runEditorPass` v generte skripte). Vygenerovaný draft JSON sa pošle modelu v roli „redaktor kuchárskej knihy" s checklistom kulinárskej logiky, ktorú pravidlá nevedia pokryť: poradie krokov (príloha súbežne, nie 15 min vopred), realistické časy pre daný kus mäsa/hrúbku, suroviny púšťajúce vodu, poctivosť názvu (žiadne „karé" pri stehnách či „ragú" bez tekutiny). Editor NESMIE meniť `productId`/`source`/koncept jedla; `packFraction` smie opraviť. Ak editor pass zlyhá, skript loguje warning a ponechá draft (graceful fallback). Peniaze sa počítajú až PO editor passe. Dôvod vzniku: 2. reálny beh mal správny formát, ale kulinárske chyby (cestoviny uvarené 15 min pred omáčkou, surová kukurica v suchej rúre, presušené prsia, soľ 2× oproti zoznamu).
 
 ## 10. Validácia odpovede AI
 

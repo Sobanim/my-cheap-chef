@@ -26,8 +26,11 @@ const modelIngredientSchema = z.object({
   source: z.enum(INGREDIENT_SOURCES),
   /** Present for `sale` items — id of the referenced discounted product. */
   productId: z.string().optional(),
-  /** Present for `sale` items — fraction (0..1) of the sold unit used in the dish. */
-  packFraction: z.number().min(0).max(1).optional(),
+  /**
+   * Present for `sale` items — how many sold units the dish uses.
+   * 0.5 = half a pack, 2 = two whole packs (e.g. two corn cobs sold per piece).
+   */
+  packFraction: z.number().min(0).max(10).optional(),
 });
 
 const modelRecipeSchema = z.object({
@@ -35,6 +38,7 @@ const modelRecipeSchema = z.object({
   description: z.string().min(1),
   category: z.enum(RECIPE_CATEGORIES),
   estimatedTime: z.string().min(1),
+  activeTime: z.string().min(1),
   difficulty: z.enum(RECIPE_DIFFICULTIES),
   ingredients: z.array(modelIngredientSchema).min(1),
   steps: z.array(z.string().min(1)).min(1),
@@ -63,6 +67,7 @@ export const geminiRecipeResponseSchema: Schema = {
           description: { type: Type.STRING },
           category: { type: Type.STRING, enum: [...RECIPE_CATEGORIES] },
           estimatedTime: { type: Type.STRING },
+          activeTime: { type: Type.STRING },
           difficulty: { type: Type.STRING, enum: [...RECIPE_DIFFICULTIES] },
           ingredients: {
             type: Type.ARRAY,
@@ -82,8 +87,8 @@ export const geminiRecipeResponseSchema: Schema = {
           },
           steps: { type: Type.ARRAY, minItems: '1', items: { type: Type.STRING } },
         },
-        required: ['title', 'description', 'category', 'estimatedTime', 'difficulty', 'ingredients', 'steps'],
-        propertyOrdering: ['title', 'description', 'category', 'estimatedTime', 'difficulty', 'ingredients', 'steps'],
+        required: ['title', 'description', 'category', 'estimatedTime', 'activeTime', 'difficulty', 'ingredients', 'steps'],
+        propertyOrdering: ['title', 'description', 'category', 'estimatedTime', 'activeTime', 'difficulty', 'ingredients', 'steps'],
       },
     },
   },
