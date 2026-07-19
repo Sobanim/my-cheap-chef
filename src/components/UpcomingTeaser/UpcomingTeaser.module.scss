@@ -1,13 +1,14 @@
 .section {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-lg);
+  gap: var(--spacing-md);
 }
 
 .headingRow {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
+  gap: var(--spacing-sm);
 }
 
 .heading {
@@ -18,87 +19,27 @@
   color: var(--color-text-primary);
 }
 
-.card {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-lg);
-  padding: var(--spacing-lg) var(--spacing-xl);
-  border-radius: var(--radius-card);
-  border: 1px dashed var(--color-border-strong);
-  background: var(--color-surface);
-  opacity: 0.65;
-}
-
-.lockRow {
-  display: flex;
-  gap: var(--spacing-sm);
-  flex-shrink: 0;
-}
-
-.lockedItem {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--spacing-sm);
-  width: 72px;
-  height: 72px;
-  border-radius: var(--radius-md);
+.count {
+  font-family: var(--font-display), "Plus Jakarta Sans", system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
   background: var(--color-surface-2);
   border: 1px solid var(--color-border);
-  filter: blur(0.3px);
-}
-
-.lockIcon {
-  color: var(--color-text-muted);
-  display: flex;
-}
-
-.lockBars {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  align-items: center;
-}
-
-.bar,
-.barShort {
-  display: block;
-  height: 4px;
+  padding: 4px 12px;
   border-radius: var(--radius-badge);
-  background: var(--color-border-strong);
 }
 
-.bar {
-  width: 34px;
-}
-
-.barShort {
-  width: 20px;
-}
-
-.text {
-  min-width: 0;
-}
-
-.title {
-  font-family: var(--font-display), "Plus Jakarta Sans", system-ui, sans-serif;
-  font-weight: 700;
-  font-size: 0.98rem;
-  color: var(--color-text-primary);
-  text-wrap: balance;
-}
-
-.subtitle {
-  margin-top: var(--spacing-xs);
-  font-size: 0.85rem;
+.intro {
+  font-size: 0.9rem;
   color: var(--color-text-secondary);
 }
 
-@media (max-width: 480px) {
-  .card {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: var(--spacing-lg);
-  }
+/* Mirrors the RecipeFeed grid so locked and unlocked cards line up. */
+.feed {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+  align-items: stretch;
+  margin-top: var(--spacing-sm);
 }

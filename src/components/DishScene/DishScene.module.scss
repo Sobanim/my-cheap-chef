@@ -1,0 +1,94 @@
+/*
+ * Animated line-art dish illustration, one scene per recipe category.
+ * The vessel outline uses `currentColor` (set by .scene → theme text color),
+ * so it flips automatically between light and dark. Food fills are mid-tones
+ * chosen to stay legible on both the cream and the dark surfaces.
+ */
+
+.scene {
+  color: var(--color-text-primary);
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* === Looping animations === */
+@keyframes steamRise {
+  0% {
+    transform: translateY(2px);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(-9px);
+    opacity: 0;
+  }
+}
+
+@keyframes sway {
+  0%,
+  100% {
+    transform: rotate(-6deg);
+  }
+  50% {
+    transform: rotate(6deg);
+  }
+}
+
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+.steamA {
+  animation: steamRise 2.4s ease-in-out infinite;
+}
+.steamB {
+  animation: steamRise 2.4s ease-in-out infinite 0.5s;
+}
+.steamC {
+  animation: steamRise 2.4s ease-in-out infinite 1s;
+}
+
+.leaf {
+  animation: sway 2.8s ease-in-out infinite;
+  transform-origin: 12px 15px;
+}
+.leaf2 {
+  animation: sway 2.8s ease-in-out infinite 0.5s;
+  transform-origin: 12px 15px;
+}
+
+.bob {
+  animation: bob 2s ease-in-out infinite;
+  transform-origin: center;
+}
+.bobDelayed {
+  animation: bob 2s ease-in-out infinite 0.4s;
+  transform-origin: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .steamA,
+  .steamB,
+  .steamC,
+  .leaf,
+  .leaf2,
+  .bob,
+  .bobDelayed {
+    animation: none;
+  }
+}

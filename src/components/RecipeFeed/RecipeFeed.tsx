@@ -1,43 +1,47 @@
 import styles from "./RecipeFeed.module.scss";
 import { RecipeCard } from "./RecipeCard";
-import type { MenuRecipe } from "@/lib/menuLogic";
+import { pluralizeRecipes } from "@/lib/recipeLabels";
+import type { Recipe } from "@/lib/types/recipe";
 
 type RecipeFeedProps = {
-  recipes: MenuRecipe[];
+  recipes: Recipe[];
+  /** Section heading — differs between the home page and /recipes. */
+  heading?: string;
+  /** Shown instead of the feed when there is nothing to cook today. */
+  emptyText?: string;
 };
 
-export const RecipeFeed = ({ recipes }: Readonly<RecipeFeedProps>) => {
-  if (recipes.length === 0) {
-    return (
-      <section className={styles.section} aria-labelledby="menu-heading">
-        <div className={styles.headingRow}>
-          <h2 id="menu-heading" className={styles.heading}>
-            Dnešné menu
-          </h2>
-        </div>
-        <div className={styles.empty}>
-          <p>Momentálne nie sú dostupné žiadne akciové recepty. Vráť sa čoskoro!</p>
-        </div>
-      </section>
-    );
-  }
+export const RecipeFeed = ({
+  recipes,
+  heading = "Dnešné menu",
+  emptyText = "Momentálne nie sú dostupné žiadne akciové recepty. Vráť sa čoskoro!",
+}: Readonly<RecipeFeedProps>) => {
+  const headingId = "menu-heading";
 
   return (
-    <section className={styles.section} aria-labelledby="menu-heading">
+    <section className={styles.section} aria-labelledby={headingId}>
       <div className={styles.headingRow}>
-        <h2 id="menu-heading" className={styles.heading}>
-          Dnešné menu
+        <h2 id={headingId} className={styles.heading}>
+          {heading}
         </h2>
-        <span className={styles.count}>
-          {recipes.length} {recipes.length === 1 ? "recept" : "recepty"}
-        </span>
+        {recipes.length > 0 && (
+          <span className={styles.count}>
+            {recipes.length} {pluralizeRecipes(recipes.length)}
+          </span>
+        )}
       </div>
 
-      <div className={styles.feed}>
-        {recipes.map((recipe) => (
-          <RecipeCard key={recipe.id} recipe={recipe} />
-        ))}
-      </div>
+      {recipes.length === 0 ? (
+        <div className={styles.empty}>
+          <p>{emptyText}</p>
+        </div>
+      ) : (
+        <div className={styles.feed}>
+          {recipes.map((recipe) => (
+            <RecipeCard key={recipe.id} recipe={recipe} />
+          ))}
+        </div>
+      )}
     </section>
   );
 };

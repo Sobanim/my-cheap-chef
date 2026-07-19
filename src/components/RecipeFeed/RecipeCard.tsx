@@ -1,76 +1,108 @@
-import Image from "next/image";
+import Link from "next/link";
 import styles from "./RecipeCard.module.scss";
-import { DishIcon } from "./DishIcon";
-import type { MenuRecipe } from "@/lib/menuLogic";
+import { DishScene } from "../DishScene/DishScene";
+import { ChefHatIcon, ClockIcon, LockIcon, TagIcon } from "../icons/RecipeIcons";
+import { getBasketUnlockCopy } from "@/lib/recipeAvailability";
+import {
+  CATEGORY_LABELS,
+  DIFFICULTY_LABELS,
+  pluralizeSaleIngredients,
+} from "@/lib/recipeLabels";
+import type { Recipe } from "@/lib/types/recipe";
 
 type RecipeCardProps = {
-  recipe: MenuRecipe;
+  recipe: Recipe;
 };
 
-const CATEGORY_LABELS: Record<MenuRecipe["category"], string> = {
-  soup: "Polievka",
-  pan: "Na panvici",
-  bake: "Zapekané",
-  salad: "Šalát",
-  grill: "Grilované",
-};
+const countSaleIngredients = (recipe: Recipe): number =>
+  recipe.ingredients.filter((ing) => ing.source === "sale").length;
 
+/**
+ * A fully available recipe — the whole card links to its detail page.
+ */
 export const RecipeCard = ({ recipe }: Readonly<RecipeCardProps>) => {
-  const savingsLabel = recipe.savings > 0 ? recipe.savings.toFixed(2) : "1.00";
+  const saleCount = countSaleIngredients(recipe);
 
   return (
-    <article className={styles.card}>
-      <div className={styles.cardHeader}>
-        <div className={styles.categoryTag}>
-          <DishIcon category={recipe.category} className={styles.categoryIcon} />
-          <span>{CATEGORY_LABELS[recipe.category]}</span>
+    <Link href={`/recipe/${recipe.id}`} className={styles.card}>
+      <div className={styles.scene}>
+        <DishScene category={recipe.category} />
+        {recipe.totalSavings > 0 && (
+          <span className={styles.savingsBadge}>
+            Ušetríte {recipe.totalSavings.toFixed(2)} €
+          </span>
+        )}
+      </div>
+
+      <div className={styles.body}>
+        <span className={styles.category}>
+          {CATEGORY_LABELS[recipe.category]}
+        </span>
+        <h3 className={styles.title}>{recipe.title}</h3>
+        <p className={styles.description}>{recipe.description}</p>
+
+        <div className={styles.meta}>
+          <span className={styles.metaItem}>
+            <span className={styles.metaIcon}>
+              <ClockIcon />
+            </span>
+            {recipe.estimatedTime}
+          </span>
+          <span className={styles.metaItem}>
+            <span className={styles.metaIcon}>
+              <ChefHatIcon />
+            </span>
+            {DIFFICULTY_LABELS[recipe.difficulty]}
+          </span>
+          {saleCount > 0 && (
+            <span className={styles.metaItem}>
+              <span className={styles.metaIcon}>
+                <TagIcon />
+              </span>
+              {saleCount} {pluralizeSaleIngredients(saleCount)}
+            </span>
+          )}
         </div>
-        <span className={styles.savingsBadge}>
-          Ušetríte {savingsLabel} €
+      </div>
+    </Link>
+  );
+};
+
+/**
+ * A recipe from a basket that has not started yet. The dish illustration and
+ * category stay visible as a hint, but the title and details are withheld
+ * until the matching Lidl discounts go live.
+ */
+export const LockedRecipeCard = ({ recipe }: Readonly<RecipeCardProps>) => {
+  const { badge, sentence } = getBasketUnlockCopy(recipe.basket);
+
+  return (
+    <article
+      className={`${styles.card} ${styles.cardLocked}`}
+      aria-label={`Zamknutý recept, ${badge.toLowerCase()}`}
+    >
+      <div className={styles.scene}>
+        <DishScene category={recipe.category} />
+        <span className={styles.lockBadge}>
+          <span className={styles.lockIcon}>
+            <LockIcon />
+          </span>
+          {badge}
         </span>
       </div>
 
       <div className={styles.body}>
-        <h3 className={styles.title}>{recipe.title}</h3>
-        <p className={styles.meta}>
-          {recipe.ingredients.length} akciových surovín · {recipe.time}
-        </p>
+        <span className={styles.category}>
+          {CATEGORY_LABELS[recipe.category]}
+        </span>
 
-        <div className={`${styles.carousel} hideScrollbar`}>
-          {recipe.ingredients.map((ing) => {
-            const hasDiscount = ing.oldPrice !== null && ing.oldPrice > ing.price;
-            return (
-              <div key={ing.id} className={styles.ingredient}>
-                <div className={styles.thumbWrapper}>
-                  {ing.imageUrl ? (
-                    <Image
-                      src={ing.imageUrl}
-                      alt={ing.name}
-                      width={120}
-                      height={120}
-                      className={styles.thumb}
-                      loading="lazy"
-                    />
-                  ) : (
-                    <div className={styles.thumbFallback} aria-hidden="true" />
-                  )}
-                  <span className={styles.lidlTag}>Lidl · Akcia</span>
-                </div>
-                <p className={styles.ingredientName} title={ing.name}>
-                  {ing.name}
-                </p>
-                <div className={styles.priceRow}>
-                  <span className={styles.price}>{ing.price.toFixed(2)} €</span>
-                  {hasDiscount && (
-                    <span className={styles.oldPrice}>
-                      {ing.oldPrice!.toFixed(2)} €
-                    </span>
-                  )}
-                </div>
-              </div>
-            );
-          })}
+        {/* Title placeholder — the dish name stays a surprise until unlock. */}
+        <div className={styles.hiddenTitle} aria-hidden="true">
+          <span className={styles.bar} />
+          <span className={styles.barShort} />
         </div>
+
+        <p className={styles.lockedText}>{sentence}</p>
       </div>
     </article>
   );

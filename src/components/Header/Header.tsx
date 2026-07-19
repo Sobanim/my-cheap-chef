@@ -9,7 +9,7 @@ import { usePathname } from "next/navigation";
 const NAV_LINKS = [
   { label: "Domov", href: "/" },
   { label: "Zľavy", href: "/discounts" },
-  { label: "Recepty", href: "#recepty" },
+  { label: "Recepty", href: "/recipes" },
 ] as const;
 
 export const Header = () => {

@@ -1,0 +1,256 @@
+.page {
+  width: 100%;
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+/* === Back link === */
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  font-family: var(--font-display), "Plus Jakarta Sans", system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  transition: color 0.2s ease;
+}
+
+.back:hover {
+  color: var(--color-text-primary);
+}
+
+/* === Hero: scene + title/description/meta === */
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.sceneWrap {
+  flex: 0 0 auto;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--color-border);
+  background: var(--gradient-card-header);
+  padding: var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heroText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.category {
+  font-family: var(--font-display), "Plus Jakarta Sans", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.title {
+  font-family: var(--font-display), "Plus Jakarta Sans", system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 1.6rem;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+  text-wrap: balance;
+}
+
+.description {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--color-text-secondary);
+}
+
+/* === Meta row (3 key facts) === */
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
+}
+
+.metaItem {
+  flex: 1 1 0;
+  min-width: 96px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.metaItemAccent {
+  background: var(--color-accent-soft);
+  border-color: transparent;
+}
+
+.metaIcon {
+  width: 22px;
+  height: 22px;
+  color: var(--color-text-secondary);
+  margin-bottom: 4px;
+}
+
+.metaItemAccent .metaIcon {
+  color: var(--color-accent);
+}
+
+.metaIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.metaValue {
+  font-family: var(--font-display), "Plus Jakarta Sans", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--color-text-primary);
+}
+
+.metaItemAccent .metaValue {
+  color: var(--color-accent);
+}
+
+.metaLabel {
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+}
+
+/* === Sections === */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.sectionTitle {
+  font-family: var(--font-display), "Plus Jakarta Sans", system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: var(--color-text-primary);
+}
+
+/* === Ingredients === */
+.ingredients {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.ingredient {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--color-surface);
+}
+
+.ingredient:not(:last-child) {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.ingredientName {
+  flex: 1 1 auto;
+  font-size: 0.92rem;
+  color: var(--color-text-primary);
+}
+
+.ingredientAmount {
+  flex: 0 0 auto;
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}
+
+.sourceTag {
+  flex: 0 0 auto;
+  min-width: 82px;
+  text-align: center;
+  font-family: var(--font-display), "Plus Jakarta Sans", system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 0.68rem;
+  color: var(--color-text-muted);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  padding: 3px 8px;
+  border-radius: var(--radius-badge);
+}
+
+.sourceSale {
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+  border-color: transparent;
+}
+
+/* === Steps === */
+.steps {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  counter-reset: step;
+}
+
+.step {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: flex-start;
+}
+
+.stepNumber {
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-badge);
+  background: var(--color-accent);
+  color: var(--color-accent-contrast);
+  font-family: var(--font-display), "Plus Jakarta Sans", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.stepText {
+  padding-top: 3px;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--color-text-secondary);
+}
+
+/* === Desktop: scene left, text right === */
+@media (min-width: 768px) {
+  .hero {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .sceneWrap {
+    width: 240px;
+    aspect-ratio: 1 / 1;
+  }
+
+  .title {
+    font-size: 1.9rem;
+  }
+}

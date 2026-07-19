@@ -1,8 +1,14 @@
 import { GreetingCard, RecipeFeed, UpcomingTeaser } from "@/components";
 import { fetchActiveProducts } from "@/lib/services/lidlService";
-import { isProductActive, getDiscountCycle } from "@/lib/dateUtils";
-import { buildGreeting, buildMenu } from "@/lib/menuLogic";
+import { isProductActive } from "@/lib/dateUtils";
+import { buildGreeting } from "@/lib/menuLogic";
+import { loadRecipeData } from "@/lib/recipeData";
+import { splitRecipesByAvailability } from "@/lib/recipeAvailability";
 import type { Product } from "@/lib/types";
+
+// Which recipes are unlocked depends on the weekday, so the page must not be
+// cached indefinitely. Matches the 1h revalidate of the Lidl product fetch.
+export const revalidate = 3600;
 
 export default async function Home() {
   // TODO: opt-out from React Compiler memoization. Revisit why it was needed
@@ -22,19 +28,18 @@ export default async function Home() {
     isProductActive(p.validFrom, p.validUntil, serverTime),
   );
 
-  const recipes = buildMenu(activeProducts, 2);
-  const greeting = buildGreeting(now, activeProducts.length);
+  const { recipes } = await loadRecipeData();
+  const { unlocked, locked } = splitRecipesByAvailability(recipes, now);
 
-  // Next discount drop phrase (single source of truth in dateUtils).
-  const { fromPhrase } = getDiscountCycle(now);
+  const greeting = buildGreeting(now, unlocked.length, locked.length);
 
   return (
       <>
         <GreetingCard greeting={greeting} activeCount={activeProducts.length} />
 
-        <RecipeFeed recipes={recipes} />
+        <RecipeFeed recipes={unlocked} />
 
-        <UpcomingTeaser fromPhrase={fromPhrase} recipeCount={2} />
+        <UpcomingTeaser recipes={locked} />
       </>
   );
 }

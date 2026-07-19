@@ -29,11 +29,16 @@
   border-radius: var(--radius-badge);
 }
 
-/* Mobile: stacked, full width. */
+/*
+ * One column on mobile, filling out to three on desktop. `auto-fit` keeps the
+ * cards full-width when only a couple of baskets are unlocked, instead of
+ * leaving a lone card stranded in a fixed 3-column track.
+ */
 .feed {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: var(--spacing-lg);
+  align-items: stretch;
 }
 
 .empty {
@@ -45,18 +50,3 @@
   border-radius: var(--radius-card);
 }
 
-/* Desktop: center cards side-by-side, prevent empty grid gaps. */
-@media (min-width: 768px) {
-  .feed {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: stretch;
-  }
-
-  .feed > * {
-    flex: 1 1 0;
-    min-width: 320px;
-    max-width: 480px;
-  }
-}
