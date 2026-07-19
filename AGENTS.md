@@ -57,6 +57,5 @@ npm run recipe:generate  # (WIP) Generate recipes via LLM
 - **`src/lib/services/lidlService.ts`** — the live Lidl `fetch` lacks a timeout (`AbortController`), a `User-Agent` header, and retries. Harden it.
 - **`src/app/page.tsx`** — `"use no memo"` opts the page out of React Compiler; revisit and remove if no longer needed.
 - **`scripts/types.ts`** vs **`src/lib/types/lidl.ts`** — duplicated Lidl API types; candidate for consolidation.
-- **`buildMenu`** (`src/lib/menuLogic.ts`) — placeholder keyword-based "recipes"; to be replaced by real AI generation.
 - **`scripts/ingest.ts`** — legacy product ingestion no longer used by rendering.
 

@@ -45,7 +45,7 @@ npm run recipe:generate # (future) generate recipes via AI
 3. **`data/` going forward** stores exactly the **generated recipes** (`recipe.json`), not products. Products are always fetched live from Lidl.
 4. **Paid feature** (future): on-demand generation of additional recipes.
 
-> ⚠️ The current "recipes" on the home page (`buildMenu` in `src/lib/menuLogic.ts`) are a temporary placeholder: real products are distributed across predefined dish templates by keyword matching. Real AI generation will come later.
+> The home page and `/recipes` now render the real AI-generated recipes from `data/recipe.json`. Which ones are visible follows the Lidl discount calendar (`src/lib/recipeAvailability.ts`): Mon–Wed → basket A, Thu–Fri → A+B, Sat–Sun → A+B+C. Recipes from a basket that has not started yet are shown as locked teaser cards, and their detail pages return 404 until unlock.
 
 ## Status
 
