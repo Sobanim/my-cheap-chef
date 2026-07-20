@@ -32,9 +32,33 @@ export const getBasketForProduct = (
   const durationDays = (validUntil - validFrom) / SECONDS_PER_DAY;
   if (durationDays > LONG_PROMO_DAYS) return 'A';
 
-  const startDay = new Date(validFrom * 1000).getDay();
+  const startDay = getDayOfWeekInBratislava(validFrom);
   if (startDay === THURSDAY) return 'B';
   if (startDay === SATURDAY || startDay === SUNDAY) return 'C';
 
   return 'A';
+};
+
+// Lidl's promo dates are anchored to Slovak local time. Deriving the weekday with
+// Date.getDay() would use the host's timezone instead (e.g. UTC on GitHub Actions),
+// which can shift a Thursday/Saturday start into the previous day and misclassify
+// the basket. Intl with an explicit timeZone sidesteps the host timezone entirely.
+const bratislavaWeekdayFormatter = new Intl.DateTimeFormat('en-US', {
+  timeZone: 'Europe/Bratislava',
+  weekday: 'short',
+});
+
+const WEEKDAY_TO_DAY_NUMBER: Record<string, number> = {
+  Sun: SUNDAY,
+  Mon: 1,
+  Tue: 2,
+  Wed: 3,
+  Thu: THURSDAY,
+  Fri: 5,
+  Sat: SATURDAY,
+};
+
+const getDayOfWeekInBratislava = (epochSeconds: number): number => {
+  const weekday = bratislavaWeekdayFormatter.format(new Date(epochSeconds * 1000));
+  return WEEKDAY_TO_DAY_NUMBER[weekday];
 };
