@@ -1,138 +1,16 @@
 {
-  "generatedAt": "2026-07-19T18:14:56.444Z",
+  "generatedAt": "2026-07-20T06:00:43.485Z",
   "recipes": [
     {
       "id": "recipe-a1",
       "basket": "A",
       "basketLabel": "Celý týždeň (od pondelka)",
-      "title": "Kuracie stehenné rezne s pečenými paradajkami",
-      "description": "Šťavnaté kuracie stehná s pečenými koktejlovými paradajkami a pistáciovou krustou.",
+      "title": "Bravčová panenka s kuriatkami a paradajkami",
+      "description": "Jemná bravčová panenka opečená na panvici s kuriatkami a kríčkovými paradajkami.",
       "category": "meat",
       "servings": 2,
-      "estimatedTime": "40 minút",
-      "activeTime": "10 minút",
-      "difficulty": "easy",
-      "ingredients": [
-        {
-          "name": "Kuracie stehenné rezne",
-          "amount": "500 g",
-          "source": "sale",
-          "productId": "10031804",
-          "savings": 1.3
-        },
-        {
-          "name": "Koktejlové paradajky kríčkové",
-          "amount": "250 g",
-          "source": "sale",
-          "productId": "10031829",
-          "savings": 0.65
-        },
-        {
-          "name": "ALESTO Kalifornské pistácie",
-          "amount": "30 g",
-          "source": "sale",
-          "productId": "10031771",
-          "savings": 0.24
-        },
-        {
-          "name": "Soľ",
-          "amount": "1 ČL",
-          "source": "pantry"
-        },
-        {
-          "name": "Čierne korenie",
-          "amount": "0.5 ČL",
-          "source": "pantry"
-        },
-        {
-          "name": "Rastlinný olej",
-          "amount": "2 PL",
-          "source": "pantry"
-        }
-      ],
-      "steps": [
-        "Predhrejeme rúru na 200 °C.",
-        "Kuracie stehenné rezne umyjeme, osušíme a nakrájame na rezne hrubé 2 cm.",
-        "Kuracie stehenné rezne zmiešame s 1 PL rastlinného oleja, 0.5 ČL soli a 0.25 ČL čierneho korenia.",
-        "Koktejlové paradajky kríčkové umyjeme a osušíme.",
-        "Na plech vystlaný papierom na pečenie poukladáme kuracie stehenné rezne a koktejlové paradajky kríčkové.",
-        "Paradajky pokvapkáme 1 PL rastlinného oleja a posypeme 0.5 ČL soli a 0.25 ČL čierneho korenia.",
-        "Všetko spolu pečieme 25 minút na 200 °C.",
-        "ALESTO Kalifornské pistácie nasekáme na kúsky veľké 0.5 cm a po vybratí z rúry nimi posypeme kuracie stehenné rezne a koktejlové paradajky kríčkové."
-      ],
-      "approxCost": 3.4,
-      "totalSavings": 2.19
-    },
-    {
-      "id": "recipe-a2",
-      "basket": "A",
-      "basketLabel": "Celý týždeň (od pondelka)",
-      "title": "Šalát s opekaným Halloumi a sušenými brusnicami",
-      "description": "Svieži šalát kombinujúci slaný opečený syr, sladké brusnice a chrumkavé vlašské orechy.",
-      "category": "salad",
-      "servings": 2,
-      "estimatedTime": "15 minút",
-      "activeTime": "15 minút",
-      "difficulty": "easy",
-      "ingredients": [
-        {
-          "name": "Halloumi",
-          "amount": "225 g",
-          "source": "sale",
-          "productId": "10031471",
-          "savings": 0.6
-        },
-        {
-          "name": "ALESTO Sušené brusnice",
-          "amount": "50 g",
-          "source": "sale",
-          "productId": "10031769",
-          "savings": 0.13
-        },
-        {
-          "name": "Alesto Vlašské orechy",
-          "amount": "50 g",
-          "source": "sale",
-          "productId": "10031826",
-          "savings": 0.5
-        },
-        {
-          "name": "Rastlinný olej",
-          "amount": "1 PL",
-          "source": "pantry"
-        },
-        {
-          "name": "Soľ",
-          "amount": "0.5 ČL",
-          "source": "pantry"
-        },
-        {
-          "name": "Šalátové listy",
-          "amount": "200 g",
-          "source": "buy"
-        }
-      ],
-      "steps": [
-        "Šalátové listy umyjeme, osušíeme a rozdelíme do dvoch tanierov.",
-        "Halloumi nakrájame na plátky hrubé 1 cm.",
-        "Na panvici zohrejeme 1 PL rastlinného oleja a plátky Halloumi opekáme 3 minúty z každej strany na strednom ohni, kým nevznikne hnedá kôrka.",
-        "Na šalátové listy poukladáme teplé plátky Halloumi.",
-        "Alesto Vlašské orechy nasekáme na kúsky veľké 1 cm a spolu s 50 g ALESTO Sušené brusnice posypeme Halloumi.",
-        "Šalát rovnomerne posypeme 0.5 ČL soli."
-      ],
-      "approxCost": 3.26,
-      "totalSavings": 1.23
-    },
-    {
-      "id": "recipe-b1",
-      "basket": "B",
-      "basketLabel": "Od štvrtka",
-      "title": "Bravčová panenka s pečenými cherry paradajkami",
-      "description": "Bravčová panenka opečená na panvici podávaná s pečenými cherry paradajkami a kukuricou.",
-      "category": "meat",
-      "servings": 2,
-      "estimatedTime": "45 minút",
-      "activeTime": "25 minút",
+      "estimatedTime": "35 minút",
+      "activeTime": "35 minút",
       "difficulty": "medium",
       "ingredients": [
         {
@@ -143,23 +21,18 @@
           "savings": 1.36
         },
         {
-          "name": "Cherry paradajky strapcové",
-          "amount": "225 g",
+          "name": "Kuriatká",
+          "amount": "200 g",
           "source": "sale",
-          "productId": "10031809",
+          "productId": "10031844",
           "savings": 0
         },
         {
-          "name": "Lahôdková kukurica",
-          "amount": "1 ks",
+          "name": "Koktejlové paradajky kríčkové",
+          "amount": "250 g",
           "source": "sale",
-          "productId": "10031808",
-          "savings": 0.81
-        },
-        {
-          "name": "Rastlinný olej",
-          "amount": "3 PL",
-          "source": "pantry"
+          "productId": "10031829",
+          "savings": 0.65
         },
         {
           "name": "Soľ",
@@ -170,100 +43,6 @@
           "name": "Čierne korenie",
           "amount": "0.5 ČL",
           "source": "pantry"
-        }
-      ],
-      "steps": [
-        "Predhrejeme rúru na 200 °C.",
-        "Bravčovú panenku nakrájame na medailóniky hrubé 3 cm, osušíme a rovnomerne dochutíme 0.5 ČL soli a 0.25 ČL čierneho korenia.",
-        "Na panvici rozohrejeme 2 PL rastlinného oleja a plátky panenky opečieme 3 minúty z každej strany na vysokom ohni, potom vyberieme z panvice.",
-        "Cherry paradajky strapcové umyjeme a kukuricu nakrájame na kolieska hrubé 2 cm.",
-        "Do pekáča dáme 1 PL rastlinného oleja, cherry paradajky strapcové, kolieska kukurice, zvyšných 0.5 ČL soli a 0.25 ČL čierneho korenia.",
-        "Pekáč vložíme do rúry a pečieme 20 minút pri 200 °C, pričom kukuricu z času na čas otočíme.",
-        "Po 20 minútach pečenia pridáme opečenú bravčovú panenku do pekáča k zelenine na 5 minút, aby sa všetko rovnomerne prehrialo a podávame."
-      ],
-      "approxCost": 3.42,
-      "totalSavings": 2.17
-    },
-    {
-      "id": "recipe-b2",
-      "basket": "B",
-      "basketLabel": "Od štvrtka",
-      "title": "Pološtiepok so zeleninovou oblohou",
-      "description": "Pološtiepok opečený na panvici podávaný s plátkami dyne a vlašskými orechmi.",
-      "category": "baked",
-      "servings": 2,
-      "estimatedTime": "20 minút",
-      "activeTime": "15 minút",
-      "difficulty": "easy",
-      "ingredients": [
-        {
-          "name": "Pološtiepok na grilovanie",
-          "amount": "450 g",
-          "source": "sale",
-          "productId": "10031839",
-          "savings": 1.5
-        },
-        {
-          "name": "Červená dyňa",
-          "amount": "400 g",
-          "source": "sale",
-          "productId": "10031803",
-          "savings": 0.48
-        },
-        {
-          "name": "Alesto Vlašské orechy",
-          "amount": "50 g",
-          "source": "sale",
-          "productId": "10031826",
-          "savings": 0.5
-        },
-        {
-          "name": "Rastlinný olej",
-          "amount": "1 PL",
-          "source": "pantry"
-        }
-      ],
-      "steps": [
-        "Červenú dyňu očistíme od kôry a nakrájame na kocky veľké 2 cm.",
-        "Na panvici rozohrejeme 1 PL rastlinného oleja a pološtiepok na grilovanie opečieme 3 minúty z každej strany na strednom ohni, kým nevznikne zlatá kôrka.",
-        "Pološtiepok na grilovanie vyberieme z panvice.",
-        "Na tanier poukladáme 400 g nakrájanej červenej dyne.",
-        "Navrch položíme upečený pološtiepok na grilovanie.",
-        "Jedlo posypeme 50 g nasekaných Alesto Vlašských orechov a servírujeme."
-      ],
-      "approxCost": 4.22,
-      "totalSavings": 2.48
-    },
-    {
-      "id": "recipe-c1",
-      "basket": "C",
-      "basketLabel": "Víkendový špeciál (od soboty)",
-      "title": "Mleté hovädzie mäso s hubami na panvici",
-      "description": "Šťavnatá zmes hovädzieho mäsa a lesných húb ochutená čiernym korením, podávaná s cestovinami.",
-      "category": "meat",
-      "servings": 2,
-      "estimatedTime": "20 minút",
-      "activeTime": "20 minút",
-      "difficulty": "medium",
-      "ingredients": [
-        {
-          "name": "Mleté hovädzie mäso",
-          "amount": "400 g",
-          "source": "sale",
-          "productId": "10031819",
-          "savings": 2
-        },
-        {
-          "name": "Kuriatka",
-          "amount": "200 g",
-          "source": "sale",
-          "productId": "10031844",
-          "savings": 0
-        },
-        {
-          "name": "Cestoviny",
-          "amount": "250 g",
-          "source": "buy"
         },
         {
           "name": "Rastlinný olej",
@@ -271,8 +50,63 @@
           "source": "pantry"
         },
         {
+          "name": "Maslo",
+          "amount": "30 g",
+          "source": "buy"
+        }
+      ],
+      "steps": [
+        "Očistíme a nakrájame 400 g bravčovej panenky na medailóniky hrubé 3 cm a 250 g koktejlových paradajok kríčkových rozkrojíme na polovice.",
+        "Mäso rovnomerne posypeme 1 ČL soli a 0.5 ČL čierneho korenia.",
+        "Na panvici rozohrejeme 1 PL rastlinného oleja na vysokom ohni a opečieme bravčovú panenku 3 minúty z každej strany, následne mäso vyberieme z panvice.",
+        "Na tú istú panvicu pridáme 1 PL rastlinného oleja a 30 g masla, vložíme 200 g kuriatok a opekáme 5 minút na strednom ohni, kým nie sú mäkké.",
+        "Do panvice k hubám pridáme nakrájané paradajky a opekáme 3 minúty na strednom ohni, kým paradajky nepustia šťavu.",
+        "Do panvice vrátime opečenú bravčovú panenku a všetko spolu miešame 1 minútu na strednom ohni."
+      ],
+      "approxCost": 5.63,
+      "totalSavings": 2.01
+    },
+    {
+      "id": "recipe-a2",
+      "basket": "A",
+      "basketLabel": "Celý týždeň (od pondelka)",
+      "title": "Opekané Halloumi so šalátom a kešu orieškami",
+      "description": "Zlatistý syr Halloumi podávaný s čerstvými datľovými cherry paradajkami a chrumkavými kešu orieškami.",
+      "category": "salad",
+      "servings": 2,
+      "estimatedTime": "20 minút",
+      "activeTime": "20 minút",
+      "difficulty": "easy",
+      "ingredients": [
+        {
+          "name": "Halloumi",
+          "amount": "225 g",
+          "source": "sale",
+          "productId": "10031471",
+          "savings": 0.6
+        },
+        {
+          "name": "Datľové cherry paradajky",
+          "amount": "500 g",
+          "source": "sale",
+          "productId": "10031835",
+          "savings": 1.5
+        },
+        {
+          "name": "ALESTO Kešu oriešky",
+          "amount": "50 g",
+          "source": "sale",
+          "productId": "10031833",
+          "savings": 0.19
+        },
+        {
+          "name": "Rastlinný olej",
+          "amount": "1 PL",
+          "source": "pantry"
+        },
+        {
           "name": "Soľ",
-          "amount": "2 ČL",
+          "amount": "0.5 ČL",
           "source": "pantry"
         },
         {
@@ -282,40 +116,34 @@
         }
       ],
       "steps": [
-        "Vo veľkom hrnci privedieme do varu 2000 ml vody s 1.5 ČL soli, pridáme 250 g cestovín a varíme 10 minút.",
-        "Medzitým očistíme 200 g kuriatok a nakrájame ich na menšie kusy.",
-        "Na panvici rozohrejeme 2 PL rastlinného oleja, pridáme 400 g mletého hovädzieho mäsa a opekáme 5 minút, kým nezhnedne.",
-        "K mäsu pridáme 200 g nakrájaných kuriatok, 0.5 ČL soli a 0.5 ČL čierneho korenia, opekáme ďalších 5 minút.",
-        "Cestoviny scedíme, vmiešame do panvice k mäsovej zmesi a dôkladne premiešame."
+        "Nakrájame 225 g Halloumi na plátky hrubé 1 cm a 500 g datľových cherry paradajok nakrájame na štvrtiny.",
+        "Vo veľkej miske premiešame nakrájané paradajky s 0.5 ČL soli a 0.5 ČL čierneho korenia.",
+        "Na panvici rozohrejeme 1 PL rastlinného oleja na strednom ohni a vložíme plátky syra Halloumi.",
+        "Syr opekáme 2 minúty z každej strany do zlatista.",
+        "Na taniere naservírujeme pripravený šalát z paradajok a navrch položíme teplé plátky syra Halloumi.",
+        "Jedlo posypeme 50 g ALESTO kešu orieškov a ihneď podávame."
       ],
-      "approxCost": 6.98,
-      "totalSavings": 2
+      "approxCost": 4.43,
+      "totalSavings": 2.29
     },
     {
-      "id": "recipe-c2",
-      "basket": "C",
-      "basketLabel": "Víkendový špeciál (od soboty)",
-      "title": "Mozzarella so šalátom z melóna a paradajok",
-      "description": "Svieže vegetariánske jedlo kombinujúce krémovú mozzarellu, šťavnatý melón a čerstvé koktejlové paradajky kríčkové.",
-      "category": "salad",
+      "id": "recipe-b1",
+      "basket": "B",
+      "basketLabel": "Od štvrtka",
+      "title": "Kuracie prsia s paradajkami a kešu orieškami",
+      "description": "Šťavnaté kuracie mäso restované na panvici doplnené o sladké koktejlové paradajky kríčkové a chrumkavé ALESTO kešu oriešky.",
+      "category": "meat",
       "servings": 2,
-      "estimatedTime": "15 minút",
-      "activeTime": "15 minút",
+      "estimatedTime": "25 minút",
+      "activeTime": "25 minút",
       "difficulty": "easy",
       "ingredients": [
         {
-          "name": "Mozzarella",
-          "amount": "250 g",
+          "name": "Kuracie prsné rezne",
+          "amount": "400 g",
           "source": "sale",
-          "productId": "10031822",
-          "savings": 0.5
-        },
-        {
-          "name": "Melón Cantaloupe/Gália",
-          "amount": "300 g",
-          "source": "sale",
-          "productId": "10031818",
-          "savings": 0.54
+          "productId": "10031830",
+          "savings": 0.92
         },
         {
           "name": "Koktejlové paradajky kríčkové",
@@ -325,29 +153,217 @@
           "savings": 0.65
         },
         {
+          "name": "ALESTO Kešu oriešky",
+          "amount": "50 g",
+          "source": "sale",
+          "productId": "10031833",
+          "savings": 0.19
+        },
+        {
+          "name": "Soľ",
+          "amount": "1 ČL",
+          "source": "pantry"
+        },
+        {
+          "name": "Čierne korenie",
+          "amount": "0.5 ČL",
+          "source": "pantry"
+        },
+        {
+          "name": "Rastlinný olej",
+          "amount": "2 PL",
+          "source": "pantry"
+        }
+      ],
+      "steps": [
+        "Opláchneme 400 g kuracích prsných rezňov, osušíme ich a nakrájame na kocky veľké 2 cm.",
+        "Zohrejeme 2 PL rastlinného oleja na panvici na vysokom ohni a pridáme nakrájané kuracie prsné rezne, ktoré posypeme 1 ČL soli a 0.5 ČL čierneho korenia.",
+        "Opekáme 6 minút na vysokom ohni, kým kuracie prsné rezne nie sú z každej strany zlatisté a prepečené.",
+        "Pridáme 250 g koktejlových paradajok kríčkových rozkrojených na polovice.",
+        "Restujeme ďalšie 3 minúty na strednom ohni, kým koktejlové paradajky kríčkové nezmäknú, ale držia tvar.",
+        "Odstavíme panvicu z ohňa a vmiešame 50 g ALESTO kešu orieškov nakrájaných na hrubšie kúsky."
+      ],
+      "approxCost": 3.07,
+      "totalSavings": 1.76
+    },
+    {
+      "id": "recipe-b2",
+      "basket": "B",
+      "basketLabel": "Od štvrtka",
+      "title": "Zapekaný pološtiepok s banánmi a pomarančom",
+      "description": "Netradičná kombinácia teplého pečeného syra so sladkými banánmi a sviežou pomarančovou redukciou.",
+      "category": "baked",
+      "servings": 2,
+      "estimatedTime": "35 minút",
+      "activeTime": "15 minút",
+      "difficulty": "medium",
+      "ingredients": [
+        {
+          "name": "Pološtiepok na grilovanie",
+          "amount": "450 g",
+          "source": "sale",
+          "productId": "10031839",
+          "savings": 1.5
+        },
+        {
+          "name": "Banány",
+          "amount": "300 g",
+          "source": "sale",
+          "productId": "10031834",
+          "savings": 0.15
+        },
+        {
+          "name": "Pomaranče",
+          "amount": "250 g",
+          "source": "sale",
+          "productId": "10030258",
+          "savings": 0
+        },
+        {
           "name": "Rastlinný olej",
           "amount": "1 PL",
+          "source": "pantry"
+        },
+        {
+          "name": "Cukor",
+          "amount": "1 PL",
+          "source": "pantry"
+        },
+        {
+          "name": "Voda",
+          "amount": "100 ml",
+          "source": "pantry"
+        }
+      ],
+      "steps": [
+        "Predhrejeme rúru na 200 °C.",
+        "Pološtiepok na grilovanie nakrájame na 4 hrubšie plátky a poukladáme na plech vystlaný papierom na pečenie potretý 1 PL rastlinného oleja.",
+        "Pečieme 15 minút na 200 °C, kým povrch pološtiepka na grilovanie nezačne chytať zlatistú farbu.",
+        "Počas pečenia olúpeme 300 g banánov, nakrájame ich na kolieska hrubé 1 cm a odšťavíme 250 g pomarančov.",
+        "Na panvici skaramelizujeme 1 PL cukru s 100 ml pomarančovej šťavy a 100 ml vody na strednom ohni počas 5 minút, kým tekutina nezhustne.",
+        "Pridáme 300 g banánov do panvice a krátko prehrejeme 2 minúty na strednom ohni.",
+        "Vyberieme plech s pološtiepkom na grilovanie z rúry a prelejeme ho zmesou banánov a pomarančovej redukcie."
+      ],
+      "approxCost": 4.09,
+      "totalSavings": 1.65
+    },
+    {
+      "id": "recipe-c1",
+      "basket": "C",
+      "basketLabel": "Víkendový špeciál (od soboty)",
+      "title": "Kačacie stehná s paradajkami a kúskami chleba",
+      "description": "Pečené kačacie stehná podávané s koktejlovými paradajkami kríčkovými a opečenými kockami chleba.",
+      "category": "meat",
+      "servings": 2,
+      "estimatedTime": "75 minút",
+      "activeTime": "10 minút",
+      "difficulty": "easy",
+      "ingredients": [
+        {
+          "name": "Kačacie stehná XXL",
+          "amount": "600 g",
+          "source": "sale",
+          "productId": "10031836",
+          "savings": 0
+        },
+        {
+          "name": "Koktejlové paradajky kríčkové",
+          "amount": "250 g",
+          "source": "sale",
+          "productId": "10031829",
+          "savings": 0.65
+        },
+        {
+          "name": "Chlieb",
+          "amount": "200 g",
+          "source": "buy"
+        },
+        {
+          "name": "Soľ",
+          "amount": "1 ČL",
+          "source": "pantry"
+        },
+        {
+          "name": "Čierne korenie",
+          "amount": "0.5 ČL",
+          "source": "pantry"
+        },
+        {
+          "name": "Rastlinný olej",
+          "amount": "2 PL",
+          "source": "pantry"
+        }
+      ],
+      "steps": [
+        "Predhrejeme rúru na 200 °C.",
+        "Kačacie stehná s hmotnosťou 600 g poukladáme na plech, posypeme 1 ČL soli a 0.5 ČL čierneho korenia.",
+        "Stehná pečieme 45 minút pri teplote 200 °C.",
+        "Chlieb nakrájame na kocky s veľkosťou 2 cm a v miske ich premiešame s 2 PL rastlinného oleja.",
+        "Po 45 minútach pridáme na plech ku stehnám 250 g koktejlových paradajok kríčkových a 200 g kociek chleba.",
+        "Pečieme ďalších 15 minút pri teplote 200 °C, kým paradajky nezmäknú, chlieb nie je chrumkavý a koža na stehnách zlatistá."
+      ],
+      "approxCost": 1.2,
+      "totalSavings": 0.65
+    },
+    {
+      "id": "recipe-c2",
+      "basket": "C",
+      "basketLabel": "Víkendový špeciál (od soboty)",
+      "title": "Šalát s Halloumi a kešu orieškami",
+      "description": "Ľahký šalát s opečeným syrom Halloumi, datľovými cherry paradajkami a chrumkavými kešu orieškami.",
+      "category": "salad",
+      "servings": 2,
+      "estimatedTime": "20 minút",
+      "activeTime": "20 minút",
+      "difficulty": "medium",
+      "ingredients": [
+        {
+          "name": "Halloumi",
+          "amount": "225 g",
+          "source": "sale",
+          "productId": "10031471",
+          "savings": 0.6
+        },
+        {
+          "name": "Datľové cherry paradajky",
+          "amount": "250 g",
+          "source": "sale",
+          "productId": "10031835",
+          "savings": 0.75
+        },
+        {
+          "name": "ALESTO Kešu oriešky",
+          "amount": "50 g",
+          "source": "sale",
+          "productId": "10031833",
+          "savings": 0.19
+        },
+        {
+          "name": "Šalátové listy",
+          "amount": "200 g",
+          "source": "buy"
+        },
+        {
+          "name": "Rastlinný olej",
+          "amount": "2 PL",
           "source": "pantry"
         },
         {
           "name": "Soľ",
           "amount": "0.5 ČL",
           "source": "pantry"
-        },
-        {
-          "name": "Čierne korenie",
-          "amount": "0.2 ČL",
-          "source": "pantry"
         }
       ],
       "steps": [
-        "Nakrájame 300 g melóna na kocky veľkosti 2 cm a 250 g koktejlových paradajok kríčkových na polovice.",
-        "Mozzarellu s hmotnosťou 250 g nakrájame na plátky hrubé 1 cm.",
-        "Vo veľkej mise zmiešame 300 g nakrájaného melóna, 250 g nakrájaných paradajok, 1 PL rastlinného oleja, 0.5 ČL soli a 0.2 ČL čierneho korenia.",
-        "Na tanier naservírujeme pripravený šalát a navrch poukladáme 250 g plátkov mozzarelly."
+        "Šalátové listy s hmotnosťou 200 g opláchneme a osušíme.",
+        "Datľové cherry paradajky s hmotnosťou 250 g nakrájame na polovice.",
+        "Syru Halloumi s hmotnosťou 225 g nakrájame na plátky hrubé 1 cm.",
+        "Na panvici zohrejeme 2 PL rastlinného oleja na strednom ohni a plátky Halloumi opečieme 3 minúty z každej strany.",
+        "V miske zmiešame šalátové listy, nakrájané paradajky, 0.5 ČL soli a pridáme opečený syr.",
+        "Na záver posypeme šalát 50 g ALESTO kešu orieškov."
       ],
-      "approxCost": 2.79,
-      "totalSavings": 1.69
+      "approxCost": 3.68,
+      "totalSavings": 1.54
     }
   ]
 }
