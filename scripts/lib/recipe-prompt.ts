@@ -111,15 +111,21 @@ PRAVIDLÁ PRE KROKY (píšeš NÁVOD pre začiatočníka, nie inšpiráciu):
   var súbežne s hlavným jedlom, nikdy nie ako prvý krok s následným čakaním.
 - Súčet množstiev suroviny použitých naprieč krokmi sa musí presne rovnať množstvu v zozname surovín.
 - Jednotky používaj VÝHRADNE: g, ml, ks, PL (polievková lyžica), ČL (čajová lyžička) — v celom recepte rovnako.
+- Teplotu píš vždy v tvare "200 °C", nikdy slovami ("200 stupňov Celzia").
+- Nikdy neuvádzaj množstvo slovom "polovicu"/"zvyšok" bez čísla — vždy konkrétne ("0.5 PL oleja").
+  (Výnimka: "rozkrojíme na polovicu" ako spôsob krájania je v poriadku.)
+- Ak sa v kroku varí v tekutine (cestoviny, ryža), voda MUSÍ byť aj v zozname surovín so source "pantry".
 - Všetky kroky píš v 1. osobe množného čísla ("umyjeme", "opečieme"), nikdy v rozkazovacom spôsobe.
 - Názov, popis aj spôsob prípravy v krokoch (panvica/rúra/gril) sa musia navzájom zhodovať.
 - Sušené ovocie, orechy a iné chrumkavé ozdoby pridávaj AŽ PO tepelnej úprave (inak zhoria a stvrdnú).
 
 PRAVOPIS (dôležité — nepleť si tieto dve miesta):
 - Pole "name" v zozname surovín: veľké začiatočné písmeno ("Soľ", "Rastlinný olej", "Kuracie prsné rezne").
-- Text v krokoch: normálna slovenčina — všeobecné podstatné mená MALÝM písmenom a skloňované
+- Text v krokoch: normálna slovenčina. KAŽDÝ krok je veta — začína VEĽKÝM písmenom a končí bodkou
+  ("Predhrejeme rúru na 200 °C."), nikdy nie malým písmenom.
+  Ale VNÚTRI vety píš všeobecné podstatné mená malým písmenom a skloňuj ich
   ("zmiešame s 2 PL rastlinného oleja, 1 ČL soli a 0.5 ČL čierneho korenia").
-  Veľké písmeno v krokoch patrí IBA značkám a vlastným menám (ALESTO, Halloumi, Karička, Mozzarella).
+  Veľké písmeno vnútri vety patrí IBA značkám a vlastným menám (ALESTO, Halloumi, Karička, Mozzarella).
   NIKDY nepíš v krokoch "1 ČL Soli" ani "2 PL Rastlinného oleja" — pôsobí to ako výpis z databázy.
 
 POCTIVOSŤ NÁZVU A POPISU (rovnaké pravidlo pre "title" AJ "description"):
@@ -128,7 +134,9 @@ POCTIVOSŤ NÁZVU A POPISU (rovnaké pravidlo pre "title" AJ "description"):
   * žiadne „ragú", keď jedlo nemá žiadnu tekutinu/omáčku;
   * žiadna „zálievka"/„dresing", ak recept neobsahuje samostatnú zálievku;
   * žiadne „grilované", ak sa pečie v rúre;
-  * názov suroviny v popise musí sedieť so zoznamom (nie „cherry paradajky", keď sú v zozname „Koktejlové paradajky").
+  * názov suroviny v popise musí sedieť so zoznamom (nie „cherry paradajky", keď sú v zozname „Koktejlové paradajky");
+  * nepridávaj vlastnosti, ktoré v názve produktu nie sú (napr. „biele víno", keď je v zozname len „Suché talianske víno");
+  * nezľahčuj množstvo („kvapkou vína", keď recept používa 100 ml).
 - Nepoužívaj tautológiu (napr. „ragú na hubách s kuriatkami" — kuriatka SÚ huby).
 
 ČAS A NÁROČNOSŤ:
@@ -150,6 +158,11 @@ REALISTICKOSŤ:
 - Zelenina, ktorá pri dlhom pečení vysychá (kukurica, koreňová zelenina, zemiaky), sa NESMIE piecť
   dlho nasucho v otvorenom pekáči. Buď ju zabaľ do alobalu s trochou vody/oleja, alebo ju predvar,
   alebo ju pridaj až na posledných 20 – 30 minút. Každá zložka na plechu musí dostať aj tuk/tekutinu.
+- Cestoviny a ryža NESMÚ ostať suché. Jedlo s cestovinami musí mať niečo, čo ich spojí — omáčku
+  (napr. z paradajok), alebo aspoň tuk a chuťový základ. Samotné scedené cestoviny so soľou
+  a kúskom syra nie sú hotové jedlo. Ak je v jedle príloha, časť tuku nechaj práve na ňu.
+- Syr ako hlavná zložka jedla: max 250 g pre 2 osoby (vyprážaný/grilovaný syr je ťažký a slaný).
+  Väčšie množstvo použi len ak je syr doplnok, nie základ.
 
 FORMÁT ODPOVEDE:
 - Odpovedaj PO SLOVENSKY.

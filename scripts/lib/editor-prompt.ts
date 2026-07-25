@@ -66,14 +66,24 @@ NA ČO SA ZAMERAJ:
   dlhšie opekanie ho vysuší. Oprav prehnané časy.
 
 7. PRAVOPIS V KROKOCH:
-- V texte krokov píš všeobecné podstatné mená malým písmenom a skloňuj ich
+- Každý krok je veta: začína VEĽKÝM písmenom a končí bodkou. Oprav kroky písané malým písmenom.
+- Vnútri vety píš všeobecné podstatné mená malým písmenom a skloňuj ich
   ("2 PL rastlinného oleja", nie "2 PL Rastlinného oleja"). Veľké písmeno nechaj len značkám
   a vlastným menám (ALESTO, Halloumi, Karička). Pole "name" v zozname surovín ostáva s veľkým písmenom.
+- Teplota vždy ako "200 °C", nikdy "200 stupňov Celzia".
 
 8. ŽIADNE NEČÍSELNÉ MNOŽSTVÁ:
-- Odstráň "štipka", "trochou", "za hrsť", "podľa potreby" a nahraď ich číslom s jednotkou —
-  vrátane soli do vody na ryžu/cestoviny. Nezabudni, že takto pridaná soľ sa počíta do celkového
-  množstva soli v zozname surovín.
+- Odstráň "štipka", "trochou", "za hrsť", "podľa potreby", "polovicu oleja", "zvyšok" a nahraď ich
+  číslom s jednotkou — vrátane soli do vody na ryžu/cestoviny. Nezabudni, že takto pridaná soľ
+  sa počíta do celkového množstva soli v zozname surovín.
+  ("rozkrojíme na polovicu" ako spôsob krájania je v poriadku.)
+- Ak sa v kroku varí v tekutine (cestoviny, ryža), voda musí byť aj v zozname surovín ("pantry").
+
+9. SUCHÉ JEDLO:
+- Cestoviny/ryža nesmú ostať suché — jedlo musí mať omáčku alebo aspoň tuk, ktorý ich spojí.
+  Ak scedené cestoviny dostanú len soľ a kúsok syra, doplň jednoduchý základ (napr. tuk z panvice,
+  opečené paradajky) alebo uprav kroky tak, aby jedlo dávalo zmysel.
+- Syr ako hlavná zložka: max 250 g pre 2 osoby. Väčšie množstvo zníž.
 
 ČO NESMIEŠ MENIŤ:
 - Štruktúru JSON, počet receptov (2), jazyk (slovenčina) ani celkový koncept jedál
