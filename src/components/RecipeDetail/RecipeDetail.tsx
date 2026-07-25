@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styles from "./RecipeDetail.module.scss";
-import { DishScene } from "../DishScene/DishScene";
+import { DishScene } from "@/components";
 import { ChefHatIcon, ClockIcon, TagIcon } from "../icons";
 import {
   CATEGORY_LABELS,
