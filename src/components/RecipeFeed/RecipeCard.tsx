@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styles from "./RecipeCard.module.scss";
 import { DishScene } from "../DishScene/DishScene";
-import { ChefHatIcon, ClockIcon, LockIcon, TagIcon } from "../icons/RecipeIcons";
+import { ChefHatIcon, ClockIcon, LockIcon, TagIcon } from "../icons";
 import { getBasketUnlockCopy } from "@/lib/recipeAvailability";
 import {
   CATEGORY_LABELS,

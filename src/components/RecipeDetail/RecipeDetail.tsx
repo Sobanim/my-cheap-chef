@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styles from "./RecipeDetail.module.scss";
 import { DishScene } from "../DishScene/DishScene";
-import { ChefHatIcon, ClockIcon, TagIcon } from "../icons/RecipeIcons";
+import { ChefHatIcon, ClockIcon, TagIcon } from "../icons";
 import {
   CATEGORY_LABELS,
   DIFFICULTY_LABELS,
