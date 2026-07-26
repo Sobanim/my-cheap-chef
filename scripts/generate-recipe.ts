@@ -21,7 +21,8 @@ import fs from 'fs';
 import path from 'path';
 import { fetchActiveProducts } from '@/lib/services/lidlService';
 import { getBasketForProduct, type BasketType } from '@/lib/baskets';
-import { BASE_PANTRY_ITEMS, type Product, type Recipe, type RecipeData, type RecipeIngredient } from '@/lib/types';
+import { BASE_PANTRY_ITEMS, type CookingMethod, type Product, type Recipe, type RecipeData, type RecipeIngredient } from '@/lib/types';
+import { DEFAULT_METHOD_BY_CATEGORY, isValidDishPair } from '@/lib/cookingMethods';
 import { generateJson } from './lib/gemini-client';
 import { buildRecipePrompt } from './lib/recipe-prompt';
 import { buildEditorPrompt } from './lib/editor-prompt';
@@ -104,12 +105,53 @@ const warnAboutUnknownProductIds = (recipe: Recipe, productMap: Map<string, Prod
   }
 };
 
+/**
+ * Keeps the category × method pair inside the matrix the UI can actually draw.
+ * The prompt lists the forbidden pairs, but the model can still ignore it, and a
+ * bad pair must not cost us the whole batch — so we log and fall back rather than throw.
+ */
+const normalizeCookingMethod = (modelRecipe: ModelRecipe): CookingMethod => {
+  if (isValidDishPair(modelRecipe.category, modelRecipe.cookingMethod)) {
+    return modelRecipe.cookingMethod;
+  }
+  const fallback = DEFAULT_METHOD_BY_CATEGORY[modelRecipe.category];
+  console.warn(
+    `   ⚠️  "${modelRecipe.title}" has an impossible pair ${modelRecipe.category}+${modelRecipe.cookingMethod}, falling back to ${fallback}`,
+  );
+  return fallback;
+};
+
+/**
+ * Flags a cookingMethod that the steps contradict — e.g. "oven" with no mention of
+ * a rúra/pekáč. Catches the case the pair matrix can't: a valid pair that is simply
+ * the wrong one for this dish, which is what made the icons wrong in the first place.
+ */
+const warnAboutMethodMismatch = (recipe: Recipe): void => {
+  const steps = recipe.steps.join(' ').toLowerCase();
+  const evidence: Record<CookingMethod, RegExp> = {
+    pan: /panvic/,
+    oven: /rúr|pekáč|plech/,
+    pot: /hrnc|hrniec|varíme|uvaríme|dusíme/,
+    raw: /.^/, // raw has no positive marker — checked by absence below
+  };
+  if (recipe.cookingMethod === 'raw') {
+    if (/panvic|rúr|pekáč|hrnc|hrniec/.test(steps)) {
+      console.warn(`   ⚠️  "${recipe.title}" is marked "raw" but the steps mention cookware`);
+    }
+    return;
+  }
+  if (recipe.cookingMethod && !evidence[recipe.cookingMethod].test(steps)) {
+    console.warn(`   ⚠️  "${recipe.title}" is marked "${recipe.cookingMethod}" but no step mentions it`);
+  }
+};
+
 /** Runs all cheap sanity checks on a generated recipe and logs any issues found. */
 const runSanityChecks = (recipe: Recipe, productMap: Map<string, Product>): void => {
   warnAboutVagueSteps(recipe);
   warnAboutMissingTimings(recipe);
   warnAboutFakePantryItems(recipe);
   warnAboutUnknownProductIds(recipe, productMap);
+  warnAboutMethodMismatch(recipe);
 };
 
 type IngredientMoney = { cost: number; savings: number };
@@ -155,6 +197,7 @@ const buildRecipe = (modelRecipe: ModelRecipe, phase: Phase, index: number, prod
     title: modelRecipe.title,
     description: modelRecipe.description,
     category: modelRecipe.category,
+    cookingMethod: normalizeCookingMethod(modelRecipe),
     servings: SERVINGS,
     estimatedTime: modelRecipe.estimatedTime,
     activeTime: modelRecipe.activeTime,

@@ -8,6 +8,7 @@ export type {
   RecipeData,
   RecipeIngredient,
   RecipeCategory,
+  CookingMethod,
   RecipeDifficulty,
   IngredientSource,
 } from './types/recipe';

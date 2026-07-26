@@ -163,19 +163,33 @@ REALISTICKOSŤ:
   a kúskom syra nie sú hotové jedlo. Ak je v jedle príloha, časť tuku nechaj práve na ňu.
 - Syr ako hlavná zložka jedla: max 250 g pre 2 osoby (vyprážaný/grilovaný syr je ťažký a slaný).
   Väčšie množstvo použi len ak je syr doplnok, nie základ.
+- Vystač si s vybavením, ktoré má naozaj každý: panvica, hrniec, rúra. Recept NESMIE
+  vyžadovať gril ani grilovaciu panvicu — tie doma nemá zďaleka každý. Nevar v mikrovlnke.
 
 FORMÁT ODPOVEDE:
 - Odpovedaj PO SLOVENSKY.
 - Vráť striktne JSON podľa poskytnutej schémy, bez textu navyše.
-- "category" musí byť jedna z: meat, pasta, soup, salad, baked, dessert.
-  Vyber ju podľa PORADIA PRIORITY (prvá pravidlo, ktoré sedí, vyhráva) — nemiešaj hľadiská:
+- "category" hovorí, ČO to za jedlo je — NIKDY nie ako sa pripravuje. Na techniku je
+  samostatné pole "cookingMethod". Musí byť jedna z: meat, pasta, soup, veggie, dessert.
+  Vyber ju podľa PORADIA PRIORITY (prvé pravidlo, ktoré sedí, vyhráva) — nemiešaj hľadiská:
     1. "dessert" — sladké jedlo / dezert;
     2. "soup" — jedlo, ktoré sa je lyžicou a je prevažne tekuté;
-    3. "salad" — studené jedlo servírované ako šalát;
-    4. "pasta" — cestoviny, ryža alebo iná obilnina tvorí základ jedla;
-    5. "meat" — mäso alebo ryba je hlavná zložka (BEZ OHĽADU na to, či sa pečie v rúre alebo na panvici);
-    6. "baked" — až zvyšné zapekané jedlá bez dominantného mäsa (napr. zeleninové/syrové zapekané).
-  Pozor: kuracie prsia zapečené v rúre sú VŽDY "meat", nikdy "baked" — rozhoduje hlavná zložka, nie technika.
+    3. "pasta" — cestoviny, ryža alebo iná obilnina tvorí základ jedla;
+    4. "meat" — mäso alebo ryba je hlavná zložka (BEZ OHĽADU na to, či sa pečie v rúre alebo na panvici);
+    5. "veggie" — zvyšné jedlá, kde hlavnou zložkou je zelenina alebo syr (napr. opekaný
+       halloumi, pečená zelenina) a nedominuje mäso.
+  Pozor: kuracie prsia zapečené v rúre sú VŽDY "meat" — rozhoduje hlavná zložka, nie technika.
+  ŠALÁT NIE JE samostatná kategória: šalát je surová zelenina, čiže "veggie" s "cookingMethod": "raw".
+- "cookingMethod" musí byť jedna z: pan, oven, pot, raw.
+    * "pan" — panvica na sporáku;
+    * "oven" — rúra / pekáč;
+    * "pot" — hrniec: varenie, dusenie pod pokrievkou;
+    * "raw" — jedlo bez tepelnej úpravy.
+  Ak jedlo používa VIAC nádob (cestoviny sa varia a omáčka sa opeká; mäso sa opečie a potom
+  ide do rúry), rozhoduje nádoba, v ktorej jedlo DOSPEJE DO FINÁLNEJ PODOBY.
+  Príklad: bravčová panenka opečená na panvici a potom dopečená v rúre = "oven", nie "pan".
+  Tieto kombinácie sú ZAKÁZANÉ, jedlo takého druhu nevytváraj:
+  meat+raw, pasta+raw, dessert+pot a soup s čímkoľvek okrem "pot".
 - "difficulty" musí byť "easy" alebo "medium".
 - "steps" je pole krokov, kde jeden krok = jeden prvok poľa.`;
 };

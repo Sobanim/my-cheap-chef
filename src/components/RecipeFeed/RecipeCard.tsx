@@ -4,7 +4,7 @@ import { DishScene } from "@/components";
 import { ChefHatIcon, ClockIcon, LockIcon, TagIcon } from "../icons";
 import { getBasketUnlockCopy } from "@/lib/recipeAvailability";
 import {
-  CATEGORY_LABELS,
+  getCategoryLabel,
   DIFFICULTY_LABELS,
   pluralizeSaleIngredients,
 } from "@/lib/recipeLabels";
@@ -26,7 +26,7 @@ export const RecipeCard = ({ recipe }: Readonly<RecipeCardProps>) => {
   return (
     <Link href={`/recipe/${recipe.id}`} className={styles.card}>
       <div className={styles.scene}>
-        <DishScene category={recipe.category} />
+        <DishScene category={recipe.category} cookingMethod={recipe.cookingMethod} />
         {recipe.totalSavings > 0 && (
           <span className={styles.savingsBadge}>
             Ušetríte {recipe.totalSavings.toFixed(2)} €
@@ -36,7 +36,7 @@ export const RecipeCard = ({ recipe }: Readonly<RecipeCardProps>) => {
 
       <div className={styles.body}>
         <span className={styles.category}>
-          {CATEGORY_LABELS[recipe.category]}
+          {getCategoryLabel(recipe.category, recipe.cookingMethod)}
         </span>
         <h3 className={styles.title}>{recipe.title}</h3>
         <p className={styles.description}>{recipe.description}</p>
@@ -82,7 +82,7 @@ export const LockedRecipeCard = ({ recipe }: Readonly<RecipeCardProps>) => {
       aria-label={`Zamknutý recept, ${badge.toLowerCase()}`}
     >
       <div className={styles.scene}>
-        <DishScene category={recipe.category} />
+        <DishScene category={recipe.category} cookingMethod={recipe.cookingMethod} />
         <span className={styles.lockBadge}>
           <span className={styles.lockIcon}>
             <LockIcon />
@@ -93,7 +93,7 @@ export const LockedRecipeCard = ({ recipe }: Readonly<RecipeCardProps>) => {
 
       <div className={styles.body}>
         <span className={styles.category}>
-          {CATEGORY_LABELS[recipe.category]}
+          {getCategoryLabel(recipe.category, recipe.cookingMethod)}
         </span>
 
         {/* Title placeholder — the dish name stays a surprise until unlock. */}

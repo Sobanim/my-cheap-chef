@@ -3,7 +3,7 @@ import styles from "./RecipeDetail.module.scss";
 import { DishScene } from "@/components";
 import { BackArrowIcon, ChefHatIcon, ClockIcon, TagIcon } from "../icons";
 import {
-  CATEGORY_LABELS,
+  getCategoryLabel,
   DIFFICULTY_LABELS,
   SOURCE_LABELS,
 } from "@/lib/recipeLabels";
@@ -26,11 +26,11 @@ export const RecipeDetail = ({ recipe }: Readonly<RecipeDetailProps>) => {
 
       <header className={styles.hero}>
         <div className={styles.sceneWrap}>
-          <DishScene category={recipe.category} />
+          <DishScene category={recipe.category} cookingMethod={recipe.cookingMethod} />
         </div>
 
         <div className={styles.heroText}>
-          <span className={styles.category}>{CATEGORY_LABELS[recipe.category]}</span>
+          <span className={styles.category}>{getCategoryLabel(recipe.category, recipe.cookingMethod)}</span>
           <h1 className={styles.title}>{recipe.title}</h1>
           <p className={styles.description}>{recipe.description}</p>
 
