@@ -98,18 +98,71 @@ Zobrazenie: „Ušetríte ~2.40 €". `approxCost` (orientačná cena jedla) sa 
 
 ## 8. Kategórie jedál a SVG ikony
 
-Fotky jedál negenerujeme (nepredvídateľné, škaredé, drahé). Namiesto toho **fixný enum kategórií podľa TYPU jedla** (nie času konzumácie — „obed" a „večera" sa nedajú vizuálne odlíšiť). Každej kategórii zodpovedá vopred pripravená **animovaná SVG ikona**:
+Fotky jedál negenerujeme (nepredvídateľné, škaredé, drahé). Namiesto toho vopred pripravené **animované SVG scény**.
 
-| `category` | Popis | Ikona |
-|------------|-------|-------|
-| `meat` | mäso / gril | kus mäsa na grile |
-| `pasta` | cestoviny / rizoto / ryža | tanier s vidličkou |
-| `soup` | polievky / guláše | miska s parou |
-| `salad` | šaláty / studené jedlá | miska zeleniny |
-| `baked` | zapekané / z rúry | pekáč |
-| `dessert` | sladké / ovocie | koláč |
+Scéna sa vyberá podľa **dvojice `category` + `cookingMethod`**, nie podľa samotnej kategórie.
 
-Model **musí** vybrať z enumu (vynútené cez `responseSchema` + zod). Fallback pri neznámej hodnote: neutrálna ikona taniera.
+**Prečo dve osi.** Pôvodne bola len `category`, a tá musela naraz odpovedať na dve nesúvisiace otázky: *čo to za jedlo je* a *ako sa pripravuje*. Výsledkom boli zjavne nesprávne ikony — kuracie stehná pečené v rúre sú `meat`, `meat` mapovala na jedinú scénu s panvicou, takže sa jedlo z rúry kreslilo na panvici. Opačný prípad: opekaný syr na panvici spadol pod vtedajšie `baked` a kreslil sa ako pekáč. Rozdelenie osí je jediná oprava, ktorá rieši oba smery naraz.
+
+| `category` (čo to je) | Popis |
+|------------|-------|
+| `meat` | mäso alebo ryba je hlavná zložka |
+| `pasta` | cestoviny / ryža / obilnina ako základ |
+| `soup` | prevažne tekuté jedlo, je sa lyžicou |
+| `veggie` | zvyšok, kde dominuje zelenina alebo syr |
+| `dessert` | sladké jedlo |
+
+| `cookingMethod` (ako sa robí) | Popis |
+|------------|-------|
+| `pan` | panvica na sporáku |
+| `oven` | rúra / pekáč |
+| `pot` | hrniec — varenie, dusenie |
+| `raw` | bez tepelnej úpravy |
+
+**Zrušené hodnoty.** `baked` bola jediná hodnota enumu, ktorá popisovala techniku a nie jedlo — po zavedení `cookingMethod` by vznikla samo-protirečivá dvojica `baked + pan` („zapekané, pripravené na panvici"). `salad` zas bola dvojica `veggie + raw` napísaná ako samostatná kategória: šalát JE surová zelenina (prípadne so syrom). Ponechať obe by znamenalo, že `salad + pan` a `veggie + pan` sú dva názvy pre jeden a ten istý obrázok. Obe hodnoty teraz pokrýva `veggie` s príslušnou metódou.
+
+V UI sa dvojica `veggie + raw` zobrazuje ako „Šalát" — viď `PAIR_LABELS` v [src/lib/recipeLabels.ts](../src/lib/recipeLabels.ts). Je to jediná dvojica, ktorá potrebuje vlastný názov; ostatným stačí názov kategórie.
+
+**Ak jedlo používa viac nádob** (cestoviny sa varia, omáčka opeká; mäso sa opečie a ide do rúry), platí nádoba, v ktorej jedlo **dospeje do finálnej podoby**. Panenka opečená a dopečená v rúre je `oven`.
+
+**Gril ani mikrovlnka nie sú v enume zámerne** — gril nemá doma zďaleka každý a cieľom je čo najširšie publikum; varenie v mikrovlnke nechceme. Prompt priamo zakazuje recepty, ktoré gril vyžadujú.
+
+Obe polia sú vynútené cez `responseSchema` + zod. Zvažovali sme namiesto toho `category` ako polymorfné pole (raz string, raz objekt s technikou) — **zamietnuté**, lebo `responseSchema` u Gemini je podmnožina OpenAPI bez union typov; pole by sa muselo uvoľniť a prišli by sme o štruktúrovaný výstup.
+
+Zoznam zmysluplných dvojíc (14 z 20 — `meat + raw`, `dessert + pot` a spol. nedávajú zmysel) žije v [src/lib/cookingMethods.ts](../src/lib/cookingMethods.ts) a používa ho aj generátor, aj UI. Dvojicu mimo zoznamu generátor zloguje a spadne na predvolenú metódu kategórie; rovnaký fallback kreslí aj UI, takže scéna nikdy nie je prázdna.
+
+Pozor na rozdiel: **`VALID_DISH_KEYS` riadi, aké jedlá sa smú generovať; mapa `SCENES` riadi, čo je nakreslené.** Nemusia sa zhodovať. Platná dvojica bez scény jednoducho spadne na predvolenú — dvojicu nikdy nemaž zo zoznamu len preto, že jej obrázok ešte nie je hotový, inak model prestane taký typ jedla navrhovať.
+
+### 8b. Pravidlá kreslenia scén
+
+Celá matica scén je zachytená v [dish-scene-matrix.svg](dish-scene-matrix.svg) a vložená do [README](../README.md). **Po každej zmene scény ten súbor aktualizuj** — je to jediné miesto, kde je celá sada vidieť naraz, a práve tam sa nezrovnalosti odhalia.
+
+Scény zdieľajúce nádobu stavajú na spoločnom podvozku z [src/components/icons/dishes/parts/](../src/components/icons/dishes/parts): `OvenFrame`, `PotFrame`, `PanFrame`. Nekopíruj nádobu do scény priamo — štyri kópie rúry sa nevyhnutne rozídu.
+
+Toto NIE je tá kompozícia „nádoba + náplň", ktorú sme zamietli. Zamietnutá bola všeobecná kompozícia naprieč VŠETKÝMI nádobami: panvica sa kreslí zhora, rúra spredu, takže jeden normalizovaný tvar jedla nemôže sedieť v oboch. Podvozok zdieľajú len scény s rovnakým pohľadom.
+
+Stĺpec metódy ukazuje nádobu, v ktorej sa **varí**, nie v ktorej sa servíruje. Polievka preto sedí v hrnci, nie v miske — miska bola pôvodná verzia a bola to presne tá istá chyba, kvôli ktorej vznikol celý dvojosový model, len na inom mieste.
+
+Paleta (drž sa jej, nové odtiene nepridávaj bez dôvodu):
+
+| Použitie | Farby |
+|---|---|
+| Obrys náradia | `currentColor` (prepína sa s témou), `strokeWidth` 1.7 |
+| Teplo a para | `#ff6d00`, `#ffd600` |
+| Mäso | `#d85a30`, tmavý zárez `#4a1b0c` |
+| Cestoviny, vývar | `#ef9f27`, `#ba7517` |
+| Zelenina | `#639922`, `#3b6d11`, `#97c459` |
+| Paradajka / bobuľa | `#e24b4a` |
+| Dezert | `#ed93b1`, `#d4537e` |
+
+Animácie ber z existujúcich tried v `DishScene.module.scss` (`steamA/B/C`, `heatA/B/C`, `bob`, `leaf`). Novú `@keyframes` pridávaj len ak žiadna nesedí — a vždy ju dopíš aj do bloku `prefers-reduced-motion`.
+
+Para vs. teplo: `steamRise` sa posúva o -9px a je pre otvorené nádoby. V rúre použi `heatRise` (-2.2px) — vlnky musia ostať ZA sklom. Para stúpajúca z rúry sa číta ako požiar, nie ako pečenie; to je dôvod, prečo tá druhá animácia existuje.
+
+### 8c. Známe slabé miesta matice
+
+- **`pasta:pot` bude takmer vždy prázdna.** Pravidlo finálnej nádoby hovorí, že cestoviny sa síce varia v hrnci, ale dochádzajú s omáčkou na panvici — čiže `pan`. Aby ostali `pot`, muselo by jedlo v hrnci aj skončiť (polievka s rezancami). Scéna existuje, len sa použije zriedka.
+- **`dessert:pan` je najslabšia scéna sady.** Zlatý disk na panvici sa číta ako omeleta rovnako ľahko ako palacinka; „sladké" nesie len bobuľa navrchu. Ak prestane fungovať, zmaž riadok z `SCENES` — dvojica spadne na `dessert:raw`. Zo `VALID_DISH_KEYS` ju NEMAŽ.
 
 ## 9. Kroky prípravy
 

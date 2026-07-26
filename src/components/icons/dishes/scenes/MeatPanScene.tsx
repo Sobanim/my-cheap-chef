@@ -1,33 +1,33 @@
 import styles from "../DishScene.module.scss";
 
-export const BakedScene = () => (
+export const MeatPanScene = () => (
   <>
     <path
       className={styles.steamA}
-      d="M8 4.5c-.8.8-.8 1.6 0 2.4"
+      d="M9 5c-.8.8-.8 1.6 0 2.4"
       stroke="#ff6d00"
       strokeWidth="1.3"
       strokeLinecap="round"
     />
     <path
       className={styles.steamB}
-      d="M12 4c-.8.8-.8 1.6 0 2.4"
+      d="M12.5 4.5c-.8.8-.8 1.6 0 2.4"
       stroke="#ffd600"
       strokeWidth="1.3"
       strokeLinecap="round"
     />
+    <circle cx="10.5" cy="14" r="6.6" stroke="currentColor" strokeWidth="1.7" />
     <path
-      d="M5 18c-.6-4 1.8-8 7-8s7.6 4 7 8Z"
+      d="M17.1 14h5.4"
       stroke="currentColor"
       strokeWidth="1.7"
-      strokeLinejoin="round"
-      fill="#ba7517"
-      fillOpacity="0.35"
+      strokeLinecap="round"
     />
+    <ellipse cx="10.5" cy="14.3" rx="3.4" ry="2.6" fill="#d85a30" />
     <path
-      d="M9 12l1.5 2M12 11.5l1.5 2M15 12l1.5 2"
-      stroke="#854f0b"
-      strokeWidth="1.2"
+      d="M8.7 13.6l3.6 1.4"
+      stroke="#4a1b0c"
+      strokeWidth="0.9"
       strokeLinecap="round"
     />
   </>

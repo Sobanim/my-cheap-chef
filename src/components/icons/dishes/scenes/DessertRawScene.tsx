@@ -1,6 +1,6 @@
 import styles from "../DishScene.module.scss";
 
-export const DessertScene = () => (
+export const DessertRawScene = () => (
   <>
     <circle className={styles.bob} cx="12" cy="5.5" r="1.3" fill="#e24b4a" />
     <path

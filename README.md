@@ -39,6 +39,27 @@ my-cheap-chef/
 | Data | JSON files (MVP), PostgreSQL/SQLite planned |
 | Deployment | Vercel (planned) |
 
+## 🎨 Dish Illustrations
+
+We don't generate dish photos — they're unpredictable, often ugly, and cost money per recipe. Instead every dish gets a hand-drawn animated SVG scene, picked by **two independent axes**:
+
+- `category` — what the dish *is* (`meat`, `pasta`, `soup`, `veggie`, `dessert`)
+- `cookingMethod` — which vessel it's cooked in (`pan`, `oven`, `pot`, `raw`)
+
+<img src="docs/dish-scene-matrix.svg" alt="Every dish scene, laid out by category and cooking method" width="680">
+
+Empty cells are combinations that aren't real food (raw pasta, soup in a frying pan), and the generator is told not to produce them.
+
+**Why two axes and not one.** `category` used to be the only field, which forced it to answer both questions at once. The result was visibly wrong icons: oven-roasted chicken is `meat`, `meat` mapped to a single frying-pan scene, so a roast was drawn in a pan. The reverse happened too — pan-fried cheese fell under the old `baked` value and was drawn as a roasting dish. Splitting the axes fixes both directions at once.
+
+Two category values were retired into `veggie`: `baked`, which named a technique rather than a dish, and `salad`, which was simply `veggie` + `raw`.
+
+**When a dish uses several vessels** (pasta boiled while the sauce fries, meat seared then roasted), the method is the vessel where the dish reaches its *final* state — seared-then-roasted pork is `oven`, not `pan`.
+
+**No grill and no microwave**, deliberately: a grill isn't in every kitchen and we're aiming at the widest possible audience. The prompt forbids recipes that require one.
+
+The valid pairs live in [`src/lib/cookingMethods.ts`](src/lib/cookingMethods.ts) and are shared by the generator and the UI. Scenes are in [`src/components/icons/dishes/scenes/`](src/components/icons/dishes/scenes), built on shared `OvenFrame` / `PotFrame` / `PanFrame` chassis so the same cookware can't drift between scenes. See [docs/RECIPE_GENERATION.md](docs/RECIPE_GENERATION.md) for the full reasoning.
+
 ## 🚀 Getting Started
 
 ### Prerequisites

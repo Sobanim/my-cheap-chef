@@ -50,7 +50,8 @@
         "K mäsu pridáme 250 g koktejlových paradajok kríčkových a opekáme ďalšie 4 minúty, kým paradajky nezmäknú."
       ],
       "approxCost": 2.52,
-      "totalSavings": 1.57
+      "totalSavings": 1.57,
+      "cookingMethod": "pan"
     },
     {
       "id": "recipe-a2",
@@ -108,7 +109,8 @@
         "Tesne pred podávaním vmiešame 50 g ALESTO kešu orieškov."
       ],
       "approxCost": 2.94,
-      "totalSavings": 0.79
+      "totalSavings": 0.79,
+      "cookingMethod": "pan"
     },
     {
       "id": "recipe-b1",
@@ -168,7 +170,8 @@
         "Pekáč vložíme do rúry a pečieme 10 minút pri 200 °C, aby paradajky zmäkli, ale mäso ostalo šťavnaté."
       ],
       "approxCost": 4.02,
-      "totalSavings": 3.03
+      "totalSavings": 3.03,
+      "cookingMethod": "oven"
     },
     {
       "id": "recipe-b2",
@@ -176,7 +179,7 @@
       "basketLabel": "Od štvrtka",
       "title": "Pripravovaný pološtiepok na panvici s banánmi",
       "description": "Netradičná kombinácia opekaného pološtiepka a sladkého šalátu z banánov a kešu orieškov.",
-      "category": "baked",
+      "category": "veggie",
       "servings": 2,
       "estimatedTime": "15 minút",
       "activeTime": "15 minút",
@@ -221,7 +224,8 @@
         "Opečený syr podávame na tanieri, navrch poukladáme skaramelizované banány a posypeme 50 g nasekaných ALESTO kešu orieškov."
       ],
       "approxCost": 4.36,
-      "totalSavings": 1.84
+      "totalSavings": 1.84,
+      "cookingMethod": "pan"
     },
     {
       "id": "recipe-c1",
@@ -279,7 +283,8 @@
         "po 50 minútach celkového pečenia pridáme očistené kuriatka a pečieme posledných 10 minút, kým nie je všetko hotové."
       ],
       "approxCost": 4.62,
-      "totalSavings": 0.82
+      "totalSavings": 0.82,
+      "cookingMethod": "oven"
     },
     {
       "id": "recipe-c2",
@@ -332,7 +337,8 @@
         "servírujeme posypané 100 g nasekaných ALESTO kešu orieškov."
       ],
       "approxCost": 2.59,
-      "totalSavings": 1.88
+      "totalSavings": 1.88,
+      "cookingMethod": "pan"
     }
   ]
 }
