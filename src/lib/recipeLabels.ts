@@ -59,9 +59,25 @@ export const pluralizeRecipes = (count: number): string => {
   return 'receptov';
 };
 
-/** Slovak plural for "akciová surovina" (a discounted ingredient). */
-export const pluralizeSaleIngredients = (count: number): string => {
-  if (count === 1) return 'akciová surovina';
-  if (count >= 2 && count <= 4) return 'akciové suroviny';
-  return 'akciových surovín';
+/** Slovak plural for "porcia", in the accusative case that follows "za". */
+export const formatServings = (count: number): string => {
+  if (count === 1) return 'za 1 porciu';
+  if (count >= 2 && count <= 4) return `za ${count} porcie`;
+  return `za ${count} porcií`;
 };
+
+/**
+ * The chip that answers "do I have to shop beyond the discounts?" before the
+ * user opens the recipe — the strongest signal we have, so it sits on the card.
+ */
+export const getBuyChipLabel = (buyCount: number): string =>
+  buyCount === 0 ? 'Bez dokupovania' : `+${buyCount} na dokúpenie`;
+
+/**
+ * Note under the ingredient list. States the scope of the prices in the one place
+ * where the list it refers to is visible; the card carries the chip instead.
+ */
+export const getShoppingNote = (buyLabels: string[]): string =>
+  buyLabels.length === 0
+    ? 'Netreba nič dokupovať — okrem špajze je všetko v akcii.'
+    : `Ceny platia pre akciové suroviny. Navyše dokúp: ${buyLabels.join(', ')}.`;

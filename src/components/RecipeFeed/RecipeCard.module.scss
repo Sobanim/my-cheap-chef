@@ -96,7 +96,7 @@ a.card:hover {
   overflow: hidden;
 }
 
-/* === Meta row: time · difficulty · sale ingredients === */
+/* === Meta row: time · difficulty === */
 .meta {
   display: flex;
   flex-wrap: wrap;
@@ -125,6 +125,65 @@ a.card:hover {
   display: block;
   width: 100%;
   height: 100%;
+}
+
+/* === Price row: what it costs · whether anything must be bought === */
+.priceRow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--color-border);
+}
+
+.price {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 8px;
+}
+
+.priceNow {
+  font-family: var(--font-display), "Plus Jakarta Sans", system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 1.1rem;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+}
+
+.priceWas {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+}
+
+/* Own line under the numbers, whether or not the old price is shown. */
+.priceServings {
+  flex-basis: 100%;
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+}
+
+.buyChip {
+  flex: 0 0 auto;
+  font-family: var(--font-display), "Plus Jakarta Sans", system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  padding: 4px 9px;
+  border-radius: var(--radius-badge);
+  white-space: nowrap;
+}
+
+/* Nothing to buy beyond the pantry — the card's strongest selling point. */
+.buyChipClear {
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+  border-color: transparent;
 }
 
 /* === Locked teaser variant === */

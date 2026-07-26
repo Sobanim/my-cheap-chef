@@ -1,36 +1,34 @@
 import Link from "next/link";
 import styles from "./RecipeCard.module.scss";
 import { DishScene } from "@/components";
-import { ChefHatIcon, ClockIcon, LockIcon, TagIcon } from "../icons";
+import { ChefHatIcon, ClockIcon, LockIcon } from "../icons";
 import { getBasketUnlockCopy } from "@/lib/recipeAvailability";
 import {
   getCategoryLabel,
   DIFFICULTY_LABELS,
-  pluralizeSaleIngredients,
+  formatServings,
+  getBuyChipLabel,
 } from "@/lib/recipeLabels";
+import { getRecipeMoney } from "@/lib/recipeMoney";
 import type { Recipe } from "@/lib/types/recipe";
 
 type RecipeCardProps = {
   recipe: Recipe;
 };
 
-const countSaleIngredients = (recipe: Recipe): number =>
-  recipe.ingredients.filter((ing) => ing.source === "sale").length;
-
 /**
  * A fully available recipe — the whole card links to its detail page.
  */
 export const RecipeCard = ({ recipe }: Readonly<RecipeCardProps>) => {
-  const saleCount = countSaleIngredients(recipe);
+  const money = getRecipeMoney(recipe);
 
   return (
     <Link href={`/recipe/${recipe.id}`} className={styles.card}>
       <div className={styles.scene}>
         <DishScene category={recipe.category} cookingMethod={recipe.cookingMethod} />
-        {recipe.totalSavings > 0 && (
-          <span className={styles.savingsBadge}>
-            Ušetríte {recipe.totalSavings.toFixed(2)} €
-          </span>
+        {/* Percent, not euros: it's the only figure comparable between cards at a glance. */}
+        {money.showComparison && (
+          <span className={styles.savingsBadge}>−{money.percent} %</span>
         )}
       </div>
 
@@ -54,14 +52,24 @@ export const RecipeCard = ({ recipe }: Readonly<RecipeCardProps>) => {
             </span>
             {DIFFICULTY_LABELS[recipe.difficulty]}
           </span>
-          {saleCount > 0 && (
-            <span className={styles.metaItem}>
-              <span className={styles.metaIcon}>
-                <TagIcon />
-              </span>
-              {saleCount} {pluralizeSaleIngredients(saleCount)}
-            </span>
-          )}
+        </div>
+
+        <div className={styles.priceRow}>
+          <span className={styles.price}>
+            <span className={styles.priceNow}>{money.cost.toFixed(2)} €</span>
+            {money.showComparison && (
+              <span className={styles.priceWas}>{money.regularCost.toFixed(2)} €</span>
+            )}
+            {/* The total is meaningless without saying who it feeds. */}
+            <span className={styles.priceServings}>{formatServings(recipe.servings)}</span>
+          </span>
+          <span
+            className={`${styles.buyChip} ${
+              money.buyCount === 0 ? styles.buyChipClear : ""
+            }`}
+          >
+            {getBuyChipLabel(money.buyCount)}
+          </span>
         </div>
       </div>
     </Link>

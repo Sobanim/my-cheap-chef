@@ -1,12 +1,15 @@
 import Link from "next/link";
 import styles from "./RecipeDetail.module.scss";
 import { DishScene } from "@/components";
-import { BackArrowIcon, ChefHatIcon, ClockIcon, TagIcon } from "../icons";
+import { BackArrowIcon, ChefHatIcon, ClockIcon } from "../icons";
 import {
   getCategoryLabel,
   DIFFICULTY_LABELS,
   SOURCE_LABELS,
+  formatServings,
+  getShoppingNote,
 } from "@/lib/recipeLabels";
+import { getBuyIngredientLabels, getRecipeMoney } from "@/lib/recipeMoney";
 import type { Recipe } from "@/lib/types/recipe";
 
 type RecipeDetailProps = {
@@ -14,8 +17,8 @@ type RecipeDetailProps = {
 };
 
 export const RecipeDetail = ({ recipe }: Readonly<RecipeDetailProps>) => {
-  const savingsLabel =
-    recipe.totalSavings > 0 ? `${recipe.totalSavings.toFixed(2)} €` : "—";
+  const money = getRecipeMoney(recipe);
+  const shoppingNote = getShoppingNote(getBuyIngredientLabels(recipe));
 
   return (
     <article className={styles.page}>
@@ -51,13 +54,25 @@ export const RecipeDetail = ({ recipe }: Readonly<RecipeDetailProps>) => {
               </span>
               <span className={styles.metaLabel}>Náročnosť</span>
             </div>
-            <div className={`${styles.metaItem} ${styles.metaItemAccent}`}>
-              <span className={styles.metaIcon}>
-                <TagIcon />
-              </span>
-              <span className={styles.metaValue}>{savingsLabel}</span>
-              <span className={styles.metaLabel}>Úspora</span>
-            </div>
+          </div>
+
+          {/* Scoped to the sale ingredients on purpose — `buy` items stay unpriced. */}
+          <div className={styles.priceBlock}>
+            <span className={styles.priceLabel}>Cena akciových surovín</span>
+            <span className={styles.priceValues}>
+              <span className={styles.priceNow}>{money.cost.toFixed(2)} €</span>
+              {money.showComparison && (
+                <>
+                  <span className={styles.priceWas}>
+                    {money.regularCost.toFixed(2)} €
+                  </span>
+                  <span className={styles.pricePercent}>−{money.percent} %</span>
+                </>
+              )}
+            </span>
+            <span className={styles.priceServings}>
+              {formatServings(recipe.servings)}
+            </span>
           </div>
         </div>
       </header>
@@ -79,6 +94,7 @@ export const RecipeDetail = ({ recipe }: Readonly<RecipeDetailProps>) => {
             </li>
           ))}
         </ul>
+        <p className={styles.shoppingNote}>{shoppingNote}</p>
       </section>
 
       <section className={styles.section}>
