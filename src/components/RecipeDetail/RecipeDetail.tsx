@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styles from "./RecipeDetail.module.scss";
 import { DishScene } from "@/components";
-import { ChefHatIcon, ClockIcon, TagIcon } from "../icons";
+import { BackArrowIcon, ChefHatIcon, ClockIcon, TagIcon } from "../icons";
 import {
   CATEGORY_LABELS,
   DIFFICULTY_LABELS,
@@ -20,15 +20,7 @@ export const RecipeDetail = ({ recipe }: Readonly<RecipeDetailProps>) => {
   return (
     <article className={styles.page}>
       <Link href="/recipes" className={styles.back}>
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="18" height="18">
-          <path
-            d="M14 6l-6 6 6 6"
-            stroke="currentColor"
-            strokeWidth="1.8"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+        <BackArrowIcon />
         Späť na recepty
       </Link>
 

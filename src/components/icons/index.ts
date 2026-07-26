@@ -1,3 +1,4 @@
+export { BackArrowIcon } from "./BackArrowIcon";
 export { ClockIcon } from "./ClockIcon";
 export { ChefHatIcon } from "./ChefHatIcon";
 export { TagIcon } from "./TagIcon";
