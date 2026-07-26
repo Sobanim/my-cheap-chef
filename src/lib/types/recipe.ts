@@ -1,7 +1,30 @@
 import type { BasketType } from '@/lib/baskets';
 
-/** Dish category — drives the pre-made animated SVG icon shown for a recipe. */
-export type RecipeCategory = 'meat' | 'pasta' | 'soup' | 'salad' | 'baked' | 'dessert';
+/**
+ * What the dish *is*, by its dominant component. Deliberately says nothing about
+ * how it's cooked — that's `CookingMethod`. Together the two pick the SVG scene.
+ *
+ * Two values were retired once the axes were split:
+ *  - `baked` described a technique, not a dish — the very confusion that made the
+ *    icons wrong. Its dishes are now `veggie` plus the matching method.
+ *  - `salad` was `veggie` + `raw` spelled as its own category: a salad is raw
+ *    vegetables (sometimes with cheese), which is exactly what that pair means.
+ *    Keeping both made `salad:pan` and `veggie:pan` two names for one picture.
+ */
+export type RecipeCategory = 'meat' | 'pasta' | 'soup' | 'veggie' | 'dessert';
+
+/**
+ * Which vessel the dish is cooked in. Split out of `RecipeCategory` because the
+ * two were conflated: a roast chicken is `meat` yet was drawn in a frying pan.
+ *
+ * When a dish uses more than one vessel (pasta boiled, sauce fried; meat seared
+ * then roasted), the method is the vessel where the dish reaches its *final*
+ * state — seared-then-roasted pork is `oven`, not `pan`.
+ *
+ * No `grill` or `microwave` on purpose: a grill isn't in every kitchen, and we
+ * don't want recipes that cook in a microwave.
+ */
+export type CookingMethod = 'pan' | 'oven' | 'pot' | 'raw';
 
 /** How demanding a recipe is to cook. */
 export type RecipeDifficulty = 'easy' | 'medium';
@@ -30,6 +53,12 @@ export type Recipe = {
   title: string;
   description: string;
   category: RecipeCategory;
+  /**
+   * Optional only for backward compatibility: recipes generated before this field
+   * existed don't have it, and we don't rewrite `data/recipe.json`. Rendering falls
+   * back to the category's default method. The generator's schema requires it.
+   */
+  cookingMethod?: CookingMethod;
   servings: number;
   /** Total time from start to serving, including oven preheating */
   estimatedTime: string;

@@ -14,7 +14,8 @@
 import { Type, type Schema } from '@google/genai';
 import { z } from 'zod';
 
-export const RECIPE_CATEGORIES = ['meat', 'pasta', 'soup', 'salad', 'baked', 'dessert'] as const;
+export const RECIPE_CATEGORIES = ['meat', 'pasta', 'soup', 'veggie', 'dessert'] as const;
+export const COOKING_METHODS = ['pan', 'oven', 'pot', 'raw'] as const;
 export const RECIPE_DIFFICULTIES = ['easy', 'medium'] as const;
 export const INGREDIENT_SOURCES = ['sale', 'pantry', 'buy'] as const;
 
@@ -37,6 +38,8 @@ const modelRecipeSchema = z.object({
   title: z.string().min(1),
   description: z.string().min(1),
   category: z.enum(RECIPE_CATEGORIES),
+  /** Required here even though it's optional on `Recipe` — new output must carry it. */
+  cookingMethod: z.enum(COOKING_METHODS),
   estimatedTime: z.string().min(1),
   activeTime: z.string().min(1),
   difficulty: z.enum(RECIPE_DIFFICULTIES),
@@ -66,6 +69,7 @@ export const geminiRecipeResponseSchema: Schema = {
           title: { type: Type.STRING },
           description: { type: Type.STRING },
           category: { type: Type.STRING, enum: [...RECIPE_CATEGORIES] },
+          cookingMethod: { type: Type.STRING, enum: [...COOKING_METHODS] },
           estimatedTime: { type: Type.STRING },
           activeTime: { type: Type.STRING },
           difficulty: { type: Type.STRING, enum: [...RECIPE_DIFFICULTIES] },
@@ -87,8 +91,8 @@ export const geminiRecipeResponseSchema: Schema = {
           },
           steps: { type: Type.ARRAY, minItems: '1', items: { type: Type.STRING } },
         },
-        required: ['title', 'description', 'category', 'estimatedTime', 'activeTime', 'difficulty', 'ingredients', 'steps'],
-        propertyOrdering: ['title', 'description', 'category', 'estimatedTime', 'activeTime', 'difficulty', 'ingredients', 'steps'],
+        required: ['title', 'description', 'category', 'cookingMethod', 'estimatedTime', 'activeTime', 'difficulty', 'ingredients', 'steps'],
+        propertyOrdering: ['title', 'description', 'category', 'cookingMethod', 'estimatedTime', 'activeTime', 'difficulty', 'ingredients', 'steps'],
       },
     },
   },

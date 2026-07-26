@@ -85,6 +85,13 @@ NA ČO SA ZAMERAJ:
   opečené paradajky) alebo uprav kroky tak, aby jedlo dávalo zmysel.
 - Syr ako hlavná zložka: max 250 g pre 2 osoby. Väčšie množstvo zníž.
 
+10. SÚLAD "cookingMethod" S KROKMI:
+- "cookingMethod" musí zodpovedať nádobe, v ktorej jedlo DOSPEJE DO FINÁLNEJ PODOBY:
+  "pan" = panvica, "oven" = rúra/pekáč, "pot" = hrniec, "raw" = bez tepelnej úpravy.
+  Mäso opečené na panvici a dopečené v rúre je "oven", nie "pan".
+- Ak si upravil kroky tak, že sa nádoba zmenila, oprav aj toto pole. Ak sedí, nechaj ho tak.
+- Toto pole riadi ilustráciu jedla v appke, takže nesúlad je viditeľná chyba.
+
 ČO NESMIEŠ MENIŤ:
 - Štruktúru JSON, počet receptov (2), jazyk (slovenčina) ani celkový koncept jedál
   (nemeň jedlo na iné jedlo — len opravuj chyby).

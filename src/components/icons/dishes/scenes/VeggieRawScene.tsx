@@ -1,6 +1,6 @@
 import styles from "../DishScene.module.scss";
 
-export const SaladScene = () => (
+export const VeggieRawScene = () => (
   <>
     <path
       className={styles.leaf}

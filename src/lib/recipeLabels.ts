@@ -1,4 +1,5 @@
 import type {
+  CookingMethod,
   IngredientSource,
   RecipeCategory,
   RecipeDifficulty,
@@ -9,9 +10,35 @@ export const CATEGORY_LABELS: Record<RecipeCategory, string> = {
   meat: 'Mäso',
   pasta: 'Cestoviny',
   soup: 'Polievka',
-  salad: 'Šalát',
-  baked: 'Pečené',
+  veggie: 'Zelenina',
   dessert: 'Dezert',
+};
+
+/** Slovak display names for the cooking methods. Not shown in the UI yet. */
+export const METHOD_LABELS: Record<CookingMethod, string> = {
+  pan: 'Na panvici',
+  oven: 'V rúre',
+  pot: 'V hrnci',
+  raw: 'Bez varenia',
+};
+
+/**
+ * Overrides for pairs whose category name alone would read wrong to a cook.
+ * Only `veggie:raw` needs one: raw vegetables are a salad, and that used to be
+ * its own category, so without this the feed would lose the word "Šalát".
+ */
+const PAIR_LABELS: Partial<Record<string, string>> = {
+  'veggie:raw': 'Šalát',
+};
+
+/**
+ * Display label for a recipe. Falls back to the category name when the recipe
+ * has no method — recipes generated before `cookingMethod` existed.
+ */
+export const getCategoryLabel = (category: RecipeCategory, method?: CookingMethod): string => {
+  const base = CATEGORY_LABELS[category] ?? CATEGORY_LABELS.veggie;
+  if (!method) return base;
+  return PAIR_LABELS[`${category}:${method}`] ?? base;
 };
 
 export const DIFFICULTY_LABELS: Record<RecipeDifficulty, string> = {
