@@ -1,5 +1,5 @@
 # 🍳 My Cheap Chef — Cook from Discounts
- 
+ ff
 > **Status: 🚧 Work in Progress (MVP)**
 
 An AI-powered app that suggests recipes based on products currently on sale in supermarkets (Lidl, Kaufland — Slovakia). Save money and never wonder "What should I cook?" again.
