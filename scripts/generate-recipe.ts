@@ -23,6 +23,7 @@ import { fetchActiveProducts } from '@/lib/services/lidlService';
 import { getBasketForProduct, type BasketType } from '@/lib/baskets';
 import { BASE_PANTRY_ITEMS, type CookingMethod, type Product, type Recipe, type RecipeData, type RecipeIngredient } from '@/lib/types';
 import { DEFAULT_METHOD_BY_CATEGORY, isValidDishPair } from '@/lib/cookingMethods';
+import { getRecipeMoney, SAVINGS_MIN_PERCENT } from '@/lib/recipeMoney';
 import { generateJson } from './lib/gemini-client';
 import { buildRecipePrompt } from './lib/recipe-prompt';
 import { buildEditorPrompt } from './lib/editor-prompt';
@@ -145,6 +146,29 @@ const warnAboutMethodMismatch = (recipe: Recipe): void => {
   }
 };
 
+/**
+ * Flags recipes that ask the cook to shop beyond the promo. The prompt allows at
+ * most one `buy` item; more than that means the dish isn't really built on the
+ * discounts, which is the whole premise.
+ */
+const warnAboutBuyItems = (recipe: Recipe): void => {
+  const buys = recipe.ingredients.filter((ingredient) => ingredient.source === 'buy');
+  if (buys.length > 1) {
+    console.warn(`   ⚠️  "${recipe.title}" needs ${buys.length} extra purchases (max 1): ${buys.map((i) => i.name).join(', ')}`);
+  }
+};
+
+/**
+ * Flags a discount too small for the UI to show a price comparison — the recipe
+ * still ships, but a whole batch of these means the week's promos were weak.
+ */
+const warnAboutWeakSavings = (recipe: Recipe): void => {
+  const { percent, showComparison } = getRecipeMoney(recipe);
+  if (!showComparison) {
+    console.warn(`   ⚠️  "${recipe.title}" saves only ${percent} % (below ${SAVINGS_MIN_PERCENT} %) — the card will hide the price comparison`);
+  }
+};
+
 /** Runs all cheap sanity checks on a generated recipe and logs any issues found. */
 const runSanityChecks = (recipe: Recipe, productMap: Map<string, Product>): void => {
   warnAboutVagueSteps(recipe);
@@ -152,6 +176,8 @@ const runSanityChecks = (recipe: Recipe, productMap: Map<string, Product>): void
   warnAboutFakePantryItems(recipe);
   warnAboutUnknownProductIds(recipe, productMap);
   warnAboutMethodMismatch(recipe);
+  warnAboutBuyItems(recipe);
+  warnAboutWeakSavings(recipe);
 };
 
 type IngredientMoney = { cost: number; savings: number };

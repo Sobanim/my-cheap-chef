@@ -80,6 +80,10 @@ ${previousBlock}
 - Jedlá musia byť postavené HLAVNE na akciových produktoch vyššie.
 - Kvôli pestrosti UPREDNOSTNI nové akcie v tejto fáze; staršie akcie môžeš použiť ako doplnok.
 - Varíme pre 2 osoby. Rešpektuj veľkosti balení (napr. neber 50 g z balenia 400 g).
+- PRIORITA pri výbere je presne v tomto poradí: (1) jedlo dáva kulinársky zmysel, je reálne
+  uvariteľné a chutné, (2) suroviny sú z akcie, (3) až potom veľkosť zľavy. NIKDY neobetuj
+  kvalitu jedla kvôli väčšej úspore — nesúrodé jedlo z hlboko zľavnených surovín je horší
+  výsledok ako dobré jedlo z menšej zľavy. Ak máš dve rovnako dobré možnosti, vezmi tú s väčšou zľavou.
 
 PRAVIDLÁ PRE SUROVINY:
 - Každá surovina má "source": "sale" (z akcie vyššie), "pantry" (domáca špajza) alebo "buy" (treba dokúpiť, nie je v akcii).
@@ -93,6 +97,20 @@ PRAVIDLÁ PRE SUROVINY:
 - Ako "pantry" smieš označiť VÝHRADNE suroviny z tohto zoznamu: ${pantry}.
   Čokoľvek iné (cibuľa, cesnak, múka, koreniny, cestoviny, ryža, smotana...) je "buy" — aj keď to
   považuješ za bežnú surovinu. Zákazník musí vidieť, čo si má kúpiť.
+
+ČO SMIE BYŤ "buy" (toto je najstriktnejšie pravidlo zoznamu surovín):
+- Jedlo stavaj tak, aby okrem špajze nebolo treba dokupovať NIČ. To je ideálny recept.
+- Ak to inak nejde, povoľ si MAXIMÁLNE JEDNU surovinu so source "buy", a musí splniť OBE podmienky:
+  (a) ROLA: je to sýty základ jedla — príloha alebo škrobová zložka, bez ktorej z akciovej
+      suroviny nevznikne plnohodnotná večera. Napr. cestoviny, ryža, zemiaky, kuskus, bulgur,
+      strukoviny (šošovica, fazuľa), chlieb, múka na cesto. Tento výpočet je PRÍKLAD, nie
+      uzavretý zoznam — rozhoduje tá rola v jedle, nie konkrétny názov.
+  (b) EKONOMIKA: balenie stojí orientačne do 1.50 € a jedlo z neho spotrebuje aspoň polovicu —
+      ALEBO zvyšok vydrží v skrini mesiace bez skazenia (múka, ryža, cestoviny).
+- NIKDY nedávaj ako "buy" surovinu, z ktorej recept použije len kúsok a zvyšok balenia ostane
+  ležať: koreniny a bylinky, omáčky a dressingy, orechy a semienka, špeciálne syry, smotanu,
+  jogurt, jeden druh zeleniny na ozdobu. Nie je to o cene — je to o tom, že zákazník zaplatí
+  celé balenie za pár gramov. Ak jedlo takú surovinu nevyhnutne potrebuje, navrhni radšej iné jedlo.
 
 PRAVIDLÁ PRE KROKY (píšeš NÁVOD pre začiatočníka, nie inšpiráciu):
 - KAŽDÁ surovina zo zoznamu sa musí objaviť aspoň v jednom kroku AJ S PRESNÝM MNOŽSTVOM

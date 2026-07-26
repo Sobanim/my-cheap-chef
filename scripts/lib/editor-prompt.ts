@@ -45,8 +45,12 @@ NA ČO SA ZAMERAJ:
 - Každá surovina zo zoznamu sa objaví aspoň v jednom kroku s číselným množstvom.
   Pozor na soľ a korenie — často sa v kroku spomenú bez čísla ("osolíme a okoreníme"), to oprav.
 - Ak recept surovinu reálne nepotrebuje, vyhoď ju zo zoznamu; ak krok potrebuje surovinu
-  navyše (napr. vodu/tekutinu do omáčky), pridaj ju do zoznamu so source "buy"
+  navyše (napr. vodu/tekutinu do omáčky), pridaj ju do zoznamu
   (ako "pantry" smie byť označené len: soľ, čierne korenie, cukor, rastlinný olej, voda, vajcia).
+- Novú surovinu so source "buy" pridávaj len vtedy, ak by bez nej recept NEBOL uvariteľný,
+  a nikdy nezvyšuj počet "buy" surovín nad JEDNU. Ak recept už jednu "buy" surovinu má
+  a chýba mu ďalšia, vyrieš to inak — zo špajze, alebo úpravou kroku. Dokupovanie je
+  pre zákazníka náklad navyše, preto je ho v recepte čo najmenej.
 
 4. ČAS A NÁROČNOSŤ:
 - "estimatedTime" = celkový čas vrátane predhriatia rúry. Ak recept predhrieva rúru, čas to musí zahŕňať.

@@ -60,6 +60,22 @@ type RecipeIngredient = {
 - `pantry` — zo špajze (bod 3)
 - `buy` — treba dokúpiť (nie je v akcii)
 
+**Na `buy` je strop: maximálne JEDNA položka na recept, ideálne nula.** Kritérium nie je cena
+(soľ je tiež lacná, a pritom z akciového kurčaťa večeru neurobí), ale dve iné veci:
+
+1. **Rola** — musí to byť sýty základ/príloha, bez ktorej z akciovej suroviny nevznikne
+   plnohodnotná večera (cestoviny, ryža, zemiaky, kuskus, strukoviny, múka). V prompte je ten
+   výpočet výslovne označený ako príklad, nie uzavretý zoznam — inak by sme si doň nasťahovali
+   presne ten cenník, ktorý sme v 6b zamietli.
+2. **Spotrebuje sa** — balenie do ~1.50 €, z ktorého jedlo použije aspoň polovicu, alebo zvyšok
+   vydrží mesiace v skrini. Zakázané sú suroviny, kde zákazník platí celé balenie za pár gramov:
+   koreniny, omáčky, orechy, smotana, jogurt, zelenina na ozdobu.
+
+Vynucuje to prompt ([recipe-prompt.ts](../scripts/lib/recipe-prompt.ts), sekcia
+`ČO SMIE BYŤ "buy"`) + editor pass nesmie počet `buy` položiek zvýšiť nad jednu; skript navyše
+loguje warning pri `buy > 1`. V UI je to na karte vidieť ako chip **„Bez dokupovania"** /
+**„+1 na dokúpenie"** — je to najsilnejší signál, ktorý máme, preto je pred klikom.
+
 Obrázok/plnú kartu produktu neduplikujeme v `recipe.json` — ťahá sa cez `productId` z `products.json`.
 
 ## 4b. Čas a náročnosť
@@ -88,7 +104,49 @@ savings = (oldPrice − price) × podiel_balenia   // len ak oldPrice > price
 totalSavings = suma cez všetky sale ingrediencie
 ```
 
-Zobrazenie: „Ušetríte ~2.40 €". `approxCost` (orientačná cena jedla) sa počíta rovnako v kóde zo `sale` podielov (+ hrubý odhad `buy` položiek od modelu).
+`approxCost` sa počíta rovnako v kóde zo `sale` podielov.
+
+### 6b. Čo NEoceňujeme a prečo (`buy` položky)
+
+**Položky `buy` nemajú cenu a mať ju nebudú.** Zvažovali sme ručný cenník bežných surovín
+(`cestoviny, ryža, zemiaky…`) — **zamietnuté** z troch dôvodov:
+
+- **Kvalita nie je jedna cena.** Cestoviny sú za 0.50 € (mäkká pšenica, zlé jedlo) aj za 0.89 €
+  (durum). Jedna cena v tabuľke by tichým predpokladom rozhodovala o kvalite jedla.
+- **Sezónnosť.** Zemiaky, zelenina a ovocie sa v cene hýbu podľa úrody — číslo v súbore zastará
+  bez toho, aby to čokoľvek nahlásilo.
+- **Neúplné dáta.** Z Lidl API ťaháme jednu kategóriu (`fetchsize=50`), letáky nepokrývame.
+  Čím menej úplné sú naše dáta, tým menej máme stavať nad nimi vlastné tvrdenia o cenách.
+
+Namiesto toho platí: **tvrdíme len to, čo tvrdí Lidl sám** — `price` vs. `oldPrice` na tých
+produktoch, ktoré sme do receptu dali. Cenu mimo akcie nikde nevymýšľame.
+
+### 6c. Odvodené čísla pre UI
+
+[src/lib/recipeMoney.ts](../src/lib/recipeMoney.ts), `getRecipeMoney()` — jediné miesto, kde sa
+peniaze pre UI počítajú, aby sa karta a detail nerozišli. **Žiadne nové polia v `recipe.json`**:
+
+```
+regularCost    = approxCost + totalSavings   // obe polia pokrývajú presne sale suroviny
+savingsPercent = totalSavings / regularCost
+```
+
+Preto staré recepty (vygenerované pred touto zmenou) renderujú správne a netreba regenerovať.
+
+Zobrazenie: **„2.52 € ~~4.09 €~~ −38 %, za 2 porcie"**. Absolútna úspora sa už nezobrazuje ako
+hlavné číslo — „ušetríte 0.79 €" je čitateľ bez menovateľa a číta sa ako nič, kým to isté číslo
+ako −21 % má význam. Percento je zároveň jediná hodnota **porovnateľná medzi kartami**: úspora
+1.57 € vyzerá slabšie ako 1.84 €, hoci je to −38 % vs. −30 %.
+
+**`SAVINGS_MIN_PERCENT = 15`** — pod týmto prahom karta ukáže iba cenu, bez preškrtnutej ceny
+a bez percenta. „−3 %" pri preškrtnutých 4.12 € pôsobí ako naťahovanie neexistujúcej zľavy
+a stojí viac dôvery, než koľko získa.
+
+**Cena za porciu sa zámerne nezobrazuje.** Delenie na porcie by z tej istej sumy urobilo
+opticky menšie číslo (1.26 € namiesto 2.52 €), čo je hra s číslami, nie informácia — zákazníka
+zaujíma, čo zaplatí pri kase. Namiesto toho je pri cene napísané, **na koľko ľudí** platí:
+`servings` sa až doteraz nikde v UI nezobrazovalo, takže cena visela bez odpovede na otázku
+„pre koľkých to je".
 
 ## 7. Filtrovanie produktov
 
