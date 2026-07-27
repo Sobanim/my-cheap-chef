@@ -1,31 +1,30 @@
 {
-  "generatedAt": "2026-07-20T06:43:09.218Z",
+  "generatedAt": "2026-07-27T07:27:10.575Z",
   "recipes": [
     {
       "id": "recipe-a1",
       "basket": "A",
       "basketLabel": "Celý týždeň (od pondelka)",
-      "title": "Kuracie prsia s paradajkami",
-      "description": "Šťavnaté kuracie prsné rezne opekané na panvici podávané s koktejlovými paradajkami kríčkovými.",
+      "title": "Bravčové mleté mäso s ryžou",
+      "description": "Šťavnaté mleté bravčové mäso orestované na panvici podávané s varenou ryžou pre sýty obed.",
       "category": "meat",
+      "cookingMethod": "pan",
       "servings": 2,
-      "estimatedTime": "20 minút",
-      "activeTime": "20 minút",
+      "estimatedTime": "25 minút",
+      "activeTime": "15 minút",
       "difficulty": "easy",
       "ingredients": [
         {
-          "name": "Kuracie prsné rezne",
+          "name": "Mleté bravčové mäso XXL",
           "amount": "400 g",
           "source": "sale",
-          "productId": "10031830",
-          "savings": 0.92
+          "productId": "10031858",
+          "savings": 0
         },
         {
-          "name": "Koktejlové paradajky kríčkové",
-          "amount": "250 g",
-          "source": "sale",
-          "productId": "10031829",
-          "savings": 0.65
+          "name": "Ryža",
+          "amount": "300 g",
+          "source": "buy"
         },
         {
           "name": "Rastlinný olej",
@@ -34,32 +33,39 @@
         },
         {
           "name": "Soľ",
-          "amount": "1 ČL",
+          "amount": "2 ČL",
           "source": "pantry"
         },
         {
           "name": "Čierne korenie",
           "amount": "0.5 ČL",
           "source": "pantry"
+        },
+        {
+          "name": "Voda",
+          "amount": "600 ml",
+          "source": "pantry"
         }
       ],
       "steps": [
-        "Nakrájame 400 g kuracích prsných rezňov na plátky hrubé 2 cm.",
-        "Mäso rovnomerne posypeme 1 ČL soli a 0.5 ČL čierneho korenia.",
-        "Rozohrejeme 2 PL rastlinného oleja na panvici a opekáme mäso 3 minúty z každej strany.",
-        "K mäsu pridáme 250 g koktejlových paradajok kríčkových a opekáme ďalšie 4 minúty, kým paradajky nezmäknú."
+        "V hrnci zmiešame 300 g ryže, 600 ml vody a 1 ČL soli.",
+        "Privedieme k varu a varíme 15 minút na miernom ohni pod pokrievkou.",
+        "Medzitým na panvici rozohrejeme 2 PL rastlinného oleja.",
+        "Pridáme 400 g mletého bravčového mäsa, 1 ČL soli a 0.5 ČL čierneho korenia.",
+        "Mäso opekáme 8 minút na strednom ohni, kým nie je prepečené.",
+        "Uvarenú ryžu vmiešame k mäsu na panvici a krátko spolu premiešame."
       ],
-      "approxCost": 2.52,
-      "totalSavings": 1.57,
-      "cookingMethod": "pan"
+      "approxCost": 1.4,
+      "totalSavings": 0
     },
     {
       "id": "recipe-a2",
       "basket": "A",
       "basketLabel": "Celý týždeň (od pondelka)",
-      "title": "Restované Halloumi s kešu orieškami a cestovinami",
-      "description": "Vegetariánska panvica s opečeným syrom Halloumi, cestovinami a chrumkavými kešu orieškami.",
-      "category": "pasta",
+      "title": "Opekaný Halloumi s pomarančovým šalátom",
+      "description": "Syr Halloumi opečený na panvici podávaný s čerstvými plátkami pomaranča a chrumkavými pistáciami.",
+      "category": "veggie",
+      "cookingMethod": "pan",
       "servings": 2,
       "estimatedTime": "15 minút",
       "activeTime": "15 minút",
@@ -73,81 +79,66 @@
           "savings": 0.6
         },
         {
-          "name": "ALESTO Kešu oriešky",
-          "amount": "50 g",
+          "name": "Pomaranče",
+          "amount": "2 ks",
           "source": "sale",
-          "productId": "10031833",
-          "savings": 0.19
+          "productId": "10030258",
+          "savings": 0
+        },
+        {
+          "name": "ALESTO Kalifornské pistácie pražené",
+          "amount": "30 g",
+          "source": "sale",
+          "productId": "10031854",
+          "savings": 0.1
         },
         {
           "name": "Rastlinný olej",
           "amount": "1 PL",
           "source": "pantry"
-        },
-        {
-          "name": "Cestoviny",
-          "amount": "300 g",
-          "source": "buy"
-        },
-        {
-          "name": "Soľ",
-          "amount": "2 ČL",
-          "source": "pantry"
-        },
-        {
-          "name": "Voda",
-          "amount": "2000 ml",
-          "source": "pantry"
         }
       ],
       "steps": [
-        "Privedieme k varu 2000 ml vody s 1.5 ČL soli a uvaríme 300 g cestovín podľa návodu.",
-        "Medzitým nakrájame 225 g syra Halloumi na 2 cm kocky.",
-        "Rozohrejeme 1 PL rastlinného oleja na panvici a opekáme Halloumi 4 minúty do zlatohneda.",
-        "Cestoviny scedíme a pridáme k syru do panvice.",
-        "Pridáme zvyšných 0.5 ČL soli, premiešame a odstavíme z ohňa.",
-        "Tesne pred podávaním vmiešame 50 g ALESTO kešu orieškov."
+        "Ošúpeme 2 ks pomarančov a nakrájame ich na plátky hrubé 0.5 cm.",
+        "Halloumi nakrájame na plátky hrubé 1 cm.",
+        "Na panvici rozohrejeme 1 PL rastlinného oleja na strednom ohni.",
+        "Syr Halloumi opekáme 3 minúty z každej strany do zlatista.",
+        "Na taniere rozložíme plátky pomaranča a navrch položíme teplý syr.",
+        "Pistácie nakrájame na menšie kúsky a posypeme nimi hotové jedlo."
       ],
-      "approxCost": 2.94,
-      "totalSavings": 0.79,
-      "cookingMethod": "pan"
+      "approxCost": 3.64,
+      "totalSavings": 0.7
     },
     {
       "id": "recipe-b1",
       "basket": "B",
       "basketLabel": "Od štvrtka",
-      "title": "Pečená bravčová panenka s paradajkami",
-      "description": "Šťavnatá bravčová panenka pečená v rúre s datľovými cherry paradajkami, podliata kvapkou bieleho vína.",
+      "title": "Kuracie štvrte pečené s pomarančmi",
+      "description": "Šťavnaté kuracie štvrte pečené v rúre s citrusovou arómou.",
       "category": "meat",
+      "cookingMethod": "oven",
       "servings": 2,
-      "estimatedTime": "35 minút",
+      "estimatedTime": "70 minút",
       "activeTime": "15 minút",
-      "difficulty": "medium",
+      "difficulty": "easy",
       "ingredients": [
         {
-          "name": "Bravčová panenka",
-          "amount": "400 g",
+          "name": "Kuracie štvrte XXL",
+          "amount": "1000 g",
           "source": "sale",
-          "productId": "10031837",
-          "savings": 1.36
-        },
-        {
-          "name": "Datľové cherry paradajky",
-          "amount": "500 g",
-          "source": "sale",
-          "productId": "10031835",
+          "productId": "10031857",
           "savings": 1.5
         },
         {
-          "name": "Suché talianske víno",
-          "amount": "100 ml",
+          "name": "Pomaranče",
+          "amount": "500 g",
           "source": "sale",
-          "productId": "10031841",
-          "savings": 0.16
+          "productId": "10030258",
+          "savings": 0
         },
         {
           "name": "Soľ",
-          "amount": "1 ČL",
+          "amount": "2 ČL",
           "source": "pantry"
         },
         {
@@ -163,100 +154,104 @@
       ],
       "steps": [
         "Predhrejeme rúru na 200 °C.",
-        "Bravčovú panenku nakrájame na plátky hrubé 3 cm a potrieme 1 PL rastlinného oleja, 0.5 ČL soli a 0.25 ČL čierneho korenia.",
-        "Plátky mäsa opečieme na panvici na vysokom ohni 2 minúty z každej strany a preložíme do pekáča.",
-        "Datľové cherry paradajky umyjeme, rozkrojíme na polovicu a pridáme do pekáča k mäsu.",
-        "Zeleninu posypeme zvyšnou 0.5 ČL soli a 0.25 ČL čierneho korenia, polejeme 1 PL rastlinného oleja a 100 ml suchého talianskeho vína.",
-        "Pekáč vložíme do rúry a pečieme 10 minút pri 200 °C, aby paradajky zmäkli, ale mäso ostalo šťavnaté."
+        "Kuracie štvrte umyjeme, osušíme a položíme na plech.",
+        "Kuracie štvrte potrieme 2 PL rastlinného oleja, posypeme 2 ČL soli a 0.5 ČL čierneho korenia.",
+        "Pomaranče nakrájame na kolieska hrubé 1 cm a poukladáme ich na kuracie štvrte na plechu.",
+        "Pečieme 55 minút v predhriatej rúre pri teplote 200 °C, kým koža na kuracích štvrtiach nie je zlatistá a chrumkavá."
       ],
-      "approxCost": 4.02,
-      "totalSavings": 3.03,
-      "cookingMethod": "oven"
+      "approxCost": 2.55,
+      "totalSavings": 1.5
     },
     {
       "id": "recipe-b2",
       "basket": "B",
       "basketLabel": "Od štvrtka",
-      "title": "Pripravovaný pološtiepok na panvici s banánmi",
-      "description": "Netradičná kombinácia opekaného pološtiepka a sladkého šalátu z banánov a kešu orieškov.",
-      "category": "veggie",
+      "title": "Bravčové mleté mäso na panvici s cestovinami",
+      "description": "Cestoviny s opečeným mletým mäsom a výpekom, pripravené na panvici.",
+      "category": "pasta",
+      "cookingMethod": "pan",
       "servings": 2,
-      "estimatedTime": "15 minút",
-      "activeTime": "15 minút",
-      "difficulty": "easy",
+      "estimatedTime": "25 minút",
+      "activeTime": "20 minút",
+      "difficulty": "medium",
       "ingredients": [
         {
-          "name": "Pološtiepok na grilovanie",
-          "amount": "450 g",
+          "name": "Mleté bravčové mäso XXL",
+          "amount": "500 g",
           "source": "sale",
-          "productId": "10031839",
-          "savings": 1.5
+          "productId": "10031858",
+          "savings": 0
         },
         {
-          "name": "Banány",
-          "amount": "300 g",
-          "source": "sale",
-          "productId": "10031834",
-          "savings": 0.15
-        },
-        {
-          "name": "ALESTO Kešu oriešky",
-          "amount": "50 g",
-          "source": "sale",
-          "productId": "10031833",
-          "savings": 0.19
+          "name": "Cestoviny",
+          "amount": "400 g",
+          "source": "buy"
         },
         {
           "name": "Rastlinný olej",
-          "amount": "1 PL",
+          "amount": "2 PL",
           "source": "pantry"
         },
         {
-          "name": "Cukor",
+          "name": "Soľ",
+          "amount": "3 ČL",
+          "source": "pantry"
+        },
+        {
+          "name": "Čierne korenie",
           "amount": "1 ČL",
+          "source": "pantry"
+        },
+        {
+          "name": "Voda",
+          "amount": "2000 ml",
           "source": "pantry"
         }
       ],
       "steps": [
-        "Pološtiepok na grilovanie rozdelíme na 2 kusy a banány nakrájame na kolieska hrubé 1 cm.",
-        "Súbežne na dvoch panviciach rozohrejeme polovicu rastlinného oleja. Na jednej opekáme pološtiepok 3 minúty z každej strany.",
-        "Na druhej panvici orestujeme banány s 1 ČL cukru 3 minúty na miernom ohni, kým jemne neskaramelizujú.",
-        "Opečený syr podávame na tanieri, navrch poukladáme skaramelizované banány a posypeme 50 g nasekaných ALESTO kešu orieškov."
+        "Vo veľkom hrnci necháme zovrieť 2000 ml vody s 2 ČL soli.",
+        "Do vriacej vody pridáme 400 g cestovín a varíme 10 minút na vysokom ohni.",
+        "Súbežne na panvici zohrejeme 2 PL rastlinného oleja a pridáme 500 g mletého bravčového mäsa.",
+        "Mäso opekáme 9 minút na strednom ohni, kým nie je rovnomerne hnedé, pričom ho miešame a drvíme vareškou.",
+        "Mäso na panvici dochutíme 1 ČL soli a 1 ČL čierneho korenia.",
+        "Uvarené cestoviny scedíme, pričom si ponecháme 50 ml vody z varenia, a cestoviny aj vodu primiešame do panvice k mäsu na 1 minútu na strednom ohni, aby sa chute spojili."
       ],
-      "approxCost": 4.36,
-      "totalSavings": 1.84,
-      "cookingMethod": "pan"
+      "approxCost": 1.75,
+      "totalSavings": 0
     },
     {
       "id": "recipe-c1",
       "basket": "C",
       "basketLabel": "Víkendový špeciál (od soboty)",
-      "title": "Pečené kuracie krídla s kuriatkami a zemiakmi",
-      "description": "Pečené kuracie krídla s lesnými kuriatkami a zemiakmi pečené v jednom pekáči.",
+      "title": "Bravčové mleté mäso s maslovou dyňou a jogurtovým dipom",
+      "description": "Šťavnaté bravčové mleté mäso orestované na panvici, podávané s kockami sladkej maslovej dyne a chladeným jogurtovým dipom.",
       "category": "meat",
+      "cookingMethod": "pan",
       "servings": 2,
-      "estimatedTime": "75 minút",
-      "activeTime": "15 minút",
+      "estimatedTime": "30 minút",
+      "activeTime": "20 minút",
       "difficulty": "easy",
       "ingredients": [
         {
-          "name": "Kuracie krídla",
-          "amount": "700 g",
+          "name": "Mleté bravčové mäso XXL",
+          "amount": "400 g",
           "source": "sale",
-          "productId": "10031845",
-          "savings": 0.82
-        },
-        {
-          "name": "Kuriatka",
-          "amount": "200 g",
-          "source": "sale",
-          "productId": "10031844",
+          "productId": "10031858",
           "savings": 0
         },
         {
-          "name": "Zemiaky",
+          "name": "Červená dyňa",
           "amount": "500 g",
-          "source": "buy"
+          "source": "sale",
+          "productId": "10031856",
+          "savings": 0
+        },
+        {
+          "name": "Zvolenský Smotanový jogurt",
+          "amount": "145 g",
+          "source": "sale",
+          "productId": "10031851",
+          "savings": 0.31
         },
         {
           "name": "Soľ",
@@ -275,70 +270,71 @@
         }
       ],
       "steps": [
-        "predhrejeme rúru na 200 stupňov Celzia.",
-        "zemiaky ošúpeme, nakrájame na kocky veľké 2 cm a premiešame s 1 PL rastlinného oleja a 0.5 ČL soli.",
-        "zemiaky dáme do pekáča a pečieme 25 minút.",
-        "kuracie krídla umyjeme, osušíme a premiešame s 1 PL rastlinného oleja, 0.5 ČL soli a 0.5 ČL čierneho korenia.",
-        "po 25 minútach pečenia zemiakov pridáme k nim do pekáča kuracie krídla a pečieme ďalších 25 minút.",
-        "po 50 minútach celkového pečenia pridáme očistené kuriatka a pečieme posledných 10 minút, kým nie je všetko hotové."
+        "Očistíme červenú dyňu a nakrájame ju na kocky s veľkosťou 2 cm.",
+        "V miske zmiešame 145 g Zvolenský Smotanový jogurt, 0.25 ČL soli a 0.1 ČL čierneho korenia a odložíme do chladničky.",
+        "Na panvici zohrejeme 1 PL rastlinného oleja a 500 g kocky červenej dyne opekáme 10 minút za občasného miešania, následne ich vyberieme z panvice.",
+        "Do tej istej panvice pridáme 1 PL rastlinného oleja a 400 g mletého bravčového mäsa, ktoré opekáme 7 minút, kým nie je prepečené.",
+        "K mäsu pridáme opečenú dyňu, dochutíme 0.75 ČL soli a 0.4 ČL čierneho korenia.",
+        "Zmes rozdelíme na taniere a podávame s jogurtovým dipom."
       ],
-      "approxCost": 4.62,
-      "totalSavings": 0.82,
-      "cookingMethod": "oven"
+      "approxCost": 3.73,
+      "totalSavings": 0.31
     },
     {
       "id": "recipe-c2",
       "basket": "C",
       "basketLabel": "Víkendový špeciál (od soboty)",
-      "title": "Cestoviny s datľovými paradajkami",
-      "description": "Vegetariánske cestoviny s opečenými datľovými cherry paradajkami a nasekanými kešu orieškami.",
-      "category": "pasta",
+      "title": "Pečený Encián s čučoriedkami a pistáciami",
+      "description": "Krémový zapečený syr Encián doplnený o teplú čučoriedkovú redukciu a chrumkavé pistácie.",
+      "category": "veggie",
+      "cookingMethod": "oven",
       "servings": 2,
-      "estimatedTime": "20 minút",
-      "activeTime": "20 minút",
+      "estimatedTime": "25 minút",
+      "activeTime": "10 minút",
       "difficulty": "easy",
       "ingredients": [
         {
-          "name": "Datľové cherry paradajky",
-          "amount": "500 g",
+          "name": "Tami Encián",
+          "amount": "220 g",
           "source": "sale",
-          "productId": "10031835",
-          "savings": 1.5
+          "productId": "10031852",
+          "savings": 1.4
         },
         {
-          "name": "ALESTO Kešu oriešky",
-          "amount": "100 g",
+          "name": "Čučoriedky",
+          "amount": "200 g",
           "source": "sale",
-          "productId": "10031833",
-          "savings": 0.38
+          "productId": "10031856",
+          "savings": 0
         },
         {
-          "name": "Cestoviny",
-          "amount": "300 g",
-          "source": "buy"
-        },
-        {
-          "name": "Soľ",
-          "amount": "2 ČL",
-          "source": "pantry"
+          "name": "ALESTO Kalifornské pistácie pražené",
+          "amount": "50 g",
+          "source": "sale",
+          "productId": "10031854",
+          "savings": 0.17
         },
         {
           "name": "Rastlinný olej",
-          "amount": "2 PL",
+          "amount": "1 PL",
+          "source": "pantry"
+        },
+        {
+          "name": "Cukor",
+          "amount": "1 PL",
           "source": "pantry"
         }
       ],
       "steps": [
-        "dáme zovrieť 2000 ml vody s 1.5 ČL soli, do ktorej vložíme 300 g cestovín a varíme podľa návodu na obale.",
-        "medzitým datľové cherry paradajky umyjeme a nakrájame na polovice.",
-        "na panvici rozohrejeme 2 PL rastlinného oleja a opekáme 500 g nakrájaných datľových cherry paradajok 7 minút na strednom ohni.",
-        "k paradajkám pridáme 0.5 ČL soli a premiešame.",
-        "cestoviny scedíme a zmiešame s opečenými paradajkami na panvici.",
-        "servírujeme posypané 100 g nasekaných ALESTO kešu orieškov."
+        "Predhrejeme rúru na 200 °C.",
+        "Dva kusy syra Tami Encián potrieme 1 PL rastlinného oleja a položíme na plech vystlaný papierom na pečenie.",
+        "Syr pečieme 10 minút v rúre pri 200 °C.",
+        "Medzitým v malom hrnci zahrejeme 200 g čučoriedok s 1 PL cukru 5 minút na miernom ohni, kým nepustia šťavu.",
+        "Pistácie nasekáme na kúsky veľké 0.5 cm.",
+        "Upečený syr preložíme na taniere, prelejeme horúcimi čučoriedkami a posypeme 50 g nasekaných pistácií."
       ],
-      "approxCost": 2.59,
-      "totalSavings": 1.88,
-      "cookingMethod": "pan"
+      "approxCost": 3.66,
+      "totalSavings": 1.57
     }
   ]
 }
