@@ -1,186 +1,32 @@
 {
-  "generatedAt": "2026-07-27T07:27:10.575Z",
+  "generatedAt": "2026-08-03T06:56:49.568Z",
   "recipes": [
     {
       "id": "recipe-a1",
       "basket": "A",
       "basketLabel": "Celý týždeň (od pondelka)",
-      "title": "Bravčové mleté mäso s ryžou",
-      "description": "Šťavnaté mleté bravčové mäso orestované na panvici podávané s varenou ryžou pre sýty obed.",
-      "category": "meat",
-      "cookingMethod": "pan",
-      "servings": 2,
-      "estimatedTime": "25 minút",
-      "activeTime": "15 minút",
-      "difficulty": "easy",
-      "ingredients": [
-        {
-          "name": "Mleté bravčové mäso XXL",
-          "amount": "400 g",
-          "source": "sale",
-          "productId": "10031858",
-          "savings": 0
-        },
-        {
-          "name": "Ryža",
-          "amount": "300 g",
-          "source": "buy"
-        },
-        {
-          "name": "Rastlinný olej",
-          "amount": "2 PL",
-          "source": "pantry"
-        },
-        {
-          "name": "Soľ",
-          "amount": "2 ČL",
-          "source": "pantry"
-        },
-        {
-          "name": "Čierne korenie",
-          "amount": "0.5 ČL",
-          "source": "pantry"
-        },
-        {
-          "name": "Voda",
-          "amount": "600 ml",
-          "source": "pantry"
-        }
-      ],
-      "steps": [
-        "V hrnci zmiešame 300 g ryže, 600 ml vody a 1 ČL soli.",
-        "Privedieme k varu a varíme 15 minút na miernom ohni pod pokrievkou.",
-        "Medzitým na panvici rozohrejeme 2 PL rastlinného oleja.",
-        "Pridáme 400 g mletého bravčového mäsa, 1 ČL soli a 0.5 ČL čierneho korenia.",
-        "Mäso opekáme 8 minút na strednom ohni, kým nie je prepečené.",
-        "Uvarenú ryžu vmiešame k mäsu na panvici a krátko spolu premiešame."
-      ],
-      "approxCost": 1.4,
-      "totalSavings": 0
-    },
-    {
-      "id": "recipe-a2",
-      "basket": "A",
-      "basketLabel": "Celý týždeň (od pondelka)",
-      "title": "Opekaný Halloumi s pomarančovým šalátom",
-      "description": "Syr Halloumi opečený na panvici podávaný s čerstvými plátkami pomaranča a chrumkavými pistáciami.",
-      "category": "veggie",
-      "cookingMethod": "pan",
-      "servings": 2,
-      "estimatedTime": "15 minút",
-      "activeTime": "15 minút",
-      "difficulty": "easy",
-      "ingredients": [
-        {
-          "name": "Halloumi",
-          "amount": "225 g",
-          "source": "sale",
-          "productId": "10031471",
-          "savings": 0.6
-        },
-        {
-          "name": "Pomaranče",
-          "amount": "2 ks",
-          "source": "sale",
-          "productId": "10030258",
-          "savings": 0
-        },
-        {
-          "name": "ALESTO Kalifornské pistácie pražené",
-          "amount": "30 g",
-          "source": "sale",
-          "productId": "10031854",
-          "savings": 0.1
-        },
-        {
-          "name": "Rastlinný olej",
-          "amount": "1 PL",
-          "source": "pantry"
-        }
-      ],
-      "steps": [
-        "Ošúpeme 2 ks pomarančov a nakrájame ich na plátky hrubé 0.5 cm.",
-        "Halloumi nakrájame na plátky hrubé 1 cm.",
-        "Na panvici rozohrejeme 1 PL rastlinného oleja na strednom ohni.",
-        "Syr Halloumi opekáme 3 minúty z každej strany do zlatista.",
-        "Na taniere rozložíme plátky pomaranča a navrch položíme teplý syr.",
-        "Pistácie nakrájame na menšie kúsky a posypeme nimi hotové jedlo."
-      ],
-      "approxCost": 3.64,
-      "totalSavings": 0.7
-    },
-    {
-      "id": "recipe-b1",
-      "basket": "B",
-      "basketLabel": "Od štvrtka",
-      "title": "Kuracie štvrte pečené s pomarančmi",
-      "description": "Šťavnaté kuracie štvrte pečené v rúre s citrusovou arómou.",
-      "category": "meat",
-      "cookingMethod": "oven",
-      "servings": 2,
-      "estimatedTime": "70 minút",
-      "activeTime": "15 minút",
-      "difficulty": "easy",
-      "ingredients": [
-        {
-          "name": "Kuracie štvrte XXL",
-          "amount": "1000 g",
-          "source": "sale",
-          "productId": "10031857",
-          "savings": 1.5
-        },
-        {
-          "name": "Pomaranče",
-          "amount": "500 g",
-          "source": "sale",
-          "productId": "10030258",
-          "savings": 0
-        },
-        {
-          "name": "Soľ",
-          "amount": "2 ČL",
-          "source": "pantry"
-        },
-        {
-          "name": "Čierne korenie",
-          "amount": "0.5 ČL",
-          "source": "pantry"
-        },
-        {
-          "name": "Rastlinný olej",
-          "amount": "2 PL",
-          "source": "pantry"
-        }
-      ],
-      "steps": [
-        "Predhrejeme rúru na 200 °C.",
-        "Kuracie štvrte umyjeme, osušíme a položíme na plech.",
-        "Kuracie štvrte potrieme 2 PL rastlinného oleja, posypeme 2 ČL soli a 0.5 ČL čierneho korenia.",
-        "Pomaranče nakrájame na kolieska hrubé 1 cm a poukladáme ich na kuracie štvrte na plechu.",
-        "Pečieme 55 minút v predhriatej rúre pri teplote 200 °C, kým koža na kuracích štvrtiach nie je zlatistá a chrumkavá."
-      ],
-      "approxCost": 2.55,
-      "totalSavings": 1.5
-    },
-    {
-      "id": "recipe-b2",
-      "basket": "B",
-      "basketLabel": "Od štvrtka",
-      "title": "Bravčové mleté mäso na panvici s cestovinami",
-      "description": "Cestoviny s opečeným mletým mäsom a výpekom, pripravené na panvici.",
+      "title": "Mleté bravčové mäso s cestovinou",
+      "description": "Sýte jedlo z mletého bravčového mäsa a cestovín dochutené suchým talianskym vínom pre vyváženú chuť.",
       "category": "pasta",
       "cookingMethod": "pan",
       "servings": 2,
-      "estimatedTime": "25 minút",
+      "estimatedTime": "30 minút",
       "activeTime": "20 minút",
-      "difficulty": "medium",
+      "difficulty": "easy",
       "ingredients": [
         {
           "name": "Mleté bravčové mäso XXL",
           "amount": "500 g",
           "source": "sale",
-          "productId": "10031858",
+          "productId": "10031917",
           "savings": 0
+        },
+        {
+          "name": "Suché talianske víno",
+          "amount": "100 ml",
+          "source": "sale",
+          "productId": "10031909",
+          "savings": 0.16
         },
         {
           "name": "Cestoviny",
@@ -188,13 +34,8 @@
           "source": "buy"
         },
         {
-          "name": "Rastlinný olej",
-          "amount": "2 PL",
-          "source": "pantry"
-        },
-        {
           "name": "Soľ",
-          "amount": "3 ČL",
+          "amount": "2 ČL",
           "source": "pantry"
         },
         {
@@ -206,52 +47,114 @@
           "name": "Voda",
           "amount": "2000 ml",
           "source": "pantry"
+        },
+        {
+          "name": "Rastlinný olej",
+          "amount": "2 PL",
+          "source": "pantry"
         }
       ],
       "steps": [
-        "Vo veľkom hrnci necháme zovrieť 2000 ml vody s 2 ČL soli.",
-        "Do vriacej vody pridáme 400 g cestovín a varíme 10 minút na vysokom ohni.",
-        "Súbežne na panvici zohrejeme 2 PL rastlinného oleja a pridáme 500 g mletého bravčového mäsa.",
-        "Mäso opekáme 9 minút na strednom ohni, kým nie je rovnomerne hnedé, pričom ho miešame a drvíme vareškou.",
-        "Mäso na panvici dochutíme 1 ČL soli a 1 ČL čierneho korenia.",
-        "Uvarené cestoviny scedíme, pričom si ponecháme 50 ml vody z varenia, a cestoviny aj vodu primiešame do panvice k mäsu na 1 minútu na strednom ohni, aby sa chute spojili."
+        "Na panvici rozpálime 2 PL rastlinného oleja a opekáme 500 g mletého bravčového mäsa 10 minút, kým nie je rovnomerne hnedé.",
+        "Súbežne vo veľkom hrnci privedieme k varu 2000 ml vody s 1 ČL soli a uvaríme v nej 400 g cestovín, následne ich scedíme.",
+        "K opečenému mäsu pridáme 1 ČL soli a 1 ČL čierneho korenia.",
+        "K mäsu prilejeme 100 ml suchého talianskeho vína a varíme 5 minút, kým sa tekutina čiastočne neodparí.",
+        "Do panvice k mäsu pridáme uvarené cestoviny a všetko spolu miešame 2 minúty na strednom ohni, kým sa chute nespoja."
       ],
-      "approxCost": 1.75,
-      "totalSavings": 0
+      "approxCost": 1.83,
+      "totalSavings": 0.16
     },
     {
-      "id": "recipe-c1",
-      "basket": "C",
-      "basketLabel": "Víkendový špeciál (od soboty)",
-      "title": "Bravčové mleté mäso s maslovou dyňou a jogurtovým dipom",
-      "description": "Šťavnaté bravčové mleté mäso orestované na panvici, podávané s kockami sladkej maslovej dyne a chladeným jogurtovým dipom.",
+      "id": "recipe-a2",
+      "basket": "A",
+      "basketLabel": "Celý týždeň (od pondelka)",
+      "title": "Kuracie štvrte pečené s mozzarellou",
+      "description": "Klasické pečené kuracie štvrte podávané s krémovou mozzarellou pre jemnejšiu chuť.",
       "category": "meat",
-      "cookingMethod": "pan",
+      "cookingMethod": "oven",
       "servings": 2,
-      "estimatedTime": "30 minút",
-      "activeTime": "20 minút",
+      "estimatedTime": "70 minút",
+      "activeTime": "15 minút",
       "difficulty": "easy",
       "ingredients": [
         {
-          "name": "Mleté bravčové mäso XXL",
+          "name": "Kurča a 2 kuracie štvrte",
+          "amount": "1000 g",
+          "source": "sale",
+          "productId": "10031916",
+          "savings": 0.7
+        },
+        {
+          "name": "Mozzarella",
+          "amount": "250 g",
+          "source": "sale",
+          "productId": "10031910",
+          "savings": 0.52
+        },
+        {
+          "name": "Soľ",
+          "amount": "2 ČL",
+          "source": "pantry"
+        },
+        {
+          "name": "Čierne korenie",
+          "amount": "1 ČL",
+          "source": "pantry"
+        },
+        {
+          "name": "Rastlinný olej",
+          "amount": "2 PL",
+          "source": "pantry"
+        }
+      ],
+      "steps": [
+        "Predhrejeme rúru na 200 °C.",
+        "Kuracie štvrte osušíme a potrieme 2 PL rastlinného oleja, 2 ČL soli a 1 ČL čierneho korenia.",
+        "Položíme ich na plech a pečieme 45 minút na 200 °C, kým koža nie je zlatistá.",
+        "Mozzarellu rozkrájame na plátky hrubé 0.5 cm.",
+        "Po 45 minútach plech vyberieme z rúry, na každú kuraciu štvrť položíme plátky zo spolu 250 g mozzarelly a vrátime do rúry na ďalších 10 minút, kým sa syr neroztečie."
+      ],
+      "approxCost": 3.47,
+      "totalSavings": 1.22
+    },
+    {
+      "id": "recipe-b1",
+      "basket": "B",
+      "basketLabel": "Od štvrtka",
+      "title": "Bravčová panenka na panvici s lahôdkovou kukuricou",
+      "description": "Šťavnatá bravčová panenka doplnená o sladkú kukuricu a opečené kúsky šunky pre vyváženú chuť.",
+      "category": "meat",
+      "cookingMethod": "pan",
+      "servings": 2,
+      "estimatedTime": "25 minút",
+      "activeTime": "25 minút",
+      "difficulty": "medium",
+      "ingredients": [
+        {
+          "name": "Bravčová panenka",
           "amount": "400 g",
           "source": "sale",
-          "productId": "10031858",
-          "savings": 0
+          "productId": "10031928",
+          "savings": 1.24
         },
         {
-          "name": "Červená dyňa",
-          "amount": "500 g",
+          "name": "Lahôdková kukurica",
+          "amount": "1 ks",
           "source": "sale",
-          "productId": "10031856",
-          "savings": 0
+          "productId": "10031922",
+          "savings": 0.44
         },
         {
-          "name": "Zvolenský Smotanový jogurt",
-          "amount": "145 g",
+          "name": "Šunka najvyššej kvality",
+          "amount": "150 g",
           "source": "sale",
-          "productId": "10031851",
-          "savings": 0.31
+          "productId": "10031911",
+          "savings": 0.55
+        },
+        {
+          "name": "Rastlinný olej",
+          "amount": "2 PL",
+          "source": "pantry"
         },
         {
           "name": "Soľ",
@@ -262,61 +165,60 @@
           "name": "Čierne korenie",
           "amount": "0.5 ČL",
           "source": "pantry"
-        },
-        {
-          "name": "Rastlinný olej",
-          "amount": "2 PL",
-          "source": "pantry"
         }
       ],
       "steps": [
-        "Očistíme červenú dyňu a nakrájame ju na kocky s veľkosťou 2 cm.",
-        "V miske zmiešame 145 g Zvolenský Smotanový jogurt, 0.25 ČL soli a 0.1 ČL čierneho korenia a odložíme do chladničky.",
-        "Na panvici zohrejeme 1 PL rastlinného oleja a 500 g kocky červenej dyne opekáme 10 minút za občasného miešania, následne ich vyberieme z panvice.",
-        "Do tej istej panvice pridáme 1 PL rastlinného oleja a 400 g mletého bravčového mäsa, ktoré opekáme 7 minút, kým nie je prepečené.",
-        "K mäsu pridáme opečenú dyňu, dochutíme 0.75 ČL soli a 0.4 ČL čierneho korenia.",
-        "Zmes rozdelíme na taniere a podávame s jogurtovým dipom."
+        "Bravčovú panenku nakrájame na plátky hrubé 2 cm, osolíme 0.5 ČL soli a okoreníme 0.25 ČL čierneho korenia.",
+        "Šunku najvyššej kvality nakrájame na rezance široké 1 cm.",
+        "Na panvici rozohrejeme 1 PL rastlinného oleja a panenku opekáme 3 minúty z každej strany na strednom ohni, kým nie je povrch hnedý a mäso prepečené.",
+        "Mäso vyberieme z panvice a necháme odpočívať.",
+        "Na tú istú panvicu pridáme 1 PL rastlinného oleja, rezance šunky a zrnká z 1 ks lahôdkovej kukurice.",
+        "Zmes opekáme 5 minút na strednom ohni, kým kukurica jemne skaramelizuje a šunka sa opečie do chrumkava.",
+        "Pridáme 0.5 ČL soli a 0.25 ČL čierneho korenia, vrátime panenku do panvice a všetko spoločne premiešame po dobu 1 minúty na miernom ohni."
       ],
-      "approxCost": 3.73,
-      "totalSavings": 0.31
+      "approxCost": 3.95,
+      "totalSavings": 2.23
     },
     {
-      "id": "recipe-c2",
-      "basket": "C",
-      "basketLabel": "Víkendový špeciál (od soboty)",
-      "title": "Pečený Encián s čučoriedkami a pistáciami",
-      "description": "Krémový zapečený syr Encián doplnený o teplú čučoriedkovú redukciu a chrumkavé pistácie.",
-      "category": "veggie",
-      "cookingMethod": "oven",
+      "id": "recipe-b2",
+      "basket": "B",
+      "basketLabel": "Od štvrtka",
+      "title": "Cestoviny s mozzarellou a čučoriedkovou omáčkou",
+      "description": "Netradičná kombinácia cestovín, krémovej mozzarelly a sviežich čučoriedok, ktoré spolu tvoria zaujímavý chuťový zážitok.",
+      "category": "pasta",
+      "cookingMethod": "pot",
       "servings": 2,
-      "estimatedTime": "25 minút",
-      "activeTime": "10 minút",
+      "estimatedTime": "20 minút",
+      "activeTime": "15 minút",
       "difficulty": "easy",
       "ingredients": [
         {
-          "name": "Tami Encián",
-          "amount": "220 g",
+          "name": "Cestoviny",
+          "amount": "400 g",
+          "source": "buy"
+        },
+        {
+          "name": "Mozzarella",
+          "amount": "250 g",
           "source": "sale",
-          "productId": "10031852",
-          "savings": 1.4
+          "productId": "10031910",
+          "savings": 0.52
         },
         {
           "name": "Čučoriedky",
-          "amount": "200 g",
+          "amount": "250 g",
           "source": "sale",
-          "productId": "10031856",
+          "productId": "10031921",
           "savings": 0
         },
         {
-          "name": "ALESTO Kalifornské pistácie pražené",
-          "amount": "50 g",
-          "source": "sale",
-          "productId": "10031854",
-          "savings": 0.17
+          "name": "Soľ",
+          "amount": "2 ČL",
+          "source": "pantry"
         },
         {
-          "name": "Rastlinný olej",
-          "amount": "1 PL",
+          "name": "Voda",
+          "amount": "2000 ml",
           "source": "pantry"
         },
         {
@@ -326,15 +228,145 @@
         }
       ],
       "steps": [
-        "Predhrejeme rúru na 200 °C.",
-        "Dva kusy syra Tami Encián potrieme 1 PL rastlinného oleja a položíme na plech vystlaný papierom na pečenie.",
-        "Syr pečieme 10 minút v rúre pri 200 °C.",
-        "Medzitým v malom hrnci zahrejeme 200 g čučoriedok s 1 PL cukru 5 minút na miernom ohni, kým nepustia šťavu.",
-        "Pistácie nasekáme na kúsky veľké 0.5 cm.",
-        "Upečený syr preložíme na taniere, prelejeme horúcimi čučoriedkami a posypeme 50 g nasekaných pistácií."
+        "Vo veľkom hrnci privedieme k varu 2000 ml vody s 2 ČL soli.",
+        "Pridáme 400 g cestovín a varíme 10 minút na vysokom ohni, kým nie sú al dente.",
+        "Zatiaľ čo sa cestoviny varia, v miske roztlačíme 250 g čučoriedok s 1 PL cukru na hustú omáčku.",
+        "Cestoviny scedíme a vrátime do hrnca, pričom si ponecháme 50 ml vody z varenia.",
+        "K cestovinám v hrnci pridáme 50 ml vody z varenia a 250 g natrhanej mozzarelly.",
+        "Miešame 2 minúty na miernom ohni, kým sa mozzarella začne topiť a spájať cestoviny.",
+        "Odstavíme z ohňa a vmiešame pripravenú zmes z 250 g čučoriedok."
       ],
-      "approxCost": 3.66,
-      "totalSavings": 1.57
+      "approxCost": 2.48,
+      "totalSavings": 0.52
+    },
+    {
+      "id": "recipe-c1",
+      "basket": "C",
+      "basketLabel": "Víkendový špeciál (od soboty)",
+      "title": "Kurča na panvici s čerstvým hroznom",
+      "description": "Šťavnaté kuracie kúsky pripravené na panvici s bielym hroznom, ktoré vytvára sladkastú šťavu podávanú s ryžou.",
+      "category": "meat",
+      "cookingMethod": "pan",
+      "servings": 2,
+      "estimatedTime": "25 minút",
+      "activeTime": "25 minút",
+      "difficulty": "easy",
+      "ingredients": [
+        {
+          "name": "Kuracie štvrte",
+          "amount": "600 g",
+          "source": "sale",
+          "productId": "10031916",
+          "savings": 0.35
+        },
+        {
+          "name": "Biele hrozno stolové",
+          "amount": "200 g",
+          "source": "sale",
+          "productId": "10031914",
+          "savings": 0.6
+        },
+        {
+          "name": "Ryža",
+          "amount": "300 g",
+          "source": "buy"
+        },
+        {
+          "name": "Voda",
+          "amount": "600 ml",
+          "source": "pantry"
+        },
+        {
+          "name": "Rastlinný olej",
+          "amount": "2 PL",
+          "source": "pantry"
+        },
+        {
+          "name": "Soľ",
+          "amount": "2 ČL",
+          "source": "pantry"
+        },
+        {
+          "name": "Čierne korenie",
+          "amount": "0.5 ČL",
+          "source": "pantry"
+        }
+      ],
+      "steps": [
+        "V hrnci dáme variť 600 ml vody s 1 ČL soli a po zovretí pridáme 300 g ryže, ktorú varíme podľa návodu na obale.",
+        "Kuracie mäso očistíme, vykostíme a nakrájame na kocky s veľkosťou 3 cm.",
+        "Na panvici rozpálime 2 PL rastlinného oleja na strednom ohni.",
+        "Pridáme nakrájané kuracie mäso, 1 ČL soli a 0.5 ČL čierneho korenia.",
+        "Opekáme 8 minút, kým mäso nie je z každej strany zatiahnuté a zlatisté.",
+        "Pridáme 200 g umytého bieleho hrozna rozkrojeného na polovice.",
+        "Všetko spolu opekáme ďalšie 4 minúty na miernom ohni, kým hrozno mierne nezmäkne a nepustí šťavu, ktorá obalí mäso.",
+        "Kuracie kúsky s hroznom podávame na uvarenej ryži."
+      ],
+      "approxCost": 1.64,
+      "totalSavings": 0.95
+    },
+    {
+      "id": "recipe-c2",
+      "basket": "C",
+      "basketLabel": "Víkendový špeciál (od soboty)",
+      "title": "Zapekané mini špekáčiky s mozzarellou a kukuricou",
+      "description": "Sýte zapekané mini špekáčiky s kukuricou a roztápajúcou sa mozzarellou podávané s chlebom.",
+      "category": "meat",
+      "cookingMethod": "oven",
+      "servings": 2,
+      "estimatedTime": "50 minút",
+      "activeTime": "15 minút",
+      "difficulty": "easy",
+      "ingredients": [
+        {
+          "name": "Mini špekáčiky",
+          "amount": "360 g",
+          "source": "sale",
+          "productId": "10031923",
+          "savings": 0.4
+        },
+        {
+          "name": "Mozzarella",
+          "amount": "125 g",
+          "source": "sale",
+          "productId": "10031910",
+          "savings": 0.26
+        },
+        {
+          "name": "Lahôdková kukurica",
+          "amount": "1 ks",
+          "source": "sale",
+          "productId": "10031922",
+          "savings": 0.44
+        },
+        {
+          "name": "Chlieb",
+          "amount": "300 g",
+          "source": "buy"
+        },
+        {
+          "name": "Rastlinný olej",
+          "amount": "1 PL",
+          "source": "pantry"
+        },
+        {
+          "name": "Soľ",
+          "amount": "0.5 ČL",
+          "source": "pantry"
+        }
+      ],
+      "steps": [
+        "Predhrejeme rúru na 200 °C.",
+        "Lahôdkovú kukuricu očistíme, zabalíme do alobalu s 0.5 ČL rastlinného oleja a pečieme 30 minút pri 200 °C.",
+        "Mini špekáčiky nakrájame na kolieska hrubé 1 cm.",
+        "Po 30 minútach vyberieme kukuricu, opatrne ju zbavíme alobalu, zrniečka nakrájame z klasu a zmiešame v pekáči s nakrájanými špekáčikmi, 0.5 PL rastlinného oleja a 0.5 ČL soli.",
+        "Zmes v pekáči pečieme 15 minút pri 200 °C.",
+        "Na vrch rovnomerne rozložíme 125 g mozzarelly natrhanej na menšie kúsky.",
+        "Pečieme ďalších 5 minút, kým sa syr neroztopí.",
+        "Podávame s 300 g chleba."
+      ],
+      "approxCost": 2.53,
+      "totalSavings": 1.1
     }
   ]
 }
