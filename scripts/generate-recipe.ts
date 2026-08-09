@@ -50,6 +50,26 @@ const PHASES: Phase[] = [
 /** Rounds a euro amount to 2 decimal places. */
 const round2 = (value: number): number => Math.round(value * 100) / 100;
 
+/** How many recipes a single product may headline as a `sale` ingredient across the whole week. */
+const MAX_PRODUCT_USES = 2;
+
+/** productId -> number of recipes (across all phases so far) that used it as a `sale` ingredient. */
+type ProductUsage = Map<string, number>;
+
+/**
+ * Drops products already used the maximum number of times from the carried-over pool
+ * (they must not be offered again), and flags products used exactly once so the prompt
+ * can mark them "already used" and steer the model toward fresh alternatives.
+ */
+const partitionCarriedProducts = (
+  carriedProducts: Product[],
+  usage: ProductUsage,
+): { eligible: Product[]; usedOnceIds: Set<string> } => {
+  const eligible = carriedProducts.filter((product) => (usage.get(product.id) ?? 0) < MAX_PRODUCT_USES);
+  const usedOnceIds = new Set(eligible.filter((product) => (usage.get(product.id) ?? 0) === 1).map((product) => product.id));
+  return { eligible, usedOnceIds };
+};
+
 // Vague quantities the prompt forbids but the model may still slip in.
 // Note: no \b around words with Slovak diacritics — JS word boundaries are ASCII-only,
 // so \bštipk would never match (š is not a \w character).
@@ -180,6 +200,37 @@ const runSanityChecks = (recipe: Recipe, productMap: Map<string, Product>): void
   warnAboutWeakSavings(recipe);
 };
 
+/**
+ * Flags a `sale` product reused as a main ingredient in more recipes than the prompt's
+ * weekly quota allows. The prompt drops overused products from the pool and marks
+ * single-use ones, but this is a whole-week check the model itself can't see.
+ */
+const warnAboutOverusedProducts = (recipes: Recipe[]): void => {
+  const counts = new Map<string, { count: number; name: string }>();
+  for (const recipe of recipes) {
+    for (const ingredient of recipe.ingredients) {
+      if (ingredient.source !== 'sale' || !ingredient.productId) continue;
+      const entry = counts.get(ingredient.productId) ?? { count: 0, name: ingredient.name };
+      entry.count += 1;
+      counts.set(ingredient.productId, entry);
+    }
+  }
+  for (const [productId, { count, name }] of counts) {
+    if (count > MAX_PRODUCT_USES) {
+      console.warn(`⚠️  Product ${productId} (${name}) used as a sale ingredient in ${count} recipes this week (max ${MAX_PRODUCT_USES}).`);
+    }
+  }
+};
+
+/** Flags a week where more than 4 of the 6 recipes ended up in the "meat" category. */
+const MAX_MEAT_RECIPES = 4;
+const warnAboutMealBalance = (recipes: Recipe[]): void => {
+  const meatCount = recipes.filter((recipe) => recipe.category === 'meat').length;
+  if (meatCount > MAX_MEAT_RECIPES) {
+    console.warn(`⚠️  ${meatCount}/${recipes.length} recipes this week are "meat" (cap is ${MAX_MEAT_RECIPES}).`);
+  }
+};
+
 type IngredientMoney = { cost: number; savings: number };
 
 /** Computes cost and savings contributed by a single sale ingredient. */
@@ -259,9 +310,18 @@ const generatePhaseRecipes = async (
   carriedProducts: Product[],
   productMap: Map<string, Product>,
   previousDishes: string[],
+  usedOnceProductIds: Set<string>,
+  mealBalance: { totalSoFar: number; meatSoFar: number },
 ): Promise<Recipe[]> => {
   console.log(`   Requesting 2 recipes from Gemini...`);
-  const prompt = buildRecipePrompt({ phaseLabel: phase.label, newProducts, carriedProducts, previousDishes });
+  const prompt = buildRecipePrompt({
+    phaseLabel: phase.label,
+    newProducts,
+    carriedProducts,
+    previousDishes,
+    usedOnceProductIds,
+    mealBalance,
+  });
   const raw = await generateJson(prompt, geminiRecipeResponseSchema);
 
   const draft = modelResponseSchema.parse(raw);
@@ -285,13 +345,16 @@ const generateRecipes = async (): Promise<void> => {
   const allRecipes: Recipe[] = [];
   // Concepts already generated, passed to later phases so they don't repeat the same dish.
   const generatedDishes: string[] = [];
+  // How many recipes each sale product has headlined so far, to enforce the weekly reuse cap.
+  const productUsage: ProductUsage = new Map();
 
   for (const phase of PHASES) {
     const newProducts = cookable.filter((product) => basketOf(product) === phase.basket);
-    const carriedProducts = cookable.filter((product) => {
+    const rawCarried = cookable.filter((product) => {
       const basket = basketOf(product);
       return basket !== phase.basket && phase.baskets.includes(basket);
     });
+    const { eligible: carriedProducts, usedOnceIds } = partitionCarriedProducts(rawCarried, productUsage);
     console.log(`\n🧺 Phase ${phase.basket} (${phase.label}): ${newProducts.length} new + ${carriedProducts.length} carried products.`);
 
     if (newProducts.length + carriedProducts.length === 0) {
@@ -299,12 +362,23 @@ const generateRecipes = async (): Promise<void> => {
       continue;
     }
 
-    const recipes = await generatePhaseRecipes(phase, newProducts, carriedProducts, productMap, generatedDishes);
+    const mealBalance = { totalSoFar: allRecipes.length, meatSoFar: allRecipes.filter((r) => r.category === 'meat').length };
+    const recipes = await generatePhaseRecipes(phase, newProducts, carriedProducts, productMap, generatedDishes, usedOnceIds, mealBalance);
     recipes.forEach((recipe) => runSanityChecks(recipe, productMap));
 
     allRecipes.push(...recipes);
     recipes.forEach((recipe) => generatedDishes.push(`${recipe.title} — ${recipe.description}`));
+    for (const recipe of recipes) {
+      for (const ingredient of recipe.ingredients) {
+        if (ingredient.source === 'sale' && ingredient.productId) {
+          productUsage.set(ingredient.productId, (productUsage.get(ingredient.productId) ?? 0) + 1);
+        }
+      }
+    }
   }
+
+  warnAboutOverusedProducts(allRecipes);
+  warnAboutMealBalance(allRecipes);
 
   const output: RecipeData = {
     generatedAt: new Date().toISOString(),

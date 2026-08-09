@@ -2,7 +2,7 @@ name: Weekly Recipe Generation
 
 on:
   schedule:
-    - cron: "0 4 * * 1" # Every Monday at 4:00 UTC (around 6:00 AM Slovak time)
+    - cron: "0 2 * * 1" # Every Monday at 2:00 UTC (around 4:00 AM Slovak time)
   workflow_dispatch: # Allows manual triggering from the Actions tab on GitHub
 
 permissions:

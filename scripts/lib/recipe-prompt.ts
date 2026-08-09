@@ -6,6 +6,13 @@
 import type { Product } from '@/lib/types';
 import { BASE_PANTRY_ITEMS } from '@/lib/types';
 
+type MealBalance = {
+  /** How many recipes have been generated in earlier phases this week. */
+  totalSoFar: number;
+  /** How many of those were "meat". */
+  meatSoFar: number;
+};
+
 type BuildRecipePromptArgs = {
   phaseLabel: string;
   /** Products newly discounted in this phase — recipes should lean on these. */
@@ -14,22 +21,33 @@ type BuildRecipePromptArgs = {
   carriedProducts: Product[];
   /** "Title — description" of recipes already generated in earlier phases. */
   previousDishes: string[];
+  /** productIds already used as a main ingredient in exactly one earlier recipe this week. */
+  usedOnceProductIds: Set<string>;
+  /** Category counts across recipes generated in earlier phases, for the meat-share cap. */
+  mealBalance: MealBalance;
 };
 
 /** Formats one product as a single prompt line the model can reference by id. */
-const formatProduct = (product: Product): string => {
+const formatProduct = (product: Product, usedOnceProductIds: Set<string>): string => {
   const original =
     product.oldPrice && product.oldPrice > product.price
       ? ` | pôvodne ${product.oldPrice.toFixed(2)} €`
       : '';
   const pack = product.packInfo || 'neuvedené';
-  return `- ${product.id} | ${product.name} | ${product.price.toFixed(2)} € | ${pack}${original}`;
+  const usedMarker = usedOnceProductIds.has(product.id) ? ' | ⚠ už použité v inom recepte' : '';
+  return `- ${product.id} | ${product.name} | ${product.price.toFixed(2)} € | ${pack}${original}${usedMarker}`;
 };
 
 /** Renders a product section, or a placeholder when the list is empty. */
-const formatProductSection = (products: Product[], emptyText: string): string => {
+const formatProductSection = (products: Product[], emptyText: string, usedOnceProductIds: Set<string>): string => {
   if (products.length === 0) return emptyText;
-  return products.map(formatProduct).join('\n');
+  return products.map((product) => formatProduct(product, usedOnceProductIds)).join('\n');
+};
+
+/** Renders the running weekly meat/total tally, empty for the first phase. */
+const formatMealBalanceLine = ({ totalSoFar, meatSoFar }: MealBalance): string => {
+  if (totalSoFar === 0) return '';
+  return `\nDOTERAJŠIA SKLADBA TÝŽDŇA: ${totalSoFar} receptov, z toho ${meatSoFar} v kategórii "meat".\n`;
 };
 
 /** Builds the "avoid repeating these dishes" block, empty for the first phase. */
@@ -41,7 +59,7 @@ const formatPreviousDishesBlock = (previousDishes: string[]): string => {
 UŽ NAVRHNUTÉ JEDLÁ V INÝCH FÁZACH (nesmieš zopakovať to isté jedlo):
 ${list}
 
-Rovnakú surovinu môžeš použiť znova, ale KAŽDÉ jedlo musí byť odlišné konceptom a spôsobom prípravy od vyššie uvedených.
+KAŽDÉ jedlo musí byť odlišné konceptom a spôsobom prípravy od vyššie uvedených — nestačí iba iný názov.
 `;
 };
 
@@ -53,11 +71,14 @@ export const buildRecipePrompt = ({
   newProducts,
   carriedProducts,
   previousDishes,
+  usedOnceProductIds,
+  mealBalance,
 }: BuildRecipePromptArgs): string => {
   const pantry = BASE_PANTRY_ITEMS.join(', ');
-  const newSection = formatProductSection(newProducts, '(žiadne)');
-  const carriedSection = formatProductSection(carriedProducts, '(žiadne — toto je prvá fáza)');
+  const newSection = formatProductSection(newProducts, '(žiadne)', usedOnceProductIds);
+  const carriedSection = formatProductSection(carriedProducts, '(žiadne — toto je prvá fáza)', usedOnceProductIds);
   const previousBlock = formatPreviousDishesBlock(previousDishes);
+  const mealBalanceLine = formatMealBalanceLine(mealBalance);
 
   return `Si skúsený kuchár, ktorý navrhuje LACNÉ jedlá z týždňových zliav v Lidli (Slovensko).
 
@@ -71,12 +92,19 @@ ${carriedSection}
 
 DOMÁCA ŠPAJZA (predpokladáme, že to zákazník má doma, netreba kupovať):
 ${pantry}
-${previousBlock}
+${previousBlock}${mealBalanceLine}
 ÚLOHA:
 - Navrhni PRESNE 2 rôzne recepty. Typ jedla si zvoľ sám (mäsové, vegetariánske, sladké...), nech sú navzájom odlišné.
-- Nerob oba recepty na tej istej bielkovine. Ak sú navyše všetky už navrhnuté jedlá (zoznam nižšie)
-  mäsové, aspoň jeden z tvojich dvoch receptov nech je bezmäsitý — celý týždenný výber
-  nemá byť šesťkrát mäso.
+- Nerob oba recepty na tej istej bielkovine.
+- MÄSOVÁ KVÓTA ZA CELÝ TÝŽDEŇ (6 receptov): ak by po tvojich 2 receptoch bol súčet jedál v kategórii
+  "meat" za celý týždeň vyšší ako 4 z 6, aspoň jeden z tvojich dvoch receptov musí byť bezmäsitý
+  ("veggie", "pasta"/"soup" bez mäsa, alebo "dessert"). Riaď sa presne číslami v riadku
+  "DOTERAJŠIA SKLADBA TÝŽDŇA" vyššie (ak chýba, si v prvej fáze a kvóta ešte neplatí).
+- OPAKOVANIE SUROVÍN NAPRIEČ TÝŽDŇOM: tú istú surovinu (rovnaké "productId") smieš použiť ako
+  HLAVNÚ zložku jedla NAJVIAC v 2 z 6 receptov za celý týždeň, nie viac. Suroviny označené v zozname
+  vyššie "⚠ už použité v inom recepte" si už raz vybral v skoršej fáze — ak ju vezmeš znova, ide
+  o jej DRUHÉ (posledné) použitie. Ak je kulinársky rovnocenná alternatíva BEZ tejto značky,
+  uprednostni ju pred opakovaním.
 - Jedlá musia byť postavené HLAVNE na akciových produktoch vyššie.
 - Kvôli pestrosti UPREDNOSTNI nové akcie v tejto fáze; staršie akcie môžeš použiť ako doplnok.
 - Varíme pre 2 osoby. Rešpektuj veľkosti balení (napr. neber 50 g z balenia 400 g).
@@ -84,6 +112,19 @@ ${previousBlock}
   uvariteľné a chutné, (2) suroviny sú z akcie, (3) až potom veľkosť zľavy. NIKDY neobetuj
   kvalitu jedla kvôli väčšej úspore — nesúrodé jedlo z hlboko zľavnených surovín je horší
   výsledok ako dobré jedlo z menšej zľavy. Ak máš dve rovnako dobré možnosti, vezmi tú s väčšou zľavou.
+
+CHUŤOVÁ SÚDRŽNOSŤ (dôležitejšie než využitie akcie — nikdy ju neobchádzaj kvôli zľave):
+- Kombinuj len suroviny, ktoré si niekto skutočne objedná v reštaurácii — bežná slovenská/
+  stredoeurópska kuchyňa, nie kulinársky experiment.
+- Sladké ovocie (čučoriedky, jahody, hrozno, broskyne...) do teplého slaného jedla pridávaj
+  LEN ak ide o overenú klasiku (napr. pečená kačica s brusnicami, bravčové s jablkami).
+  K cestovinám, ryži ani k roztopenému/zapečenému syru sladké ovocie NEPATRÍ.
+- Ak sa akciové produkty z fázy nedajú spojiť do jedla, ktoré by si sám objednal, tento produkt
+  do jedla nezaraďuj — vezmi menšiu zľavu alebo iný produkt, nikdy neobetuj chuť kvôli tomu,
+  aby si "nejako" využil čo najviac akcií naraz.
+- Nezakrývaj nesúrodú kombináciu frázami ako "netradičná kombinácia" alebo "zaujímavý chuťový
+  zážitok" — ak jedlo takýto opis potrebuje, znamená to, že kombinácia nefunguje a treba ju zmeniť,
+  nie opísať krajšie.
 
 PRAVIDLÁ PRE SUROVINY:
 - Každá surovina má "source": "sale" (z akcie vyššie), "pantry" (domáca špajza) alebo "buy" (treba dokúpiť, nie je v akcii).

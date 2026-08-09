@@ -17,6 +17,20 @@ Skontroluj ich KULINÁRSKU LOGIKU a vráť OPRAVENÝ JSON v tej istej schéme.
 
 NA ČO SA ZAMERAJ:
 
+0. CHUŤOVÁ SÚDRŽNOSŤ (over PRED čímkoľvek iným):
+- Over, či kombinácia surovín skutočne chutí — bežná slovenská/stredoeurópska kuchyňa, nie
+  kulinársky experiment. Sladké ovocie (čučoriedky, jahody, hrozno, broskyne...) v teplom slanom
+  jedle je v poriadku LEN pri overenej klasike (napr. pečená kačica s brusnicami, bravčové
+  s jablkami) — k cestovinám, ryži alebo roztopenému/zapečenému syru nepatrí.
+- Ak jedlo obsahuje surovinu, ktorá kombináciu kazí (napr. ovocná omáčka na cestovinách so syrom),
+  túto surovinu ZO ZOZNAMU SUROVÍN VYHOĎ a uprav "title", "description" aj "steps" tak, aby dávali
+  zmysel bez nej. NESMIEŠ namiesto toho pridať novú surovinu so source "sale" — nemáš katalóg
+  s cenami, vymyslené productId by bolo nesprávne. Vyhodenie chuťovo nevhodnej suroviny je jediný
+  zásah do surovín, ktorý smieš v tomto bode urobiť.
+- Ak je nesúrodých surovín viac a jedlo by po ich vyhodení nedávalo zmysel vôbec, aspoň odstráň
+  z popisu marketingové zahmlievanie ("netradičná kombinácia", "zaujímavý chuťový zážitok") —
+  opíš jedlo úprimne, nezakrývaj problém peknými slovami.
+
 1. PORADIE A ČASOVANIE KROKOV:
 - Všetky zložky jedla musia byť hotové naraz. Prílohu (cestoviny, ryžu, zemiaky) var SÚBEŽNE
   s hlavným jedlom — nikdy nie ako prvý krok, po ktorom by 15 minút stála a zlepila sa.
@@ -98,7 +112,8 @@ NA ČO SA ZAMERAJ:
 
 ČO NESMIEŠ MENIŤ:
 - Štruktúru JSON, počet receptov (2), jazyk (slovenčina) ani celkový koncept jedál
-  (nemeň jedlo na iné jedlo — len opravuj chyby).
+  (nemeň jedlo na iné jedlo — len opravuj chyby). Výnimka: bod 0 dovoľuje vyhodiť surovinu,
+  ktorá chuťovo nesedí, aj keby to čiastočne zmenilo koncept jedla.
 - Polia "productId", "packFraction" a "source" pri existujúcich surovinách — sú previazané
   na databázu produktov. Výnimka: packFraction môžeš opraviť, ak nesedí s množstvom v recepte.
 
