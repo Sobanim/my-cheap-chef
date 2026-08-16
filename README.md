@@ -1,6 +1,6 @@
 # 🍳 My Cheap Chef — Cook from Discounts
  
-> **Status: 🚧 Work in Progress (MVP)**
+> **Status: 🚧 Work in Progress — core pipeline live, UI polish ongoing**
 
 An AI-powered app that suggests recipes based on products currently on sale in supermarkets (Lidl, Kaufland — Slovakia). Save money and never wonder "What should I cook?" again.
 
@@ -34,9 +34,9 @@ my-cheap-chef/
 |-------|-----------|
 | Frontend | Next.js 16, React 19, CSS Modules |
 | Backend | Next.js API Routes (Route Handlers) |
-| Scripts | TypeScript (tsx), cron-based |
-| AI | Vision AI (catalog parsing) + Text AI (recipe generation) — provider TBD |
-| Data | JSON files (MVP), PostgreSQL/SQLite planned |
+| Scripts | TypeScript (tsx), scheduled via GitHub Actions |
+| AI | Google Gemini (`@google/genai`) — catalog parsing (Vision) + recipe generation (Text) |
+| Data | JSON files (`data/*.json`) + append-only price history (`data/price-history.jsonl`) |
 | Deployment | Vercel (planned) |
 
 ## 🎨 Dish Illustrations
@@ -89,25 +89,30 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 |---------|-------------|
 | `npm run dev` | Start development server |
 | `npm run build` | Production build |
-| `npm run start` | Start production server |
+| `npm run start` | Production build + start |
 | `npm run lint` | Run ESLint |
-| `npm run data:parse` | Parse products via Lidl API |
-| `npm run catalog:ingest` | *(planned)* Parse catalog images via Vision AI |
-| `npm run recipe:generate` | *(planned)* Generate recipes via AI |
+| `npm run weekly` | Full weekly pipeline: fetch → parse catalog → generate recipes |
+| `npm run catalog:fetch` | Fetch the current Lidl flyer images |
+| `npm run catalog:parse` | Parse flyer images into `data/catalog.json` via Vision AI |
+| `npm run recipe:generate` | Generate `data/recipe.json` from the catalog via Gemini |
 
 ## 📊 Data Flow
 
-1. **Weekly (Saturday night):** Script parses supermarket catalog images → `data/products.json`
-2. **After parsing:** Script generates recipes → `data/recipe.json`
-3. **Client:** Reads JSON → displays discounted products + recipe of the week
-4. **Paid feature (future):** On-demand recipe generation
+1. **Weekly (Monday 2:00 UTC, GitHub Actions):** `npm run weekly` fetches the current flyer, parses it into `data/catalog.json`, and appends price points to `data/price-history.jsonl`.
+2. **After parsing:** Recipes are generated from the catalog → `data/recipe.json`. If catalog parsing fails, the pipeline falls back to the live Lidl API on its own.
+3. **Commit:** The workflow commits and pushes the updated data files (`[skip ci]`) when anything changed.
+4. **Client:** Next.js pages read the JSON at request time —`/discounts` (products on sale), `/recipes` (AI-generated recipe of the week), `/catalog` (raw parsed catalog, internal/debug view).
+5. **Paid feature (future):** On-demand recipe generation.
+
+See [docs/CATALOG_INGESTION_PLAN.md](docs/CATALOG_INGESTION_PLAN.md) and [docs/RECIPE_GENERATION.md](docs/RECIPE_GENERATION.md) for the pipeline design.
 
 ## ✅ Roadmap
 
-- [x] Prototype: fetching data via Lidl API (limited)
-- [ ] Catalog parsing via Vision AI
-- [ ] Recipe generation via Text AI
-- [ ] UI: product list + recipe of the week
+- [x] Catalog parsing via Vision AI
+- [x] Recipe generation via Text AI (Gemini)
+- [x] Weekly pipeline automated via GitHub Actions
+- [x] UI: discounted products (`/discounts`) + recipe of the week (`/recipes`)
+- [x] Price history tracking (`data/price-history.jsonl`)
 - [ ] PWA support
 - [ ] Deployment to Vercel
 - [ ] Multi-store support (Kaufland, etc.)
