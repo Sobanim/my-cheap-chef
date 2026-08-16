@@ -46,3 +46,9 @@ next-env.d.ts
 # catalog images (heavy, not for git)
 /data/catalog-images/**
 !/data/catalog-images/README.md
+
+# Intermediate pipeline artifacts: re-fetchable, and noisy in diffs.
+# What IS committed: data/catalog.json (the pool recipes were chosen from),
+# data/price-history.jsonl (only useful once it accumulates) and data/recipe.json.
+/data/flyers/
+/data/pages/
