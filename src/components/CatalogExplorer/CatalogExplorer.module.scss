@@ -17,38 +17,15 @@
   box-shadow: 0 2px 6px var(--color-shadow);
 }
 
-.filterField {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--color-text-secondary);
-
-  input {
-    font: inherit;
-    color: var(--color-text-primary);
-    background: var(--color-surface-2);
-    border: 1px solid var(--color-border);
-    border-radius: 10px;
-    padding: 8px 10px;
-
-    &:focus-visible {
-      outline: 2px solid var(--color-accent);
-      outline-offset: 1px;
-    }
-  }
-}
-
-.resetButton {
+.dateButton {
   font-family: var(--font-display), "Plus Jakarta Sans", system-ui, sans-serif;
   font-size: 0.8125rem;
   font-weight: 600;
-  color: var(--color-accent);
-  background: var(--color-accent-soft);
-  border: none;
+  color: var(--color-text-secondary);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
   border-radius: 10px;
-  padding: 9px 14px;
+  padding: 8px 12px;
   cursor: pointer;
   white-space: nowrap;
   height: fit-content;
@@ -56,6 +33,12 @@
   &:hover {
     background: var(--color-accent-glow);
   }
+}
+
+.dateButtonActive {
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+  border-color: var(--color-accent);
 }
 
 .resultCount {
@@ -104,6 +87,23 @@
     background: var(--color-surface-2);
     position: sticky;
     top: 0;
+  }
+
+  .sortableHeader {
+    cursor: pointer;
+    user-select: none;
+
+    &:hover {
+      color: var(--color-text-primary);
+    }
+  }
+
+  .sortIndicator {
+    display: inline-block;
+    width: 1em;
+    margin-left: 4px;
+    font-size: 0.7em;
+    color: var(--color-accent);
   }
 
   tbody tr:last-child td {
