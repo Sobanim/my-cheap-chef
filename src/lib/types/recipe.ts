@@ -69,8 +69,23 @@ export type Recipe = {
   steps: string[];
   /** Approximate cost of the discounted ingredients used (€), computed in code */
   approxCost: number;
+  /**
+   * What the shopping actually costs (€): whole packs, since a pack can't be
+   * bought in halves. Always ≥ `approxCost`, which counts only the portion the
+   * dish consumes. Products sold by weight ("cena za 1 kg") contribute the same
+   * to both — you buy the weight you need.
+   *
+   * Optional for backward compatibility: recipes generated before this existed
+   * fall back to `approxCost`, same policy as `cookingMethod`.
+   */
+  checkoutCost?: number;
   /** Total money saved vs. regular prices (€), computed in code */
   totalSavings: number;
+  /**
+   * Other recipes this week that share a discounted product — i.e. that help
+   * finish a pack this one only partly uses. Computed after generation.
+   */
+  relatedRecipeIds?: string[];
   // TODO v2 (personalization): tags?: string[];
 };
 

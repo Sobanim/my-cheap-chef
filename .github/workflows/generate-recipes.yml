@@ -24,20 +24,24 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Generate recipes from live Lidl discounts
+      # Parses the weekly flyer into a product catalog, then generates recipes from it.
+      # Falls back to the live Lidl API on its own if the catalog pipeline fails,
+      # so this step succeeding does not by itself mean the flyer was parsed —
+      # check the log for the fallback warning.
+      - name: Run the weekly pipeline
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: npm run recipe:generate
+        run: npm run weekly
 
-      - name: Commit and push recipe.json
+      - name: Commit and push generated data
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/recipe.json
+          git add data/recipe.json data/catalog.json data/price-history.jsonl
           # Skip empty commits when nothing changed
           if git diff --cached --quiet; then
-            echo "No recipe changes detected."
+            echo "No data changes detected."
           else
-            git commit -m "chore(data): auto-update recipe.json [skip ci]"
+            git commit -m "chore(data): auto-update weekly catalog and recipes [skip ci]"
             git push
           fi

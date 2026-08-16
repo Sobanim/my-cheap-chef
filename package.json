@@ -7,8 +7,9 @@
     "build": "next build",
     "start": "next build && next start",
     "lint": "eslint",
-    "data:parse": "tsx scripts/ingest.ts",
-    "catalog:ingest": "tsx scripts/ingest-catalog.ts",
+    "weekly": "tsx scripts/weekly.ts",
+    "catalog:fetch": "tsx scripts/catalog/fetch-flyer.ts",
+    "catalog:parse": "tsx scripts/catalog/parse-catalog.ts",
     "recipe:generate": "tsx scripts/generate-recipe.ts"
   },
   "dependencies": {

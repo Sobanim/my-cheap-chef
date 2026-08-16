@@ -12,3 +12,4 @@ export { RecipeDetail } from './RecipeDetail/RecipeDetail';
 export { UpcomingTeaser } from './UpcomingTeaser/UpcomingTeaser';
 export { Footer } from './Footer/Footer';
 export { DevThemePanel } from './DevThemePanel/DevThemePanel';
+export { CatalogExplorer } from './CatalogExplorer/CatalogExplorer';

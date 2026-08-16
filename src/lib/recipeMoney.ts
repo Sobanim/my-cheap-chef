@@ -12,6 +12,14 @@ export const SAVINGS_MIN_PERCENT = 15;
 export type RecipeMoney = {
   /** What the sale ingredients cost at the promo price (€). */
   cost: number;
+  /**
+   * What the shopping for this recipe costs (€) — whole packs, not just the
+   * portion eaten. Always ≥ `cost`; equal to it for older recipes generated
+   * before the field existed, and for products sold by weight.
+   */
+  checkoutCost: number;
+  /** Whether the basket is meaningfully pricier than the food, i.e. worth showing both. */
+  showCheckoutCost: boolean;
   /** What the same sale ingredients cost outside the promo (€). */
   regularCost: number;
   /** `regularCost − cost` (€). */
@@ -46,8 +54,16 @@ export const getRecipeMoney = (recipe: Recipe): RecipeMoney => {
   const regularCost = round2(cost + savings);
   const percent = regularCost > 0 ? Math.round((savings / regularCost) * 100) : 0;
 
+  // Recipes generated before `checkoutCost` existed have nothing better to fall
+  // back on than the dish cost, which is what they always displayed.
+  const checkoutCost = recipe.checkoutCost ?? cost;
+
   return {
     cost,
+    checkoutCost,
+    // A cent or two apart is pack rounding noise; showing two near-identical
+    // numbers just makes the card harder to read.
+    showCheckoutCost: checkoutCost - cost >= 0.5,
     regularCost,
     savings,
     percent,

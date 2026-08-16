@@ -14,6 +14,18 @@
 import { Type, type Schema } from '@google/genai';
 import { z } from 'zod';
 
+/**
+ * How many recipes the model returns for one promo phase.
+ *
+ * Raised from 2 to 4 once the flyer catalog replaced the live API: with ~128
+ * cookable products per week instead of ~44, there is enough variety to fill
+ * more slots without repeating ingredients or scraping the bottom of the pool.
+ *
+ * Single source of truth — the response schema, the prompt's instructions and
+ * the weekly quotas all derive from it.
+ */
+export const RECIPES_PER_PHASE = 4;
+
 export const RECIPE_CATEGORIES = ['meat', 'pasta', 'soup', 'veggie', 'dessert'] as const;
 export const COOKING_METHODS = ['pan', 'oven', 'pot', 'raw'] as const;
 export const RECIPE_DIFFICULTIES = ['easy', 'medium'] as const;
@@ -48,7 +60,7 @@ const modelRecipeSchema = z.object({
 });
 
 export const modelResponseSchema = z.object({
-  recipes: z.array(modelRecipeSchema).length(2),
+  recipes: z.array(modelRecipeSchema).length(RECIPES_PER_PHASE),
 });
 
 export type ModelRecipe = z.infer<typeof modelRecipeSchema>;
@@ -61,8 +73,8 @@ export const geminiRecipeResponseSchema: Schema = {
   properties: {
     recipes: {
       type: Type.ARRAY,
-      minItems: '2',
-      maxItems: '2',
+      minItems: String(RECIPES_PER_PHASE),
+      maxItems: String(RECIPES_PER_PHASE),
       items: {
         type: Type.OBJECT,
         properties: {

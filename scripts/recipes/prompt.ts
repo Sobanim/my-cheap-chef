@@ -5,6 +5,7 @@
 
 import type { Product } from '@/lib/types';
 import { BASE_PANTRY_ITEMS } from '@/lib/types';
+import { RECIPES_PER_PHASE } from './schema';
 
 type MealBalance = {
   /** How many recipes have been generated in earlier phases this week. */
@@ -25,6 +26,10 @@ type BuildRecipePromptArgs = {
   usedOnceProductIds: Set<string>;
   /** Category counts across recipes generated in earlier phases, for the meat-share cap. */
   mealBalance: MealBalance;
+  /** How many recipes the whole week will hold — quotas in the prompt are stated against it. */
+  weeklyTotal: number;
+  /** The most "meat" recipes the week may contain before the balance check complains. */
+  maxMeatRecipes: number;
 };
 
 /** Formats one product as a single prompt line the model can reference by id. */
@@ -34,8 +39,12 @@ const formatProduct = (product: Product, usedOnceProductIds: Set<string>): strin
       ? ` | pôvodne ${product.oldPrice.toFixed(2)} €`
       : '';
   const pack = product.packInfo || 'neuvedené';
-  const usedMarker = usedOnceProductIds.has(product.id) ? ' | ⚠ už použité v inom recepte' : '';
-  return `- ${product.id} | ${product.name} | ${product.price.toFixed(2)} € | ${pack}${original}${usedMarker}`;
+  // A product already used once should be finished off, not avoided — the marker
+  // says so explicitly, because "already used" alone reads as a warning.
+  const usedMarker = usedOnceProductIds.has(product.id) ? ' | ♻ ZVYŠOK — už otvorené v inom recepte, dojedz ho' : '';
+  const bundleMarker = product.priceTier === 'bundle' ? ` | ⚠ akcia "${product.promoNote ?? 'množstevná'}" platí len pri kúpe celého balíka` : '';
+  const plusMarker = product.isLidlPlus ? ' | cena s Lidl Plus' : '';
+  return `- ${product.id} | ${product.name} | ${product.price.toFixed(2)} € | ${pack}${original}${bundleMarker}${plusMarker}${usedMarker}`;
 };
 
 /** Renders a product section, or a placeholder when the list is empty. */
@@ -73,6 +82,8 @@ export const buildRecipePrompt = ({
   previousDishes,
   usedOnceProductIds,
   mealBalance,
+  weeklyTotal,
+  maxMeatRecipes,
 }: BuildRecipePromptArgs): string => {
   const pantry = BASE_PANTRY_ITEMS.join(', ');
   const newSection = formatProductSection(newProducts, '(žiadne)', usedOnceProductIds);
@@ -94,17 +105,21 @@ DOMÁCA ŠPAJZA (predpokladáme, že to zákazník má doma, netreba kupovať):
 ${pantry}
 ${previousBlock}${mealBalanceLine}
 ÚLOHA:
-- Navrhni PRESNE 2 rôzne recepty. Typ jedla si zvoľ sám (mäsové, vegetariánske, sladké...), nech sú navzájom odlišné.
-- Nerob oba recepty na tej istej bielkovine.
-- MÄSOVÁ KVÓTA ZA CELÝ TÝŽDEŇ (6 receptov): ak by po tvojich 2 receptoch bol súčet jedál v kategórii
-  "meat" za celý týždeň vyšší ako 4 z 6, aspoň jeden z tvojich dvoch receptov musí byť bezmäsitý
-  ("veggie", "pasta"/"soup" bez mäsa, alebo "dessert"). Riaď sa presne číslami v riadku
+- Navrhni PRESNE ${RECIPES_PER_PHASE} rôznych receptov. Typ jedla si zvoľ sám (mäsové, vegetariánske, sladké...),
+  nech sú navzájom odlišné.
+- Každý z nich postav na inej hlavnej surovine — žiadne dva recepty v tejto fáze nesmú stáť
+  na tej istej bielkovine.
+- MÄSOVÁ KVÓTA ZA CELÝ TÝŽDEŇ (${weeklyTotal} receptov): ak by po tvojich ${RECIPES_PER_PHASE} receptoch bol súčet jedál
+  v kategórii "meat" za celý týždeň vyšší ako ${maxMeatRecipes} z ${weeklyTotal}, aspoň dva z tvojich receptov musia byť
+  bezmäsité ("veggie", "pasta"/"soup" bez mäsa, alebo "dessert"). Riaď sa presne číslami v riadku
   "DOTERAJŠIA SKLADBA TÝŽDŇA" vyššie (ak chýba, si v prvej fáze a kvóta ešte neplatí).
 - OPAKOVANIE SUROVÍN NAPRIEČ TÝŽDŇOM: tú istú surovinu (rovnaké "productId") smieš použiť ako
-  HLAVNÚ zložku jedla NAJVIAC v 2 z 6 receptov za celý týždeň, nie viac. Suroviny označené v zozname
-  vyššie "⚠ už použité v inom recepte" si už raz vybral v skoršej fáze — ak ju vezmeš znova, ide
-  o jej DRUHÉ (posledné) použitie. Ak je kulinársky rovnocenná alternatíva BEZ tejto značky,
-  uprednostni ju pred opakovaním.
+  HLAVNÚ zložku jedla NAJVIAC v 2 z ${weeklyTotal} receptov za celý týždeň, nie viac.
+- ZVYŠKY BALENÍ (dôležité pre cenu nákupu): ak recept spotrebuje len časť balenia
+  (packFraction menej ako 1), zvyšok zákazníkovi ostane v chladničke. Suroviny označené
+  "♻ ZVYŠOK" sú presne také otvorené balenia zo skoršej fázy — ak ich vieš kulinársky
+  zmysluplne dojesť, UPREDNOSTNI ich pred novou surovinou. Je lepšie dovariť už kúpené
+  balenie než otvoriť ďalšie.
 - Jedlá musia byť postavené HLAVNE na akciových produktoch vyššie.
 - Kvôli pestrosti UPREDNOSTNI nové akcie v tejto fáze; staršie akcie môžeš použiť ako doplnok.
 - Varíme pre 2 osoby. Rešpektuj veľkosti balení (napr. neber 50 g z balenia 400 g).
@@ -112,6 +127,19 @@ ${previousBlock}${mealBalanceLine}
   uvariteľné a chutné, (2) suroviny sú z akcie, (3) až potom veľkosť zľavy. NIKDY neobetuj
   kvalitu jedla kvôli väčšej úspore — nesúrodé jedlo z hlboko zľavnených surovín je horší
   výsledok ako dobré jedlo z menšej zľavy. Ak máš dve rovnako dobré možnosti, vezmi tú s väčšou zľavou.
+
+KOMPLETNOSŤ JEDLA (sacharidová príloha):
+- Recept v kategórii "meat" alebo "veggie" (okrem "veggie" so "cookingMethod": "raw" — to je
+  šalát a príloha k nemu nepatrí) MUSÍ obsahovať sýtu sacharidovú zložku: cestoviny, ryžu,
+  zemiaky, kuskus, bulgur, strukoviny (šošovica, fazuľa, cícer) alebo chlieb/bagetu.
+  Bielkovina alebo zelenina samotná, bez tejto zložky, nie je plnohodnotná večera
+  (napr. "kuracie stehná s mrkvou" bez prílohy je nedokončené jedlo).
+- Zdroj tejto zložky, v tomto poradí priority:
+  1. Akciový produkt ("sale") zo zoznamu vyššie, ak je medzi surovinami vhodný.
+  2. Jedna surovina "buy" podľa pravidiel v sekcii "ČO SMIE BYŤ buy" nižšie — presne na tento
+     prípad tá sekcia existuje.
+- "pasta" kategória túto požiadavku spĺňa automaticky (cestoviny/ryža/obilnina SÚ jej základ).
+  "soup" a "dessert" prílohu nepotrebujú.
 
 CHUŤOVÁ SÚDRŽNOSŤ (dôležitejšie než využitie akcie — nikdy ju neobchádzaj kvôli zľave):
 - Kombinuj len suroviny, ktoré si niekto skutočne objedná v reštaurácii — bežná slovenská/
@@ -130,7 +158,7 @@ PRAVIDLÁ PRE SUROVINY:
 - Každá surovina má "source": "sale" (z akcie vyššie), "pantry" (domáca špajza) alebo "buy" (treba dokúpiť, nie je v akcii).
 - Pri surovinách "sale" uveď "productId" (id zo zoznamu vyššie) a "packFraction" = koľko predávaných balení/kusov
   sa použije (0.5 = pol balenia, 1 = celé balenie, 2 = dve balenia/kusy).
-- Ignoruj nápoje, hotové zmrzliny a dezerty a nepotravinový tovar.
+  POZOR na jednotku: ak je v balení uvedené "cena za 1 kg", potom packFraction 0.5 znamená 500 g.
 - Alkohol použi LEN ak je lacný a kulinársky opodstatnený (napr. víno do marinády), NIKDY nie ako nápoj.
   Nikdy nevyžaduj kúpu celej drahej fľaše liehoviny (vodka, rum, whisky...) kvôli pár mililitrom — ak by to bol
   jediný dôvod na nákup, danú surovinu radšej vynechaj.

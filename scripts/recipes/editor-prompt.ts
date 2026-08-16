@@ -8,11 +8,13 @@
  * must stay untouched — they are recomputed and linked to the product DB.
  */
 
+import { RECIPES_PER_PHASE } from './schema';
+
 /**
  * Wraps the draft recipes JSON in a review checklist prompt.
  */
 export const buildEditorPrompt = (recipesJson: string): string => {
-  return `Si prísny redaktor kuchárskej knihy a skúsený kuchár. Dostaneš JSON s 2 receptami.
+  return `Si prísny redaktor kuchárskej knihy a skúsený kuchár. Dostaneš JSON s ${RECIPES_PER_PHASE} receptami.
 Skontroluj ich KULINÁRSKU LOGIKU a vráť OPRAVENÝ JSON v tej istej schéme.
 
 NA ČO SA ZAMERAJ:
@@ -111,7 +113,7 @@ NA ČO SA ZAMERAJ:
 - Toto pole riadi ilustráciu jedla v appke, takže nesúlad je viditeľná chyba.
 
 ČO NESMIEŠ MENIŤ:
-- Štruktúru JSON, počet receptov (2), jazyk (slovenčina) ani celkový koncept jedál
+- Štruktúru JSON, počet receptov (${RECIPES_PER_PHASE}), jazyk (slovenčina) ani celkový koncept jedál
   (nemeň jedlo na iné jedlo — len opravuj chyby). Výnimka: bod 0 dovoľuje vyhodiť surovinu,
   ktorá chuťovo nesedí, aj keby to čiastočne zmenilo koncept jedla.
 - Polia "productId", "packFraction" a "source" pri existujúcich surovinách — sú previazané

@@ -2,7 +2,7 @@
  * Common data types for the "Cook from Discounts" (Varím zo zliav) application
  * Re-export from src/lib/types/ for backward compatibility.
  */
-export type { Product } from './types/product';
+export type { Product, PriceTier, PricingUnit, FoodRole } from './types/product';
 export type {
   Recipe,
   RecipeData,
