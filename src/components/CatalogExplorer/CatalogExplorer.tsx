@@ -120,14 +120,22 @@ export const CatalogExplorer = ({ products }: Readonly<CatalogExplorerProps>) =>
   const availablePeriods = useMemo(() => collectAvailablePeriods(products), [products]);
   const [selectedPeriod, setSelectedPeriod] = useState<ValidityPeriod | null>(null);
   const [sort, setSort] = useState<{ column: SortColumn; direction: SortDirection } | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const filtered = useMemo(() => {
-    if (selectedPeriod === null) return products;
-    return products.filter(
-      (product) =>
-        product.validFrom === selectedPeriod.validFrom && product.validUntil === selectedPeriod.validUntil,
-    );
-  }, [products, selectedPeriod]);
+    let result = products;
+    if (selectedPeriod !== null) {
+      result = result.filter(
+        (product) =>
+          product.validFrom === selectedPeriod.validFrom && product.validUntil === selectedPeriod.validUntil,
+      );
+    }
+    const query = searchQuery.trim().toLowerCase();
+    if (query) {
+      result = result.filter((product) => product.name?.toLowerCase().includes(query));
+    }
+    return result;
+  }, [products, selectedPeriod, searchQuery]);
 
   const sorted = useMemo(() => {
     if (!sort) return filtered;
@@ -152,6 +160,14 @@ export const CatalogExplorer = ({ products }: Readonly<CatalogExplorerProps>) =>
 
   return (
     <div className={styles.explorer}>
+      <input
+        type="search"
+        className={styles.searchInput}
+        placeholder="Hľadať produkt podľa názvu…"
+        value={searchQuery}
+        onChange={(event) => setSearchQuery(event.target.value)}
+        aria-label="Hľadať produkt podľa názvu"
+      />
       <div className={styles.filterBar}>
         <button
           type="button"
@@ -182,7 +198,11 @@ export const CatalogExplorer = ({ products }: Readonly<CatalogExplorerProps>) =>
       </div>
 
       {sorted.length === 0 ? (
-        <p className={styles.emptyState}>V zadanom rozsahu dátumov nie sú žiadne produkty.</p>
+        <p className={styles.emptyState}>
+          {searchQuery.trim()
+            ? 'Žiadny produkt nezodpovedá hľadanému výrazu.'
+            : 'V zadanom rozsahu dátumov nie sú žiadne produkty.'}
+        </p>
       ) : (
         <div className={styles.tableWrapper}>
           <table className={styles.table}>
