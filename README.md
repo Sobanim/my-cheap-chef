@@ -5,7 +5,7 @@
 An AI-powered app that suggests recipes based on products currently on sale in supermarkets (Lidl, Kaufland — Slovakia). Save money and never wonder "What should I cook?" again.
 
 ## 🎯 Problem
-
+ 
 - People don't know what to cook.
 - They want to save money by buying discounted products.
 - Nobody analyzes promotional catalogs from the cooking perspective.
