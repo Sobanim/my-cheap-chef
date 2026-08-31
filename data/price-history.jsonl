@@ -332,3 +332,381 @@
 {"date":"2026-08-24","normalizedName":"villa vino raca","name":"Villa Víno Rača","price":4,"oldPrice":5.99,"tier":"discounted","pricingUnit":"pack","packInfo":"0,75 l"}
 {"date":"2026-08-24","normalizedName":"kensington gin","name":"Kensington gin","price":8.99,"oldPrice":12.99,"tier":"discounted","pricingUnit":"pack","packInfo":"0,7 l"}
 {"date":"2026-08-24","normalizedName":"matcha","name":"Matcha","price":1.99,"oldPrice":2.49,"tier":"discounted","pricingUnit":"pack","packInfo":"50 g"}
+{"date":"2026-08-31","normalizedName":"zvolensky smotanovy jogurt","name":"Zvolenský smotanový jogurt","price":0.49,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"200 g"}
+{"date":"2026-08-31","normalizedName":"zlaty bazant radler","name":"Zlatý Bažant Radler","price":0.69,"oldPrice":1.29,"tier":"discounted","pricingUnit":"pack","packInfo":"0,5 l"}
+{"date":"2026-08-31","normalizedName":"alesto orechov","name":"Alesto orechov","price":3.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"300 g"}
+{"date":"2026-08-31","normalizedName":"mrkva","name":"Mrkva","price":0.59,"oldPrice":1.49,"tier":"discounted","pricingUnit":"per_kg","packInfo":"cena za 1 kg"}
+{"date":"2026-08-31","normalizedName":"banany","name":"Banány","price":0.99,"oldPrice":1.59,"tier":"discounted","pricingUnit":"per_kg","packInfo":"cena za 1 kg"}
+{"date":"2026-08-31","normalizedName":"kuracie prsne rezne","name":"Kuracie prsné rezne","price":5.29,"oldPrice":7.49,"tier":"discounted","pricingUnit":"per_kg","packInfo":"cena za 1 kg"}
+{"date":"2026-08-31","normalizedName":"bravcove kare","name":"Bravčové karé","price":2.99,"oldPrice":5.49,"tier":"discounted","pricingUnit":"per_kg","packInfo":"cena za 1 kg"}
+{"date":"2026-08-31","normalizedName":"pilos smetana","name":"Pilos Smetana","price":1.29,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"1 l = 5,16"}
+{"date":"2026-08-31","normalizedName":"pilos grecky jogurt","name":"Pilos Grécky jogurt","price":0.69,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"100 g = 0,49"}
+{"date":"2026-08-31","normalizedName":"protein","name":"Protein","price":0.59,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"100 g = 1,38"}
+{"date":"2026-08-31","normalizedName":"pilos eidam","name":"Pilos Eidam","price":0.89,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"100 g"}
+{"date":"2026-08-31","normalizedName":"pilos tvaroh","name":"Pilos Tvaroh","price":0.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"1 kg = 7,96"}
+{"date":"2026-08-31","normalizedName":"cela fileta z lososa atlantickeho","name":"Celá fileta z lososa atlantického","price":1.49,"oldPrice":null,"tier":"low_price","pricingUnit":"per_100g","packInfo":"cena za 100 g"}
+{"date":"2026-08-31","normalizedName":"bravcova krkovicka","name":"Bravčová krkovička","price":3.99,"oldPrice":5.79,"tier":"discounted","pricingUnit":"per_kg","packInfo":"cena za 1 kg v celku bez kosti"}
+{"date":"2026-08-31","normalizedName":"hovadzia nozina","name":"Hovädzia nožina","price":9.99,"oldPrice":12.99,"tier":"discounted","pricingUnit":"per_kg","packInfo":"cena za 1 kg"}
+{"date":"2026-08-31","normalizedName":"hovadzie stehno","name":"Hovädzie stehno","price":11.99,"oldPrice":13.89,"tier":"discounted","pricingUnit":"per_kg","packInfo":"cena za 1 kg"}
+{"date":"2026-08-31","normalizedName":"bask ryza","name":"Bask Ryža","price":1.69,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"1 kg"}
+{"date":"2026-08-31","normalizedName":"tatra salko","name":"Tatra Salko","price":2.19,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"1 kg = 5,52"}
+{"date":"2026-08-31","normalizedName":"cukor krystalovy","name":"Cukor kryštálový","price":0.75,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":""}
+{"date":"2026-08-31","normalizedName":"cukor mucka","name":"Cukor múčka","price":1.29,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":""}
+{"date":"2026-08-31","normalizedName":"psenicna muka","name":"Pšeničná múka","price":0.45,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"1 kg"}
+{"date":"2026-08-31","normalizedName":"bellarom caffe rosso","name":"Bellarom Caffé Rosso","price":9.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":""}
+{"date":"2026-08-31","normalizedName":"lavazza crema e aroma","name":"Lavazza Crema e Aroma","price":19.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":""}
+{"date":"2026-08-31","normalizedName":"jacobs kronung","name":"Jacobs Krönung","price":7.49,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"1 kg = 14,98"}
+{"date":"2026-08-31","normalizedName":"bellarom royal","name":"Bellarom Royal","price":5.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"1 kg = 11,98"}
+{"date":"2026-08-31","normalizedName":"eduscho aroma","name":"Eduscho Aroma","price":9.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"1 kg = 13,32"}
+{"date":"2026-08-31","normalizedName":"bellarom latte macchiato","name":"Bellarom Latte Macchiato","price":4.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"1 kg = 9,98"}
+{"date":"2026-08-31","normalizedName":"high protein jogurt","name":"High Protein jogurt","price":0.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":""}
+{"date":"2026-08-31","normalizedName":"pilos gouda","name":"Pilos Gouda","price":3.35,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"1 kg = 8,38"}
+{"date":"2026-08-31","normalizedName":"milbona emmental grated","name":"Milbona Emmental grated","price":2.49,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"1 kg = 9,96"}
+{"date":"2026-08-31","normalizedName":"milbona burrata","name":"Milbona Burrata","price":1.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"100 g = 1,59"}
+{"date":"2026-08-31","normalizedName":"pilos mlieko polotucne 1 5","name":"Pilos Mlieko polotučné 1,5 %","price":0.79,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":""}
+{"date":"2026-08-31","normalizedName":"pilos mlieko plnotucne 3 5","name":"Pilos Mlieko plnotučné 3,5 %","price":0.89,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":""}
+{"date":"2026-08-31","normalizedName":"free from mlieko polotucne","name":"Free From Mlieko polotučné","price":0.89,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"1 l"}
+{"date":"2026-08-31","normalizedName":"gazdovska slanina","name":"Gazdovská slanina","price":0.95,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":""}
+{"date":"2026-08-31","normalizedName":"pikok kralovska sunka","name":"Pikok Kráľovská šunka","price":1.19,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"100 g"}
+{"date":"2026-08-31","normalizedName":"pikok parky","name":"Pikok Párky","price":1.59,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"100 g = 0,80"}
+{"date":"2026-08-31","normalizedName":"pikok sunka","name":"Pikok Šunka","price":1.29,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":""}
+{"date":"2026-08-31","normalizedName":"pikok dusena sunka","name":"Pikok Dusená šunka","price":2.39,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"1 kg = 7,97"}
+{"date":"2026-08-31","normalizedName":"dulano slanina","name":"Dulano Slanina","price":2.49,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":""}
+{"date":"2026-08-31","normalizedName":"nitovky","name":"Nitovky","price":0.89,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"1 kg = 3,56"}
+{"date":"2026-08-31","normalizedName":"rama 100 rastlinna","name":"Rama 100% rastlinná","price":1.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"1 kg = 4,98"}
+{"date":"2026-08-31","normalizedName":"vita dor for baking and cooking","name":"Vita Dor For Baking and Cooking","price":0.69,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"1 kg = 2,76"}
+{"date":"2026-08-31","normalizedName":"olej","name":"Olej","price":6.69,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"1 l = 9,32"}
+{"date":"2026-08-31","normalizedName":"vita dor olej","name":"Vita Dor Olej","price":6.69,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":""}
+{"date":"2026-08-31","normalizedName":"vita dor olej","name":"Vita Dor Olej","price":1.79,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":""}
+{"date":"2026-08-31","normalizedName":"cafe standard","name":"Cafe Standard","price":1.69,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"100 g = 1,13"}
+{"date":"2026-08-31","normalizedName":"tchibo gold","name":"Tchibo Gold","price":7.49,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"100 g = 3,75"}
+{"date":"2026-08-31","normalizedName":"nescafe 2v1 3v1","name":"Nescafe 2v1 / 3v1","price":2.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"100 g = 1,81"}
+{"date":"2026-08-31","normalizedName":"vital drink","name":"Vital Drink","price":1.49,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"1 l = 1,99"}
+{"date":"2026-08-31","normalizedName":"kozel 10","name":"Kozel 10","price":0.75,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"1 l = 1,36"}
+{"date":"2026-08-31","normalizedName":"gambrinus 10","name":"Gambrinus 10","price":0.85,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"1 l = 1,55"}
+{"date":"2026-08-31","normalizedName":"hubert sekt","name":"Hubert sekt","price":5.99,"oldPrice":7.19,"tier":"discounted","pricingUnit":"pack","packInfo":"1 l = 7,99"}
+{"date":"2026-08-31","normalizedName":"flora gold 59","name":"FLORA Gold 59%","price":2.19,"oldPrice":3.99,"tier":"discounted","pricingUnit":"pack","packInfo":"400 g"}
+{"date":"2026-08-31","normalizedName":"banany","name":"Banány","price":1.09,"oldPrice":1.59,"tier":"discounted","pricingUnit":"per_kg","packInfo":"cena za 1 kg"}
+{"date":"2026-08-31","normalizedName":"cervene jablka gala","name":"Červené jablká Gala","price":0.99,"oldPrice":1.59,"tier":"discounted","pricingUnit":"per_kg","packInfo":"cena za 1 kg"}
+{"date":"2026-08-31","normalizedName":"cerstve figy","name":"Čerstvé figy","price":0.59,"oldPrice":0.99,"tier":"discounted","pricingUnit":"pack","packInfo":"kus"}
+{"date":"2026-08-31","normalizedName":"biele hrozno stolove","name":"Biele hrozno stolové","price":1.59,"oldPrice":4.99,"tier":"discounted","pricingUnit":"per_kg","packInfo":"cena za 1 kg"}
+{"date":"2026-08-31","normalizedName":"biele hrozno stolove","name":"Biele hrozno stolové","price":1.49,"oldPrice":null,"tier":"low_price","pricingUnit":"per_kg","packInfo":"cena za 1 kg"}
+{"date":"2026-08-31","normalizedName":"mrkva","name":"Mrkva","price":0.79,"oldPrice":1.49,"tier":"discounted","pricingUnit":"per_kg","packInfo":"cena za 1 kg"}
+{"date":"2026-08-31","normalizedName":"ploche broskyne","name":"Ploché broskyne","price":1.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"1 kg balenie"}
+{"date":"2026-08-31","normalizedName":"hliva ustricova","name":"Hliva ustricová","price":1.19,"oldPrice":1.79,"tier":"discounted","pricingUnit":"pack","packInfo":"300 g balenie"}
+{"date":"2026-08-31","normalizedName":"nektarinky","name":"Nektárinky","price":1.39,"oldPrice":3.19,"tier":"discounted","pricingUnit":"per_kg","packInfo":"cena za 1 kg"}
+{"date":"2026-08-31","normalizedName":"papaja","name":"Papája","price":2.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"kus"}
+{"date":"2026-08-31","normalizedName":"baby ananas","name":"Baby ananás","price":2.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"kus"}
+{"date":"2026-08-31","normalizedName":"grenadilla","name":"Grenadilla","price":2.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"kus"}
+{"date":"2026-08-31","normalizedName":"mangostan","name":"Mangostan","price":1.69,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"kus"}
+{"date":"2026-08-31","normalizedName":"kokos na pitie","name":"Kokos na pitie","price":2.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"kus"}
+{"date":"2026-08-31","normalizedName":"rambutan","name":"Rambutan","price":0.69,"oldPrice":null,"tier":"low_price","pricingUnit":"per_100g","packInfo":"cena za 100 g"}
+{"date":"2026-08-31","normalizedName":"fialove sladke zemiaky","name":"Fialové sladké zemiaky","price":3.99,"oldPrice":null,"tier":"low_price","pricingUnit":"per_kg","packInfo":"cena za 1 kg"}
+{"date":"2026-08-31","normalizedName":"pitahaya","name":"Pitahaya","price":3.99,"oldPrice":4.99,"tier":"discounted","pricingUnit":"pack","packInfo":"kus"}
+{"date":"2026-08-31","normalizedName":"biele hrozno bezjadierkove","name":"Biele hrozno bezjadierkové","price":1.69,"oldPrice":3.19,"tier":"discounted","pricingUnit":"pack","packInfo":"400 g"}
+{"date":"2026-08-31","normalizedName":"kurca cele","name":"Kurča celé","price":2.49,"oldPrice":2.99,"tier":"discounted","pricingUnit":"per_kg","packInfo":"cena za 1 kg"}
+{"date":"2026-08-31","normalizedName":"morcacie dolne stehno","name":"Morčacie dolné stehno","price":3.19,"oldPrice":4.19,"tier":"discounted","pricingUnit":"per_kg","packInfo":"cena za 1 kg"}
+{"date":"2026-08-31","normalizedName":"mlete maso mix xxl","name":"Mleté mäso MIX XXL","price":5.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"1 kg balenie"}
+{"date":"2026-08-31","normalizedName":"bravcova panenka","name":"Bravčová panenka","price":5.59,"oldPrice":8.89,"tier":"discounted","pricingUnit":"per_kg","packInfo":"cena za 1 kg"}
+{"date":"2026-08-31","normalizedName":"hovadzia hrud","name":"Hovädzia hruď","price":9.99,"oldPrice":null,"tier":"low_price","pricingUnit":"per_kg","packInfo":"cena za 1 kg"}
+{"date":"2026-08-31","normalizedName":"hovadzi tatarak premium","name":"Hovädzí tatarák Premium","price":3.99,"oldPrice":4.99,"tier":"discounted","pricingUnit":"pack","packInfo":"250 g balenie"}
+{"date":"2026-08-31","normalizedName":"bravcovy bocik s kozou","name":"Bravčový bôčik s kožou","price":3.49,"oldPrice":5.99,"tier":"discounted","pricingUnit":"per_kg","packInfo":"cena za 1 kg"}
+{"date":"2026-08-31","normalizedName":"bravcovy bocik s kozou s lidl plus","name":"Bravčový bôčik s kožou s Lidl Plus","price":3.19,"oldPrice":5.99,"tier":"discounted","pricingUnit":"per_kg","packInfo":"cena za 1 kg"}
+{"date":"2026-08-31","normalizedName":"kuracie stehna xxl horne dolne","name":"Kuracie stehná XXL horné/dolné","price":2.59,"oldPrice":3.99,"tier":"discounted","pricingUnit":"per_kg","packInfo":"cena za 1 kg"}
+{"date":"2026-08-31","normalizedName":"bravcove stehno","name":"Bravčové stehno","price":2.99,"oldPrice":5.49,"tier":"discounted","pricingUnit":"per_kg","packInfo":"cena za 1 kg"}
+{"date":"2026-08-31","normalizedName":"hovadzia falosna svieckova z mladeho byka","name":"Hovädzia falošná sviečková z mladého býka","price":11.99,"oldPrice":13.99,"tier":"discounted","pricingUnit":"per_kg","packInfo":"cena za 1 kg"}
+{"date":"2026-08-31","normalizedName":"tilapia fileta bez koze","name":"Tilapia fileta bez kože","price":1.09,"oldPrice":null,"tier":"low_price","pricingUnit":"per_100g","packInfo":"cena za 100 g"}
+{"date":"2026-08-31","normalizedName":"filet z lososa lahko zaudeny","name":"Filet z lososa ľahko zaúdený","price":4.99,"oldPrice":6.99,"tier":"discounted","pricingUnit":"pack","packInfo":"220 g balenie"}
+{"date":"2026-08-31","normalizedName":"sunkova salama premium","name":"Šunková saláma premium","price":0.79,"oldPrice":0.99,"tier":"discounted","pricingUnit":"per_100g","packInfo":"cena za 100 g"}
+{"date":"2026-08-31","normalizedName":"sunka standard","name":"Šunka štandard","price":0.79,"oldPrice":null,"tier":"low_price","pricingUnit":"per_100g","packInfo":"cena za 100 g"}
+{"date":"2026-08-31","normalizedName":"debrecinska salama krajana","name":"Debrecínska saláma krájaná","price":0.79,"oldPrice":0.99,"tier":"discounted","pricingUnit":"per_100g","packInfo":"cena za 100 g"}
+{"date":"2026-08-31","normalizedName":"debrecinska slanina","name":"Debrecínska slanina","price":0.79,"oldPrice":0.99,"tier":"discounted","pricingUnit":"per_100g","packInfo":"cena za 100 g"}
+{"date":"2026-08-31","normalizedName":"masiarska slanina","name":"Mäsiarska slanina","price":0.79,"oldPrice":0.99,"tier":"discounted","pricingUnit":"per_100g","packInfo":"cena za 100 g"}
+{"date":"2026-08-31","normalizedName":"gothaj salama","name":"Gothaj saláma","price":0.55,"oldPrice":0.69,"tier":"discounted","pricingUnit":"per_100g","packInfo":"cena za 100 g"}
+{"date":"2026-08-31","normalizedName":"titan salama","name":"Titán saláma","price":0.79,"oldPrice":0.99,"tier":"discounted","pricingUnit":"per_100g","packInfo":"cena za 100 g"}
+{"date":"2026-08-31","normalizedName":"sunkova klobasa","name":"Šunková klobása","price":0.63,"oldPrice":0.79,"tier":"discounted","pricingUnit":"per_100g","packInfo":"cena za 100 g"}
+{"date":"2026-08-31","normalizedName":"stajerske parky","name":"Štajerské párky","price":0.79,"oldPrice":0.99,"tier":"discounted","pricingUnit":"per_100g","packInfo":"cena za 100 g"}
+{"date":"2026-08-31","normalizedName":"cardasova klobasa","name":"Čardášová klobása","price":0.79,"oldPrice":0.99,"tier":"discounted","pricingUnit":"per_100g","packInfo":"cena za 100 g"}
+{"date":"2026-08-31","normalizedName":"trvanlive mlieko","name":"Trvanlivé mlieko","price":0.79,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"1 l"}
+{"date":"2026-08-31","normalizedName":"kefirove mlieko","name":"Kefírové mlieko","price":1.09,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"950 g"}
+{"date":"2026-08-31","normalizedName":"kysla smotana 14","name":"Kyslá smotana 14 %","price":0.65,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"250 g"}
+{"date":"2026-08-31","normalizedName":"ovocny jogurt s musli","name":"Ovocný jogurt s müsli","price":0.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"215 g"}
+{"date":"2026-08-31","normalizedName":"ochuteny jogurt greckeho typu","name":"Ochutený jogurt gréckeho typu","price":0.69,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"140 g"}
+{"date":"2026-08-31","normalizedName":"bageta","name":"Bageta","price":0.69,"oldPrice":0.89,"tier":"discounted","pricingUnit":"pack","packInfo":"240 g"}
+{"date":"2026-08-31","normalizedName":"cottage cheese","name":"Cottage cheese","price":1.19,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"200 g"}
+{"date":"2026-08-31","normalizedName":"rukola","name":"Rukola","price":0.79,"oldPrice":1.39,"tier":"discounted","pricingUnit":"pack","packInfo":"125 g balenie"}
+{"date":"2026-08-31","normalizedName":"koktejlove paradajky strapcove","name":"Koktejlové paradajky strapcové","price":1.59,"oldPrice":2.49,"tier":"discounted","pricingUnit":"pack","packInfo":"500 g balenie"}
+{"date":"2026-08-31","normalizedName":"koktejlove paradajky strapcove","name":"Koktejlové paradajky strapcové","price":1.39,"oldPrice":2.49,"tier":"discounted","pricingUnit":"pack","packInfo":"500 g balenie"}
+{"date":"2026-08-31","normalizedName":"minicroissant serrano syr","name":"Minicroissant Serrano & syr","price":0.29,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"32 g"}
+{"date":"2026-08-31","normalizedName":"pagac so syrom","name":"Pagáč so syrom","price":0.35,"oldPrice":0.49,"tier":"discounted","pricingUnit":"pack","packInfo":"77 g"}
+{"date":"2026-08-31","normalizedName":"mini hot dog so syrom","name":"Mini Hot Dog so syrom","price":0.89,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"123 g"}
+{"date":"2026-08-31","normalizedName":"burek so spenatom a syrom","name":"Burek so špenátom a syrom","price":0.29,"oldPrice":0.59,"tier":"discounted","pricingUnit":"pack","packInfo":"90 g"}
+{"date":"2026-08-31","normalizedName":"syrovy rozok","name":"Syrový rožok","price":0.69,"oldPrice":0.95,"tier":"discounted","pricingUnit":"pack","packInfo":"95 g"}
+{"date":"2026-08-31","normalizedName":"rozok retro","name":"Rožok Retro","price":0.29,"oldPrice":0.39,"tier":"discounted","pricingUnit":"pack","packInfo":"85 g"}
+{"date":"2026-08-31","normalizedName":"drevorubacsky chlieb","name":"Drevorubačský chlieb","price":0.99,"oldPrice":1.25,"tier":"discounted","pricingUnit":"pack","packInfo":"405 g"}
+{"date":"2026-08-31","normalizedName":"pita chlieb","name":"Pita chlieb","price":0.59,"oldPrice":0.79,"tier":"discounted","pricingUnit":"pack","packInfo":"200 g"}
+{"date":"2026-08-31","normalizedName":"rozok","name":"Rožok","price":0.1,"oldPrice":0.14,"tier":"discounted","pricingUnit":"pack","packInfo":"50 g"}
+{"date":"2026-08-31","normalizedName":"pecivo veniec","name":"Pečivo veniec","price":1.39,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"250 g"}
+{"date":"2026-08-31","normalizedName":"kaizerka special","name":"Kaizerka špeciál","price":0.12,"oldPrice":0.16,"tier":"discounted","pricingUnit":"pack","packInfo":"60 g"}
+{"date":"2026-08-31","normalizedName":"kakaovy slimak","name":"Kakaový slimák","price":0.69,"oldPrice":0.95,"tier":"discounted","pricingUnit":"pack","packInfo":"120 g"}
+{"date":"2026-08-31","normalizedName":"donut s ovocnou naplnou","name":"Donut s ovocnou náplňou","price":0.49,"oldPrice":0.65,"tier":"discounted","pricingUnit":"pack","packInfo":"69/71 g"}
+{"date":"2026-08-31","normalizedName":"zmes orechov","name":"Zmes orechov","price":2.79,"oldPrice":3.49,"tier":"discounted","pricingUnit":"pack","packInfo":"200 g"}
+{"date":"2026-08-31","normalizedName":"kalifornske mandle","name":"Kalifornské mandle","price":1.99,"oldPrice":2.99,"tier":"discounted","pricingUnit":"pack","packInfo":"200 g"}
+{"date":"2026-08-31","normalizedName":"kesu oriesky","name":"Kešu oriešky","price":2.29,"oldPrice":2.95,"tier":"discounted","pricingUnit":"pack","packInfo":"200 g"}
+{"date":"2026-08-31","normalizedName":"orechova ovocna zmes","name":"Orechová/Ovocná zmes","price":1.99,"oldPrice":2.49,"tier":"discounted","pricingUnit":"pack","packInfo":"200 g"}
+{"date":"2026-08-31","normalizedName":"pistacie prazene","name":"Pistácie pražené","price":3.29,"oldPrice":4.25,"tier":"discounted","pricingUnit":"pack","packInfo":"250 g"}
+{"date":"2026-08-31","normalizedName":"bravcove parky xxl","name":"Bravčové párky XXL","price":3.59,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"920 g"}
+{"date":"2026-08-31","normalizedName":"eidam","name":"Eidam","price":1.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"350 g"}
+{"date":"2026-08-31","normalizedName":"treska v majoneze exklusiv","name":"Treska v majonéze Exklusiv","price":2.79,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"440 g"}
+{"date":"2026-08-31","normalizedName":"mascarpone","name":"Mascarpone","price":3.29,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"500 g"}
+{"date":"2026-08-31","normalizedName":"obalovany syr eidam","name":"Obaľovaný syr Eidam","price":3.19,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"460 g"}
+{"date":"2026-08-31","normalizedName":"repkovy olej","name":"Repkový olej","price":1.49,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"1 l"}
+{"date":"2026-08-31","normalizedName":"kinder cokolada","name":"Kinder čokoláda","price":1.49,"oldPrice":2.45,"tier":"discounted","pricingUnit":"pack","packInfo":"100 g"}
+{"date":"2026-08-31","normalizedName":"toffifee","name":"Toffifee","price":6.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"5 x 125 g = 625 g"}
+{"date":"2026-08-31","normalizedName":"magnesia red","name":"Magnesia RED","price":1.09,"oldPrice":null,"tier":"bundle","pricingUnit":"pack","packInfo":"1,5 l"}
+{"date":"2026-08-31","normalizedName":"river tonic","name":"River Tonic","price":1.29,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"2 l"}
+{"date":"2026-08-31","normalizedName":"slovakia zemiakove lupienky","name":"Slovakia zemiakové lupienky","price":1.99,"oldPrice":2.29,"tier":"discounted","pricingUnit":"pack","packInfo":"250 g"}
+{"date":"2026-08-31","normalizedName":"budweiser budvar 9 9","name":"Budweiser Budvar 9,9°","price":4.49,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"10 x 0,5 l = 5 l"}
+{"date":"2026-08-31","normalizedName":"vysocina salama","name":"Vysočina saláma","price":4.49,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"805 g"}
+{"date":"2026-08-31","normalizedName":"delikatna salama","name":"Delikátna saláma","price":1.79,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"170 g"}
+{"date":"2026-08-31","normalizedName":"bravcove kabanosy","name":"Bravčové kabanosy","price":1.79,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"150 g"}
+{"date":"2026-08-31","normalizedName":"gombasecka klobasa","name":"Gombasecká klobása","price":4.49,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"690 g"}
+{"date":"2026-08-31","normalizedName":"frankfurtske parky","name":"Frankfurtské párky","price":4.29,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"700 g"}
+{"date":"2026-08-31","normalizedName":"veprove karbanatky","name":"Vepřové karbanátky","price":3.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"600 g"}
+{"date":"2026-08-31","normalizedName":"salama rozne druhy","name":"Saláma rôzne druhy","price":1.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"250 g"}
+{"date":"2026-08-31","normalizedName":"klobasa fuet extra","name":"Klobása Fuet Extra","price":2.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"210 g"}
+{"date":"2026-08-31","normalizedName":"schwarzwaldska sunka","name":"Schwarzwaldská šunka","price":2.49,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"250 g"}
+{"date":"2026-08-31","normalizedName":"pecena sekana","name":"Pečená sekaná","price":2.49,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"1 kg"}
+{"date":"2026-08-31","normalizedName":"delikatesna sunka","name":"Delikatesná šunka","price":2.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"280 g"}
+{"date":"2026-08-31","normalizedName":"delikatesne viedenske parky","name":"Delikatesné viedenské párky","price":3.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"500 g"}
+{"date":"2026-08-31","normalizedName":"anglicka slanina","name":"Anglická slanina","price":2.39,"oldPrice":2.95,"tier":"discounted","pricingUnit":"pack","packInfo":"300 g"}
+{"date":"2026-08-31","normalizedName":"lahodka z kare","name":"Lahôdka z karé","price":2.49,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"300 g"}
+{"date":"2026-08-31","normalizedName":"sedliacka sunka krajana","name":"Sedliacka šunka krájaná","price":3.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"300 g"}
+{"date":"2026-08-31","normalizedName":"delikatesna varena sunka","name":"Delikatesná varená šunka","price":2.39,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"250 g"}
+{"date":"2026-08-31","normalizedName":"dusena sunka","name":"Dusená šunka","price":3.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"400 g"}
+{"date":"2026-08-31","normalizedName":"syrove nite","name":"Syrové nite","price":2.79,"oldPrice":4.29,"tier":"discounted","pricingUnit":"pack","packInfo":"300 g"}
+{"date":"2026-08-31","normalizedName":"smotanova natierka","name":"Smotanová nátierka","price":1.09,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"250 g"}
+{"date":"2026-08-31","normalizedName":"syr v slanom naleve","name":"Syr v slanom náleve","price":9.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"1200 g"}
+{"date":"2026-08-31","normalizedName":"camembert","name":"Camembert","price":2.29,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"275 g"}
+{"date":"2026-08-31","normalizedName":"taveny syr","name":"Tavený syr","price":3.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"533 g"}
+{"date":"2026-08-31","normalizedName":"taveny syr platky","name":"Tavený syr plátky","price":2.49,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"400 g"}
+{"date":"2026-08-31","normalizedName":"kralovsky syr","name":"Kráľovský syr","price":2.79,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"350 g"}
+{"date":"2026-08-31","normalizedName":"mozzarella struhana","name":"Mozzarella strúhaná","price":3.59,"oldPrice":4.49,"tier":"discounted","pricingUnit":"pack","packInfo":"500 g"}
+{"date":"2026-08-31","normalizedName":"platkovy syr gouda","name":"Plátkový syr Gouda","price":3.49,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"500 g"}
+{"date":"2026-08-31","normalizedName":"grana padano","name":"Grana Padano","price":3.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"200 g"}
+{"date":"2026-08-31","normalizedName":"jogurtovy napoj rozne druhy","name":"Jogurtový nápoj rôzne druhy","price":1.59,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"1 kg"}
+{"date":"2026-08-31","normalizedName":"rajo acidko biele","name":"Rajo Acidko biele","price":1.05,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"950 g"}
+{"date":"2026-08-31","normalizedName":"muller mullermilch","name":"Müller Müllermilch","price":0.69,"oldPrice":1.39,"tier":"discounted","pricingUnit":"pack","packInfo":"380/400 ml"}
+{"date":"2026-08-31","normalizedName":"jogurt greckeho typu","name":"Jogurt gréckeho typu","price":1.99,"oldPrice":2.49,"tier":"discounted","pricingUnit":"pack","packInfo":"1100 g"}
+{"date":"2026-08-31","normalizedName":"tvarohova tycinka vanilka","name":"Tvarohová tyčinka vanilka","price":1.15,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"3 x 40 g"}
+{"date":"2026-08-31","normalizedName":"proteinovy tvaroh rozne druhy","name":"Proteínový tvaroh rôzne druhy","price":1.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"500 g"}
+{"date":"2026-08-31","normalizedName":"proteinovy napoj rozne druhy","name":"Proteínový nápoj rôzne druhy","price":1.49,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"420 g"}
+{"date":"2026-08-31","normalizedName":"proteinovy puding rozne druhy","name":"Proteínový puding rôzne druhy","price":1.79,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"400 g"}
+{"date":"2026-08-31","normalizedName":"kavovy napoj rozne druhy","name":"Kávový nápoj rôzne druhy","price":0.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"380 ml"}
+{"date":"2026-08-31","normalizedName":"zott monte maxi","name":"Zott Monte Maxi","price":1.79,"oldPrice":2.59,"tier":"discounted","pricingUnit":"pack","packInfo":"4 x 100 g = 400 g"}
+{"date":"2026-08-31","normalizedName":"lipanek rodinny","name":"Lipánek rodinný","price":1.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"380 g"}
+{"date":"2026-08-31","normalizedName":"natierka losos tuniak","name":"Nátierka losos/tuniak","price":2.59,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"400 g"}
+{"date":"2026-08-31","normalizedName":"kakaovy rez","name":"Kakaový rez","price":2.49,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"8 x 30 g = 240 g"}
+{"date":"2026-08-31","normalizedName":"ovocny jogurt","name":"Ovocný jogurt","price":2.49,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"8 x 125 g = 1000 g"}
+{"date":"2026-08-31","normalizedName":"listkove cesto","name":"Lístkové cesto","price":1.19,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"375 g"}
+{"date":"2026-08-31","normalizedName":"plnene cestoviny","name":"Plnené cestoviny","price":1.39,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"300 g"}
+{"date":"2026-08-31","normalizedName":"rastlinna natierka","name":"Rastlinná nátierka","price":0.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"160 g"}
+{"date":"2026-08-31","normalizedName":"zavinace","name":"Zavináče","price":3.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"900 g"}
+{"date":"2026-08-31","normalizedName":"rybie prsty","name":"Rybie prsty","price":5.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"900 g"}
+{"date":"2026-08-31","normalizedName":"bryndzove pirohy","name":"Bryndzové pirohy","price":3.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"1200 g"}
+{"date":"2026-08-31","normalizedName":"morcacie prsia plnene syrom","name":"Morčacie prsia plnené syrom","price":5.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"1500 g"}
+{"date":"2026-08-31","normalizedName":"filety z aljasskej tresky","name":"Filety z aljašskej tresky","price":6.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"960 g"}
+{"date":"2026-08-31","normalizedName":"pizza so sunkou a sampinonmi","name":"Pizza so šunkou a šampiňónmi","price":5.49,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"3 x 340 g"}
+{"date":"2026-08-31","normalizedName":"opavia bebe brumik","name":"Opavia Bebe Brumík","price":2.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"300 g"}
+{"date":"2026-08-31","normalizedName":"orieskove rezy","name":"Orieškové rezy","price":2.29,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"300 g"}
+{"date":"2026-08-31","normalizedName":"cookies","name":"Cookies","price":1.2,"oldPrice":1.59,"tier":"discounted","pricingUnit":"pack","packInfo":"150/175 g"}
+{"date":"2026-08-31","normalizedName":"rolovane oblatky","name":"Rolované oblátky","price":1.33,"oldPrice":1.99,"tier":"discounted","pricingUnit":"pack","packInfo":"125 g"}
+{"date":"2026-08-31","normalizedName":"maria keksy","name":"Maria keksy","price":2.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"5 x 200 g = 1000 g"}
+{"date":"2026-08-31","normalizedName":"piskoty","name":"Piškóty","price":1.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"500 g"}
+{"date":"2026-08-31","normalizedName":"mini skautky vilma","name":"Mini Skautky/Vilma","price":4.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"300/350 g"}
+{"date":"2026-08-31","normalizedName":"oblatky s kakaovym kremom","name":"Oblátky s kakaovým krémom","price":4.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"1000 g"}
+{"date":"2026-08-31","normalizedName":"kofila","name":"Kofila","price":1.95,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"4 x 35 g = 140 g"}
+{"date":"2026-08-31","normalizedName":"linecke rozteky","name":"Linecké rožteky","price":1.06,"oldPrice":1.59,"tier":"discounted","pricingUnit":"pack","packInfo":"220 g"}
+{"date":"2026-08-31","normalizedName":"happy hippo cokolada","name":"Happy Hippo čokoláda","price":2.29,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"5 x 20,7 g = 103,5 g"}
+{"date":"2026-08-31","normalizedName":"horalky box","name":"Horalky Box","price":4.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"10 x 50 g = 500 g"}
+{"date":"2026-08-31","normalizedName":"maslove susienky polomacane v cokolade","name":"Maslové sušienky polomáčané v čokoláde","price":2.29,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"165 g"}
+{"date":"2026-08-31","normalizedName":"jemne piskoty s pomarancovou naplnou","name":"Jemné piškóty s pomarančovou náplňou","price":3.19,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"450 g"}
+{"date":"2026-08-31","normalizedName":"ovko dojcenska vyziva","name":"Ovko Dojčenská výživa","price":3.79,"oldPrice":3.99,"tier":"discounted","pricingUnit":"pack","packInfo":"8 x 190 g = 1520 g"}
+{"date":"2026-08-31","normalizedName":"zmes orechov","name":"Zmes orechov","price":6.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"500 g"}
+{"date":"2026-08-31","normalizedName":"zmes orechov","name":"Zmes orechov","price":4.49,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"300 g"}
+{"date":"2026-08-31","normalizedName":"zmes orechov","name":"Zmes orechov","price":3.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"300 g"}
+{"date":"2026-08-31","normalizedName":"cruspies arasidy v cesticku","name":"Cruspies arašidy v cestíčku","price":1.49,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"250 g"}
+{"date":"2026-08-31","normalizedName":"kesu natural","name":"Kešu natural","price":5.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"500 g"}
+{"date":"2026-08-31","normalizedName":"vlasske orechy","name":"Vlašské orechy","price":6.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"500 g"}
+{"date":"2026-08-31","normalizedName":"pochutkove mandle","name":"Pochúťkové mandle","price":6.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"500 g"}
+{"date":"2026-08-31","normalizedName":"arasidy v mede","name":"Arašidy v mede","price":1.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"300 g"}
+{"date":"2026-08-31","normalizedName":"susene brusnice","name":"Sušené brusnice","price":1.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"250 g"}
+{"date":"2026-08-31","normalizedName":"tortilla wraps","name":"Tortilla Wraps","price":2.49,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"740 g"}
+{"date":"2026-08-31","normalizedName":"super ring","name":"Super Ring","price":1.39,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"200 g"}
+{"date":"2026-08-31","normalizedName":"maslove tycinky","name":"Maslové tyčinky","price":1.33,"oldPrice":1.99,"tier":"discounted","pricingUnit":"pack","packInfo":"150 g"}
+{"date":"2026-08-31","normalizedName":"capri sun","name":"Capri Sun","price":3.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"10 x 0,2 l = 2 l"}
+{"date":"2026-08-31","normalizedName":"pomarancovy dzus","name":"Pomarančový džús","price":1.86,"oldPrice":2.79,"tier":"discounted","pricingUnit":"pack","packInfo":"1 l"}
+{"date":"2026-08-31","normalizedName":"hugo","name":"Hugo","price":0.5,"oldPrice":0.99,"tier":"discounted","pricingUnit":"pack","packInfo":"0,2 l"}
+{"date":"2026-08-31","normalizedName":"krusovice 10","name":"Krušovice 10°","price":0.54,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"0,5 l"}
+{"date":"2026-08-31","normalizedName":"kelt 10","name":"Kelt 10°","price":1.19,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"1,5 l"}
+{"date":"2026-08-31","normalizedName":"fin carre cooking chocolate","name":"Fin Carré Cooking Chocolate","price":5.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"500 g"}
+{"date":"2026-08-31","normalizedName":"mister choc kakaovy krem duo","name":"Mister Choc Kakaový krém Duo","price":3.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"1000 g"}
+{"date":"2026-08-31","normalizedName":"mcennedy arasidove maslo","name":"Mcennedy Arašidové maslo","price":2.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"650 g"}
+{"date":"2026-08-31","normalizedName":"emco mysli maliny a cucoriedky","name":"Emco Mysli maliny a čučoriedky","price":3.29,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"1000 g"}
+{"date":"2026-08-31","normalizedName":"naturfarm broskyne","name":"Naturfarm broskyne","price":1.49,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"820 g"}
+{"date":"2026-08-31","normalizedName":"crownfield orechove tycinky","name":"Crownfield Orechové tyčinky","price":0.99,"oldPrice":1.29,"tier":"discounted","pricingUnit":"pack","packInfo":"3 x 35 g"}
+{"date":"2026-08-31","normalizedName":"pardubicky pernik","name":"Pardubický perník","price":0.24,"oldPrice":0.35,"tier":"discounted","pricingUnit":"pack","packInfo":"60 g"}
+{"date":"2026-08-31","normalizedName":"wawel tycinka","name":"Wawel tyčinka","price":0.53,"oldPrice":0.79,"tier":"discounted","pricingUnit":"pack","packInfo":"37/39/40 g"}
+{"date":"2026-08-31","normalizedName":"cokoladove listky","name":"Čokoládové lístky","price":1.9,"oldPrice":2.85,"tier":"discounted","pricingUnit":"pack","packInfo":"125 g"}
+{"date":"2026-08-31","normalizedName":"merci finest selection","name":"Merci Finest Selection","price":8.79,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"400 g"}
+{"date":"2026-08-31","normalizedName":"orbit zuvacky","name":"Orbit žuvačky","price":2.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"5 x 14 g"}
+{"date":"2026-08-31","normalizedName":"zmes ovocnych cukrikov","name":"Zmes ovocných cukríkov","price":5.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"1200 g"}
+{"date":"2026-08-31","normalizedName":"pedro medvedici","name":"Pedro Medvedíci","price":4.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"1000 g"}
+{"date":"2026-08-31","normalizedName":"zrnkova kava crema","name":"Zrnková káva Crema","price":12.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"1,2 kg"}
+{"date":"2026-08-31","normalizedName":"zelene olivy bez kostok","name":"Zelené olivy bez kôstok","price":2.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"720 ml"}
+{"date":"2026-08-31","normalizedName":"tuniak","name":"Tuniak","price":5.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"4 x 185 g"}
+{"date":"2026-08-31","normalizedName":"bravcove maso v skle","name":"Bravčové mäso v skle","price":2.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"500 g"}
+{"date":"2026-08-31","normalizedName":"rozpustna kava royal","name":"Rozpustná káva Royal","price":6.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"300 g"}
+{"date":"2026-08-31","normalizedName":"kavove kapsuly","name":"Kávové kapsuly","price":9.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"48 kapsúl"}
+{"date":"2026-08-31","normalizedName":"cestoviny","name":"Cestoviny","price":0.89,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"600 g"}
+{"date":"2026-08-31","normalizedName":"paradajkova omacka","name":"Paradajková omáčka","price":2.29,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"600 g"}
+{"date":"2026-08-31","normalizedName":"morska himalajska sol v mlynceku","name":"Morská/Himalájska soľ v mlynčeku","price":1.19,"oldPrice":1.49,"tier":"discounted","pricingUnit":"pack","packInfo":"110 g"}
+{"date":"2026-08-31","normalizedName":"orlando kapsicky pre psy","name":"Orlando Kapsičky pre psy","price":2.99,"oldPrice":3.85,"tier":"discounted","pricingUnit":"pack","packInfo":"12 x 100 g"}
+{"date":"2026-08-31","normalizedName":"felix fantastic krmivo pre macky","name":"Felix Fantastic krmivo pre mačky","price":14.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"44 x 85 g"}
+{"date":"2026-08-31","normalizedName":"coshida suche krmivo pre macky","name":"Coshida Suché krmivo pre mačky","price":4.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"3 kg"}
+{"date":"2026-08-31","normalizedName":"propesko suche krmivo pre psy","name":"Propesko Suché krmivo pre psy","price":10.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"11 kg"}
+{"date":"2026-08-31","normalizedName":"tasticky s naplnou","name":"Taštičky s náplňou","price":1.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"400 g"}
+{"date":"2026-08-31","normalizedName":"gyoza omacka","name":"Gyoza omáčka","price":1.39,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"250 ml"}
+{"date":"2026-08-31","normalizedName":"gyoza s krevetami","name":"Gyoza s krevetami","price":4.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"424 g"}
+{"date":"2026-08-31","normalizedName":"miso polievka","name":"Miso polievka","price":2.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"500 g"}
+{"date":"2026-08-31","normalizedName":"kuracie prsia s japonskym chilli dipom","name":"Kuracie prsia s japonským chilli dipom","price":3.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"500 g"}
+{"date":"2026-08-31","normalizedName":"biele tigrie krevety","name":"Biele tigrie krevety","price":4.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"250 g"}
+{"date":"2026-08-31","normalizedName":"ramen","name":"Ramen","price":2.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"400 g"}
+{"date":"2026-08-31","normalizedName":"zazvor na sushi","name":"Zázvor na sushi","price":1.19,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"190 g"}
+{"date":"2026-08-31","normalizedName":"sushi kit","name":"Sushi Kit","price":6.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"balenie"}
+{"date":"2026-08-31","normalizedName":"ryzovy ocot","name":"Ryžový ocot","price":1.49,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"250 ml"}
+{"date":"2026-08-31","normalizedName":"ryza na sushi","name":"Ryža na sushi","price":0.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"500 g"}
+{"date":"2026-08-31","normalizedName":"sojova omacka","name":"Sójová omáčka","price":1.39,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"150 ml"}
+{"date":"2026-08-31","normalizedName":"sojova omacka","name":"Sójová omáčka","price":1.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"150 ml"}
+{"date":"2026-08-31","normalizedName":"nori snack","name":"Nori snack","price":0.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"5,5 g"}
+{"date":"2026-08-31","normalizedName":"platky morskej riasy nori","name":"Plátky morskej riasy Nori","price":1.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"5 kusov"}
+{"date":"2026-08-31","normalizedName":"wasabi pasta","name":"Wasabi pasta","price":0.99,"oldPrice":1.99,"tier":"discounted","pricingUnit":"pack","packInfo":"43 g"}
+{"date":"2026-08-31","normalizedName":"sushi family tray tokyo","name":"Sushi Family Tray Tokyo","price":4.99,"oldPrice":6.99,"tier":"discounted","pricingUnit":"pack","packInfo":"460 g balenie"}
+{"date":"2026-08-31","normalizedName":"ryzove rezance","name":"Ryžové rezance","price":0.99,"oldPrice":1.49,"tier":"discounted","pricingUnit":"pack","packInfo":"200 g"}
+{"date":"2026-08-31","normalizedName":"flying goose omacka","name":"Flying Goose omáčka","price":2.99,"oldPrice":5.89,"tier":"discounted","pricingUnit":"pack","packInfo":"455 ml"}
+{"date":"2026-08-31","normalizedName":"platky na pripravu jarnych roliek","name":"Plátky na prípravu jarných roliek","price":1.59,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"250 g"}
+{"date":"2026-08-31","normalizedName":"sezamovy olej","name":"Sezamový olej","price":2.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"250 ml"}
+{"date":"2026-08-31","normalizedName":"teriyaki omacka","name":"Teriyaki omáčka","price":1.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"250 ml"}
+{"date":"2026-08-31","normalizedName":"ramen rezance","name":"Ramen rezance","price":1.29,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"300 g"}
+{"date":"2026-08-31","normalizedName":"samlip panko struhanka","name":"Samlip Panko Strúhanka","price":1.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"200 g"}
+{"date":"2026-08-31","normalizedName":"polievka miso","name":"Polievka Miso","price":1.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"200 g"}
+{"date":"2026-08-31","normalizedName":"yuki love mochi","name":"Yuki & Love Mochi","price":2.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"128 g"}
+{"date":"2026-08-31","normalizedName":"wasabi arasidy","name":"Wasabi arašidy","price":0.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"150 g"}
+{"date":"2026-08-31","normalizedName":"miso popcorn","name":"Miso popcorn","price":1.49,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"3 x 100 g = 300 g"}
+{"date":"2026-08-31","normalizedName":"zeleny caj","name":"Zelený čaj","price":1.79,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"20 x 2 g = 40 g"}
+{"date":"2026-08-31","normalizedName":"zeleny caj yuzu","name":"Zelený čaj Yuzu","price":1.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"2 l"}
+{"date":"2026-08-31","normalizedName":"kombucha","name":"Kombucha","price":1.79,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"0,33 l"}
+{"date":"2026-08-31","normalizedName":"suntory roku gin","name":"Suntory roku gin","price":24.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"0,7 l"}
+{"date":"2026-08-31","normalizedName":"prager s kombucha original","name":"Prager's Kombucha Original","price":1.59,"oldPrice":1.99,"tier":"discounted","pricingUnit":"pack","packInfo":"0,33 l"}
+{"date":"2026-08-31","normalizedName":"liker","name":"Likér","price":6.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"0,7 l/0,5 l"}
+{"date":"2026-08-31","normalizedName":"kalamarove kruzky","name":"Kalamárové krúžky","price":2.19,"oldPrice":3.19,"tier":"discounted","pricingUnit":"pack","packInfo":"500 g"}
+{"date":"2026-08-31","normalizedName":"krevety gronske","name":"Krevety grónske","price":3.49,"oldPrice":4.99,"tier":"discounted","pricingUnit":"pack","packInfo":"300 g"}
+{"date":"2026-08-31","normalizedName":"lasagne bolognese","name":"Lasagne Bolognese","price":4.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"1150 g"}
+{"date":"2026-08-31","normalizedName":"halloumi","name":"Halloumi","price":2.29,"oldPrice":2.99,"tier":"discounted","pricingUnit":"pack","packInfo":"225 g"}
+{"date":"2026-08-31","normalizedName":"prosciutto crudo","name":"Prosciutto Crudo","price":1.49,"oldPrice":1.99,"tier":"discounted","pricingUnit":"pack","packInfo":"100 g"}
+{"date":"2026-08-31","normalizedName":"cerstve pesto","name":"Čerstvé pesto","price":0.79,"oldPrice":1.29,"tier":"discounted","pricingUnit":"pack","packInfo":"90 g"}
+{"date":"2026-08-31","normalizedName":"udeny losos","name":"Údený losos","price":4.19,"oldPrice":5.49,"tier":"discounted","pricingUnit":"pack","packInfo":"200 g"}
+{"date":"2026-08-31","normalizedName":"olivovy olej","name":"Olivový olej","price":4.99,"oldPrice":6.49,"tier":"discounted","pricingUnit":"pack","packInfo":"500 ml"}
+{"date":"2026-08-31","normalizedName":"prosecco treviso doc frizzante","name":"Prosecco Treviso DOC Frizzante","price":2.99,"oldPrice":4.59,"tier":"discounted","pricingUnit":"pack","packInfo":"0,75 l"}
+{"date":"2026-08-31","normalizedName":"aperol","name":"Aperol","price":10.99,"oldPrice":13.99,"tier":"discounted","pricingUnit":"pack","packInfo":"0,7 l"}
+{"date":"2026-08-31","normalizedName":"cierne olivy","name":"Čierne olivy","price":0.95,"oldPrice":1.19,"tier":"discounted","pricingUnit":"pack","packInfo":"370 ml"}
+{"date":"2026-08-31","normalizedName":"zelene olivy","name":"Zelené olivy","price":2.19,"oldPrice":2.69,"tier":"discounted","pricingUnit":"pack","packInfo":"580 ml"}
+{"date":"2026-08-31","normalizedName":"ajvar","name":"Ajvar","price":1.49,"oldPrice":1.99,"tier":"discounted","pricingUnit":"pack","packInfo":"350 g"}
+{"date":"2026-08-31","normalizedName":"karlovacko","name":"Karlovačko","price":1.19,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"0,5 l"}
+{"date":"2026-08-31","normalizedName":"hokkaido tekvica","name":"Hokkaido tekvica","price":0.89,"oldPrice":2.39,"tier":"discounted","pricingUnit":"per_kg","packInfo":"cena za 1 kg"}
+{"date":"2026-08-31","normalizedName":"eidam","name":"Eidam","price":1.29,"oldPrice":1.55,"tier":"discounted","pricingUnit":"pack","packInfo":"250 g"}
+{"date":"2026-08-31","normalizedName":"scouty oblatky","name":"Scouty oblátky","price":0.27,"oldPrice":null,"tier":"bundle","pricingUnit":"pack","packInfo":"40 g"}
+{"date":"2026-08-31","normalizedName":"svijansky maz","name":"Svijanský Máz","price":0.66,"oldPrice":null,"tier":"bundle","pricingUnit":"pack","packInfo":"0,5 l"}
+{"date":"2026-08-31","normalizedName":"slivky","name":"Slivky","price":0.99,"oldPrice":3.19,"tier":"discounted","pricingUnit":"per_kg","packInfo":"cena za 1 kg"}
+{"date":"2026-08-31","normalizedName":"7 days croissant","name":"7 Days Croissant","price":0.39,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"60 g"}
+{"date":"2026-08-31","normalizedName":"nescafe classic","name":"Nescafé Classic","price":5.99,"oldPrice":7.99,"tier":"discounted","pricingUnit":"pack","packInfo":"200 g"}
+{"date":"2026-08-31","normalizedName":"kofola","name":"Kofola","price":1.29,"oldPrice":2.15,"tier":"discounted","pricingUnit":"pack","packInfo":"2 l"}
+{"date":"2026-08-31","normalizedName":"ovocny destilat","name":"Ovocný destilát","price":12.99,"oldPrice":19.99,"tier":"discounted","pricingUnit":"pack","packInfo":"0,7 l"}
+{"date":"2026-08-31","normalizedName":"bravcove pliecko","name":"Bravčové pliecko","price":2.99,"oldPrice":4.69,"tier":"discounted","pricingUnit":"per_kg","packInfo":"cena za 1 kg"}
+{"date":"2026-08-31","normalizedName":"mlete hovadzie maso xxl","name":"Mleté hovädzie mäso XXL","price":3.99,"oldPrice":4.99,"tier":"discounted","pricingUnit":"pack","packInfo":"500 g balenie"}
+{"date":"2026-08-31","normalizedName":"maslo","name":"Maslo","price":1.29,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"250 g"}
+{"date":"2026-08-31","normalizedName":"trvanlive mlieko","name":"Trvanlivé mlieko","price":0.49,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"1 l"}
+{"date":"2026-08-31","normalizedName":"trvanlive mlieko","name":"Trvanlivé mlieko","price":0.44,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"od 12 kusov"}
+{"date":"2026-08-31","normalizedName":"zlata studna sirup","name":"Zlatá Studňa sirup","price":1.39,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"0,7 l"}
+{"date":"2026-08-31","normalizedName":"mattoni mineralna voda","name":"Mattoni minerálna voda","price":0.45,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"1,5 l"}
+{"date":"2026-08-31","normalizedName":"kuracie prsne rezne s kostou","name":"Kuracie prsné rezne s kosťou","price":2.99,"oldPrice":null,"tier":"low_price","pricingUnit":"per_kg","packInfo":"cena za 1 kg"}
+{"date":"2026-08-31","normalizedName":"mlete hovadzie maso","name":"Mleté hovädzie mäso","price":3.99,"oldPrice":4.99,"tier":"discounted","pricingUnit":"pack","packInfo":"500 g balenie"}
+{"date":"2026-08-31","normalizedName":"kuracie horne stehna","name":"Kuracie horné stehná","price":2.99,"oldPrice":4.49,"tier":"discounted","pricingUnit":"pack","packInfo":"650 g balenie"}
+{"date":"2026-08-31","normalizedName":"kuracie stvrte xxl","name":"Kuracie štvrte XXL","price":1.99,"oldPrice":3.49,"tier":"discounted","pricingUnit":"per_kg","packInfo":"cena za 1 kg"}
+{"date":"2026-08-31","normalizedName":"bravcova krkovicka platky xxl","name":"Bravčová krkovička plátky XXL","price":4.99,"oldPrice":null,"tier":"low_price","pricingUnit":"per_kg","packInfo":"cena za 1 kg"}
+{"date":"2026-08-31","normalizedName":"hovadzi krk","name":"Hovädzí krk","price":9.99,"oldPrice":null,"tier":"low_price","pricingUnit":"per_kg","packInfo":"cena za 1 kg"}
+{"date":"2026-08-31","normalizedName":"prazma zlata","name":"Pražma zlatá","price":1.39,"oldPrice":null,"tier":"low_price","pricingUnit":"per_100g","packInfo":"cena za 100 g"}
+{"date":"2026-08-31","normalizedName":"premium treska","name":"Premium treska","price":1.29,"oldPrice":null,"tier":"low_price","pricingUnit":"per_100g","packInfo":"cena za 100 g"}
+{"date":"2026-08-31","normalizedName":"biele hrozno bezjadierkove cotton candy","name":"Biele hrozno bezjadierkové Cotton Candy","price":1.69,"oldPrice":3.19,"tier":"discounted","pricingUnit":"pack","packInfo":"400 g"}
+{"date":"2026-08-31","normalizedName":"cucoriedky","name":"Čučoriedky","price":3.69,"oldPrice":5.99,"tier":"discounted","pricingUnit":"pack","packInfo":"400 g"}
+{"date":"2026-08-31","normalizedName":"zeler","name":"Zeler","price":0.99,"oldPrice":1.99,"tier":"discounted","pricingUnit":"per_kg","packInfo":"cena za 1 kg"}
+{"date":"2026-08-31","normalizedName":"brokolica","name":"Brokolica","price":1.29,"oldPrice":1.99,"tier":"discounted","pricingUnit":"pack","packInfo":"500 g"}
+{"date":"2026-08-31","normalizedName":"limonera hrusky","name":"Limonera hrušky","price":1.49,"oldPrice":2.99,"tier":"discounted","pricingUnit":"per_kg","packInfo":"cena za 1 kg"}
+{"date":"2026-08-31","normalizedName":"citrony","name":"Citróny","price":1.49,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"750 g balenie"}
+{"date":"2026-08-31","normalizedName":"koktejlove paradajky krickove","name":"Koktejlové paradajky kríčkové","price":1.59,"oldPrice":2.49,"tier":"discounted","pricingUnit":"pack","packInfo":"500 g balenie"}
+{"date":"2026-08-31","normalizedName":"koktejlove paradajky krickove","name":"Koktejlové paradajky kríčkové","price":1.39,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"500 g balenie"}
+{"date":"2026-08-31","normalizedName":"jadel","name":"Jadel","price":0.99,"oldPrice":1.49,"tier":"discounted","pricingUnit":"pack","packInfo":"100 g"}
+{"date":"2026-08-31","normalizedName":"mecom hydinove parky","name":"Mecom Hydinové párky","price":1.99,"oldPrice":2.79,"tier":"discounted","pricingUnit":"pack","packInfo":"1 kg"}
+{"date":"2026-08-31","normalizedName":"harzbube polomakky zrejuci syr","name":"Harzbube Polomäkký zrejúci syr","price":1.79,"oldPrice":2.39,"tier":"discounted","pricingUnit":"pack","packInfo":"250 g"}
+{"date":"2026-08-31","normalizedName":"rajo trvanliva smotana na varenie","name":"Rajo Trvanlivá smotana na varenie","price":0.59,"oldPrice":1.09,"tier":"discounted","pricingUnit":"pack","packInfo":"250 ml"}
+{"date":"2026-08-31","normalizedName":"mliecny dezert kapsicka","name":"Mliečny dezert kapsička","price":0.49,"oldPrice":0.69,"tier":"discounted","pricingUnit":"pack","packInfo":"80 g"}
+{"date":"2026-08-31","normalizedName":"slahacka v spreji","name":"Šľahačka v spreji","price":1.09,"oldPrice":1.49,"tier":"discounted","pricingUnit":"pack","packInfo":"250 ml"}
+{"date":"2026-08-31","normalizedName":"hummus","name":"Hummus","price":1.09,"oldPrice":1.39,"tier":"discounted","pricingUnit":"pack","packInfo":"200 g"}
+{"date":"2026-08-31","normalizedName":"kuracie nugety s dipom","name":"Kuracie nugety s dipom","price":2.29,"oldPrice":2.99,"tier":"discounted","pricingUnit":"pack","packInfo":"300 g"}
+{"date":"2026-08-31","normalizedName":"aljasska treska obalovane filety","name":"Aljašská treska obaľované filety","price":5.19,"oldPrice":5.99,"tier":"discounted","pricingUnit":"pack","packInfo":"800 g"}
+{"date":"2026-08-31","normalizedName":"zavin","name":"Závin","price":1.49,"oldPrice":1.99,"tier":"discounted","pricingUnit":"pack","packInfo":"400 g"}
+{"date":"2026-08-31","normalizedName":"delissa","name":"Delissa","price":0.35,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"30 g"}
+{"date":"2026-08-31","normalizedName":"minitycinky","name":"Minityčinky","price":2.99,"oldPrice":3.99,"tier":"discounted","pricingUnit":"pack","packInfo":"400 g"}
+{"date":"2026-08-31","normalizedName":"midi snack tiramisu","name":"Midi Snack Tiramisu","price":1.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"280 g"}
+{"date":"2026-08-31","normalizedName":"venceky","name":"Venčeky","price":0.75,"oldPrice":0.99,"tier":"discounted","pricingUnit":"pack","packInfo":"150 g"}
+{"date":"2026-08-31","normalizedName":"hello ovocna kapsicka","name":"Hello Ovocná kapsička","price":0.29,"oldPrice":0.39,"tier":"discounted","pricingUnit":"pack","packInfo":"100 g"}
+{"date":"2026-08-31","normalizedName":"pilsner urquell","name":"Pilsner Urquell","price":0.95,"oldPrice":1.39,"tier":"discounted","pricingUnit":"pack","packInfo":"0,5 l"}
+{"date":"2026-08-31","normalizedName":"hell classic","name":"Hell Classic","price":0.99,"oldPrice":1.29,"tier":"discounted","pricingUnit":"pack","packInfo":"0,5 l"}
+{"date":"2026-08-31","normalizedName":"captain jack","name":"Captain Jack","price":0.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"0,5 l"}
+{"date":"2026-08-31","normalizedName":"krusovice 12","name":"Krušovice 12°","price":0.75,"oldPrice":1.09,"tier":"discounted","pricingUnit":"pack","packInfo":"0,5 l"}
+{"date":"2026-08-31","normalizedName":"corgon 10","name":"Corgoň 10°","price":0.42,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"0,5 l"}
+{"date":"2026-08-31","normalizedName":"staropramen smichov 10","name":"Staropramen Smíchov 10°","price":0.45,"oldPrice":0.89,"tier":"discounted","pricingUnit":"pack","packInfo":"0,5 l"}
+{"date":"2026-08-31","normalizedName":"vino cimarosa","name":"Víno Cimarosa","price":2.19,"oldPrice":2.99,"tier":"discounted","pricingUnit":"pack","packInfo":"0,75 l"}
+{"date":"2026-08-31","normalizedName":"triumph vodka","name":"Triumph vodka","price":7.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"0,7 l"}
+{"date":"2026-08-31","normalizedName":"konzerva pre psy","name":"Konzerva pre psy","price":1.25,"oldPrice":1.55,"tier":"discounted","pricingUnit":"pack","packInfo":"1250 g"}
+{"date":"2026-08-31","normalizedName":"maggi hrncekova polievka","name":"Maggi hrnčeková polievka","price":0.37,"oldPrice":0.55,"tier":"discounted","pricingUnit":"pack","packInfo":"12/21/23 g"}
+{"date":"2026-08-31","normalizedName":"vishu style instantna polievka","name":"Vishu Style Instantná polievka","price":0.24,"oldPrice":0.35,"tier":"discounted","pricingUnit":"pack","packInfo":"60 g"}
+{"date":"2026-08-31","normalizedName":"maggi dobry hostinec","name":"Maggi Dobrý hostinec","price":0.95,"oldPrice":1.89,"tier":"discounted","pricingUnit":"pack","packInfo":"140/146/153 g"}
+{"date":"2026-08-31","normalizedName":"tatrako chilli toastova natierka","name":"Tatrako Chilli toastová nátierka","price":0.75,"oldPrice":0.95,"tier":"discounted","pricingUnit":"pack","packInfo":"110 g"}
+{"date":"2026-08-31","normalizedName":"pikok pasteta pikantna","name":"Pikok Paštéta pikantná","price":0.3,"oldPrice":0.59,"tier":"discounted","pricingUnit":"pack","packInfo":"75 g"}
+{"date":"2026-08-31","normalizedName":"pikok madarsky gulas","name":"Pikok Maďarský guláš","price":1.49,"oldPrice":2.59,"tier":"discounted","pricingUnit":"pack","packInfo":"400 g"}
+{"date":"2026-08-31","normalizedName":"pikok bravcovy lunchmeat","name":"Pikok Bravčový Lunchmeat","price":1.65,"oldPrice":2.19,"tier":"discounted","pricingUnit":"pack","packInfo":"400 g"}
+{"date":"2026-08-31","normalizedName":"dulano pork lunch meat","name":"Dulano Pork Lunch meat","price":1.94,"oldPrice":2.99,"tier":"discounted","pricingUnit":"pack","packInfo":"340 g"}
+{"date":"2026-08-31","normalizedName":"tuniak filety vo vlastnej stave","name":"Tuniak filety vo vlastnej šťave","price":1.19,"oldPrice":1.99,"tier":"discounted","pricingUnit":"pack","packInfo":"195 g"}
+{"date":"2026-08-31","normalizedName":"sledove filety v oleji","name":"Sledové filety v oleji","price":0.99,"oldPrice":1.39,"tier":"discounted","pricingUnit":"pack","packInfo":"170 g"}
+{"date":"2026-08-31","normalizedName":"kidney fazule s kukuricou","name":"Kidney fazule s kukuricou","price":1.19,"oldPrice":1.99,"tier":"discounted","pricingUnit":"pack","packInfo":"425 ml"}
+{"date":"2026-08-31","normalizedName":"paradajkovy pretlak","name":"Paradajkový pretlak","price":0.57,"oldPrice":0.89,"tier":"discounted","pricingUnit":"pack","packInfo":"500 g"}
+{"date":"2026-08-31","normalizedName":"susene paradajky","name":"Sušené paradajky","price":1.28,"oldPrice":1.99,"tier":"discounted","pricingUnit":"pack","packInfo":"100 g"}
+{"date":"2026-08-31","normalizedName":"dr oetker ovsena kasa","name":"Dr. Oetker Ovsená kaša","price":0.39,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"54/58 g"}
+{"date":"2026-08-31","normalizedName":"dr oetker ryzova kasa","name":"Dr. Oetker Ryžová kaša","price":0.65,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"50/52 g"}
+{"date":"2026-08-31","normalizedName":"manya strednozrnna ryza","name":"Mánya Strednozrnná ryža","price":1.19,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"1 kg"}
+{"date":"2026-08-31","normalizedName":"popstar tea","name":"Popstar Tea","price":1.29,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"0,5 l"}
+{"date":"2026-08-31","normalizedName":"party mix zele bonbony","name":"Party Mix želé bonbóny","price":2.79,"oldPrice":3.69,"tier":"discounted","pricingUnit":"pack","packInfo":"425 g"}
+{"date":"2026-08-31","normalizedName":"kysle zele cerviky broskynove kruzky","name":"Kyslé želé červíky/Broskyňové krúžky","price":1.59,"oldPrice":1.99,"tier":"discounted","pricingUnit":"pack","packInfo":"400 g"}
+{"date":"2026-08-31","normalizedName":"gumene cukriky rozne druhy","name":"Gumené cukríky rôzne druhy","price":1.19,"oldPrice":1.45,"tier":"discounted","pricingUnit":"pack","packInfo":"300 g"}
+{"date":"2026-08-31","normalizedName":"jelly beans rozne druhy","name":"Jelly Beans rôzne druhy","price":1.39,"oldPrice":1.79,"tier":"discounted","pricingUnit":"pack","packInfo":"200 g"}
+{"date":"2026-08-31","normalizedName":"lizanky rozne druhy","name":"Lízanky rôzne druhy","price":1.59,"oldPrice":1.99,"tier":"discounted","pricingUnit":"pack","packInfo":"135 g"}
+{"date":"2026-08-31","normalizedName":"ovocne pelendreky rozne druhy","name":"Ovocné pelendreky rôzne druhy","price":0.69,"oldPrice":0.89,"tier":"discounted","pricingUnit":"pack","packInfo":"150 g"}
+{"date":"2026-08-31","normalizedName":"praclik do teplovzdusnej fritezy","name":"Praclík do teplovzdušnej fritézy","price":1.49,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"360 g, 1 kg = 4,14"}
+{"date":"2026-08-31","normalizedName":"angus striploin steak","name":"Angus Striploin Steak","price":8.99,"oldPrice":null,"tier":"low_price","pricingUnit":"pack","packInfo":"250 g"}
+{"date":"2026-08-31","normalizedName":"cherry paradajky datlove","name":"Cherry paradajky datľové","price":1.29,"oldPrice":1.99,"tier":"discounted","pricingUnit":"pack","packInfo":"250 g balenie"}
+{"date":"2026-08-31","normalizedName":"pizzova tasticka","name":"Pizzová taštička","price":0.39,"oldPrice":0.49,"tier":"discounted","pricingUnit":"pack","packInfo":"90 g"}
+{"date":"2026-08-31","normalizedName":"tatranska rolka","name":"Tatranská rolka","price":3.19,"oldPrice":4.19,"tier":"discounted","pricingUnit":"pack","packInfo":"400 g"}
+{"date":"2026-08-31","normalizedName":"ritter sport cokolada","name":"Ritter Sport čokoláda","price":1.49,"oldPrice":1.99,"tier":"discounted","pricingUnit":"pack","packInfo":"100 g"}
+{"date":"2026-08-31","normalizedName":"budweiser budvar 11 9","name":"Budweiser Budvar 11,9°","price":0.69,"oldPrice":1.25,"tier":"discounted","pricingUnit":"pack","packInfo":"0,5 l"}
+{"date":"2026-08-31","normalizedName":"spisiacka borovicka","name":"Spišiacka borovička","price":7.49,"oldPrice":11.49,"tier":"discounted","pricingUnit":"pack","packInfo":"0,7 l"}
