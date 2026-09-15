@@ -13,3 +13,4 @@ export { UpcomingTeaser } from './UpcomingTeaser/UpcomingTeaser';
 export { Footer } from './Footer/Footer';
 export { DevThemePanel } from './DevThemePanel/DevThemePanel';
 export { CatalogExplorer } from './CatalogExplorer/CatalogExplorer';
+export { ServiceWorkerRegistration } from './ServiceWorkerRegistration/ServiceWorkerRegistration';

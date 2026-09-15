@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { cookies } from "next/headers";
 import { Plus_Jakarta_Sans, Inter } from "next/font/google";
-import {PostHogProvider, ThemeProvider, Header, Footer, DevThemePanel} from "@/components";
+import { PostHogProvider, ThemeProvider, Header, Footer, ServiceWorkerRegistration } from "@/components";
 import "./globals.scss";
 import styles from "./page.module.scss";
 
@@ -75,6 +75,7 @@ export default async function RootLayout({
     >
       <body>
         <ThemeProvider initialTheme={theme}>
+          <ServiceWorkerRegistration />
           <PostHogProvider>
             {/* <DevThemePanel /> */}
             {/* TODO: replace inline styles with a CSS Module (project convention: no inline styles). */}
