@@ -1,101 +1,39 @@
 {
-  "generatedAt": "2026-09-14T07:29:22.352Z",
+  "generatedAt": "2026-09-21T07:25:41.324Z",
   "recipes": [
     {
       "id": "recipe-a1",
       "basket": "A",
       "basketLabel": "Celý týždeň (od pondelka)",
-      "title": "Pečená kačica s kyslou kapustou",
-      "description": "Šťavnatá kačica pečená s kyslou kapustou podávaná so zemiakovou knedľou.",
+      "title": "Kuracie prsia s brokolicou a ryžou",
+      "description": "Kuracie kúsky opečené na panvici podávané s dusenou brokolicou a guľatozrnnou ryžou.",
       "category": "meat",
-      "cookingMethod": "oven",
+      "cookingMethod": "pan",
       "servings": 2,
-      "estimatedTime": "150 minút",
+      "estimatedTime": "35 minút",
       "activeTime": "20 minút",
-      "difficulty": "medium",
-      "ingredients": [
-        {
-          "name": "Kačica celá",
-          "amount": "1 kg",
-          "source": "sale",
-          "productId": "f-0ec3f39b8e",
-          "savings": 2.2
-        },
-        {
-          "name": "Kyslá kapusta",
-          "amount": "850 ml",
-          "source": "sale",
-          "productId": "f-91c9ebf014",
-          "savings": 0
-        },
-        {
-          "name": "Žemľová knedľa",
-          "amount": "720 g",
-          "source": "sale",
-          "productId": "f-c796510b17",
-          "savings": 0
-        },
-        {
-          "name": "Soľ",
-          "amount": "1 ČL",
-          "source": "pantry"
-        },
-        {
-          "name": "Čierne korenie",
-          "amount": "0.5 ČL",
-          "source": "pantry"
-        }
-      ],
-      "steps": [
-        "Predhrejeme rúru na 180 °C.",
-        "Kačicu umyjeme, rozporcujeme na menšie kúsky, nasolíme 1 ČL soli a okoreníme 0.5 ČL čierneho korenia.",
-        "Do pekáča vložíme 850 ml kyslej kapusty, na ňu poukladáme kúsky kačice.",
-        "Prikryjeme a pečieme v rúre 110 minút pri 180 °C.",
-        "Po 110 minútach pekáč odokryjeme a pečieme ďalších 10 minút pre chrumkavú kožu.",
-        "Medzitým nakrájame 720 g žemľovej knedle na plátky hrubé 2 cm a zohrejeme ich v pare počas posledných 5 minút pečenia mäsa."
-      ],
-      "approxCost": 4.97,
-      "checkoutCost": 4.97,
-      "totalSavings": 2.2
-    },
-    {
-      "id": "recipe-a2",
-      "basket": "A",
-      "basketLabel": "Celý týždeň (od pondelka)",
-      "title": "Cestoviny s paradajkovou omáčkou a mozzarellou",
-      "description": "Klasické špagety s paradajkovou omáčkou a mini mozzarellou.",
-      "category": "pasta",
-      "cookingMethod": "pot",
-      "servings": 2,
-      "estimatedTime": "20 minút",
-      "activeTime": "15 minút",
       "difficulty": "easy",
       "ingredients": [
         {
-          "name": "Špagety z mäkkej pšenice",
+          "name": "Kuracie prsné rezne",
+          "amount": "400 g",
+          "source": "sale",
+          "productId": "f-9713aec915",
+          "savings": 0.88
+        },
+        {
+          "name": "Brokolica",
           "amount": "500 g",
           "source": "sale",
-          "productId": "f-d282ecd7c3",
-          "savings": 0.11
+          "productId": "f-360da9d81e",
+          "savings": 1
         },
         {
-          "name": "Paradajkový pretlak",
-          "amount": "500 g",
+          "name": "Guľatozrnná ryža",
+          "amount": "200 g",
           "source": "sale",
-          "productId": "f-ac85f39f91",
-          "savings": 0.2
-        },
-        {
-          "name": "Mozzarella Mini",
-          "amount": "150 g",
-          "source": "sale",
-          "productId": "f-4fd14394d8",
-          "savings": 0
-        },
-        {
-          "name": "Voda",
-          "amount": "2000 ml",
-          "source": "pantry"
+          "productId": "f-5c9f349ca5",
+          "savings": 0.03
         },
         {
           "name": "Soľ",
@@ -103,198 +41,44 @@
           "source": "pantry"
         },
         {
-          "name": "Rastlinný olej",
-          "amount": "2 PL",
+          "name": "Čierne korenie",
+          "amount": "0.5 ČL",
           "source": "pantry"
-        }
-      ],
-      "steps": [
-        "Do hrnca dáme variť 2000 ml vody s 1 ČL soli.",
-        "Keď voda vrie, pridáme 500 g špagiet a varíme 10 minút, kým nie sú al dente.",
-        "V druhom hrnci zohrejeme 2 PL rastlinného oleja, pridáme 500 g paradajkového pretlaku, 1 ČL soli a varíme 5 minút na miernom ohni.",
-        "Cestoviny scedíme a zmiešame s omáčkou v hrnci.",
-        "Pri podávaní pridáme 150 g nakrájanej mini mozzarelly."
-      ],
-      "approxCost": 2.12,
-      "checkoutCost": 2.12,
-      "totalSavings": 0.31,
-      "relatedRecipeIds": [
-        "recipe-b2",
-        "recipe-c2"
-      ]
-    },
-    {
-      "id": "recipe-a3",
-      "basket": "A",
-      "basketLabel": "Celý týždeň (od pondelka)",
-      "title": "Bravčové karé s mrkvou a ryžou",
-      "description": "Bravčové karé dusené s mrkvou, podávané s dusenou ryžou.",
-      "category": "meat",
-      "cookingMethod": "pot",
-      "servings": 2,
-      "estimatedTime": "40 minút",
-      "activeTime": "20 minút",
-      "difficulty": "medium",
-      "ingredients": [
-        {
-          "name": "Bravčové karé",
-          "amount": "500 g",
-          "source": "sale",
-          "productId": "f-c537483aad",
-          "savings": 1.3
-        },
-        {
-          "name": "Mrkva",
-          "amount": "500 g",
-          "source": "sale",
-          "productId": "f-1d3ea76674",
-          "savings": 0.3
-        },
-        {
-          "name": "Guľatozrnná ryža",
-          "amount": "300 g",
-          "source": "sale",
-          "productId": "f-5c9f349ca5",
-          "savings": 0.05
         },
         {
           "name": "Rastlinný olej",
           "amount": "2 PL",
-          "source": "pantry"
-        },
-        {
-          "name": "Soľ",
-          "amount": "1.5 ČL",
           "source": "pantry"
         },
         {
           "name": "Voda",
-          "amount": "800 ml",
+          "amount": "400 ml",
           "source": "pantry"
         }
       ],
       "steps": [
-        "Nakrájame 500 g bravčového karé na kocky veľké 2 cm a 500 g mrkvy na kolieska hrubé 0.5 cm.",
-        "V hrnci na 2 PL rastlinného oleja opečieme mäso 4 minúty na strednom ohni.",
-        "Pridáme nakrájanú mrkvu, 1 ČL soli a 200 ml vody.",
-        "Dusíme pod pokrievkou 20 minút na miernom ohni.",
-        "Súbežne v inom hrnci uvaríme 300 g ryže v 600 ml vody s 0.5 ČL soli počas 15 minút na miernom ohni."
+        "Prepláchneme 200 g guľatozrnej ryže a vložíme do hrnca so 400 ml vody a 1 ČL soli.",
+        "Ryžu privedieme k varu a dusíme pod pokrievkou na miernom ohni 15 minút.",
+        "Kuracie prsné rezne nakrájame na kocky veľké 2 cm, osolíme 0.5 ČL soli a okoreníme 0.5 ČL čierneho korenia.",
+        "Na panvici rozohrejeme 2 PL rastlinného oleja a kuracie kúsky opekáme 6 minút na strednom ohni.",
+        "Brokolicu rozdelíme na ružičky, pridáme k mäsu na panvicu spolu s 0.5 ČL soli a podlejeme 2 PL vody z ryže.",
+        "Panvicu zakryjeme pokrievkou a dusíme 7 minút na miernom ohni, kým brokolica nezmäkne."
       ],
-      "approxCost": 2.2,
-      "checkoutCost": 3.03,
-      "totalSavings": 1.65,
-      "relatedRecipeIds": [
-        "recipe-c1"
-      ]
+      "approxCost": 3.54,
+      "checkoutCost": 4.5,
+      "totalSavings": 1.91
     },
     {
-      "id": "recipe-a4",
+      "id": "recipe-a2",
       "basket": "A",
       "basketLabel": "Celý týždeň (od pondelka)",
-      "title": "Tvarohový krém s hroznom",
-      "description": "Tvaroh vyšľahaný s cukrom, doplnený o čerstvé ružové hrozno.",
-      "category": "dessert",
-      "cookingMethod": "raw",
-      "servings": 2,
-      "estimatedTime": "10 minút",
-      "activeTime": "10 minút",
-      "difficulty": "easy",
-      "ingredients": [
-        {
-          "name": "Tvaroh polotučný",
-          "amount": "250 g",
-          "source": "sale",
-          "productId": "f-fd9205900b",
-          "savings": 0.1
-        },
-        {
-          "name": "Ružové hrozno bezjadierkové",
-          "amount": "250 g",
-          "source": "sale",
-          "productId": "f-13d8120f27",
-          "savings": 1.05
-        },
-        {
-          "name": "Cukor",
-          "amount": "2 PL",
-          "source": "pantry"
-        }
-      ],
-      "steps": [
-        "Do misky dáme 250 g tvarohu a 2 PL cukru.",
-        "Dôkladne premiešame, kým nevznikne hladký krém.",
-        "Umyjeme 250 g hrozna a rozkrojíme bobule na polovicu.",
-        "Hrozno zamiešame do tvarohu a podávame."
-      ],
-      "approxCost": 1.29,
-      "checkoutCost": 1.88,
-      "totalSavings": 1.15
-    },
-    {
-      "id": "recipe-b1",
-      "basket": "B",
-      "basketLabel": "Od štvrtka",
-      "title": "Bravčová krkovička s pečenými batátmi",
-      "description": "Šťavnaté plátky bravčovej krkovičky pečené v rúre podávané s pečenými batátmi.",
-      "category": "meat",
-      "cookingMethod": "oven",
-      "servings": 2,
-      "estimatedTime": "60 minút",
-      "activeTime": "15 minút",
-      "difficulty": "easy",
-      "ingredients": [
-        {
-          "name": "Bravčová krkovička plátky XXL",
-          "amount": "400 g",
-          "source": "sale",
-          "productId": "f-7047873faf",
-          "savings": 0.48
-        },
-        {
-          "name": "Batáty - sladké zemiaky",
-          "amount": "600 g",
-          "source": "sale",
-          "productId": "f-c124d8676d",
-          "savings": 1.02
-        },
-        {
-          "name": "Rastlinný olej",
-          "amount": "3 PL",
-          "source": "pantry"
-        },
-        {
-          "name": "Soľ",
-          "amount": "1 ČL",
-          "source": "pantry"
-        },
-        {
-          "name": "Čierne korenie",
-          "amount": "0.5 ČL",
-          "source": "pantry"
-        }
-      ],
-      "steps": [
-        "Predhrejeme rúru na 200 °C.",
-        "Batáty ošúpeme, nakrájame na kocky veľké 2 cm a v miske zmiešame s 2 PL rastlinného oleja, 0.5 ČL soli a 0.25 ČL čierneho korenia.",
-        "Na plech vystlaný papierom na pečenie rozložíme batáty a pečieme ich 15 minút.",
-        "Plátky bravčovej krkovičky osolíme 0.5 ČL soli, okoreníme 0.25 ČL čierneho korenia a potrieme 1 PL rastlinného oleja.",
-        "Po 15 minútach pečenia pridáme k batátom na plech plátky bravčovej krkovičky a pečieme všetko spolu ďalších 25 minút pri 200 °C."
-      ],
-      "approxCost": 2.77,
-      "checkoutCost": 2.77,
-      "totalSavings": 1.5
-    },
-    {
-      "id": "recipe-b2",
-      "basket": "B",
-      "basketLabel": "Od štvrtka",
-      "title": "Špagety s cherry paradajkami a cesnakom",
-      "description": "Klasické cestoviny s omáčkou z pečených cherry paradajok a cesnaku.",
+      "title": "Špagety s paradajkovým pretlakom a šunkou",
+      "description": "Cestoviny v paradajkovej omáčke s dusenou šunkou.",
       "category": "pasta",
-      "cookingMethod": "pan",
+      "cookingMethod": "pot",
       "servings": 2,
-      "estimatedTime": "25 minút",
-      "activeTime": "20 minút",
+      "estimatedTime": "20 minút",
+      "activeTime": "15 minút",
       "difficulty": "easy",
       "ingredients": [
         {
@@ -305,239 +89,6 @@
           "savings": 0.06
         },
         {
-          "name": "Cherry paradajky strapcové",
-          "amount": "250 g",
-          "source": "sale",
-          "productId": "f-66fa726e9d",
-          "savings": 0.6
-        },
-        {
-          "name": "Cesnak",
-          "amount": "50 g",
-          "source": "sale",
-          "productId": "f-2d11bc763a",
-          "savings": 0
-        },
-        {
-          "name": "Rastlinný olej",
-          "amount": "3 PL",
-          "source": "pantry"
-        },
-        {
-          "name": "Soľ",
-          "amount": "1 ČL",
-          "source": "pantry"
-        },
-        {
-          "name": "Voda",
-          "amount": "2000 ml",
-          "source": "pantry"
-        }
-      ],
-      "steps": [
-        "Vo veľkom hrnci privedieme k varu 2000 ml vody s 1 ČL soli.",
-        "Cesnak ošúpeme a nakrájame na plátky hrubé 2 mm.",
-        "Cherry paradajky rozkrojíme na polovicu.",
-        "Zároveň so začiatkom varenia špagiet vo vode zohrejeme na panvici 3 PL rastlinného oleja, pridáme cesnak a opekáme 1 minútu.",
-        "Pridáme cherry paradajky a opekáme 5 minút, kým nepustia šťavu.",
-        "Scedené špagety pridáme do panvice k paradajkám, premiešame a necháme prehriať 1 minútu."
-      ],
-      "approxCost": 1.81,
-      "checkoutCost": 2.82,
-      "totalSavings": 0.66,
-      "relatedRecipeIds": [
-        "recipe-a2"
-      ]
-    },
-    {
-      "id": "recipe-b3",
-      "basket": "B",
-      "basketLabel": "Od štvrtka",
-      "title": "Krémová karfiolová polievka",
-      "description": "Jemná polievka z karfiolu a kyslej smotany.",
-      "category": "soup",
-      "cookingMethod": "pot",
-      "servings": 2,
-      "estimatedTime": "35 minút",
-      "activeTime": "15 minút",
-      "difficulty": "easy",
-      "ingredients": [
-        {
-          "name": "Karfiol",
-          "amount": "600 g",
-          "source": "sale",
-          "productId": "f-d694c2b095",
-          "savings": 0.7
-        },
-        {
-          "name": "Kyslá smotana",
-          "amount": "200 g",
-          "source": "sale",
-          "productId": "f-3c1d9f9982",
-          "savings": 0.2
-        },
-        {
-          "name": "Voda",
-          "amount": "800 ml",
-          "source": "pantry"
-        },
-        {
-          "name": "Soľ",
-          "amount": "1 ČL",
-          "source": "pantry"
-        },
-        {
-          "name": "Čierne korenie",
-          "amount": "0.5 ČL",
-          "source": "pantry"
-        }
-      ],
-      "steps": [
-        "Karfiol rozoberieme na malé ružičky.",
-        "V hrnci privedieme k varu 800 ml vody, pridáme karfiol, 1 ČL soli a 0.5 ČL čierneho korenia.",
-        "Varíme pod pokrievkou 20 minút na strednom ohni, kým karfiol nezmäkne.",
-        "Do polievky vmiešame 200 g kyslej smotany a ešte 2 minúty povaríme na miernom ohni."
-      ],
-      "approxCost": 1.09,
-      "checkoutCost": 2.18,
-      "totalSavings": 0.9,
-      "relatedRecipeIds": [
-        "recipe-c3"
-      ]
-    },
-    {
-      "id": "recipe-b4",
-      "basket": "B",
-      "basketLabel": "Od štvrtka",
-      "title": "Višňový dezert s mascarpone",
-      "description": "Ľahký dezert z višní, mascarpone a cukru.",
-      "category": "dessert",
-      "cookingMethod": "pan",
-      "servings": 2,
-      "estimatedTime": "20 minút",
-      "activeTime": "15 minút",
-      "difficulty": "easy",
-      "ingredients": [
-        {
-          "name": "Mrazené višne",
-          "amount": "250 g",
-          "source": "sale",
-          "productId": "f-e1fee3178d",
-          "savings": 0.4
-        },
-        {
-          "name": "Mascarpone",
-          "amount": "250 g",
-          "source": "sale",
-          "productId": "f-b3a3d29d1c",
-          "savings": 0.6
-        },
-        {
-          "name": "Cukor",
-          "amount": "2 PL",
-          "source": "pantry"
-        }
-      ],
-      "steps": [
-        "Na panvici zahrejeme 250 g mrazených višní s 1 PL cukru a varíme 5 minút na strednom ohni, kým sa vytvorí omáčka.",
-        "V miske vyšľaháme 250 g mascarpone s 1 PL cukru do hladkého krému.",
-        "Mascarpone krém rozdelíme do dvoch misiek a prelejeme teplou višňovou zmesou."
-      ],
-      "approxCost": 2.99,
-      "checkoutCost": 4.58,
-      "totalSavings": 1
-    },
-    {
-      "id": "recipe-c1",
-      "basket": "C",
-      "basketLabel": "Víkendový špeciál (od soboty)",
-      "title": "Mleté hovädzie mäso s ryžou a uhorkovým šalátom",
-      "description": "Šťavnaté mleté hovädzie mäso podávané s dusenou guľatozrnnou ryžou a čerstvým uhorkovým šalátom.",
-      "category": "meat",
-      "cookingMethod": "pot",
-      "servings": 2,
-      "estimatedTime": "45 minút",
-      "activeTime": "20 minút",
-      "difficulty": "easy",
-      "ingredients": [
-        {
-          "name": "Mleté hovädzie mäso",
-          "amount": "400 g",
-          "source": "sale",
-          "productId": "f-7141f74b0b",
-          "savings": 2.74
-        },
-        {
-          "name": "Guľatozrnná ryža",
-          "amount": "200 g",
-          "source": "sale",
-          "productId": "f-5c9f349ca5",
-          "savings": 0.03
-        },
-        {
-          "name": "Šalátové uhorky",
-          "amount": "1 ks",
-          "source": "sale",
-          "productId": "f-9a562bc48f",
-          "savings": 0.3
-        },
-        {
-          "name": "Voda",
-          "amount": "600 ml",
-          "source": "pantry"
-        },
-        {
-          "name": "Soľ",
-          "amount": "2 ČL",
-          "source": "pantry"
-        },
-        {
-          "name": "Čierne korenie",
-          "amount": "0.5 ČL",
-          "source": "pantry"
-        },
-        {
-          "name": "Rastlinný olej",
-          "amount": "2 PL",
-          "source": "pantry"
-        }
-      ],
-      "steps": [
-        "Prepláchneme 200 g guľatozrnnej ryže pod studenou tečúcou vodou.",
-        "Do hrnca dáme ryžu, 400 ml vody a 1 ČL soli, privedieme k varu a pod pokrievkou dusíme 15 minút na miernom ohni.",
-        "Súbežne na panvici rozohrejeme 2 PL rastlinného oleja a opečieme 400 g mletého hovädzieho mäsa 8 minút na strednom ohni, kým nie je hnedé.",
-        "Mäso dochutíme 0.5 ČL soli a 0.5 ČL čierneho korenia a premiešame.",
-        "Šalátovú uhorku nakrájame na tenké plátky, vložíme do misky a zmiešame s 0.5 ČL soli.",
-        "Na tanier servírujeme porciu ryže, mäsa a čerstvý uhorkový šalát."
-      ],
-      "approxCost": 3.68,
-      "checkoutCost": 4.63,
-      "totalSavings": 3.07,
-      "relatedRecipeIds": [
-        "recipe-a3"
-      ]
-    },
-    {
-      "id": "recipe-c2",
-      "basket": "C",
-      "basketLabel": "Víkendový špeciál (od soboty)",
-      "title": "Cestoviny s mozzarellou a paradajkovým základom",
-      "description": "Talianske cestoviny s jemnou strúhanou mozzarellou a paradajkovým základom.",
-      "category": "pasta",
-      "cookingMethod": "pot",
-      "servings": 2,
-      "estimatedTime": "20 minút",
-      "activeTime": "15 minút",
-      "difficulty": "easy",
-      "ingredients": [
-        {
-          "name": "Mozzarella",
-          "amount": "250 g",
-          "source": "sale",
-          "productId": "f-d7dc5d9a54",
-          "savings": 0.5
-        },
-        {
           "name": "Paradajkový pretlak",
           "amount": "250 g",
           "source": "sale",
@@ -545,18 +96,78 @@
           "savings": 0.1
         },
         {
-          "name": "Cestoviny",
-          "amount": "300 g",
-          "source": "buy"
-        },
-        {
-          "name": "Rastlinný olej",
-          "amount": "2 PL",
-          "source": "pantry"
+          "name": "Delikatesná dusená šunka",
+          "amount": "150 g",
+          "source": "sale",
+          "productId": "f-23d39bf068",
+          "savings": 0.2
         },
         {
           "name": "Soľ",
           "amount": "2 ČL",
+          "source": "pantry"
+        },
+        {
+          "name": "Voda",
+          "amount": "2000 ml",
+          "source": "pantry"
+        },
+        {
+          "name": "Rastlinný olej",
+          "amount": "1 PL",
+          "source": "pantry"
+        }
+      ],
+      "steps": [
+        "V hrnci privedieme k varu 2000 ml vody s 1 ČL soli a vložíme 250 g špagiet.",
+        "Špagety varíme 8 minút na strednom ohni, kým nie sú al dente, a následne scedíme.",
+        "Dusenú šunku nakrájame na rezance široké 0.5 cm.",
+        "V hrnci rozohrejeme 1 PL rastlinného oleja, opečieme šunku a pridáme 250 g paradajkového pretlaku.",
+        "Omáčku dochutíme 1 ČL soli a za stáleho miešania varíme 3 minúty na miernom ohni.",
+        "Do hrnca k omáčke pridáme scedené špagety a dôkladne premiešame."
+      ],
+      "approxCost": 2.36,
+      "checkoutCost": 2.92,
+      "totalSavings": 0.36,
+      "relatedRecipeIds": [
+        "recipe-c4"
+      ]
+    },
+    {
+      "id": "recipe-a3",
+      "basket": "A",
+      "basketLabel": "Celý týždeň (od pondelka)",
+      "title": "Zemiaková polievka s anglickou slaninou",
+      "description": "Sýta polievka zo zemiakov doplnená opečenou slaninou.",
+      "category": "soup",
+      "cookingMethod": "pot",
+      "servings": 2,
+      "estimatedTime": "40 minút",
+      "activeTime": "25 minút",
+      "difficulty": "medium",
+      "ingredients": [
+        {
+          "name": "Konzumné zemiaky ružové",
+          "amount": "1000 g",
+          "source": "sale",
+          "productId": "f-d765adc221",
+          "savings": 0
+        },
+        {
+          "name": "Anglická slanina",
+          "amount": "100 g",
+          "source": "sale",
+          "productId": "f-2bd89b9ec3",
+          "savings": 0.26
+        },
+        {
+          "name": "Soľ",
+          "amount": "2 ČL",
+          "source": "pantry"
+        },
+        {
+          "name": "Čierne korenie",
+          "amount": "0.5 ČL",
           "source": "pantry"
         },
         {
@@ -566,29 +177,404 @@
         }
       ],
       "steps": [
-        "Do hrnca dáme 1000 ml vody, 1.5 ČL soli a privedieme k varu.",
-        "Vložíme 300 g cestovín a varíme podľa návodu na obale 10 minút.",
-        "Na panvici rozohrejeme 2 PL rastlinného oleja a 2 minúty opekáme 250 g paradajkového pretlaku, dochutíme 0.5 ČL soli.",
-        "Scedené cestoviny pridáme do panvice k pretlaku, premiešame a odstavíme.",
-        "Do horúcich cestovín vmiešame 250 g strúhanej mozzarelly a prikryté necháme 2 minúty odstáť, kým sa syr neroztopí."
+        "Ošúpeme 1000 g zemiakov a nakrájame ich na kocky veľké 2 cm.",
+        "Zemiaky vložíme do hrnca, zalejeme 1000 ml vody, pridáme 1.5 ČL soli a varíme 20 minút na strednom ohni do mäkka.",
+        "Anglickú slaninu nakrájame na pásiky široké 1 cm a na panvici opečieme 5 minút na strednom ohni.",
+        "Časť uvarených zemiakov roztlačíme vidličkou v hrnci, aby sa polievka zahustila.",
+        "Do polievky primiešame opečenú slaninu, dochutíme 0.5 ČL soli a 0.5 ČL čierneho korenia.",
+        "Všetko spolu povaríme 2 minúty na miernom ohni."
       ],
-      "approxCost": 2.34,
-      "checkoutCost": 2.68,
-      "totalSavings": 0.6,
+      "approxCost": 1.43,
+      "checkoutCost": 3.58,
+      "totalSavings": 0.26,
       "relatedRecipeIds": [
-        "recipe-a2"
+        "recipe-c2"
       ]
     },
     {
-      "id": "recipe-c3",
-      "basket": "C",
-      "basketLabel": "Víkendový špeciál (od soboty)",
-      "title": "Hokkaido krémová polievka",
-      "description": "Sýta a hladká tekvicová polievka pripravená z varenej hokkaido tekvice a kyslej smotany.",
+      "id": "recipe-a4",
+      "basket": "A",
+      "basketLabel": "Celý týždeň (od pondelka)",
+      "title": "Šalát s tuniakom a vajcom",
+      "description": "Ľadový šalát s tuniakom a vareným vajcom.",
+      "category": "veggie",
+      "cookingMethod": "raw",
+      "servings": 2,
+      "estimatedTime": "15 minút",
+      "activeTime": "15 minút",
+      "difficulty": "easy",
+      "ingredients": [
+        {
+          "name": "Ľadový šalát",
+          "amount": "1 ks",
+          "source": "sale",
+          "productId": "f-5da94dd0cb",
+          "savings": 0.7
+        },
+        {
+          "name": "Tuniak filety vo vlastnej šťave",
+          "amount": "195 g",
+          "source": "sale",
+          "productId": "f-b2996c1cd8",
+          "savings": 0.4
+        },
+        {
+          "name": "Čerstvé vajcia ,,M\"",
+          "amount": "2 ks",
+          "source": "sale",
+          "productId": "f-0481422e99",
+          "savings": 0.12
+        },
+        {
+          "name": "Soľ",
+          "amount": "0.5 ČL",
+          "source": "pantry"
+        },
+        {
+          "name": "Rastlinný olej",
+          "amount": "1 PL",
+          "source": "pantry"
+        },
+        {
+          "name": "Voda",
+          "amount": "500 ml",
+          "source": "pantry"
+        }
+      ],
+      "steps": [
+        "Vo vriacej vode uvarenej z 500 ml vody varíme 2 ks vajec 9 minút natvrdo, následne schladíme a ošúpeme.",
+        "Ľadový šalát umyjeme a rukami natrháme na menšie kúsky.",
+        "Vo väčšej mise zmiešame šalát s 1 PL rastlinného oleja a 0.5 ČL soli.",
+        "Na šalát navrstvíme 195 g tuniaka z konzervy.",
+        "Vajcia nakrájame na štvrtiny a poukladáme navrch šalátu."
+      ],
+      "approxCost": 2.96,
+      "checkoutCost": 4.87,
+      "totalSavings": 1.22,
+      "relatedRecipeIds": [
+        "recipe-c4"
+      ]
+    },
+    {
+      "id": "recipe-b1",
+      "basket": "B",
+      "basketLabel": "Od štvrtka",
+      "title": "Bravčové karé s restovanou mrkvou a ryžou",
+      "description": "Šťavnaté plátky bravčového karé pripravené na panvici, podávané s restovanou mrkvou a ryžou.",
+      "category": "meat",
+      "cookingMethod": "pan",
+      "servings": 2,
+      "estimatedTime": "35 minút",
+      "activeTime": "25 minút",
+      "difficulty": "easy",
+      "ingredients": [
+        {
+          "name": "Bravčové karé plátky XXL",
+          "amount": "400 g",
+          "source": "sale",
+          "productId": "f-9d92fb8e08",
+          "savings": 0.6
+        },
+        {
+          "name": "Mrkva",
+          "amount": "300 g",
+          "source": "sale",
+          "productId": "f-5860ba2a04",
+          "savings": 0
+        },
+        {
+          "name": "Mánya Guľatozrnná ryža",
+          "amount": "200 g",
+          "source": "sale",
+          "productId": "f-978ed53996",
+          "savings": 0
+        },
+        {
+          "name": "Soľ",
+          "amount": "2 ČL",
+          "source": "pantry"
+        },
+        {
+          "name": "Čierne korenie",
+          "amount": "0.5 ČL",
+          "source": "pantry"
+        },
+        {
+          "name": "Rastlinný olej",
+          "amount": "3 PL",
+          "source": "pantry"
+        },
+        {
+          "name": "Voda",
+          "amount": "400 ml",
+          "source": "pantry"
+        }
+      ],
+      "steps": [
+        "V hrnci uvaríme 200 g ryže v 400 ml vody s 0.5 ČL soli po dobu 15 minút na miernom ohni.",
+        "Počas varenia ryže očistíme mrkvu a nakrájame ju na kolieska hrubé 0.5 cm.",
+        "Bravčové karé naklepeme, osolíme 0.5 ČL soli a okoreníme 0.5 ČL čierneho korenia.",
+        "Na panvici rozohrejeme 2 PL rastlinného oleja a karé opekáme 4 minúty z každej strany.",
+        "Mäso vyberieme z panvice, pridáme 1 PL rastlinného oleja a orestujeme mrkvu s 1 ČL soli po dobu 7 minút.",
+        "Servírujeme uvarenú ryžu s opečeným mäsom a restovanou mrkvou."
+      ],
+      "approxCost": 2.36,
+      "checkoutCost": 5.26,
+      "totalSavings": 0.6,
+      "relatedRecipeIds": [
+        "recipe-c1"
+      ]
+    },
+    {
+      "id": "recipe-b2",
+      "basket": "B",
+      "basketLabel": "Od štvrtka",
+      "title": "Šošovicový prívarok so šunkou",
+      "description": "Sýta a výživná šošovica doplnená dusenou šunkou.",
       "category": "soup",
       "cookingMethod": "pot",
       "servings": 2,
       "estimatedTime": "50 minút",
+      "activeTime": "15 minút",
+      "difficulty": "medium",
+      "ingredients": [
+        {
+          "name": "Ribeira Šošovica",
+          "amount": "250 g",
+          "source": "sale",
+          "productId": "f-4011637b17",
+          "savings": 0
+        },
+        {
+          "name": "Dusená výberová šunka",
+          "amount": "150 g",
+          "source": "sale",
+          "productId": "f-8ec1208f6c",
+          "savings": 0.35
+        },
+        {
+          "name": "Soľ",
+          "amount": "1 ČL",
+          "source": "pantry"
+        },
+        {
+          "name": "Voda",
+          "amount": "800 ml",
+          "source": "pantry"
+        },
+        {
+          "name": "Rastlinný olej",
+          "amount": "1 PL",
+          "source": "pantry"
+        }
+      ],
+      "steps": [
+        "Šošovicu prepláchneme a vložíme do hrnca s 800 ml vody a 0.5 ČL soli.",
+        "Varíme pod pokrievkou 35 minút na miernom ohni, kým šošovica nezmäkne.",
+        "Počas varenia šošovice na panvici s 1 PL rastlinného oleja orestujeme šunku nakrájanú na kocky 1 cm po dobu 5 minút do zlatista.",
+        "Do uvarenej šošovice pridáme zvyšných 0.5 ČL soli, premiešame a vmiešame opečenú šunku."
+      ],
+      "approxCost": 1.64,
+      "checkoutCost": 3.28,
+      "totalSavings": 0.35
+    },
+    {
+      "id": "recipe-b3",
+      "basket": "B",
+      "basketLabel": "Od štvrtka",
+      "title": "Pórová polievka so syrom a krutónmi",
+      "description": "Krémová polievka z póru doplnená hoblinkami syra a opečenými kockami chleba.",
+      "category": "soup",
+      "cookingMethod": "pot",
+      "servings": 2,
+      "estimatedTime": "30 minút",
+      "activeTime": "20 minút",
+      "difficulty": "easy",
+      "ingredients": [
+        {
+          "name": "Pór",
+          "amount": "1 ks",
+          "source": "sale",
+          "productId": "f-fa0663817e",
+          "savings": 0.5
+        },
+        {
+          "name": "Kráľovský syr",
+          "amount": "100 g",
+          "source": "sale",
+          "productId": "f-bae67fccca",
+          "savings": 0.24
+        },
+        {
+          "name": "Proteínový chlieb",
+          "amount": "100 g",
+          "source": "sale",
+          "productId": "f-985bdbc2ec",
+          "savings": 0.22
+        },
+        {
+          "name": "Soľ",
+          "amount": "1 ČL",
+          "source": "pantry"
+        },
+        {
+          "name": "Voda",
+          "amount": "600 ml",
+          "source": "pantry"
+        },
+        {
+          "name": "Rastlinný olej",
+          "amount": "2 PL",
+          "source": "pantry"
+        }
+      ],
+      "steps": [
+        "Pór umyjeme a nakrájame na kolieska hrubé 0.5 cm.",
+        "V hrnci rozohrejeme 1 PL rastlinného oleja a pór dusíme 5 minút.",
+        "Zalejeme 600 ml vody, pridáme 0.5 ČL soli a varíme 15 minút na strednom ohni.",
+        "Počas varenia polievky nakrájame chlieb na kocky 1 cm a na panvici s 1 PL rastlinného oleja a 0.5 ČL soli opečieme do chrumkava.",
+        "Polievku servírujeme s hoblinkami kráľovského syra a opečenými kockami chleba."
+      ],
+      "approxCost": 1.64,
+      "checkoutCost": 4.27,
+      "totalSavings": 0.96
+    },
+    {
+      "id": "recipe-b4",
+      "basket": "B",
+      "basketLabel": "Od štvrtka",
+      "title": "Vegetariánsky kaleráb na oleji s vajcom",
+      "description": "Kaleráb dusený na panvici podávaný s varenými vajíčkami a opečeným chlebom.",
+      "category": "veggie",
+      "cookingMethod": "pan",
+      "servings": 2,
+      "estimatedTime": "25 minút",
+      "activeTime": "20 minút",
+      "difficulty": "easy",
+      "ingredients": [
+        {
+          "name": "Kaleráb",
+          "amount": "2 ks",
+          "source": "sale",
+          "productId": "f-b43642d346",
+          "savings": 0.88
+        },
+        {
+          "name": "Čerstvé vajcia ,,M\"",
+          "amount": "4 ks",
+          "source": "pantry"
+        },
+        {
+          "name": "Horský bochník",
+          "amount": "200 g",
+          "source": "buy"
+        },
+        {
+          "name": "Soľ",
+          "amount": "1 ČL",
+          "source": "pantry"
+        },
+        {
+          "name": "Rastlinný olej",
+          "amount": "2 PL",
+          "source": "pantry"
+        },
+        {
+          "name": "Voda",
+          "amount": "500 ml",
+          "source": "pantry"
+        }
+      ],
+      "steps": [
+        "V hrnci dáme variť 500 ml vody a vložíme 4 vajcia, varíme 9 minút.",
+        "Kaleráb ošúpeme a nakrájame na kocky 2 cm.",
+        "Na panvici rozohrejeme 2 PL rastlinného oleja, pridáme kaleráb a 0.5 ČL soli.",
+        "Dusíme pod pokrievkou na strednom ohni 10 minút.",
+        "Chlieb nakrájame na plátky a opečieme, vajcia ošúpeme, rozpolíme a podávame s kalerábom posypaným zvyšných 0.5 ČL soli."
+      ],
+      "approxCost": 0.9,
+      "checkoutCost": 0.9,
+      "totalSavings": 0.88
+    },
+    {
+      "id": "recipe-c1",
+      "basket": "C",
+      "basketLabel": "Víkendový špeciál (od soboty)",
+      "title": "Bravčové stehno na šampiňónoch s ryžou",
+      "description": "Šťavnaté kúsky bravčového mäsa dusené v krémovej omáčke z bielych šampiňónov, podávané s dusenou guľatozrnnou ryžou.",
+      "category": "meat",
+      "cookingMethod": "pot",
+      "servings": 2,
+      "estimatedTime": "45 minút",
+      "activeTime": "15 minút",
+      "difficulty": "medium",
+      "ingredients": [
+        {
+          "name": "Bravčové stehno",
+          "amount": "400 g",
+          "source": "sale",
+          "productId": "f-06a3c667cf",
+          "savings": 1
+        },
+        {
+          "name": "Biele šampiňóny",
+          "amount": "250 g",
+          "source": "sale",
+          "productId": "f-ddbea8fc56",
+          "savings": 0.3
+        },
+        {
+          "name": "Guľatozrnná ryža",
+          "amount": "200 g",
+          "source": "sale",
+          "productId": "f-978ed53996",
+          "savings": 0
+        },
+        {
+          "name": "Soľ",
+          "amount": "1.5 ČL",
+          "source": "pantry"
+        },
+        {
+          "name": "Čierne korenie",
+          "amount": "0.5 ČL",
+          "source": "pantry"
+        },
+        {
+          "name": "Rastlinný olej",
+          "amount": "2 PL",
+          "source": "pantry"
+        },
+        {
+          "name": "Voda",
+          "amount": "700 ml",
+          "source": "pantry"
+        }
+      ],
+      "steps": [
+        "Bravčové stehno nakrájame na kocky veľké 2 cm.",
+        "V hrnci rozohrejeme 2 PL rastlinného oleja a mäso 5 minút opečieme na vysokom ohni.",
+        "Pridáme očistené a na plátky hrubé 0.5 cm nakrájané biele šampiňóny, 1 ČL soli a 0.5 ČL čierneho korenia.",
+        "Zalejeme 300 ml vody a dusíme pod pokrievkou na strednom ohni 25 minút.",
+        "Súbežne v druhom hrnci privedieme k varu 400 ml vody s 0.5 ČL soli, pridáme 200 g guľatozrnnej ryže a varíme pod pokrievkou na nízkom ohni 20 minút."
+      ],
+      "approxCost": 2.09,
+      "checkoutCost": 3.88,
+      "totalSavings": 1.3,
+      "relatedRecipeIds": [
+        "recipe-b1"
+      ]
+    },
+    {
+      "id": "recipe-c2",
+      "basket": "C",
+      "basketLabel": "Víkendový špeciál (od soboty)",
+      "title": "Hokkaido tekvica pečená so slaninou a syrom",
+      "description": "Kocky pečenej tekvice Hokkaido so slanými tónmi anglickej slaniny a rozpečeným plátkovým syrom.",
+      "category": "veggie",
+      "cookingMethod": "oven",
+      "servings": 2,
+      "estimatedTime": "45 minút",
       "activeTime": "15 minút",
       "difficulty": "easy",
       "ingredients": [
@@ -600,16 +586,121 @@
           "savings": 0.9
         },
         {
-          "name": "Kyslá smotana",
+          "name": "Anglická slanina",
           "amount": "100 g",
           "source": "sale",
-          "productId": "f-3c1d9f9982",
-          "savings": 0.1
+          "productId": "f-2bd89b9ec3",
+          "savings": 0.26
         },
         {
-          "name": "Voda",
-          "amount": "800 ml",
+          "name": "Plátkový syr",
+          "amount": "150 g",
+          "source": "sale",
+          "productId": "f-241ee03c02",
+          "savings": 0.36
+        },
+        {
+          "name": "Soľ",
+          "amount": "0.5 ČL",
           "source": "pantry"
+        },
+        {
+          "name": "Rastlinný olej",
+          "amount": "1 PL",
+          "source": "pantry"
+        }
+      ],
+      "steps": [
+        "Predhrejeme rúru na 200 °C.",
+        "Tekvicu Hokkaido nakrájame na kocky veľké 3 cm a zmiešame v pekáči s 1 PL rastlinného oleja a 0.5 ČL soli.",
+        "Anglickú slaninu nakrájame na rezance široké 1 cm a premiešame s tekvicou.",
+        "Pečieme v rúre na 200 °C po dobu 25 minút.",
+        "Na vrch poukladáme 150 g plátkového syra a dopekáme v rúre 5 minút, kým sa syr neroztopí."
+      ],
+      "approxCost": 2.35,
+      "checkoutCost": 4.51,
+      "totalSavings": 1.52,
+      "relatedRecipeIds": [
+        "recipe-a3"
+      ]
+    },
+    {
+      "id": "recipe-c3",
+      "basket": "C",
+      "basketLabel": "Víkendový špeciál (od soboty)",
+      "title": "Jahodový dezert s mascarpone a medom",
+      "description": "Sladký krém z mascarpone s čerstvými jahodami sladený kvetovým medom.",
+      "category": "dessert",
+      "cookingMethod": "raw",
+      "servings": 2,
+      "estimatedTime": "15 minút",
+      "activeTime": "15 minút",
+      "difficulty": "easy",
+      "ingredients": [
+        {
+          "name": "Slovenská jahoda Slahôdka",
+          "amount": "225 g",
+          "source": "sale",
+          "productId": "f-ee71e6bf04",
+          "savings": 0
+        },
+        {
+          "name": "Mascarpone",
+          "amount": "250 g",
+          "source": "sale",
+          "productId": "f-3175ecc9c8",
+          "savings": 0.4
+        },
+        {
+          "name": "Med kvetový",
+          "amount": "2 PL",
+          "source": "sale",
+          "productId": "f-1a4960c187",
+          "savings": 0.09
+        }
+      ],
+      "steps": [
+        "Jahody umyjeme a nakrájame na štvrtiny.",
+        "V miske vyšľaháme 250 g mascarpone s 2 PL medu.",
+        "Do pohárov vrstvíme mascarpone krém a nakrájané jahody."
+      ],
+      "approxCost": 4.14,
+      "checkoutCost": 7.27,
+      "totalSavings": 0.48
+    },
+    {
+      "id": "recipe-c4",
+      "basket": "C",
+      "basketLabel": "Víkendový špeciál (od soboty)",
+      "title": "Špagety s tuniakom a cherry paradajkami",
+      "description": "Klasické špagety s kúskami tuniaka vo vlastnej šťave a čerstvými datľovými paradajkami.",
+      "category": "pasta",
+      "cookingMethod": "pan",
+      "servings": 2,
+      "estimatedTime": "20 minút",
+      "activeTime": "20 minút",
+      "difficulty": "easy",
+      "ingredients": [
+        {
+          "name": "Špagety z mäkkej pšenice",
+          "amount": "250 g",
+          "source": "sale",
+          "productId": "f-d282ecd7c3",
+          "savings": 0.06
+        },
+        {
+          "name": "Tuniak filety vo vlastnej šťave",
+          "amount": "195 g",
+          "source": "sale",
+          "productId": "f-b2996c1cd8",
+          "savings": 0.4
+        },
+        {
+          "name": "Cherry paradajky datľové",
+          "amount": "250 g",
+          "source": "sale",
+          "productId": "f-d9d9ac430f",
+          "savings": 0.5
         },
         {
           "name": "Soľ",
@@ -617,66 +708,30 @@
           "source": "pantry"
         },
         {
-          "name": "Čierne korenie",
-          "amount": "0.5 ČL",
+          "name": "Rastlinný olej",
+          "amount": "1 PL",
+          "source": "pantry"
+        },
+        {
+          "name": "Voda",
+          "amount": "2000 ml",
           "source": "pantry"
         }
       ],
       "steps": [
-        "Tekvicu Hokkaido nakrájame na kocky veľké 3 cm a zbavíme jadierok.",
-        "V hrnci zalejeme tekvicu 800 ml vody, pridáme 1.5 ČL soli a 0.5 ČL čierneho korenia.",
-        "Varíme 30 minút na strednom ohni pod pokrievkou, kým tekvica nezmäkne.",
-        "Polievku rozmixujeme ponorným mixérom do hladkej konzistencie.",
-        "Nakoniec vmiešame 100 g kyslej smotany a krátko prehrejeme na miernom ohni."
+        "V hrnci privedieme k varu 2000 ml vody s 1 ČL soli a uvaríme 250 g špagiet podľa návodu na obale.",
+        "Medzitým v panvici rozohrejeme 1 PL rastlinného oleja a pridáme 250 g na polovice nakrájaných cherry paradajok a 0.5 ČL soli.",
+        "Paradajky opečieme 3 minúty na strednom ohni, kým nepustia šťavu.",
+        "Pridáme 195 g tuniaka vo vlastnej šťave a krátko prehrejeme 2 minúty.",
+        "Uvarené špagety scedíme a zmiešame v panvici s tuniakom a paradajkami."
       ],
-      "approxCost": 0.76,
-      "checkoutCost": 1.42,
-      "totalSavings": 1,
+      "approxCost": 3.3,
+      "checkoutCost": 3.52,
+      "totalSavings": 0.96,
       "relatedRecipeIds": [
-        "recipe-b3"
+        "recipe-a2",
+        "recipe-a4"
       ]
-    },
-    {
-      "id": "recipe-c4",
-      "basket": "C",
-      "basketLabel": "Víkendový špeciál (od soboty)",
-      "title": "Tvarohový dezert s banánmi",
-      "description": "Sladký krém z jemného tvarohu doplnený o čerstvé banány.",
-      "category": "dessert",
-      "cookingMethod": "raw",
-      "servings": 2,
-      "estimatedTime": "10 minút",
-      "activeTime": "10 minút",
-      "difficulty": "easy",
-      "ingredients": [
-        {
-          "name": "Tvaroh hrudkovitý jemný",
-          "amount": "250 g",
-          "source": "sale",
-          "productId": "f-a93599ee8b",
-          "savings": 0.3
-        },
-        {
-          "name": "Banány",
-          "amount": "300 g",
-          "source": "sale",
-          "productId": "f-09bb395d1a",
-          "savings": 0.15
-        },
-        {
-          "name": "Cukor",
-          "amount": "2 PL",
-          "source": "pantry"
-        }
-      ],
-      "steps": [
-        "Banány ošúpeme a nakrájame na kolieska hrubé 1 cm.",
-        "V miske zmiešame 250 g tvarohu s 2 PL cukru.",
-        "Do misiek navrstvíme tvarohový krém a navrch poukladáme 300 g nakrájaných banánov."
-      ],
-      "approxCost": 1.22,
-      "checkoutCost": 1.22,
-      "totalSavings": 0.45
     }
   ]
 }
