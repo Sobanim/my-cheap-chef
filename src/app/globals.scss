@@ -96,6 +96,9 @@
   --spacing-xl: 24px;
   --spacing-2xl: 32px;
 
+  /* Phone tab bar height, excluding the safe-area inset (see BottomNav). */
+  --bottom-nav-height: 50px;
+
   /* Font variables --font-display and --font-body are set by next/font classes on <html>. */
 }
 

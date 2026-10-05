@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { cookies } from "next/headers";
 import { Plus_Jakarta_Sans, Inter } from "next/font/google";
-import { PostHogProvider, ThemeProvider, Header, Footer, ServiceWorkerRegistration } from "@/components";
+import { PostHogProvider, ThemeProvider, Header, Footer, BottomNav, ServiceWorkerRegistration } from "@/components";
 import "./globals.scss";
 import styles from "./page.module.scss";
 
@@ -45,6 +45,9 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
+  // Lets the page reach under the iPhone notch and home indicator; without it
+  // env(safe-area-inset-*) is always 0 and the tab bar can't clear the indicator.
+  viewportFit: "cover",
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#faf7f2" },
     { media: "(prefers-color-scheme: dark)", color: "#121316" },
@@ -78,14 +81,14 @@ export default async function RootLayout({
           <ServiceWorkerRegistration />
           <PostHogProvider>
             {/* <DevThemePanel /> */}
-            {/* TODO: replace inline styles with a CSS Module (project convention: no inline styles). */}
-            <div style={{ display: "flex", flexDirection: "column", minHeight: "100dvh" }}>
+            <div className={styles.shell}>
               <Header />
               <main className={styles.main}>
                 {children}
               </main>
               <Footer />
             </div>
+            <BottomNav />
           </PostHogProvider>
         </ThemeProvider>
       </body>

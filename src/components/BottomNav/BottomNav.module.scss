@@ -1,0 +1,169 @@
+/* Spring-like ease-out, close to the iOS tab bar feel. */
+$ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
+
+.bar {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .bar {
+    display: block;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 200;
+    /* Clears the iPhone home indicator in the installed PWA. */
+    padding-bottom: env(safe-area-inset-bottom);
+    background-color: color-mix(in srgb, var(--color-bg) 82%, transparent);
+    backdrop-filter: saturate(160%) blur(14px);
+    border-top: 1px solid var(--color-border);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+}
+
+/*
+ * All vertical geometry derives from --bottom-nav-height: the pill + gap +
+ * label stack is centred in the bar, and the sliding indicator uses the same
+ * offset. Changing the height in globals.scss is the only knob needed.
+ */
+.items {
+  --pill-height: 26px;
+  --pill-width: 54px;
+  --item-gap: 2px;
+  --label-line: 13px;
+  --pill-top: calc((var(--bottom-nav-height) - var(--pill-height) - var(--item-gap) - var(--label-line)) / 2);
+
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  height: var(--bottom-nav-height);
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/*
+ * One pill shared by all tabs: it is a third of the bar wide and slides by
+ * whole widths, so moving from tab 0 to tab 2 is one continuous glide.
+ * The index → offset mapping assumes the three links in NAV_LINKS.
+ */
+.indicator {
+  position: absolute;
+  top: var(--pill-top);
+  left: 0;
+  width: calc(100% / 3);
+  height: var(--pill-height);
+  pointer-events: none;
+  transition: transform 0.45s $ease-spring, opacity 0.2s ease;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: var(--pill-width);
+    margin: 0 auto;
+    border-radius: var(--radius-badge);
+    background: var(--color-accent-soft);
+  }
+}
+
+.items[data-active-index="0"] .indicator {
+  transform: translateX(0);
+}
+
+.items[data-active-index="1"] .indicator {
+  transform: translateX(100%);
+}
+
+.items[data-active-index="2"] .indicator {
+  transform: translateX(200%);
+}
+
+/* A page outside the nav (e.g. /discounts) — no tab is current. */
+.items[data-active-index="-1"] .indicator {
+  opacity: 0;
+}
+
+.item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--item-gap);
+  padding-top: var(--pill-top);
+  color: var(--color-text-secondary);
+  -webkit-tap-highlight-color: transparent;
+  transition: color 0.3s ease;
+
+  &:active .icon {
+    transform: scale(0.88);
+  }
+
+  &:focus-visible {
+    outline: none;
+
+    .icon {
+      box-shadow: 0 0 0 2px var(--color-accent);
+    }
+  }
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--pill-width);
+  height: var(--pill-height);
+  border-radius: var(--radius-badge);
+  transition: transform 0.2s ease;
+
+  svg {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+.label {
+  font-family: var(--font-display), "Plus Jakarta Sans", system-ui, sans-serif;
+  font-size: 0.68rem;
+  line-height: var(--label-line);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.itemActive {
+  color: var(--color-accent);
+
+  .icon svg {
+    animation: iconPop 0.45s $ease-spring;
+  }
+
+  .label {
+    font-weight: 700;
+  }
+}
+
+/* A small lift when a tab becomes active — plays once, as the class is added. */
+@keyframes iconPop {
+  0% {
+    transform: scale(0.8);
+  }
+  60% {
+    transform: scale(1.12);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .indicator,
+  .icon {
+    transition: none;
+  }
+
+  .itemActive .icon svg {
+    animation: none;
+  }
+}

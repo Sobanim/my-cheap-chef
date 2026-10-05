@@ -53,7 +53,6 @@ npm run recipe:generate  # (WIP) Generate recipes via LLM
 
 ## Known Tech Debt / TODO
 
-- **`src/app/layout.tsx`** — inline `style={{ ... }}` on the layout wrapper; should move to a CSS Module.
 - **`src/lib/services/lidlService.ts`** — the live Lidl `fetch` lacks a timeout (`AbortController`), a `User-Agent` header, and retries. Harden it.
 - **`src/app/page.tsx`** — `"use no memo"` opts the page out of React Compiler; revisit and remove if no longer needed.
 - **`scripts/types.ts`** vs **`src/lib/types/lidl.ts`** — duplicated Lidl API types; candidate for consolidation.

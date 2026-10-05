@@ -8,3 +8,4 @@ export { SunIcon } from "./SunIcon";
 export { MoonIcon } from "./MoonIcon";
 export { CalendarIcon } from "./CalendarIcon";
 export { DishScene } from "./dishes/DishScene";
+export { HomeIcon } from "./HomeIcon";

@@ -1,3 +1,17 @@
+/* Root layout wrapper: header, main and footer stacked, footer pushed to the bottom. */
+.shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+/* Keeps the end of every page (footer included) clear of the fixed phone tab bar. */
+@media (max-width: 640px) {
+  .shell {
+    padding-bottom: calc(var(--bottom-nav-height) + env(safe-area-inset-bottom));
+  }
+}
+
 .page {
   flex: 1;
   display: flex;

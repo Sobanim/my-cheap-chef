@@ -5,22 +5,10 @@ import { ChefHatLogo } from "../icons";
 import { ThemeToggle } from "./ThemeToggle";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-const NAV_LINKS = [
-  { label: "Domov", href: "/" },
-  { label: "Zľavy", href: "/discounts" },
-  { label: "Recepty", href: "/recipes" },
-] as const;
+import { isNavLinkActive, NAV_LINKS } from "@/lib/navigation";
 
 export const Header = () => {
   const pathname = usePathname();
-
-  const isLinkActive = (pathname: string, href: string) => {
-    if (pathname === href) return true;
-    if (href === "/") return false;
-    if (href.startsWith("#")) return false;
-    return pathname.startsWith(href);
-  };
 
   return (
     <header className={styles.header}>
@@ -35,7 +23,7 @@ export const Header = () => {
 
         <nav className={styles.nav} aria-label="Hlavná navigácia">
           {NAV_LINKS.map((link) => {
-            const isActive = isLinkActive(pathname, link.href);
+            const isActive = isNavLinkActive(pathname, link);
 
             return (
               <Link

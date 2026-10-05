@@ -3,9 +3,11 @@
   top: 0;
   z-index: 200;
   background-color: color-mix(in srgb, var(--color-bg) 82%, transparent);
+  /* No hand-written -webkit- twin: Lightning CSS adds the prefix itself, and with both present it drops both. */
   backdrop-filter: saturate(160%) blur(14px);
-  -webkit-backdrop-filter: saturate(160%) blur(14px);
   border-bottom: 1px solid var(--color-border);
+  /* Clears the iOS status bar in the installed PWA (statusBarStyle is black-translucent). */
+  padding-top: env(safe-area-inset-top);
   transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
@@ -99,27 +101,9 @@
   flex-shrink: 0;
 }
 
-@media (max-width: 560px) {
-  .brandTitle {
-    font-size: 0.85rem;
-  }
-
-  .brandSubtitle {
-    font-size: 0.68rem;
-  }
-
+/* Phones navigate with the bottom tab bar (BottomNav) — the header keeps only brand and theme toggle. */
+@media (max-width: 640px) {
   .nav {
-    gap: 0;
-  }
-
-  .navLink {
-    font-size: 0.78rem;
-    padding: var(--spacing-xs) var(--spacing-sm);
-  }
-}
-
-@media (max-width: 400px) {
-  .navLink {
-    padding: var(--spacing-xs) 6px;
+    display: none;
   }
 }
