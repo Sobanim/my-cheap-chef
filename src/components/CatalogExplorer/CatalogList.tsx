@@ -1,5 +1,5 @@
 import type { Product } from '@/lib/types';
-import { formatDate, getDiscountPercent, PRICE_UNIT_SUFFIX } from './catalogFormat';
+import { formatDate, formatPrice, getDiscountPercent } from './catalogFormat';
 import styles from './CatalogExplorer.module.scss';
 
 type CatalogListProps = {
@@ -14,8 +14,8 @@ type CatalogListProps = {
 export const CatalogList = ({ products, highlightedId }: Readonly<CatalogListProps>) => (
   <ul className={styles.list}>
     {products.map((product) => {
+      const price = formatPrice(product);
       const discountPercent = getDiscountPercent(product);
-      const unitSuffix = product.pricingUnit ? (PRICE_UNIT_SUFFIX[product.pricingUnit] ?? '') : '';
       const validity = product.dateLabel || `${formatDate(product.validFrom)} – ${formatDate(product.validUntil)}`;
 
       return (
@@ -30,11 +30,9 @@ export const CatalogList = ({ products, highlightedId }: Readonly<CatalogListPro
           </div>
 
           <div className={styles.listPrice}>
-            {product.price > 0 ? (
+            {price ? (
               <>
-                <span className={styles.priceNow}>
-                  {product.price.toFixed(2)} €{unitSuffix}
-                </span>
+                <span className={styles.priceNow}>{price}</span>
                 {discountPercent !== null && (
                   <>
                     <span className={styles.priceWas}>{product.oldPrice!.toFixed(2)} €</span>

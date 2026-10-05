@@ -15,13 +15,7 @@ export const ROLE_LABELS: Record<string, string> = {
   nonfood: 'Nepotravina',
 };
 
-export const UNIT_LABELS: Record<string, string> = {
-  pack: 'balenie',
-  per_kg: '€/kg',
-  per_100g: '€/100 g',
-};
-
-/** Suffix appended to a price in the compact list — a pack price needs none. */
+/** Suffix appended to a price — a pack price needs none. */
 export const PRICE_UNIT_SUFFIX: Record<string, string> = {
   per_kg: '/kg',
   per_100g: '/100 g',
@@ -41,6 +35,25 @@ export const formatDate = (epochSeconds: number | null): string => {
   const day = String(date.getUTCDate()).padStart(2, '0');
   const month = String(date.getUTCMonth() + 1).padStart(2, '0');
   return `${day}.${month}.${date.getUTCFullYear()}`;
+};
+
+/** Day and month only (`05.10`) — the year is always the current flyer's, so it is just noise. */
+export const formatShortDate = (epochSeconds: number | null): string => {
+  if (!epochSeconds) return '—';
+  const date = new Date(epochSeconds * 1000);
+  const day = String(date.getUTCDate()).padStart(2, '0');
+  const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+  return `${day}.${month}`;
+};
+
+export const formatValidity = (validFrom: number | null, validUntil: number | null): string =>
+  `${formatShortDate(validFrom)} – ${formatShortDate(validUntil)}`;
+
+/** `1.49 €`, `4.59 €/kg` — or null when the flyer prints no price ("Cena v predajni"). */
+export const formatPrice = (product: Product): string | null => {
+  if (product.price <= 0) return null;
+  const unitSuffix = product.pricingUnit ? (PRICE_UNIT_SUFFIX[product.pricingUnit] ?? '') : '';
+  return `${product.price.toFixed(2)} €${unitSuffix}`;
 };
 
 /** Discount in whole percent, or null when there is no honest original price to compare against. */

@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 import type { Product } from '@/lib/types';
 import { CatalogList } from './CatalogList';
 import { CatalogTable, type SortColumn, type SortState } from './CatalogTable';
-import { formatDate, PRODUCT_HASH_PREFIX } from './catalogFormat';
+import { formatValidity, getDiscountPercent, PRODUCT_HASH_PREFIX } from './catalogFormat';
 import styles from './CatalogExplorer.module.scss';
 
 type CatalogExplorerProps = {
@@ -18,16 +18,13 @@ const SORT_ACCESSORS: Record<SortColumn, (product: Product) => string | number> 
   name: (p) => p.name?.toLowerCase() ?? '',
   price: (p) => p.price,
   oldPrice: (p) => p.oldPrice ?? -Infinity,
+  discount: (p) => getDiscountPercent(p) ?? -Infinity,
   packInfo: (p) => p.packInfo?.toLowerCase() ?? '',
   priceTier: (p) => p.priceTier ?? '',
-  pricingUnit: (p) => p.pricingUnit ?? '',
   foodRole: (p) => p.foodRole ?? '',
-  category: (p) => p.category?.toLowerCase() ?? '',
-  isLidlPlus: (p) => (p.isLidlPlus ? 1 : 0),
   promoNote: (p) => p.promoNote?.toLowerCase() ?? '',
-  validFrom: (p) => p.validFrom ?? -Infinity,
-  validUntil: (p) => p.validUntil ?? -Infinity,
-  id: (p) => p.id,
+  // Start date first, end date breaks ties — keeps a weekend-only period after the week that contains it.
+  validity: (p) => `${String(p.validFrom ?? 0).padStart(12, '0')}|${String(p.validUntil ?? 0).padStart(12, '0')}`,
 };
 
 type ValidityPeriod = { validFrom: number | null; validUntil: number | null };
@@ -155,7 +152,7 @@ export const CatalogExplorer = ({ products }: Readonly<CatalogExplorerProps>) =>
               className={`${styles.dateButton} ${isActive ? styles.dateButtonActive : ''}`}
               onClick={() => setSelectedPeriod(period)}
             >
-              {formatDate(period.validFrom)} – {formatDate(period.validUntil)}
+              {formatValidity(period.validFrom, period.validUntil)}
             </button>
           );
         })}

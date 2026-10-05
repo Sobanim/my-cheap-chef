@@ -96,12 +96,14 @@
 
   th,
   td {
-    padding: 10px 14px;
+    padding: 10px 12px;
     text-align: left;
     border-bottom: 1px solid var(--color-border);
   }
 
   th {
+    white-space: normal;
+    vertical-align: middle;
     font-family: var(--font-display), "Plus Jakarta Sans", system-ui, sans-serif;
     font-weight: 700;
     color: var(--color-text-secondary);
@@ -134,10 +136,6 @@
   tbody tr:hover {
     background: var(--color-surface-2);
   }
-
-  a {
-    color: var(--color-accent);
-  }
 }
 
 .nameCell {
@@ -145,12 +143,26 @@
   color: var(--color-text-primary);
   white-space: normal;
   min-width: 180px;
+
+  .lidlPlusBadge {
+    display: inline-block;
+    margin-left: var(--spacing-sm);
+    vertical-align: 1px;
+    white-space: nowrap;
+  }
 }
 
-.idCell {
-  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
-  font-size: 0.75rem;
-  color: var(--color-text-muted);
+/* Promo notes and pack sizes run long ("ešte nižšia cena pri kúpe 3 ks") — wrap them so the table fits the page. */
+.promoCell,
+.packCell {
+  white-space: normal;
+  min-width: 110px;
+  max-width: 180px;
+}
+
+.priceCell {
+  font-weight: 700;
+  color: var(--color-accent);
 }
 
 .tierBadge {

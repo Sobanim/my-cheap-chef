@@ -2,28 +2,28 @@ import { CatalogExplorer } from '@/components';
 import { loadCatalogData } from '@/lib/catalogData';
 import styles from '../discounts/page.module.scss';
 
+/** `2026-10-05` → `05.10`, matching the short dates on the filter buttons. */
+const formatOfferDate = (isoDate: string): string => {
+  const [, month, day] = isoDate.split('-');
+  return month && day ? `${day}.${month}` : isoDate;
+};
+
 /**
- * Raw view of `data/catalog.json` — the pool the recipe generator chose from
- * that week. Not in the nav yet, but recipe ingredients link here as
+ * Every product from this week's parsed flyer (`data/catalog.json`) — the pool
+ * the recipe generator chose from. Recipe ingredients link here as
  * `/catalog#product-<id>` so shoppers can see pack size, validity and Lidl Plus.
- * The desktop table still shows every parsed field; phones get a compact list.
  */
 export default async function CatalogPage() {
-  const { products, flyerIdentifier, offerStartDate, offerEndDate, generatedAt } = await loadCatalogData();
+  const { products, offerStartDate, offerEndDate } = await loadCatalogData();
 
   return (
     <>
       <header className={styles.pageHeader}>
-        <h1 className={styles.pageTitle}>Katalóg produktov</h1>
+        <h1 className={styles.pageTitle}>Akcie z letáku</h1>
         <p className={styles.pageDescription}>
-          {products.length > 0 ? (
-            <>
-              {products.length} produktov z letáku {flyerIdentifier || '—'} ({offerStartDate} – {offerEndDate}).
-              {generatedAt && ` Spracované ${new Date(generatedAt).toLocaleString('sk-SK')}.`}
-            </>
-          ) : (
-            'Zatiaľ nebol spracovaný žiadny leták — súbor data/catalog.json neexistuje alebo je prázdny.'
-          )}
+          {products.length > 0
+            ? `${products.length} produktov v akcii · platí ${formatOfferDate(offerStartDate)} – ${formatOfferDate(offerEndDate)}`
+            : 'Akcie z aktuálneho letáku zatiaľ nie sú k dispozícii.'}
         </p>
       </header>
       <CatalogExplorer products={products} />

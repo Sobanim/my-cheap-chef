@@ -1,21 +1,17 @@
 import type { Product } from '@/lib/types';
-import { formatDate, ROLE_LABELS, TIER_LABELS, UNIT_LABELS } from './catalogFormat';
+import { formatPrice, formatValidity, getDiscountPercent, ROLE_LABELS, TIER_LABELS } from './catalogFormat';
 import styles from './CatalogExplorer.module.scss';
 
 export type SortColumn =
   | 'name'
   | 'price'
   | 'oldPrice'
+  | 'discount'
   | 'packInfo'
   | 'priceTier'
-  | 'pricingUnit'
   | 'foodRole'
-  | 'category'
-  | 'isLidlPlus'
   | 'promoNote'
-  | 'validFrom'
-  | 'validUntil'
-  | 'id';
+  | 'validity';
 
 export type SortDirection = 'asc' | 'desc';
 
@@ -25,16 +21,12 @@ const COLUMNS: Array<{ key: SortColumn; label: string }> = [
   { key: 'name', label: 'Názov' },
   { key: 'price', label: 'Cena' },
   { key: 'oldPrice', label: 'Pôvodná cena' },
+  { key: 'discount', label: 'Zľava' },
   { key: 'packInfo', label: 'Balenie' },
   { key: 'priceTier', label: 'Typ ceny' },
-  { key: 'pricingUnit', label: 'Jednotka' },
   { key: 'foodRole', label: 'Rola' },
-  { key: 'category', label: 'Kategória' },
-  { key: 'isLidlPlus', label: 'Lidl Plus' },
   { key: 'promoNote', label: 'Poznámka k akcii' },
-  { key: 'validFrom', label: 'Platné od' },
-  { key: 'validUntil', label: 'Platné do' },
-  { key: 'id', label: 'ID' },
+  { key: 'validity', label: 'Platnosť' },
 ];
 
 type CatalogTableProps = {
@@ -44,7 +36,7 @@ type CatalogTableProps = {
   highlightedId: string | null;
 };
 
-/** Full-detail view of every catalog field — the desktop layout. */
+/** The desktop layout — one row per product, sortable by every column. */
 export const CatalogTable = ({ products, sort, onToggleSort, highlightedId }: Readonly<CatalogTableProps>) => (
   <div className={styles.tableWrapper}>
     <table className={styles.table}>
@@ -58,46 +50,42 @@ export const CatalogTable = ({ products, sort, onToggleSort, highlightedId }: Re
               </span>
             </th>
           ))}
-          <th>Obrázok</th>
         </tr>
       </thead>
       <tbody>
-        {products.map((product) => (
-          <tr
-            key={product.id}
-            data-product-id={product.id}
-            className={`${styles.productTarget} ${product.id === highlightedId ? styles.highlighted : ''}`}
-          >
-            <td className={styles.nameCell}>{product.name}</td>
-            <td>{product.price.toFixed(2)} €</td>
-            <td>{product.oldPrice != null ? `${product.oldPrice.toFixed(2)} €` : '—'}</td>
-            <td>{product.packInfo || '—'}</td>
-            <td>
-              {product.priceTier && (
-                <span className={`${styles.tierBadge} ${styles[product.priceTier]}`}>
-                  {TIER_LABELS[product.priceTier] ?? product.priceTier}
-                </span>
-              )}
-            </td>
-            <td>{product.pricingUnit ? (UNIT_LABELS[product.pricingUnit] ?? product.pricingUnit) : '—'}</td>
-            <td>{product.foodRole ? (ROLE_LABELS[product.foodRole] ?? product.foodRole) : '—'}</td>
-            <td>{product.category || '—'}</td>
-            <td>{product.isLidlPlus ? 'Áno' : '—'}</td>
-            <td>{product.promoNote || '—'}</td>
-            <td>{formatDate(product.validFrom)}</td>
-            <td>{formatDate(product.validUntil)}</td>
-            <td className={styles.idCell}>{product.id}</td>
-            <td>
-              {product.imageUrl ? (
-                <a href={product.imageUrl} target="_blank" rel="noreferrer">
-                  odkaz
-                </a>
-              ) : (
-                '—'
-              )}
-            </td>
-          </tr>
-        ))}
+        {products.map((product) => {
+          const price = formatPrice(product);
+          const discountPercent = getDiscountPercent(product);
+
+          return (
+            <tr
+              key={product.id}
+              data-product-id={product.id}
+              className={`${styles.productTarget} ${product.id === highlightedId ? styles.highlighted : ''}`}
+            >
+              <td className={styles.nameCell}>
+                {product.name}
+                {product.isLidlPlus && <span className={styles.lidlPlusBadge}>Lidl Plus</span>}
+              </td>
+              <td className={styles.priceCell}>{price ?? <span className={styles.priceInStore}>Cena v predajni</span>}</td>
+              <td>{product.oldPrice != null ? `${product.oldPrice.toFixed(2)} €` : '—'}</td>
+              <td>
+                {discountPercent !== null ? <span className={styles.discountBadge}>−{discountPercent} %</span> : '—'}
+              </td>
+              <td className={styles.packCell}>{product.packInfo || '—'}</td>
+              <td>
+                {product.priceTier && (
+                  <span className={`${styles.tierBadge} ${styles[product.priceTier]}`}>
+                    {TIER_LABELS[product.priceTier] ?? product.priceTier}
+                  </span>
+                )}
+              </td>
+              <td>{product.foodRole ? (ROLE_LABELS[product.foodRole] ?? product.foodRole) : '—'}</td>
+              <td className={styles.promoCell}>{product.promoNote || '—'}</td>
+              <td>{formatValidity(product.validFrom, product.validUntil)}</td>
+            </tr>
+          );
+        })}
       </tbody>
     </table>
   </div>
