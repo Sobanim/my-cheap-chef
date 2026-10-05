@@ -4,8 +4,9 @@ import styles from '../discounts/page.module.scss';
 
 /**
  * Raw view of `data/catalog.json` — the pool the recipe generator chose from
- * that week. Not linked from the nav; reached by URL only. Exists for
- * inspecting what the flyer pipeline actually parsed, not as a user feature.
+ * that week. Not in the nav yet, but recipe ingredients link here as
+ * `/catalog#product-<id>` so shoppers can see pack size, validity and Lidl Plus.
+ * The desktop table still shows every parsed field; phones get a compact list.
  */
 export default async function CatalogPage() {
   const { products, flyerIdentifier, offerStartDate, offerEndDate, generatedAt } = await loadCatalogData();

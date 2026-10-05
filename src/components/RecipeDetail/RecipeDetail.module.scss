@@ -210,6 +210,19 @@
   color: var(--color-text-primary);
 }
 
+.ingredientLink {
+  color: var(--color-accent);
+  text-decoration: underline dotted;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--color-accent-hover);
+    text-decoration-style: solid;
+  }
+}
+
 .ingredientAmount {
   flex: 0 0 auto;
   font-size: 0.85rem;

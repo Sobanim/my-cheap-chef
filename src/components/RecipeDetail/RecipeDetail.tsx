@@ -82,7 +82,16 @@ export const RecipeDetail = ({ recipe }: Readonly<RecipeDetailProps>) => {
         <ul className={styles.ingredients}>
           {recipe.ingredients.map((ing, i) => (
             <li key={`${ing.name}-${i}`} className={styles.ingredient}>
-              <span className={styles.ingredientName}>{ing.name}</span>
+              <span className={styles.ingredientName}>
+                {/* Sale items point at their flyer row — pack size, validity and Lidl Plus live there. */}
+                {ing.source === "sale" && ing.productId ? (
+                  <Link href={`/catalog#product-${ing.productId}`} className={styles.ingredientLink}>
+                    {ing.name}
+                  </Link>
+                ) : (
+                  ing.name
+                )}
+              </span>
               <span className={styles.ingredientAmount}>{ing.amount}</span>
               <span
                 className={`${styles.sourceTag} ${

@@ -1,66 +1,18 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import type { Product } from '@/lib/types';
+import { CatalogList } from './CatalogList';
+import { CatalogTable, type SortColumn, type SortState } from './CatalogTable';
+import { formatDate, PRODUCT_HASH_PREFIX } from './catalogFormat';
 import styles from './CatalogExplorer.module.scss';
 
 type CatalogExplorerProps = {
   products: Product[];
 };
 
-/** Slovak labels for the enum-ish fields, so the table reads without a legend. */
-const TIER_LABELS: Record<string, string> = {
-  discounted: 'Zľava',
-  low_price: 'Nízka cena',
-  bundle: 'Balík',
-};
-
-const ROLE_LABELS: Record<string, string> = {
-  ingredient: 'Surovina',
-  snack: 'Snack',
-  drink: 'Nápoj',
-  ready_meal: 'Hotové jedlo',
-  nonfood: 'Nepotravina',
-};
-
-const UNIT_LABELS: Record<string, string> = {
-  pack: 'balenie',
-  per_kg: '€/kg',
-  per_100g: '€/100 g',
-};
-
-/**
- * Formats an epoch-seconds value as DD.MM.YYYY, in UTC.
- *
- * Product validity windows are stored as UTC midnight of the Slovak calendar
- * day (see `scripts/catalog/normalize-products.ts`) — reading them back with
- * UTC getters is what keeps this correct regardless of the viewer's own
- * timezone, instead of drifting a day depending on where they are.
- */
-const formatDate = (epochSeconds: number | null): string => {
-  if (!epochSeconds) return '—';
-  const date = new Date(epochSeconds * 1000);
-  const day = String(date.getUTCDate()).padStart(2, '0');
-  const month = String(date.getUTCMonth() + 1).padStart(2, '0');
-  return `${day}.${month}.${date.getUTCFullYear()}`;
-};
-
-type SortColumn =
-  | 'name'
-  | 'price'
-  | 'oldPrice'
-  | 'packInfo'
-  | 'priceTier'
-  | 'pricingUnit'
-  | 'foodRole'
-  | 'category'
-  | 'isLidlPlus'
-  | 'promoNote'
-  | 'validFrom'
-  | 'validUntil'
-  | 'id';
-
-type SortDirection = 'asc' | 'desc';
+/** How long a product reached via `#product-<id>` stays highlighted (matches the CSS fade). */
+const HIGHLIGHT_DURATION_MS = 3000;
 
 const SORT_ACCESSORS: Record<SortColumn, (product: Product) => string | number> = {
   name: (p) => p.name?.toLowerCase() ?? '',
@@ -77,22 +29,6 @@ const SORT_ACCESSORS: Record<SortColumn, (product: Product) => string | number> 
   validUntil: (p) => p.validUntil ?? -Infinity,
   id: (p) => p.id,
 };
-
-const COLUMNS: Array<{ key: SortColumn; label: string }> = [
-  { key: 'name', label: 'Názov' },
-  { key: 'price', label: 'Cena' },
-  { key: 'oldPrice', label: 'Pôvodná cena' },
-  { key: 'packInfo', label: 'Balenie' },
-  { key: 'priceTier', label: 'Typ ceny' },
-  { key: 'pricingUnit', label: 'Jednotka' },
-  { key: 'foodRole', label: 'Rola' },
-  { key: 'category', label: 'Kategória' },
-  { key: 'isLidlPlus', label: 'Lidl Plus' },
-  { key: 'promoNote', label: 'Poznámka k akcii' },
-  { key: 'validFrom', label: 'Platné od' },
-  { key: 'validUntil', label: 'Platné do' },
-  { key: 'id', label: 'ID' },
-];
 
 type ValidityPeriod = { validFrom: number | null; validUntil: number | null };
 
@@ -119,8 +55,39 @@ const collectAvailablePeriods = (products: Product[]): ValidityPeriod[] => {
 export const CatalogExplorer = ({ products }: Readonly<CatalogExplorerProps>) => {
   const availablePeriods = useMemo(() => collectAvailablePeriods(products), [products]);
   const [selectedPeriod, setSelectedPeriod] = useState<ValidityPeriod | null>(null);
-  const [sort, setSort] = useState<{ column: SortColumn; direction: SortDirection } | null>(null);
+  const [sort, setSort] = useState<SortState>(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const [highlightedId, setHighlightedId] = useState<string | null>(null);
+
+  /*
+   * Recipes link here as `/catalog#product-<id>`. The table and the phone list
+   * both render every product (CSS shows one of them), so the target can't be a
+   * plain `id` — it would be duplicated. Instead find the visible element with
+   * the matching data attribute. Runs after Next's own hash scroll, which finds
+   * no element by id and leaves the page alone.
+   */
+  useEffect(() => {
+    const { hash } = window.location;
+    if (!hash.startsWith(PRODUCT_HASH_PREFIX)) return;
+    const productId = decodeURIComponent(hash.slice(PRODUCT_HASH_PREFIX.length));
+
+    let timeoutId: ReturnType<typeof setTimeout> | undefined;
+    const frameId = requestAnimationFrame(() => {
+      const target = Array.from(
+        document.querySelectorAll<HTMLElement>(`[data-product-id="${CSS.escape(productId)}"]`),
+      ).find((element) => element.getClientRects().length > 0);
+      if (!target) return;
+
+      target.scrollIntoView({ block: 'center' });
+      setHighlightedId(productId);
+      timeoutId = setTimeout(() => setHighlightedId(null), HIGHLIGHT_DURATION_MS);
+    });
+
+    return () => {
+      cancelAnimationFrame(frameId);
+      clearTimeout(timeoutId);
+    };
+  }, []);
 
   const filtered = useMemo(() => {
     let result = products;
@@ -204,57 +171,10 @@ export const CatalogExplorer = ({ products }: Readonly<CatalogExplorerProps>) =>
             : 'V zadanom rozsahu dátumov nie sú žiadne produkty.'}
         </p>
       ) : (
-        <div className={styles.tableWrapper}>
-          <table className={styles.table}>
-            <thead>
-              <tr>
-                {COLUMNS.map(({ key, label }) => (
-                  <th key={key} className={styles.sortableHeader} onClick={() => toggleSort(key)}>
-                    {label}
-                    <span className={styles.sortIndicator}>
-                      {sort?.column === key ? (sort.direction === 'asc' ? '▲' : '▼') : ''}
-                    </span>
-                  </th>
-                ))}
-                <th>Obrázok</th>
-              </tr>
-            </thead>
-            <tbody>
-              {sorted.map((product) => (
-                <tr key={product.id}>
-                  <td className={styles.nameCell}>{product.name}</td>
-                  <td>{product.price.toFixed(2)} €</td>
-                  <td>{product.oldPrice != null ? `${product.oldPrice.toFixed(2)} €` : '—'}</td>
-                  <td>{product.packInfo || '—'}</td>
-                  <td>
-                    {product.priceTier && (
-                      <span className={`${styles.tierBadge} ${styles[product.priceTier]}`}>
-                        {TIER_LABELS[product.priceTier] ?? product.priceTier}
-                      </span>
-                    )}
-                  </td>
-                  <td>{product.pricingUnit ? (UNIT_LABELS[product.pricingUnit] ?? product.pricingUnit) : '—'}</td>
-                  <td>{product.foodRole ? (ROLE_LABELS[product.foodRole] ?? product.foodRole) : '—'}</td>
-                  <td>{product.category || '—'}</td>
-                  <td>{product.isLidlPlus ? 'Áno' : '—'}</td>
-                  <td>{product.promoNote || '—'}</td>
-                  <td>{formatDate(product.validFrom)}</td>
-                  <td>{formatDate(product.validUntil)}</td>
-                  <td className={styles.idCell}>{product.id}</td>
-                  <td>
-                    {product.imageUrl ? (
-                      <a href={product.imageUrl} target="_blank" rel="noreferrer">
-                        odkaz
-                      </a>
-                    ) : (
-                      '—'
-                    )}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <>
+          <CatalogTable products={sorted} sort={sort} onToggleSort={toggleSort} highlightedId={highlightedId} />
+          <CatalogList products={sorted} highlightedId={highlightedId} />
+        </>
       )}
     </div>
   );
