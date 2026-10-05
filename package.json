@@ -13,7 +13,7 @@
     "recipe:generate": "tsx scripts/generate-recipe.ts"
   },
   "dependencies": {
-    "next": "16.2.10",
+    "next": "16.4.0-canary.39",
     "posthog-js": "^1.396.9",
     "react": "19.2.3",
     "react-dom": "19.2.3"
