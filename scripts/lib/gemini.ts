@@ -11,6 +11,13 @@ const MODEL = 'gemini-3.1-flash-lite';
 /** Attempts per call when the API answers "rate limited". */
 const MAX_RATE_LIMIT_RETRIES = 3;
 
+/**
+ * Waits before each retry of an overloaded-server error (503 "high demand").
+ * These spikes usually clear within minutes, so the backoff stretches out —
+ * a weekly cron can afford to wait, it can't afford to fail.
+ */
+const OVERLOAD_BACKOFF_MS = [15_000, 30_000, 60_000];
+
 const sleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
 
 /**
@@ -26,8 +33,13 @@ const retryDelayFrom = (error: unknown): number => {
   return match ? Math.ceil(Number(match[1]) * 1000) + 500 : 60_000;
 };
 
-const isRateLimited = (error: unknown): boolean =>
-  typeof error === 'object' && error !== null && (error as { status?: number }).status === 429;
+const statusOf = (error: unknown): number | undefined =>
+  typeof error === 'object' && error !== null ? (error as { status?: number }).status : undefined;
+
+const isRateLimited = (error: unknown): boolean => statusOf(error) === 429;
+
+/** Server-side hiccups (overload, internal error, timeout) that are worth retrying. */
+const isTransient = (error: unknown): boolean => [500, 503, 504].includes(statusOf(error) ?? 0);
 
 /**
  * An image to send alongside the prompt.
@@ -74,6 +86,8 @@ export const generateJson = async (
     ? [{ inlineData: { mimeType: image.mimeType, data: image.data.toString('base64') } }, { text: prompt }]
     : [{ text: prompt }];
 
+  let overloadRetries = 0;
+
   for (let attempt = 1; ; attempt++) {
     await acquireRateLimitSlot();
 
@@ -94,8 +108,16 @@ export const generateJson = async (
 
       return JSON.parse(text);
     } catch (error) {
-      // Only quota errors are worth waiting out here; anything else is a real
-      // failure and belongs to the caller, which knows whether it can continue.
+      // Quota and server-overload errors are worth waiting out here; anything
+      // else is a real failure and belongs to the caller, which knows whether
+      // it can continue.
+      if (isTransient(error) && overloadRetries < OVERLOAD_BACKOFF_MS.length) {
+        const delay = OVERLOAD_BACKOFF_MS[overloadRetries++];
+        console.warn(`   ⏳ Gemini unavailable (${statusOf(error)}), waiting ${delay / 1000} s (retry ${overloadRetries}/${OVERLOAD_BACKOFF_MS.length})...`);
+        await sleep(delay);
+        continue;
+      }
+
       if (!isRateLimited(error) || attempt >= MAX_RATE_LIMIT_RETRIES) throw error;
 
       const delay = retryDelayFrom(error);
