@@ -14,6 +14,10 @@ if (
     api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
     capture_pageview: false, // We capture manually below
     capture_pageleave: true,
+    // No cookies or local storage: visitor identity is a daily-rotating hash computed
+    // by PostHog's servers, so no consent banner is needed. Requires cookieless mode
+    // to be enabled in the PostHog project settings, otherwise events are dropped.
+    cookieless_mode: "always",
   });
 }
 
