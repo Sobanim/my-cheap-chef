@@ -1,8 +1,10 @@
 # 🍳 My Cheap Chef — Cook from Discounts
  
-> **Status: 🚧 Work in Progress — core pipeline live, UI polish ongoing**
+> **Status: 🚧 Work in Progress — live MVP, weekly pipeline running**
+>
+> 🌐 **Live demo:** https://my-cheap-chef.vercel.app/ · the UI is in Slovak, since it's built for the Slovak market
 
-An AI-powered app that suggests recipes based on products currently on sale in supermarkets (Lidl, Kaufland — Slovakia). Save money and never wonder "What should I cook?" again.
+An AI-powered app that suggests recipes based on products currently on sale in supermarkets (currently Lidl Slovakia, more stores planned). Save money and never wonder "What should I cook?" again.
 
 ## 🎯 Problem
  
@@ -22,7 +24,7 @@ my-cheap-chef/
 │   ├── app/              ← Next.js App Router (pages & UI)
 │   │   └── api/          ← API Routes (Route Handlers)
 │   ├── lib/              ← Shared types, utilities, constants
-│   └── components/       ← (planned) React components
+│   └── components/       ← React components (CSS Modules)
 ├── scripts/              ← Cron scripts (catalog parsing, recipe generation)
 ├── data/                 ← JSON data files (products, recipes, catalog images)
 └── public/               ← Static assets
@@ -37,7 +39,7 @@ my-cheap-chef/
 | Scripts | TypeScript (tsx), scheduled via GitHub Actions |
 | AI | Google Gemini (`@google/genai`) — catalog parsing (Vision) + recipe generation (Text) |
 | Data | JSON files (`data/*.json`) + append-only price history (`data/price-history.jsonl`) |
-| Deployment | Vercel (planned) |
+| Deployment | Vercel |
 
 ## 🎨 Dish Illustrations
 
@@ -58,7 +60,7 @@ Two category values were retired into `veggie`: `baked`, which named a technique
 
 **No grill and no microwave**, deliberately: a grill isn't in every kitchen and we're aiming at the widest possible audience. The prompt forbids recipes that require one.
 
-The valid pairs live in [`src/lib/cookingMethods.ts`](src/lib/cookingMethods.ts) and are shared by the generator and the UI. Scenes are in [`src/components/icons/dishes/scenes/`](src/components/icons/dishes/scenes), built on shared `OvenFrame` / `PotFrame` / `PanFrame` chassis so the same cookware can't drift between scenes. See [docs/RECIPE_GENERATION.md](docs/RECIPE_GENERATION.md) for the full reasoning.
+The valid pairs live in [`src/lib/cookingMethods.ts`](src/lib/cookingMethods.ts) and are shared by the generator and the UI. Scenes are in [`src/components/icons/dishes/scenes/`](src/components/icons/dishes/scenes), built on shared `OvenFrame` / `PotFrame` / `PanFrame` chassis so the same cookware can't drift between scenes.
 
 ## 🚀 Getting Started
 
@@ -70,7 +72,7 @@ The valid pairs live in [`src/lib/cookingMethods.ts`](src/lib/cookingMethods.ts)
 ### Installation
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/Sobanim/my-cheap-chef.git
 cd my-cheap-chef
 npm install
 ```
@@ -104,8 +106,6 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 4. **Client:** Next.js pages read the JSON at request time —`/discounts` (products on sale), `/recipes` (AI-generated recipe of the week), `/catalog` (raw parsed catalog, internal/debug view).
 5. **Paid feature (future):** On-demand recipe generation.
 
-See [docs/CATALOG_INGESTION_PLAN.md](docs/CATALOG_INGESTION_PLAN.md) and [docs/RECIPE_GENERATION.md](docs/RECIPE_GENERATION.md) for the pipeline design.
-
 ## ✅ Roadmap
 
 - [x] Catalog parsing via Vision AI
@@ -113,8 +113,8 @@ See [docs/CATALOG_INGESTION_PLAN.md](docs/CATALOG_INGESTION_PLAN.md) and [docs/R
 - [x] Weekly pipeline automated via GitHub Actions
 - [x] UI: discounted products (`/discounts`) + recipe of the week (`/recipes`)
 - [x] Price history tracking (`data/price-history.jsonl`)
-- [ ] PWA support
-- [ ] Deployment to Vercel
+- [x] PWA support
+- [x] Deployment to Vercel
 - [ ] Multi-store support (Kaufland, etc.)
 - [ ] Filters (vegetarian, quick meals, no oven, etc.)
 - [ ] Shopping list generation
@@ -122,4 +122,4 @@ See [docs/CATALOG_INGESTION_PLAN.md](docs/CATALOG_INGESTION_PLAN.md) and [docs/R
 
 ## 📄 License
 
-This project is private and not yet licensed for public distribution.
+The source is public for viewing and learning, but no open-source license is granted yet: all rights reserved.
