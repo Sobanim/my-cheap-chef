@@ -30,15 +30,27 @@
 }
 
 /*
- * One column on mobile, filling out to three on desktop. `auto-fit` keeps the
- * cards full-width when only a couple of baskets are unlocked, instead of
- * leaving a lone card stranded in a fixed 3-column track.
+ * Three columns on desktop. `auto-fit` keeps the cards full-width when only a
+ * couple of baskets are unlocked, instead of leaving a lone card stranded in a
+ * fixed 3-column track.
  */
 .feed {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: var(--spacing-lg);
   align-items: stretch;
+}
+
+/*
+ * Two columns on phones: with one, a single card filled the whole screen and
+ * the second recipe was a full scroll away. The card itself switches to a
+ * compact layout at the same breakpoint (see RecipeCard.module.scss).
+ */
+@media (max-width: 640px) {
+  .feed {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--spacing-md);
+  }
 }
 
 .empty {

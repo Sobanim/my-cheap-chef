@@ -1,6 +1,16 @@
+import type { Metadata } from 'next';
 import { CatalogExplorer } from '@/components';
 import { loadCatalogData } from '@/lib/catalogData';
+import { BASE_OPEN_GRAPH } from '@/lib/site';
 import styles from '../discounts/page.module.scss';
+
+export const metadata: Metadata = {
+  title: "Lidl leták — akcie a zľavy na potraviny tento týždeň",
+  description:
+    "Prehľad potravín v akcii z aktuálneho letáku Lidl: ceny, zľavy, veľkosť balenia, platnosť a ponuky Lidl Plus na jednom mieste.",
+  alternates: { canonical: "/catalog" },
+  openGraph: { ...BASE_OPEN_GRAPH, url: '/catalog' },
+};
 
 /** `2026-10-05` → `05.10`, matching the short dates on the filter buttons. */
 const formatOfferDate = (isoDate: string): string => {

@@ -6,7 +6,7 @@
 // re-runs `install` (and thus re-fetches the cached page) when sw.js's own
 // bytes change, so a version bump here is what forces the stale cached page
 // to be replaced. The `activate` handler then deletes the old-named cache.
-const CACHE_NAME = "mcc-offline-v2";
+const CACHE_NAME = "mcc-offline-v3";
 const OFFLINE_URL = "/offline";
 
 self.addEventListener("install", (event) => {

@@ -8,7 +8,8 @@ import type { Metadata } from "next";
 // requests the service worker doesn't cache, so relying on them would leave
 // this page unstyled exactly when it matters most.
 export const metadata: Metadata = {
-  title: "Si offline — My Cheap Chef",
+  title: "Ste offline",
+  robots: { index: false },
 };
 
 export default function OfflinePage() {
@@ -50,9 +51,9 @@ export default function OfflinePage() {
       `}</style>
       <div className="offline-container">
         <div className="offline-emoji">📡</div>
-        <h1 className="offline-title">Si offline</h1>
+        <h1 className="offline-title">Ste offline</h1>
         <p className="offline-description">
-          Nemáme pripojenie na internet. Skontroluj sieť a skús to znova.
+          Nemáme pripojenie na internet. Skontrolujte sieť a skúste to znova.
         </p>
       </div>
     </>

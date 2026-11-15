@@ -10,7 +10,8 @@ export const GreetingCard = ({ greeting, activeCount }: Readonly<GreetingCardPro
   return (
     <section className={styles.card} aria-labelledby="greeting-heading">
       <div className={styles.glow} aria-hidden="true" />
-      <p className={styles.eyebrow}>Dnešný prehľad</p>
+      {/* The page's h1: small on screen, but it tells search engines what the home page is about. */}
+      <h1 className={styles.eyebrow}>Recepty zo zliav v Lidli</h1>
       <h2 id="greeting-heading" className={styles.heading}>
         {greeting.greeting} <span className={styles.emoji}>{greeting.emoji}</span>
       </h2>

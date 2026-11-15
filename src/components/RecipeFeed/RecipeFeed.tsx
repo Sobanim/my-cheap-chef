@@ -9,12 +9,15 @@ type RecipeFeedProps = {
   heading?: string;
   /** Shown instead of the feed when there is nothing to cook today. */
   emptyText?: string;
+  /** The "12 receptov" pill next to the heading. Off where the feed is only a sample. */
+  showCount?: boolean;
 };
 
 export const RecipeFeed = ({
   recipes,
   heading = "Dnešné menu",
-  emptyText = "Momentálne nie sú dostupné žiadne akciové recepty. Vráť sa čoskoro!",
+  emptyText = "Momentálne nie sú dostupné žiadne akciové recepty. Vráťte sa čoskoro!",
+  showCount = true,
 }: Readonly<RecipeFeedProps>) => {
   const headingId = "menu-heading";
 
@@ -24,7 +27,7 @@ export const RecipeFeed = ({
         <h2 id={headingId} className={styles.heading}>
           {heading}
         </h2>
-        {recipes.length > 0 && (
+        {showCount && recipes.length > 0 && (
           <span className={styles.count}>
             {recipes.length} {pluralizeRecipes(recipes.length)}
           </span>

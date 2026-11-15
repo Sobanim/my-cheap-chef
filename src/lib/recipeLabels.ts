@@ -80,4 +80,4 @@ export const getBuyChipLabel = (buyCount: number): string =>
 export const getShoppingNote = (buyLabels: string[]): string =>
   buyLabels.length === 0
     ? 'Netreba nič dokupovať — okrem špajze je všetko v akcii.'
-    : `Ceny platia pre akciové suroviny. Navyše dokúp: ${buyLabels.join(', ')}.`;
+    : `Ceny platia pre akciové suroviny. Navyše dokúpte: ${buyLabels.join(', ')}.`;

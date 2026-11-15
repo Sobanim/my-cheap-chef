@@ -123,7 +123,8 @@ const MAX_ATTEMPTS = 2;
 const RETRY_DELAY_MS = 500;
 
 const REQUEST_HEADERS = {
-    Accept: 'application/json',
+    // No `Accept` header on purpose: the API answers 401 to `Accept: application/json`
+    // and 200 without it (checked 2026-11-15).
     // Node's default UA is an anonymous "node" — say who is asking instead.
     'User-Agent': 'Mozilla/5.0 (compatible; MyCheapChef/1.0)',
 };

@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { cookies } from "next/headers";
 import { Plus_Jakarta_Sans, Inter } from "next/font/google";
-import { PostHogProvider, ThemeProvider, Header, Footer, BottomNav, ServiceWorkerRegistration } from "@/components";
+import { PostHogProvider, ThemeProvider, Header, Footer, BottomNav, ServiceWorkerRegistration, JsonLd } from "@/components";
+import { BASE_OPEN_GRAPH, SITE_DESCRIPTION, SITE_NAME, SITE_TAGLINE, SITE_URL } from "@/lib/site";
+import { buildOrganizationJsonLd, buildWebSiteJsonLd } from "@/lib/structuredData";
 import "./globals.scss";
 import styles from "./page.module.scss";
 
@@ -20,10 +22,19 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "My Cheap Chef — Varím zo zliav",
-  description:
-    "Appka ti povie, čo uvariť z produktov, ktoré sú práve v zľave v Lidli. Šetri peniaze a varí chutne.",
-  applicationName: "My Cheap Chef",
+  // Makes every relative URL in metadata (canonical, og:image) absolute.
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: `${SITE_NAME} — ${SITE_TAGLINE}`,
+    // Pages set only their own part: "Recepty tohto týždňa" → "Recepty tohto týždňa — My Cheap Chef".
+    template: `%s — ${SITE_NAME}`,
+  },
+  description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
+  openGraph: BASE_OPEN_GRAPH,
+  twitter: {
+    card: "summary_large_image",
+  },
   appleWebApp: {
     capable: true,
     title: "My Cheap Chef",
@@ -77,6 +88,7 @@ export default async function RootLayout({
       {...(theme ? { "data-theme": theme } : {})}
     >
       <body>
+        <JsonLd data={[buildOrganizationJsonLd(), buildWebSiteJsonLd()]} />
         <ThemeProvider initialTheme={theme}>
           <ServiceWorkerRegistration />
           <PostHogProvider>

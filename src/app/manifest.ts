@@ -7,7 +7,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "My Cheap Chef — Varím zo zliav",
     short_name: "Cheap Chef",
     description:
-      "Appka ti povie, čo uvariť z produktov, ktoré sú práve v zľave v Lidli.",
+      "Zistite, čo uvariť z potravín, ktoré sú práve v akcii v Lidli. Každý týždeň nové recepty z aktuálneho letáku.",
     start_url: "/",
     display: "standalone",
     background_color: "#faf7f2",

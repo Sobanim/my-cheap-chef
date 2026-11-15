@@ -8,7 +8,7 @@ export const EmptyState = () => {
       <p className={styles.description}>
         Nový katalóg ešte nebol spracovaný. 🧑‍🍳
         <br />
-        Vráť sa neskôr — čoskoro tu budú čerstvé zľavy!
+        Vráťte sa neskôr — čoskoro tu budú čerstvé zľavy!
       </p>
       <div className={styles.hint}>
         💡 Katalógy sa aktualizujú každý týždeň

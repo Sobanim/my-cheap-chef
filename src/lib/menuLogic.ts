@@ -53,7 +53,7 @@ export const buildGreeting = (
 
   let body: string;
   if (unlockedCount === 0) {
-    body = `Dnes je ${dayName}. Práve pripravujeme nové recepty z aktuálnych zliav — vráť sa o chvíľu!`;
+    body = `Dnes je ${dayName}. Práve pripravujeme nové recepty z aktuálnych zliav — vráťte sa o chvíľu!`;
   } else if (lockedCount === 0) {
     body = `Dnes je ${dayName}. Bežia všetky akcie tohto týždňa, takže máte k dispozícii ${unlockedPhrase} vrátane víkendových.`;
   } else if (isFirstHalf) {

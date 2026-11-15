@@ -1,3 +1,4 @@
+import { localizeDecimals } from '@/lib/format';
 import type { Recipe } from '@/lib/types/recipe';
 
 /**
@@ -76,4 +77,4 @@ export const getRecipeMoney = (recipe: Recipe): RecipeMoney => {
 export const getBuyIngredientLabels = (recipe: Recipe): string[] =>
   recipe.ingredients
     .filter((ingredient) => ingredient.source === 'buy')
-    .map((ingredient) => `${ingredient.name.toLowerCase()} (${ingredient.amount})`);
+    .map((ingredient) => `${ingredient.name.toLowerCase()} (${localizeDecimals(ingredient.amount)})`);

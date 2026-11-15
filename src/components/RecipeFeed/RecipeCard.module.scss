@@ -265,3 +265,113 @@ a.card:hover {
   margin-top: auto;
   padding-top: var(--spacing-md);
 }
+
+/*
+ * === Compact card for the two-column phone feed ===
+ * Roughly half the width to work with, so the card keeps what helps choosing a
+ * dish at a glance — picture, name, time, price — and drops the description,
+ * which is one tap away on the recipe page.
+ */
+@media (max-width: 640px) {
+  .scene {
+    aspect-ratio: 4 / 3;
+    padding: var(--spacing-sm);
+  }
+
+  .savingsBadge,
+  .lockBadge {
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
+    font-size: 0.68rem;
+    padding: 4px 8px;
+  }
+
+  .lockBadge {
+    gap: 4px;
+  }
+
+  .lockIcon {
+    width: 12px;
+    height: 12px;
+  }
+
+  .body {
+    padding: var(--spacing-md);
+  }
+
+  .category {
+    font-size: 0.62rem;
+  }
+
+  .title {
+    font-size: 0.95rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .description {
+    display: none;
+  }
+
+  .meta {
+    gap: 4px var(--spacing-sm);
+    padding-top: var(--spacing-sm);
+  }
+
+  .metaItem {
+    gap: 4px;
+    font-size: 0.7rem;
+  }
+
+  .metaIcon {
+    width: 13px;
+    height: 13px;
+  }
+
+  /* Price above, chip below — side by side they no longer fit. */
+  .priceRow {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: var(--spacing-sm);
+    padding-top: var(--spacing-sm);
+  }
+
+  .price {
+    column-gap: 6px;
+  }
+
+  .priceNow {
+    font-size: 1rem;
+  }
+
+  .priceWas {
+    font-size: 0.75rem;
+  }
+
+  .priceServings {
+    font-size: 0.66rem;
+  }
+
+  .buyChip {
+    font-size: 0.64rem;
+    padding: 3px 8px;
+  }
+
+  .hiddenTitle {
+    padding: 4px 0;
+  }
+
+  .bar,
+  .barShort {
+    height: 8px;
+  }
+
+  .lockedText {
+    font-size: 0.74rem;
+    line-height: 1.4;
+    padding-top: var(--spacing-sm);
+  }
+}
