@@ -2,19 +2,30 @@
 
 ## Purpose
 
-The client-facing part of the app — Next.js App Router pages.
+The client-facing part of the app — Next.js App Router pages. All pages are Server Components that read pre-computed JSON from `data/` through the loaders in `src/lib/`.
 
 ## What's here
 
-- `layout.tsx` — root layout (fonts, metadata, shared wrapper)
-- `page.tsx` — the app's home page
-- `globals.scss` — global styles
-- `page.module.scss` — home page styles
-- `favicon.ico` — app icon
-- `discounts/` — page with all current and upcoming discounts
+- `layout.tsx` — root layout: fonts, metadata, theme (read from the `mcc-theme` cookie), header, footer, bottom tab bar, analytics, service-worker registration
+- `page.tsx` — home: greeting card, today's unlocked recipes, locked teasers
+- `recipes/` — all recipes of the week
+- `recipe/[id]/` — recipe detail, with its own `<title>` via `generateMetadata`; 404 while the recipe is locked or after its discounts end
+- `catalog/` — every product parsed from the weekly flyer (`data/catalog.json`)
+- `discounts/` — **legacy**: product grid on the live Lidl API, not linked from the navigation
+- `offline/` — fallback page the service worker serves when a navigation fails
+- `manifest.ts` — PWA manifest (served as `/manifest.webmanifest`)
+- `globals.scss`, `themes.scss` — design tokens, light/dark themes, dev colour schemes
+- `page.module.scss` — the app shell layout
+- `icon.svg`, `apple-icon.png` — app icons
+- `api/` — empty apart from a blank `CONTEXT.md`; there are no API routes
+
+## Notes
+
+- Because the layout calls `cookies()`, every route renders dynamically. The `revalidate = 3600` exports on pages are kept for the day the theme no longer needs a server-side cookie read, but have no effect today.
+- "Today" is always Slovak time — pages pass `new Date()` to helpers that read it through `src/lib/bratislavaTime.ts`.
 
 ## Technologies
 
 - Next.js 16 (App Router, React Server Components)
 - React 19
-- CSS Modules
+- SCSS Modules

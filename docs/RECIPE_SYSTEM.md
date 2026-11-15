@@ -17,6 +17,11 @@ graph TD
 ```
 
 ### Logika rozradenia do košov (Helper):
+
+> Zjednodušený náčrt. Skutočná implementácia je v `src/lib/baskets.ts`: deň v týždni
+> sa počíta v slovenskom čase (`src/lib/bratislavaTime.ts`), nie cez `Date.getDay()`,
+> a produkty, ktorých zľava nevydrží do konca týždňa (jednodňové akcie), sa do
+> receptov vôbec nedostanú (`coversRestOfWeek`).
 ```typescript
 type BasketType = 'A' | 'B' | 'C';
 

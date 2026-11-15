@@ -12,9 +12,10 @@ This file defines the coding guidelines, architectural patterns, repository stan
   - **Framework**: Next.js 16 (App Router)
   - **Library**: React 19 with React Compiler (`babel-plugin-react-compiler`)
   - **Styling**: SCSS Modules (uses standard SASS)
-  - **HTTP Client**: Axios (used in data ingestion scripts)
+  - **HTTP Client**: native `fetch` everywhere (no axios)
+  - **AI**: Google Gemini via `@google/genai`, responses validated with `zod`
   - **State Management**: None (React Server Components are primary)
-  - **Database**: Pre-computed JSON files under `data/`, updated weekly by cron/ingestion scripts.
+  - **Database**: Pre-computed JSON files under `data/` (`recipe.json`, `catalog.json`, `price-history.jsonl`), regenerated weekly by the GitHub Actions pipeline.
 
 ---
 
@@ -22,14 +23,13 @@ This file defines the coding guidelines, architectural patterns, repository stan
 
 ```
 my-cheap-chef/
-├── scripts/              ← Standalone TypeScript scripts run via tsx (e.g., ingest, recipe generation)
+├── scripts/              ← Weekly pipeline run via tsx: flyer → catalog → recipes (entry point: weekly.ts)
 ├── data/                 ← JSON files serving as our database (committed to Git)
-│   └── catalog-images/   ← Downloaded images (gitignored)
-├── public/               ← Static assets
+├── docs/                 ← Design docs + BACKLOG.md (open work and known problems)
+├── public/               ← Static assets, service worker
 ├── src/
-│   ├── app/              ← Next.js App Router (RSCs read JSON files directly from disk)
-│   │   └── api/          ← Next.js Route Handlers serving data/*.json (no heavy logic)
-│   ├── lib/              ← Shared types, utilities, and constants (framework-agnostic)
+│   ├── app/              ← Next.js App Router (RSCs read JSON files directly from disk; no API routes)
+│   ├── lib/              ← Shared types, utilities, and data loaders (framework-agnostic)
 │   │   ├── types/        ← Domain types (product, recipe, lidl, etc.)
 │   │   └── services/     ← API clients and data fetching logic
 │   └── components/       ← UI React components (each component has its own folder)
@@ -82,7 +82,9 @@ my-cheap-chef/
   ```typescript
   path.join(__dirname, '..', 'data', '...')
   ```
-- **API Route Principle**: API routes must only serve pre-computed JSON files or forward requests. They should **never** run heavy computations (like parsing catalogs or generating recipes via AI).
+- **API Route Principle**: There are currently no API routes. If one is added, it must only serve pre-computed JSON files or forward requests. It should **never** run heavy computations (like parsing catalogs or generating recipes via AI).
+- **Time**: Never call `Date.getDay()` / `getHours()` for app logic — the server runs in UTC. Use the helpers in `src/lib/bratislavaTime.ts`.
+- **External origins**: A new third-party script, image host, or browser-side API must be added to the Content Security Policy in `next.config.ts`.
 
 ---
 
@@ -125,9 +127,10 @@ To ensure the code remains clean, easy to read, performant, and maintainable, Co
 - `npm run dev` — Starts the Next.js development server
 - `npm run build` — Builds the application for production
 - `npm run lint` — Runs ESLint checks
-- `npm run data:parse` — Runs script to parse Lidl API products into `data/products.json`
-- `npm run catalog:ingest` — Parse catalog images via Vision AI (WIP)
-- `npm run recipe:generate` — Generate weekly recipes via LLM (WIP)
+- `npm run weekly` — Full pipeline: flyer → `data/catalog.json` → `data/recipe.json` (what CI runs)
+- `npm run catalog:fetch` — Snapshot the current Lidl flyer
+- `npm run catalog:parse` — Parse the flyer snapshot into `data/catalog.json` via Vision AI
+- `npm run recipe:generate` — Generate `data/recipe.json` from the catalog via Gemini
 
 ---
 

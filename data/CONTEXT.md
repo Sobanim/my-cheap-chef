@@ -2,45 +2,44 @@
 
 ## Purpose
 
-Storage for **generated recipes** (JSON files) — the "database" for the MVP. Updated once a week by cron scripts from `scripts/`.
-
-> ⚠️ **Products are no longer stored here.** The list of discounted products is fetched **live from the Lidl API** (`src/lib/services/lidlService.ts`) on every render (with a 1-hour Next.js cache). `data/` is meant for things that are expensive to generate — primarily the weekly recipes (`recipe.json`) created via AI by cron.
+The MVP's "database": JSON files produced once a week by the pipeline in `scripts/` and committed to git by the GitHub Actions job. The web app reads them from disk at request time.
 
 ## Structure
 
 ```
 data/
-├── recipe.json           ← pre-generated recipe of the week (1-2 dishes, AI)
-├── catalog-images/       ← (future) catalog images for Vision AI processing
-│   └── lidl/
-│       └── 2026-05-05/   ← folder by the catalog's start date
-│           ├── page-01.jpg
-│           └── ...
-└── archive/              ← (future) archive of past weeks
+├── recipe.json           ← committed — the week's AI-generated recipes; read by src/lib/recipeData.ts
+├── catalog.json          ← committed — every food product parsed from the flyer; read by src/lib/catalogData.ts
+├── price-history.jsonl   ← committed — append-only price observations, one line per product per run
+├── flyers/               ← gitignored — raw flyer snapshots ({slug}.json), re-fetchable
+├── pages/                ← gitignored — raw vision output per flyer, re-creatable (costs API calls)
+├── products.json         ← LEGACY — output of a removed script, nothing reads it
+└── catalog-images/       ← LEGACY — manual flyer uploads from an abandoned approach (gitignored)
 ```
 
-> `products.json` — a legacy artifact (may remain from the old `ingest.ts` script), not used in rendering.
+`flyer-overrides.json` (hand-curated page include/exclude for `scripts/catalog/classify-pages.ts`) is optional and does not exist yet.
 
-## recipe.json Format
+## recipe.json
 
-```json
-{
-  "generatedAt": "2026-05-04T02:00:00Z",
-  "recipes": [
-    {
-      "title": "Dish name",
-      "ingredients": ["ingredient 1", "ingredient 2"],
-      "ingredientsFromSale": ["sale product 1", "sale product 2"],
-      "steps": ["step 1", "step 2"],
-      "estimatedTime": "30 min",
-      "totalSavings": "5.20€"
-    }
-  ]
-}
-```
+`{ generatedAt, recipes: Recipe[] }` — the `Recipe` type in `src/lib/types/recipe.ts` is the source of truth. Worth knowing:
+
+- `id` is `recipe-a1` … `recipe-c4`: basket letter + position. Ids repeat every week.
+- `basket` (`A` / `B` / `C`) decides on which weekday the recipe unlocks.
+- `ingredients[].source` is `sale` (links to a catalog product via `productId`), `pantry`, or `buy`.
+- `approxCost`, `checkoutCost`, `totalSavings` are computed in code from flyer prices and cover the `sale` ingredients only.
+- `validUntil` (epoch seconds) is the last day the recipe's discounts hold; the app hides the recipe after it. Recipes generated before the field existed don't have it and never expire.
+
+## catalog.json
+
+`{ flyerIdentifier, offerStartDate, offerEndDate, generatedAt, products: Product[] }` — see `src/lib/types/product.ts`.
+
+- `validFrom` / `validUntil` are epoch seconds at **UTC midnight of the Slovak calendar day**. Compare them by day (`getBratislavaDateKey`), never by raw timestamp.
+- `dateLabel` is the banner text as printed and can disagree with the numeric dates after a duplicate is merged — trust the numbers.
+- `oldPrice` is non-null only when a struck-through price was actually printed (`priceTier: "discounted"`).
+- `imageUrl` is always empty — flyer products have no photo.
 
 ## Notes
 
-- JSON files are committed to git (they are small, updated once a week)
-- `catalog-images/` is added to .gitignore (images are heavy)
-- In the future, when scaling → migrate to a database (PostgreSQL/SQLite)
+- The files are regenerated, not hand-edited. To change their shape, change the generator.
+- `price-history.jsonl` grows every run and is not de-duplicated; nothing reads it yet.
+- Later, when this stops scaling → a real database (PostgreSQL/SQLite).

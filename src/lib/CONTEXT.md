@@ -2,19 +2,27 @@
 
 ## Purpose
 
-Shared utilities, types, and helpers used by both the client (`src/app/`) and the server side (`src/app/api/`, `scripts/`).
+Shared utilities, types, and helpers used by both the web app (`src/app/`, `src/components/`) and the offline pipeline (`scripts/`).
 
 ## What's here
 
 - `types/` + `types.ts` — shared data types (Product, Recipe, Lidl API, etc.), re-exported via the `@/lib/types` barrel
-- `services/lidlService.ts` — live Lidl API fetch + parsing into the `Product` shape
-- `dateUtils.ts` — date helpers and discount filtering (active/upcoming) + the discount cycle helper
-- `menuLogic.ts` — greeting builder (Slovak time-of-day + discount-calendar copy)
+- `bratislavaTime.ts` — weekday, hour and calendar-day key in Slovak time. **Every** "what day is it" decision goes through here; the server runs in UTC
 - `recipeData.ts` — reads the generated recipes from `data/recipe.json` (server-only, `fs`)
-- `recipeAvailability.ts` — which promo baskets are unlocked today; splits recipes into available vs. upcoming
+- `catalogData.ts` — reads the flyer catalog from `data/catalog.json` (server-only, `fs`) + `countActiveOffers` for the home page
+- `recipeAvailability.ts` — which promo baskets are unlocked today, whether a recipe's discounts have expired; splits recipes into available vs. upcoming
+- `recipeMoney.ts` — every money figure the UI shows for a recipe, derived from stored fields
 - `recipeLabels.ts` — Slovak display labels for categories/difficulty/ingredient source + plural helpers
 - `cookingMethods.ts` — the `category` × `cookingMethod` matrix: valid pairs, per-category default, and `resolveDishKey` for picking a dish scene
-- `baskets.ts` — assigns a product to promo basket A/B/C by its validity window
+- `baskets.ts` — assigns a product to promo basket A/B/C by its validity window; `coversRestOfWeek` keeps one-day specials out of recipes
+- `menuLogic.ts` — greeting builder (Slovak time-of-day + discount-calendar copy)
+- `navigation.ts` — the nav links shared by the header and the bottom tab bar
+- `services/lidlService.ts` — live Lidl API fetch (timeout + one retry) and parsing into the `Product` shape. Pipeline fallback and the legacy `/discounts` page only
+- `dateUtils.ts` — active/upcoming product checks for the legacy `/discounts` page + the discount cycle helper
+
+## Dates
+
+Flyer validity (`Product.validFrom` / `validUntil`, `Recipe.validUntil`) is stored as epoch seconds at **UTC midnight of the Slovak calendar day**. Comparing such a stamp to `Date.now()` drops an offer at the *start* of its last day. Compare calendar days instead: `getBratislavaDateKey(now) > getBratislavaDateKeyFromEpoch(validUntil)`.
 
 ## Why a dish has two axes
 

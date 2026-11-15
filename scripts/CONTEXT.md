@@ -37,6 +37,15 @@ outage, a layout change Step 2 can't parse — `weekly.ts` falls back to
 that instead. A degraded week beats a stale site. The fallback logs a loud
 warning; check the Actions log if a run's catalog looks thin.
 
+## Which products reach the recipe prompt
+
+Step 5 narrows the catalog twice (`recipes/generate.ts`):
+
+- `isCookable` — it is food someone cooks with (`foodRole: ingredient`) and has a price.
+- `lastsTheWeek` — its discount holds through the Sunday of the week it starts in (`coversRestOfWeek` in `src/lib/baskets.ts`). The flyer carries one-day specials; a recipe stays on the site until the end of the week, so a recipe built on one would keep quoting a saving that ended on day one. The run logs how many products were skipped for this.
+
+Each recipe is then stamped with `validUntil` — the earliest `validUntil` among its sale products — and the web app stops showing it after that day.
+
 ## Running
 
 ```bash
@@ -58,9 +67,13 @@ re-hitting the flyer API or re-paying for ~50 vision calls.
 | `flyers/{slug}.json` | no | raw flyer snapshot, re-fetchable |
 | `pages/{slug}.json` | no | raw vision dump, re-fetchable (costs API calls to redo) |
 | `catalog.json` | **yes** | the normalized pool a bad week can be diagnosed against |
-| `flyer-overrides.json` | **yes** | hand-curated page include/exclude, belongs in history |
+| `flyer-overrides.json` | **yes** | hand-curated page include/exclude, belongs in history (optional — not created yet) |
 | `price-history.jsonl` | **yes** | append-only; worthless unless it accumulates across runs |
 | `recipe.json` | **yes** | what the web app reads |
+
+`scripts/ingest-catalog.ts` is **not** part of this pipeline — it is an unfinished
+stub of an earlier approach (manual page uploads → `data/products.json`), kept
+for now and wired to no npm script.
 
 ## Gemini quota
 

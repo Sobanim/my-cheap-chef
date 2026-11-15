@@ -8,6 +8,13 @@ on:
 permissions:
   contents: write # Grants the right to push the generated recipe.json
 
+# Never run two of these at once. A manual run started while the scheduled one is
+# still going would have both regenerate the same files and race to push them;
+# the second run waits in a queue instead (it is not cancelled).
+concurrency:
+  group: weekly-recipe-generation
+  cancel-in-progress: false
+
 jobs:
   generate-recipes:
     runs-on: ubuntu-latest
@@ -43,5 +50,8 @@ jobs:
             echo "No data changes detected."
           else
             git commit -m "chore(data): auto-update weekly catalog and recipes [skip ci]"
+            # master may have moved while the pipeline ran (it takes minutes);
+            # replay our data commit on top instead of failing the push.
+            git pull --rebase
             git push
           fi

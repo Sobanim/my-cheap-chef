@@ -22,20 +22,20 @@ The app connects **supermarket discount catalogs** with **AI-generated recipes**
 my-cheap-chef/
 ├── src/
 │   ├── app/              ← Next.js App Router (pages & UI)
-│   │   └── api/          ← API Routes (Route Handlers)
-│   ├── lib/              ← Shared types, utilities, constants
-│   └── components/       ← React components (CSS Modules)
-├── scripts/              ← Cron scripts (catalog parsing, recipe generation)
-├── data/                 ← JSON data files (products, recipes, catalog images)
-└── public/               ← Static assets
+│   ├── lib/              ← Shared types, utilities, data loaders
+│   └── components/       ← React components (SCSS Modules)
+├── scripts/              ← Weekly pipeline (flyer parsing, recipe generation)
+├── data/                 ← JSON data files (recipes, flyer catalog, price history)
+├── docs/                 ← Design docs and the backlog
+└── public/               ← Static assets, service worker
 ```
 
 ## 🛠 Tech Stack
 
 | Layer | Technology |
 |-------|-----------|
-| Frontend | Next.js 16, React 19, CSS Modules |
-| Backend | Next.js API Routes (Route Handlers) |
+| Frontend | Next.js 16, React 19, SCSS Modules |
+| Backend | None of its own — Server Components read pre-computed JSON from `data/` |
 | Scripts | TypeScript (tsx), scheduled via GitHub Actions |
 | AI | Google Gemini (`@google/genai`) — catalog parsing (Vision) + recipe generation (Text) |
 | Data | JSON files (`data/*.json`) + append-only price history (`data/price-history.jsonl`) |
@@ -66,7 +66,7 @@ The valid pairs live in [`src/lib/cookingMethods.ts`](src/lib/cookingMethods.ts)
 
 ### Prerequisites
 
-- Node.js 18+
+- Node.js 20+
 - npm
 
 ### Installation
@@ -100,18 +100,20 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## 📊 Data Flow
 
-1. **Weekly (Monday 2:00 UTC, GitHub Actions):** `npm run weekly` fetches the current flyer, parses it into `data/catalog.json`, and appends price points to `data/price-history.jsonl`.
-2. **After parsing:** Recipes are generated from the catalog → `data/recipe.json`. If catalog parsing fails, the pipeline falls back to the live Lidl API on its own.
+1. **Weekly (Monday, scheduled for 2:00 UTC, GitHub Actions):** `npm run weekly` fetches the current flyer, parses it into `data/catalog.json`, and appends price points to `data/price-history.jsonl`. GitHub's cron is best-effort and can start hours late.
+2. **After parsing:** 12 recipes (4 per promo basket) are generated from the catalog → `data/recipe.json`. One-day specials are kept out of the recipe pool, since a recipe stays up all week. If catalog parsing fails, the pipeline falls back to the live Lidl API on its own.
 3. **Commit:** The workflow commits and pushes the updated data files (`[skip ci]`) when anything changed.
-4. **Client:** Next.js pages read the JSON at request time —`/discounts` (products on sale), `/recipes` (AI-generated recipe of the week), `/catalog` (raw parsed catalog, internal/debug view).
+4. **Client:** Next.js pages read the JSON at request time — `/` and `/recipes` (the week's recipes, unlocked basket by basket as Lidl's discounts start), `/recipe/[id]` (recipe detail), `/catalog` (every product parsed from the flyer). Recipes whose discounts have ended are hidden.
 5. **Paid feature (future):** On-demand recipe generation.
+
+Open work is tracked in [`docs/BACKLOG.md`](docs/BACKLOG.md).
 
 ## ✅ Roadmap
 
 - [x] Catalog parsing via Vision AI
 - [x] Recipe generation via Text AI (Gemini)
 - [x] Weekly pipeline automated via GitHub Actions
-- [x] UI: discounted products (`/discounts`) + recipe of the week (`/recipes`)
+- [x] UI: weekly recipes (`/`, `/recipes`), recipe detail, flyer catalog (`/catalog`)
 - [x] Price history tracking (`data/price-history.jsonl`)
 - [x] PWA support
 - [x] Deployment to Vercel
