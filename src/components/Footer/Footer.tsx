@@ -1,11 +1,12 @@
 import Link from "next/link";
 import styles from "./Footer.module.scss";
 
-const FOOTER_LINKS = [
-  { label: "O aplikácii", href: "/o-aplikacii" },
-  { label: "Recepty", href: "/recipes" },
-  { label: "Akcie z letáku", href: "/catalog" },
-] as const;
+/*
+ * Only pages the main navigation doesn't reach. Recipes and the flyer are
+ * already in the header and the phone tab bar, which sits right under the
+ * footer — repeating them here read as a duplicate.
+ */
+const FOOTER_LINKS = [{ label: "O aplikácii", href: "/o-aplikacii" }] as const;
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
