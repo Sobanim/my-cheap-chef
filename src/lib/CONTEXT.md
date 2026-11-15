@@ -8,6 +8,9 @@ Shared utilities, types, and helpers used by both the web app (`src/app/`, `src/
 
 - `types/` + `types.ts` — shared data types (Product, Recipe, Lidl API, etc.), re-exported via the `@/lib/types` barrel
 - `bratislavaTime.ts` — weekday, hour and calendar-day key in Slovak time. **Every** "what day is it" decision goes through here; the server runs in UTC
+- `site.ts` — site URL, name, description and the Open Graph fields every page shares
+- `structuredData.ts` — schema.org JSON-LD builders (`Recipe`, `FAQPage`, `Organization`, …)
+- `format.ts` — Slovak number formatting: `formatEuro` ("2,37 €") and `localizeDecimals` for model-written text
 - `recipeData.ts` — reads the generated recipes from `data/recipe.json` (server-only, `fs`)
 - `catalogData.ts` — reads the flyer catalog from `data/catalog.json` (server-only, `fs`) + `countActiveOffers` for the home page
 - `recipeAvailability.ts` — which promo baskets are unlocked today, whether a recipe's discounts have expired; splits recipes into available vs. upcoming
