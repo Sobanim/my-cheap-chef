@@ -9,6 +9,7 @@ import {
   formatServings,
   getBuyChipLabel,
 } from "@/lib/recipeLabels";
+import { formatEuro } from "@/lib/format";
 import { getRecipeMoney } from "@/lib/recipeMoney";
 import type { Recipe } from "@/lib/types/recipe";
 
@@ -56,9 +57,9 @@ export const RecipeCard = ({ recipe }: Readonly<RecipeCardProps>) => {
 
         <div className={styles.priceRow}>
           <span className={styles.price}>
-            <span className={styles.priceNow}>{money.cost.toFixed(2)} €</span>
+            <span className={styles.priceNow}>{formatEuro(money.cost)}</span>
             {money.showComparison && (
-              <span className={styles.priceWas}>{money.regularCost.toFixed(2)} €</span>
+              <span className={styles.priceWas}>{formatEuro(money.regularCost)}</span>
             )}
             {/* The total is meaningless without saying who it feeds. */}
             <span className={styles.priceServings}>{formatServings(recipe.servings)}</span>

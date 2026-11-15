@@ -1,4 +1,5 @@
 import styles from './ProductCard.module.scss';
+import { formatEuro } from '@/lib/format';
 
 type ProductPriceProps = {
   price: number;
@@ -26,11 +27,11 @@ export const ProductPrice = ({
   return (
     <div className={styles.priceRow}>
       <span className={isLidlPlus ? styles.priceLidlPlus : styles.price}>
-        {price.toFixed(2)} €
+        {formatEuro(price)}
       </span>
       {hasDiscount && oldPrice !== null && (
         <span className={styles.oldPrice}>
-          {oldPrice.toFixed(2)} €
+          {formatEuro(oldPrice)}
         </span>
       )}
       {isLidlPlus && discountPercent && (

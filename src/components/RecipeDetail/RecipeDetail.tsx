@@ -9,6 +9,7 @@ import {
   formatServings,
   getShoppingNote,
 } from "@/lib/recipeLabels";
+import { formatEuro, localizeDecimals } from "@/lib/format";
 import { getBuyIngredientLabels, getRecipeMoney } from "@/lib/recipeMoney";
 import type { Recipe } from "@/lib/types/recipe";
 
@@ -60,11 +61,11 @@ export const RecipeDetail = ({ recipe }: Readonly<RecipeDetailProps>) => {
           <div className={styles.priceBlock}>
             <span className={styles.priceLabel}>Cena akciových surovín</span>
             <span className={styles.priceValues}>
-              <span className={styles.priceNow}>{money.cost.toFixed(2)} €</span>
+              <span className={styles.priceNow}>{formatEuro(money.cost)}</span>
               {money.showComparison && (
                 <>
                   <span className={styles.priceWas}>
-                    {money.regularCost.toFixed(2)} €
+                    {formatEuro(money.regularCost)}
                   </span>
                   <span className={styles.pricePercent}>−{money.percent} %</span>
                 </>
@@ -92,7 +93,7 @@ export const RecipeDetail = ({ recipe }: Readonly<RecipeDetailProps>) => {
                   ing.name
                 )}
               </span>
-              <span className={styles.ingredientAmount}>{ing.amount}</span>
+              <span className={styles.ingredientAmount}>{localizeDecimals(ing.amount)}</span>
               <span
                 className={`${styles.sourceTag} ${
                   ing.source === "sale" ? styles.sourceSale : ""
@@ -112,7 +113,7 @@ export const RecipeDetail = ({ recipe }: Readonly<RecipeDetailProps>) => {
           {recipe.steps.map((step, i) => (
             <li key={i} className={styles.step}>
               <span className={styles.stepNumber}>{i + 1}</span>
-              <span className={styles.stepText}>{step}</span>
+              <span className={styles.stepText}>{localizeDecimals(step)}</span>
             </li>
           ))}
         </ol>
