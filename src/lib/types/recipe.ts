@@ -86,6 +86,13 @@ export type Recipe = {
    * finish a pack this one only partly uses. Computed after generation.
    */
   relatedRecipeIds?: string[];
+  /**
+   * Last day the recipe's discounts hold (epoch seconds) — the earliest
+   * `validUntil` among its sale products. Past it the recipe is no longer shown
+   * (see `isRecipeExpired`). Optional for backward compatibility: recipes
+   * generated before this existed never expire.
+   */
+  validUntil?: number;
   // TODO v2 (personalization): tags?: string[];
 };
 

@@ -4,6 +4,7 @@ import { ProductImage } from './ProductImage';
 import { ProductDate } from './ProductDate';
 import { ProductPrice } from './ProductPrice';
 import { getSlovakPrepPhrase } from '@/lib/dateUtils';
+import { getBratislavaDay } from '@/lib/bratislavaTime';
 
 type ProductCardProps = {
   product: Product;
@@ -26,7 +27,7 @@ const getDiscountInfo = (price: number, oldPrice: number | null): DiscountInfo =
 export const ProductCard = ({ product, isUpcoming }: Readonly<ProductCardProps>) => {
   const { hasDiscount, discountPercent } = getDiscountInfo(product.price, product.oldPrice);
 
-  const dayOfWeek = product.validFrom ? new Date(product.validFrom * 1000).getDay() : null;
+  const dayOfWeek = product.validFrom ? getBratislavaDay(new Date(product.validFrom * 1000)) : null;
   const upcomingLabel = dayOfWeek !== null ? getSlovakPrepPhrase(dayOfWeek) : '';
 
   return (

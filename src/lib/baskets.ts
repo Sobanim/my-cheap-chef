@@ -6,6 +6,8 @@
  * can be generated per phase. See docs/RECIPE_SYSTEM.md for the rationale.
  */
 
+import { getBratislavaDateKeyFromEpoch, getBratislavaDay } from '@/lib/bratislavaTime';
+
 /** Which promo phase a product belongs to. */
 export type BasketType = 'A' | 'B' | 'C';
 
@@ -39,26 +41,29 @@ export const getBasketForProduct = (
   return 'A';
 };
 
-// Lidl's promo dates are anchored to Slovak local time. Deriving the weekday with
-// Date.getDay() would use the host's timezone instead (e.g. UTC on GitHub Actions),
-// which can shift a Thursday/Saturday start into the previous day and misclassify
-// the basket. Intl with an explicit timeZone sidesteps the host timezone entirely.
-const bratislavaWeekdayFormatter = new Intl.DateTimeFormat('en-US', {
-  timeZone: 'Europe/Bratislava',
-  weekday: 'short',
-});
+// Lidl's promo dates are anchored to Slovak local time, so the weekday is derived
+// in Europe/Bratislava rather than the host's timezone (UTC on GitHub Actions),
+// which could shift a Thursday/Saturday start into the previous day and
+// misclassify the basket.
+const getDayOfWeekInBratislava = (epochSeconds: number): number => getBratislavaDay(new Date(epochSeconds * 1000));
 
-const WEEKDAY_TO_DAY_NUMBER: Record<string, number> = {
-  Sun: SUNDAY,
-  Mon: 1,
-  Tue: 2,
-  Wed: 3,
-  Thu: THURSDAY,
-  Fri: 5,
-  Sat: SATURDAY,
-};
+/**
+ * Whether a discount lasts through the Sunday of the week it starts in.
+ *
+ * A recipe stays on the site from the day its basket unlocks until the end of
+ * the week, so every product it is built on has to stay discounted that long.
+ * The flyer also carries one-day specials (e.g. a Monday-only price): they start
+ * on a basket day like any other offer, but a recipe built on one would
+ * advertise a saving that ended days ago. Products failing this check must not
+ * reach the recipe generator.
+ *
+ * Missing dates pass — same "assume a whole-week deal" fallback as the baskets.
+ */
+export const coversRestOfWeek = (validFrom: number | null, validUntil: number | null): boolean => {
+  if (!validFrom || !validUntil) return true;
 
-const getDayOfWeekInBratislava = (epochSeconds: number): number => {
-  const weekday = bratislavaWeekdayFormatter.format(new Date(epochSeconds * 1000));
-  return WEEKDAY_TO_DAY_NUMBER[weekday];
+  const daysUntilSunday = (7 - getDayOfWeekInBratislava(validFrom)) % 7;
+  const sundayKey = getBratislavaDateKeyFromEpoch(validFrom + daysUntilSunday * SECONDS_PER_DAY);
+
+  return getBratislavaDateKeyFromEpoch(validUntil) >= sundayKey;
 };
