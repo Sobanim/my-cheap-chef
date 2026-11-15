@@ -1,0 +1,263 @@
+$font-display: var(--font-display), "Plus Jakarta Sans", system-ui, sans-serif;
+
+/* === Hero === */
+.hero {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-2xl) var(--spacing-xl);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--color-border);
+  background: var(--gradient-greeting);
+  box-shadow: 0 12px 32px -18px var(--color-shadow);
+}
+
+.glow {
+  position: absolute;
+  top: -80px;
+  right: -60px;
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, var(--color-accent-soft) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.eyebrow {
+  font-family: $font-display;
+  font-weight: 600;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-accent);
+}
+
+.title {
+  font-family: $font-display;
+  font-weight: 800;
+  font-size: 2rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+  text-wrap: balance;
+}
+
+.lead {
+  max-width: 58ch;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  text-wrap: pretty;
+}
+
+/* === Buttons === */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+.primaryAction,
+.secondaryAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 var(--spacing-xl);
+  border-radius: var(--radius-badge);
+  font-family: $font-display;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.primaryAction {
+  color: var(--color-accent-contrast);
+  background: var(--color-accent);
+}
+
+.primaryAction:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-1px);
+}
+
+.secondaryAction {
+  color: var(--color-text-primary);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+}
+
+.secondaryAction:hover {
+  border-color: var(--color-accent);
+}
+
+/* === Stats strip === */
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-lg) var(--spacing-2xl);
+  margin-top: var(--spacing-sm);
+}
+
+/* The number reads first, although the label comes first in the markup (dt before dd). */
+.stat {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 2px;
+}
+
+.statValue {
+  font-family: $font-display;
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: var(--color-text-primary);
+}
+
+.statLabel {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+}
+
+/* === Content sections === */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.heading {
+  font-family: $font-display;
+  font-weight: 800;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+}
+
+.cards {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-card);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.cardTitle {
+  font-family: $font-display;
+  font-weight: 700;
+  font-size: 1.05rem;
+  line-height: 1.3;
+  color: var(--color-text-primary);
+}
+
+.cardText {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.stepNumber {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-family: $font-display;
+  font-weight: 800;
+  font-size: 0.9rem;
+  color: var(--color-accent-contrast);
+  background: var(--color-accent);
+}
+
+/* === FAQ === */
+.faq {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-card);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+.faqItem + .faqItem {
+  border-top: 1px solid var(--color-border);
+}
+
+.faqQuestion {
+  cursor: pointer;
+  padding: var(--spacing-lg) var(--spacing-xl);
+  font-family: $font-display;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--color-text-primary);
+}
+
+.faqQuestion:hover {
+  color: var(--color-accent);
+}
+
+.faqAnswer {
+  padding: 0 var(--spacing-xl) var(--spacing-lg);
+  max-width: 70ch;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+/* === Closing call to action === */
+.cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-2xl) var(--spacing-xl);
+  text-align: center;
+  border-radius: var(--radius-card);
+  background: var(--color-accent-soft);
+}
+
+.ctaTitle {
+  font-family: $font-display;
+  font-weight: 800;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+  text-wrap: balance;
+}
+
+.ctaText {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+}
+
+@media (min-width: 768px) {
+  .hero {
+    padding: 56px 48px;
+  }
+
+  .title {
+    font-size: 2.8rem;
+  }
+
+  .lead {
+    font-size: 1.1rem;
+  }
+
+  /* Four benefits read better as a 2 × 2 block than as 3 + 1. */
+  .cardsWide {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
