@@ -1,3 +1,4 @@
+import { formatEuro } from '@/lib/format';
 import type { Product } from '@/lib/types';
 import { formatDate, formatPrice, getDiscountPercent } from './catalogFormat';
 import styles from './CatalogExplorer.module.scss';
@@ -35,7 +36,7 @@ export const CatalogList = ({ products, highlightedId }: Readonly<CatalogListPro
                 <span className={styles.priceNow}>{price}</span>
                 {discountPercent !== null && (
                   <>
-                    <span className={styles.priceWas}>{product.oldPrice!.toFixed(2)} €</span>
+                    <span className={styles.priceWas}>{formatEuro(product.oldPrice!)}</span>
                     <span className={styles.discountBadge}>−{discountPercent} %</span>
                   </>
                 )}

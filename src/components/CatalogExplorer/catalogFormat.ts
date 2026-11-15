@@ -1,3 +1,4 @@
+import { formatEuro } from '@/lib/format';
 import type { Product } from '@/lib/types';
 
 /** Slovak labels for the enum-ish fields, so the table reads without a legend. */
@@ -49,11 +50,11 @@ export const formatShortDate = (epochSeconds: number | null): string => {
 export const formatValidity = (validFrom: number | null, validUntil: number | null): string =>
   `${formatShortDate(validFrom)} – ${formatShortDate(validUntil)}`;
 
-/** `1.49 €`, `4.59 €/kg` — or null when the flyer prints no price ("Cena v predajni"). */
+/** `1,49 €`, `4,59 €/kg` — or null when the flyer prints no price ("Cena v predajni"). */
 export const formatPrice = (product: Product): string | null => {
   if (product.price <= 0) return null;
   const unitSuffix = product.pricingUnit ? (PRICE_UNIT_SUFFIX[product.pricingUnit] ?? '') : '';
-  return `${product.price.toFixed(2)} €${unitSuffix}`;
+  return `${formatEuro(product.price)}${unitSuffix}`;
 };
 
 /** Discount in whole percent, or null when there is no honest original price to compare against. */

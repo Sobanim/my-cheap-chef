@@ -1,3 +1,4 @@
+import { formatEuro } from '@/lib/format';
 import type { Product } from '@/lib/types';
 import { formatPrice, formatValidity, getDiscountPercent, ROLE_LABELS, TIER_LABELS } from './catalogFormat';
 import styles from './CatalogExplorer.module.scss';
@@ -68,7 +69,7 @@ export const CatalogTable = ({ products, sort, onToggleSort, highlightedId }: Re
                 {product.isLidlPlus && <span className={styles.lidlPlusBadge}>Lidl Plus</span>}
               </td>
               <td className={styles.priceCell}>{price ?? <span className={styles.priceInStore}>Cena v predajni</span>}</td>
-              <td>{product.oldPrice != null ? `${product.oldPrice.toFixed(2)} €` : '—'}</td>
+              <td>{product.oldPrice != null ? formatEuro(product.oldPrice) : '—'}</td>
               <td>
                 {discountPercent !== null ? <span className={styles.discountBadge}>−{discountPercent} %</span> : '—'}
               </td>
