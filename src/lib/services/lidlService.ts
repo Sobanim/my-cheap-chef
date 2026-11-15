@@ -114,25 +114,61 @@ const parseProduct = (item: ProductItem): Product | null => {
     };
 };
 
+/** A hung Lidl request must not freeze a page render — give up after this long. */
+const REQUEST_TIMEOUT_MS = 8000;
+
+/** Total tries per call: the first one plus a single retry. */
+const MAX_ATTEMPTS = 2;
+
+const RETRY_DELAY_MS = 500;
+
+const REQUEST_HEADERS = {
+    Accept: 'application/json',
+    // Node's default UA is an anonymous "node" — say who is asking instead.
+    'User-Agent': 'Mozilla/5.0 (compatible; MyCheapChef/1.0)',
+};
+
+/** A failure that a second try will not fix (e.g. 404, 403) — retrying only adds load. */
+class LidlClientError extends Error {}
+
+/**
+ * One request to the Lidl Search API, bounded by a timeout.
+ * Throws on a non-2xx status; 4xx is marked as not worth retrying.
+ */
+const requestLidlData = async (): Promise<LidlSearchResponse> => {
+    const response = await fetch(LIDL_DATA_URL, {
+        headers: REQUEST_HEADERS,
+        signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
+        next: { revalidate: 3600 },
+    } as RequestInit & { next?: { revalidate?: number | false } });
+
+    if (!response.ok) {
+        const message = `Lidl API responded with status ${response.status}`;
+        throw response.status < 500 ? new LidlClientError(message) : new Error(message);
+    }
+
+    return (await response.json()) as LidlSearchResponse;
+};
+
+/** Retries network errors, timeouts and 5xx once; client errors fail straight away. */
+const requestLidlDataWithRetry = async (): Promise<LidlSearchResponse> => {
+    for (let attempt = 1; ; attempt++) {
+        try {
+            return await requestLidlData();
+        } catch (error) {
+            if (error instanceof LidlClientError || attempt >= MAX_ATTEMPTS) throw error;
+            await new Promise((resolve) => setTimeout(resolve, RETRY_DELAY_MS));
+        }
+    }
+};
+
 /**
  * Fetches raw product items from the Lidl Search API and parses them.
  * In Next.js, this call is cached for 1 hour (revalidate: 3600).
  */
 export const fetchActiveProducts = async (): Promise<Product[]> => {
     try {
-        // TODO: harden the live Lidl API request:
-        //  - AbortController with ~8s timeout (a Lidl hang must not freeze the page)
-        //  - explicit User-Agent header (avoid being blocked as a bot)
-        //  - 1 retry on 5xx / network errors
-        const response = await fetch(LIDL_DATA_URL, {
-            next: { revalidate: 3600 },
-        } as RequestInit & { next?: { revalidate?: number | false } });
-
-        if (!response.ok) {
-            throw new Error(`Lidl API responded with status ${response.status}`);
-        }
-
-        const data: LidlSearchResponse = await response.json();
+        const data = await requestLidlDataWithRetry();
         const items = data.items || [];
         
         const cleanedProducts: Product[] = [];

@@ -8,7 +8,7 @@
 
 import fs from 'fs';
 import path from 'path';
-import { getBasketForProduct, type BasketType } from '@/lib/baskets';
+import { coversRestOfWeek, getBasketForProduct, type BasketType } from '@/lib/baskets';
 import type { CookingMethod, Product, Recipe, RecipeData, RecipeIngredient } from '@/lib/types';
 import { generateJson } from '../lib/gemini';
 import { buildRecipePrompt } from './prompt';
@@ -61,6 +61,15 @@ const isCookable = (product: Product): boolean => {
 };
 
 /**
+ * Whether a recipe may be built on this product's discount.
+ *
+ * Separate from `isCookable` because it is about the offer, not the food: a
+ * one-day special is perfectly good to cook with, but the recipe stays up all
+ * week and would keep quoting a saving that ended on day one.
+ */
+const lastsTheWeek = (product: Product): boolean => coversRestOfWeek(product.validFrom, product.validUntil);
+
+/**
  * Drops products already used the maximum number of times from the carried-over pool
  * (they must not be offered again), and flags products used exactly once so the prompt
  * can mark them "already used" and steer the model toward finishing what it opened.
@@ -79,12 +88,20 @@ const buildRecipe = (modelRecipe: ModelRecipe, phase: Phase, index: number, prod
   let totalDishCost = 0;
   let totalCheckoutCost = 0;
   let totalSavings = 0;
+  // The recipe's discounts hold only as long as its shortest-lived sale product.
+  let validUntil: number | null = null;
 
   const ingredients: RecipeIngredient[] = modelRecipe.ingredients.map((ingredient) => {
     const { dishCost, checkoutCost, savings } = priceIngredient(ingredient, productMap);
     totalDishCost += dishCost;
     totalCheckoutCost += checkoutCost;
     totalSavings += savings;
+
+    const productValidUntil =
+      ingredient.source === 'sale' && ingredient.productId ? productMap.get(ingredient.productId)?.validUntil : null;
+    if (productValidUntil) {
+      validUntil = validUntil === null ? productValidUntil : Math.min(validUntil, productValidUntil);
+    }
 
     return {
       name: ingredient.name,
@@ -112,6 +129,7 @@ const buildRecipe = (modelRecipe: ModelRecipe, phase: Phase, index: number, prod
     approxCost: round2(totalDishCost),
     checkoutCost: round2(totalCheckoutCost),
     totalSavings: round2(totalSavings),
+    ...(validUntil !== null ? { validUntil } : {}),
   };
 };
 
@@ -167,8 +185,13 @@ const generatePhaseRecipes = async (
  * Generates the whole week: one batch of recipes per promo phase, then cross-links them.
  */
 export const generateWeeklyRecipes = async (products: Product[]): Promise<Recipe[]> => {
-  const cookable = products.filter(isCookable);
-  console.log(`📦 ${products.length} products in, ${cookable.length} usable as ingredients.`);
+  const edible = products.filter(isCookable);
+  const cookable = edible.filter(lastsTheWeek);
+  const shortLived = edible.length - cookable.length;
+  console.log(
+    `📦 ${products.length} products in, ${cookable.length} usable as ingredients` +
+      (shortLived > 0 ? ` (${shortLived} skipped: discount ends before the week does).` : '.'),
+  );
 
   const productMap = new Map(cookable.map((product) => [product.id, product]));
   const basketOf = (product: Product): BasketType => getBasketForProduct(product.validFrom, product.validUntil);

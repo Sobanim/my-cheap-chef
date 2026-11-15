@@ -1,3 +1,5 @@
+import { getBratislavaDay } from '@/lib/bratislavaTime';
+
 /**
  * Checks if a product is active at the given reference time (in Unix seconds).
  */
@@ -33,7 +35,7 @@ export type DiscountCycle = {
  * Mon–Wed → next drop on Thursday, otherwise → next drop on Monday.
  */
 export const getDiscountCycle = (now: Date): DiscountCycle => {
-  const day = now.getDay();
+  const day = getBratislavaDay(now);
   const isFirstHalf = day >= 1 && day <= 3; // Mon–Wed
   return {
     isFirstHalf,

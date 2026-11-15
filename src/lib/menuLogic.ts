@@ -1,3 +1,4 @@
+import { getBratislavaDay, getBratislavaHour } from "@/lib/bratislavaTime";
 import { getDiscountCycle } from "@/lib/dateUtils";
 import { pluralizeRecipes } from "@/lib/recipeLabels";
 
@@ -43,8 +44,8 @@ export const buildGreeting = (
   unlockedCount: number,
   lockedCount: number,
 ): GreetingInfo => {
-  const day = now.getDay();
-  const { greeting, emoji } = getTimeGreeting(now.getHours());
+  const day = getBratislavaDay(now);
+  const { greeting, emoji } = getTimeGreeting(getBratislavaHour(now));
   const dayName = DAY_NAMES_SK[day];
   const { isFirstHalf } = getDiscountCycle(now);
 
